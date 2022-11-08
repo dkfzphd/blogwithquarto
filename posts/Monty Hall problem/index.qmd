@@ -7,6 +7,8 @@ categories: [news, code, analysis]
 
 ### 三门问题路径分析
 
+![](image.jpg)
+
 三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let's Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。
 
 三门背后对应内容：1个Car, 2只羊（Goat1 , Goat2）
