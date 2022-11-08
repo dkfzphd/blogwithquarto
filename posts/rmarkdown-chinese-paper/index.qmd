@@ -1,5 +1,5 @@
 ---
-title: "title change" 
+title: "rmarkdown-latex-chinese-ctex" 
 author: "Te"
 date: "2022-11-08"
 categories: [rmarkdown, chinese, latex]

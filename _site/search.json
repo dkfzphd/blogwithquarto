@@ -240,7 +240,7 @@
   {
     "objectID": "posts/rmarkdown-chinese-paper/index.html",
     "href": "posts/rmarkdown-chinese-paper/index.html",
-    "title": "title change",
+    "title": "rmarkdown-latex-chinese-ctex",
     "section": "",
     "text": "### side by side plots\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(81)\nboxplot(rnorm(10))\nplot(rnorm(10),col=\"red\")\n\n\n\n\n\n\n:::"
   }

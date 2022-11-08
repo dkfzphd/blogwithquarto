@@ -1,7 +1,7 @@
 {
-  "hash": "b6eb3d2abc0cd4d279b21057a5cf2a2d",
+  "hash": "4f183e9316a88d33600cc58e1b47668f",
   "result": {
-    "markdown": "---\ntitle: \"title change\" \nauthor: \"Te\"\ndate: \"2022-11-08\"\ncategories: [rmarkdown, chinese, latex]\n---\n\n```\n---  \ntitle: \"Your Report Title\"  \nauthor: \"YourName\"  \ndate: \"2022-10-31\"  \ndocumentclass: ctexart  \noutput:  \n  rticles::ctex:  \n    fig_caption: yes  \n    number_sections: yes  \n    toc: yes  \neditor_options:  \n  chunk_output_type: console  \n---\n```\n```\n### side by side plots\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(81)\nboxplot(rnorm(10))\nplot(rnorm(10),col=\"red\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=50%}\n:::\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-2.png){width=50%}\n:::\n:::\n",
+    "markdown": "---\ntitle: \"rmarkdown-latex-chinese-ctex\" \nauthor: \"Te\"\ndate: \"2022-11-08\"\ncategories: [rmarkdown, chinese, latex]\n---\n\n```\n---  \ntitle: \"Your Report Title\"  \nauthor: \"YourName\"  \ndate: \"2022-10-31\"  \ndocumentclass: ctexart  \noutput:  \n  rticles::ctex:  \n    fig_caption: yes  \n    number_sections: yes  \n    toc: yes  \neditor_options:  \n  chunk_output_type: console  \n---\n```\n```\n### side by side plots\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(81)\nboxplot(rnorm(10))\nplot(rnorm(10),col=\"red\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=50%}\n:::\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-2.png){width=50%}\n:::\n:::\n",
     "supporting": [
       "index_files"
     ],
