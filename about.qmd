@@ -14,10 +14,16 @@ about:
 
 Email: iscienceAT163.com
 
-** About Me in Brief**
+About Me in Brief
+<br>
 - Solid foundation in Histology\
+<br>
 - Experienced Molecular Biologist\
+<br>
 - Cancer Research - Liver Cancer\
+<br>
 - Gene therapy - Crispr-Cas related techniques\
+<br>
 - Statistical analysis with R programming\
+<br>
 - FELASA B Certificate

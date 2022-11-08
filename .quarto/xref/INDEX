@@ -16,5 +16,8 @@
   },
   "posts/First-Post-with-Quarto/index.qmd": {
     "index.html": "bf5fad0a"
+  },
+  "posts/Thanks about Blogdown Blog/index.qmd": {
+    "index.html": "47f9d011"
   }
 }

@@ -1,0 +1,18 @@
+---
+title: "BLOG with blogdown"
+author: "Guo Te"
+date: "2022-11-08"
+categories: [news, code, analysis]
+---
+
+
+我的第一篇博客-感谢
+
+终于部署好了自己的博客，感谢 [谢益辉](https://yihui.org/cn/)和[袁凡](https://yuanfan.vercel.app/)。
+
+磕磕绊绊一路走来，一路如蹒跚学步，依旧不懂的很多。
+感谢那些遇到的人，感谢那些或愉快或不怎么愉快的经历。
+因为这所有的发生的人事物塑造了今天的我。
+
+**感谢**
+
