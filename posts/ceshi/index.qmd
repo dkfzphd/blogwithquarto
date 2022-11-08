@@ -1,8 +1,35 @@
 ---
-title: "ceshi"
+title: "gganimate"
 author: "Me"
 date: "2022-11-08"
 categories: [news, code, analysis]
 ---
 
-CESHI
+![](animate1.gif)
+
+```{r, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(gganimate)
+library(ggthemes)
+
+theme_set(theme_economist_white())
+
+x <- seq(0,15,by=0.1)
+y <- sin(x)+0.8*x+0.1*x^2
+df1 <- tibble(x,y)
+plot1 <- ggplot(df1,aes(x,y))+
+  geom_line(size=1,color='#e63946')+
+  geom_line(aes(x,1.9*x),size=1,color='black')+
+  geom_point(color='#03045e', alpha=0.5, size=3)+
+  labs(x="Time",
+       y="Ability")
+plot1
+```
+
+```{r cache=TRUE}
+animate1 <- plot1 +
+              transition_reveal(x)
+animate1
+animate(animate1, height = 800, width =800)
+anim_save("animate1.gif", animate1)
+```

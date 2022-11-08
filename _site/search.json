@@ -51,9 +51,9 @@
   {
     "objectID": "posts/ceshi/index.html",
     "href": "posts/ceshi/index.html",
-    "title": "ceshi",
+    "title": "gganimate",
     "section": "",
-    "text": "CESHI"
+    "text": "library(tidyverse)\nlibrary(gganimate)\nlibrary(ggthemes)\n\ntheme_set(theme_economist_white())\n\nx <- seq(0,15,by=0.1)\ny <- sin(x)+0.8*x+0.1*x^2\ndf1 <- tibble(x,y)\nplot1 <- ggplot(df1,aes(x,y))+\n  geom_line(size=1,color='#e63946')+\n  geom_line(aes(x,1.9*x),size=1,color='black')+\n  geom_point(color='#03045e', alpha=0.5, size=3)+\n  labs(x=\"Time\",\n       y=\"Ability\")\nplot1\n\n\n\n\n\nanimate1 <- plot1 +\n              transition_reveal(x)\nanimate1\n\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n\nanimate(animate1, height = 800, width =800)\n\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n\n\n\n\nanim_save(\"animate1.gif\", animate1)\n\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?\n`geom_line()`: Each group consists of only one observation.\nℹ Do you need to adjust the group aesthetic?"
   },
   {
     "objectID": "posts/DiagrammR/DiagrammR.html",
