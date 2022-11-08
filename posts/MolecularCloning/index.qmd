@@ -5,6 +5,8 @@ date: "2022-11-08"
 categories: [cloning, molecular biology, analysis]
 ---
 
+![](cloning.jpg)
+
 ## 分子克隆总结
 
 软件及网络工具：SnapGene , NEB Cloner 等
