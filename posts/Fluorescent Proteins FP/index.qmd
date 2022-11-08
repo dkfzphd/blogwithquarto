@@ -1,0 +1,41 @@
+---
+title: "Fluorescent Proteins FP" 
+author: "Te"
+date: "2022-11-08"
+categories: [news, code, analysis]
+---
+
+# Fluoresecent proteins(FP)
+
+Ref:
+
+-   [A guide to choosing fluorescent proteins](https://pubmed.ncbi.nlm.nih.gov/16299475/)
+
+-   [Fluorescence-spectraviewer](https://www.thermofisher.com/order/fluorescence-spectraviewer#!/)
+
+## Basic Process
+
+**FP_best_for_genernal_use** -\> **Genreal_Priciple**-\> **Trial_and_Error**
+
+## Genreal Priciple
+
+1.  Express efficiently and without toxicity
+
+2.  Sufficient photostability (stable \~ duration in the experiment)
+
+3.  Fluoresecent proteins(FP) is to be expressed as a fusion protein, FP should not oligomerize(形成低聚物)
+
+4.  FP should be insensitive to environmental effects.
+
+5.  FP once being used in multiple-plex experiments should have minimal crosstalk in excitation and emission.
+
+6.  FRET or selective optical labeling using photocon-vertible FPs.
+
+## Brightness and Expression
+
+-   FP vendors is skeptical (claimed brightness may not be real)
+-   Oxygen presence is needed for FPs expressed in living organisms
+-   Temperature 25 ^0^C or 37 ^0^C (some FPs Temp influenced the expression)
+-   Chaperones(配体) (In bacteria and mammalian cells may differ )
+
+

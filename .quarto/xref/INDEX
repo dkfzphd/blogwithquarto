@@ -76,5 +76,11 @@
   },
   "posts/Monty Hall problem/index.qmd": {
     "index.html": "678a6a27"
+  },
+  "posts/Fluorescent Proteins FP/index.qmd": {
+    "index.html": "401c685b"
+  },
+  "posts/ggplot2-MoonPhrase/index.qmd": {
+    "index.html": "7636944a"
   }
 }
