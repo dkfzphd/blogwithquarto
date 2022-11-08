@@ -1,0 +1,28 @@
+---
+title: "title change" 
+author: "Te"
+date: "2022-11-08"
+categories: [rmarkdown, chinese, latex]
+---
+```
+---  
+title: "Your Report Title"  
+author: "YourName"  
+date: "2022-10-31"  
+documentclass: ctexart  
+output:  
+  rticles::ctex:  
+    fig_caption: yes  
+    number_sections: yes  
+    toc: yes  
+editor_options:  
+  chunk_output_type: console  
+---
+```
+```
+### side by side plots
+```{r out.width=c('50%', '50%'), fig.show='hold'}
+set.seed(81)
+boxplot(rnorm(10))
+plot(rnorm(10),col="red")
+```

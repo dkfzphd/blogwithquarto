@@ -88,5 +88,8 @@
   },
   "posts/sf-map/index.qmd": {
     "index.html": "3de04127"
+  },
+  "posts/rmarkdown-chinese-paper/index.qmd": {
+    "index.html": "53c4b715"
   }
 }
