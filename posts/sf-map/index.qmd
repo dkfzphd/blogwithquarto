@@ -1,5 +1,5 @@
 ---
-title: "title change" 
+title: "sf-map-heatmap" 
 author: "Te"
 date: "2022-11-08"
 categories: [sf, map, heatmap]
