@@ -1,6 +1,6 @@
 ---
 title: "ceshi"
-author: "Guo Te"
+author: "Me"
 date: "2022-11-08"
 categories: [news, code, analysis]
 ---
