@@ -1,0 +1,54 @@
+---
+title: Draw a 96 wells with ggplot2
+author: Guo Te
+date: '2022-09-13'
+slug: draw-a-96-wells-with-ggplot2
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+
+
+<pre class="r"><code>library(tidyverse)
+
+# Generate &quot;well&quot; coordinates x , y
+y &lt;- LETTERS[1:8]
+x &lt;- 1:12
+
+# Generate all the x, y combination and put into data.frame &quot;plate&quot;
+plate &lt;- expand.grid(x,y)
+
+# Draw a 96-well
+# levels = LETTERS[8:1] to keep  &quot;A&quot; to &quot;H&quot; at y-axis
+ggplot(plate,aes(Var1,factor(Var2,levels = LETTERS[8:1])))+
+  geom_point(size=8,color=&quot;#a2d2ff&quot;)+
+  scale_x_continuous(breaks = seq(1,12,by=1), position = &quot;top&quot;)+
+  scale_y_discrete(breaks=LETTERS[1:8])+
+  labs(x=NULL,
+       y=NULL)+
+  theme_bw()+
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p>Update version without set y level</p>
+<pre class="r"><code>library(tidyverse)
+
+# Generate &quot;well&quot; coordinates x , y
+y &lt;- LETTERS[8:1] # just change LETTERS[1:8] to  LETTERS[8:1]
+x &lt;- 1:12
+
+# Generate all the x, y combination and put into data.frame &quot;plate&quot;
+plate &lt;- expand.grid(x,y)
+
+# Draw a 96-well
+
+ggplot(plate,aes(Var1,Var2, color=Var2))+
+  geom_point(size=8)+
+  scale_x_continuous(breaks = seq(1,12,by=1), position = &quot;top&quot;)+
+  scale_y_discrete(breaks=LETTERS[1:8])+
+  labs(x=NULL,
+       y=NULL)+
+  theme_bw()+
+  theme(legend.position = &quot;none&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>

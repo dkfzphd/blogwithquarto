@@ -1,0 +1,89 @@
+---
+title: ggplot2 - lineplot-dark
+author: Guo Te
+date: '2022-09-27'
+slug: ggplot2-lineplot-dark
+categories:
+  - R
+tags:
+  - Rmarkdown
+---
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(readr)
+df_raw <- read_csv("API_SM.POP.NETM_DS2_en_csv_v2_4558344.csv",skip = 4) |> janitor::clean_names()
+
+df_raw <- df_raw |> select(-c("indicator_name", "indicator_code"))
+
+df_longer <- df_raw |>  pivot_longer("x1960":"x2021",
+                          names_to = "year",
+                          values_to = "net_population")
+
+df_longer$net_population <- as.numeric(df_longer$net_population)
+# drop_na
+df <- drop_na(df_longer)
+
+# extract numbers from string ~ "year"
+library(stringr)
+df$year <- df$year %>% str_match_all("[0-9]+") %>% unlist %>% as.numeric
+
+```
+
+```{r warning=FALSE, message=FALSE}
+library(hrbrthemes)
+library(scales)
+library(viridisLite)
+# filter some countries
+df_data <- df |> filter(country_name %in% c("China", 
+                                            "India","United States","Germany")
+                        )
+
+# plot
+
+p <- ggplot(data = df_data)+
+  geom_line(aes(year,net_population,color=country_name),
+            size = 2)+
+  geom_hline(yintercept = 0,color="red",linetype=2)+
+  scale_y_continuous(labels = unit_format(unit = "", scale = 1e-6))+
+  scale_x_continuous(breaks = seq(1960,2030,by=10),
+                     labels = seq(1960,2030,by=10))+
+  labs(x = "",
+       y = "Net population (millions)",
+       title = "Net migration",
+       caption = "https://data.worldbank.org/")+
+  theme_modern_rc()+
+  theme(legend.title = element_blank(),
+        legend.position = "top",
+        plot.title = element_text(size = 20))
+
+p + scale_colour_viridis_d("City\nCenter")
+
+# save plot
+name <- "Net_migration_dark" # change the save filename here
+ggsave(filename = glue::glue('{name}.pdf'), plot = last_plot(), 
+       height = 6, width = 8, units="in", device=cairo_pdf)
+pdftools::pdf_convert(
+  pdf = glue::glue('{name}.pdf'),
+  filenames = glue::glue('{name}.png'),
+  format = "png", 
+  dpi = 600
+)
+```
+
+```{r warning=FALSE, message=FALSE}
+library(grid)
+p
+grid.lines(
+  x = c(0, 1),
+  y = 1,
+  gp = gpar(col = "#D13223", lwd = 2) # "#D13223"
+)
+grid.rect(
+  x = 0,
+  y = 1,
+  width = 0.2, # TODO 10 % of line / image width
+  height = 0.05,  # TODO ~2 % of line / image height
+  gp = gpar(fill = "#D13223", col = NA)
+)
+```
+

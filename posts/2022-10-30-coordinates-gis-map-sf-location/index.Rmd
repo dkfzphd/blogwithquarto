@@ -1,0 +1,186 @@
+---
+title: Coordinates-gis-map-sf-location
+author: Guo Te
+date: '2022-10-30'
+slug: coordinates-gis-map-sf-location
+categories:
+  - R
+tags:
+  - R Markdown
+---
+Download map from China website(**be cautious about border and official government data** )
+
+China Map geojson source website: https://geojson.cn/
+
+## Example 1: Map to Map-Heatmap
+```{r}
+library(sf)
+library(tidyverse)
+library(readxl)
+library(hrbrthemes)
+sysfonts::font_add_google("Roboto Condensed", family = "Roboto Condensed")
+sysfonts::font_families()
+
+showtext::showtext.auto()
+
+china_map <- st_read(dsn = "https://geojson.cn/api/data/china.json", stringsAsFactors = FALSE)
+# china_map  
+
+
+jingfei_china <- read_excel(here::here("jingfei-china.xlsx")) %>% janitor::clean_names() %>% rename(name=de_qu)
+
+```
+
+Filter data for plot map
+```{r}
+map_china <- china_map  %>% select(-c(childrenNum:bbox)) 
+
+map_china <- left_join(map_china,jingfei_china,by="name")
+map_china$r_d_jing_fei <- as.numeric(map_china$r_d_jing_fei)
+```
+
+
+```{r}
+map_china %>%
+  ggplot() +
+  geom_sf(aes(fill = r_d_jing_fei)) +
+  scale_fill_gradient2(low = "black", mid = "transparent", high = "red") +
+  geom_sf_text(aes(label = name), colour = "gray95", size = 2) +
+  labs(
+    title = "2021研究经费绝对量热度",
+    caption = "国家统计局 | 2021年全国科技经费投入统计公报 | Plotbyme",
+    y = NULL,
+    x = NULL
+  ) +
+  theme_modern_rc() +
+  theme(
+    legend.position = "none",
+    plot.title = element_text(size = 22, hjust = .5, family = "wqy-microhei"),
+    plot.caption = element_text(hjust = 0.9,  family = "wqy-microhei")
+  )
+
+
+```
+
+```{r}
+# save plot
+# name <- "ResearchInvent_China2021" # change the save filename here
+# ggsave(filename = glue::glue('{name}.pdf'), plot = last_plot(), 
+#        height = 6, width = 8, units="in", device=cairo_pdf)
+# pdftools::pdf_convert(
+#   pdf = glue::glue('{name}.pdf'),
+#   filenames = glue::glue('{name}.png'),
+#   format = "png", 
+#   dpi = 600
+# )
+```
+
+## Example 2: Coordinates to Province Location
+```{r}
+library(sf)
+library(tidyverse)
+library(readxl)
+
+showtext::showtext.auto()
+
+china_map <- st_read(dsn = "https://geojson.cn/api/data/china.json", stringsAsFactors = FALSE)
+
+```
+
+
+lat,long read in
+```{r}
+metro <- read_excel(here::here("metro.xlsx"))
+
+metro_df <- metro %>% select("Entity ID","lon","lat")
+```
+
+basic china map
+```{r}
+map_china <- china_map  %>% select(-c(childrenNum:bbox)) 
+```
+
+```{r}
+map_china %>%
+  ggplot() +
+  geom_sf() +
+  geom_sf_text(aes(label = name))
+```
+
+```{r}
+library(sf)
+
+## pointsDF: A data.frame whose first column contains longitudes and
+##           whose second column contains latitudes.
+##
+## states:   An sf MULTIPOLYGON object with 50 states plus DC.
+##
+## name_col: Name of a column in `states` that supplies the states'
+##           names.
+lonlat_to_state <- function(pointsDF,
+                            states = map_china,
+                            name_col = "name") {
+    ## Convert points data.frame to an sf POINTS object
+    pts <- st_as_sf(pointsDF, coords = 1:2, crs = 4326)
+
+    ## Transform spatial data to some planar coordinate system
+    ## (e.g. Web Mercator) as required for geometric operations
+    states <- st_transform(states, crs = 3857)
+    pts <- st_transform(pts, crs = 3857)
+
+    ## Find names of state (if any) intersected by each point
+    state_names <- states[[name_col]]
+    ii <- as.integer(st_intersects(pts, states))
+    state_names[ii]
+}
+
+## Test the function with points in Wisconsin, Oregon, and France
+testPoints <- data.frame(metro_df$lon, metro_df$lat)
+
+# lonlat_to_state(testPoints)
+
+```
+
+```{r}
+testPoints <- data.frame(metro_df$lon, metro_df$lat)
+
+# get coordinate to location,  modern province
+metro_df$location <- lonlat_to_state(testPoints)
+
+metro_df <- metro_df %>% select(-c(lon, lat))
+
+metro_final <- left_join(metro, metro_df, by = "Entity ID") %>%
+  janitor::clean_names() %>%
+  unique()
+
+```
+
+summary number of sites in modern china province
+```{r}
+table(metro_final$location) %>% sort(decreasing = TRUE)%>% knitr::kable()
+```
+
+export data.frame to excel
+```{r}
+# library("writexl")
+# write_xlsx(metro_final,"metro_final.xlsx")
+```
+
+```{r}
+sites <- data.frame(longitude = metro_final$lon, latitude = metro$lat)
+
+sites <- st_as_sf(sites,
+  coords = c("longitude", "latitude"),
+  crs = 4326, agr = "constant")
+
+ggplot(map_china) +
+  geom_sf() +
+  geom_sf_text(aes(label = name),color="black") +
+  geom_sf(data = sites, size = .5, color = "red", alpha = .3)+
+  theme_void()
+```
+
+
+
+
+

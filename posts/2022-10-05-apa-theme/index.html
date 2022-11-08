@@ -1,0 +1,108 @@
+---
+title: APA theme- ggplot2
+author: Guo Te
+date: '2022-10-05'
+slug: apa-theme
+categories:
+  - R
+tags:
+  - Rmarkdown
+---
+
+
+
+<p><a href="https://ggplot2tor.com/tutorials/apa_theme_rprofile">Christian</a>
+<a href="https://christianburkhart.de/" class="uri">https://christianburkhart.de/</a></p>
+<p>How to set your APA 7 theme in RStudio
+Many researchers in the social sciences often need to create APA-style figures. Fortunately, there is a little trick that makes it easier to automatically set up an APA theme in ggplot2.</p>
+<p><a href="https://ggplot2tor.com/tutorials/apa_theme_rprofile" class="uri">https://ggplot2tor.com/tutorials/apa_theme_rprofile</a></p>
+<div id="code-part" class="section level2">
+<h2>Code part</h2>
+<pre class="r"><code>library(tidyverse)
+# Set theme
+  apa_theme &lt;- theme(
+    plot.margin = unit(c(1, 1, 1, 1), &quot;cm&quot;),
+    plot.background = element_rect(fill = &quot;white&quot;, color = NA),
+    plot.title = element_text(size = 22, face = &quot;bold&quot;,
+                              hjust = 0.5,
+                              margin = margin(b = 15)),
+    axis.line = element_line(color = &quot;black&quot;, size = .5),
+    axis.title = element_text(size = 18, color = &quot;black&quot;,
+                              face = &quot;bold&quot;),
+    axis.text = element_text(size = 15, color = &quot;black&quot;),
+    axis.text.x = element_text(margin = margin(t = 10)),
+    axis.title.y = element_text(margin = margin(r = 10)),
+    axis.ticks = element_line(size = .5),
+    panel.grid = element_blank(),
+    legend.position = c(0.20, 0.8),
+    legend.background = element_rect(color = &quot;black&quot;),
+    legend.text = element_text(size = 15),
+    legend.margin = margin(t = 5, l = 5, r = 5, b = 5),
+    legend.key = element_rect(color = NA, fill = NA)
+  )
+  
+  theme_set(theme_minimal(base_size = 18) +
+            apa_theme)</code></pre>
+</div>
+<div id="example" class="section level2">
+<h2>Example</h2>
+<div id="apa-theme" class="section level3">
+<h3>APA theme</h3>
+<pre class="r"><code>pic &lt;- ggplot(ToothGrowth) +
+ aes(x = factor(dose), y = len, fill = supp, colour = supp) +
+ geom_point(shape=ToothGrowth$supp,size = 1.5,position = position_dodge(0.2)) 
+pic</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>pic_apa &lt;- pic+theme_set(theme_minimal(base_size = 18) +
+            apa_theme)
+pic_apa</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+</div>
+</div>
+<div id="my-own-theme" class="section level2">
+<h2>my own theme</h2>
+<pre class="r"><code>pic_own &lt;- pic+theme(
+    axis.title = element_text(size = 16, family = &quot;Roboto&quot;),
+    axis.text.x = element_text(size = 12, family = &quot;Roboto&quot;),
+    axis.text.y = element_text(size = 12, family = &quot;Roboto&quot;),
+    plot.title = element_text(size = 20, face = &quot;bold&quot;, color = &quot;red2&quot;, family = &quot;Lato&quot;),
+    plot.subtitle = element_text(size = 14, color = &quot;blue4&quot;, family = &quot;Lato&quot;),
+    axis.line.x = element_line(color = &quot;gray8&quot;),
+    axis.line.y = element_line(color = &quot;gray8&quot;),
+    panel.background = element_rect(fill = &quot;white&quot;,color = &quot;white&quot;),
+    panel.border = element_rect(fill = NA, size=1),
+    plot.background = element_rect(fill = &quot;white&quot;,color = &quot;gray45&quot;),
+    legend.position = c(0.1, 0.8),
+    legend.background = element_rect(fill = NA),
+    legend.key = element_rect(fill = NA),
+    plot.margin = unit(c(.5, .5, .5, .5), &quot;cm&quot;)
+  )
+pic_own  </code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="apa-theme-version-2-ref-httpsbookdown.orgcontent2015figures.html" class="section level1">
+<h1>APA theme version 2 ref: <a href="https://bookdown.org/content/2015/figures.html" class="uri">https://bookdown.org/content/2015/figures.html</a></h1>
+<pre class="r"><code>apatheme=theme_bw()+
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.border=element_blank(),
+        axis.line=element_line(),
+        text=element_text(family=&#39;Arial&#39;),
+        legend.title=element_blank(),
+        axis.text.y=element_text(size = 12),
+        axis.text.x=element_text(size = 12),
+        plot.tag = element_text(face = &quot;bold&quot;))
+
+# test apatheme version 2
+pic + labs(tag=&quot;A&quot;)+theme_bw()+
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        panel.border=element_blank(),
+        axis.line=element_line(),
+        text=element_text(family=&#39;Arial&#39;),
+        legend.title=element_blank(),
+        axis.text.y=element_text(size = 12),
+        axis.text.x=element_text(size = 12),
+        plot.tag = element_text(face = &quot;bold&quot;))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>

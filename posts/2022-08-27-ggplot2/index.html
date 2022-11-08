@@ -1,0 +1,42 @@
+---
+title: 打磨ggplot2
+author: Guo Te
+date: '2022-08-27'
+slug: ggplot2
+categories:
+  - R
+tags:
+  - Rmarkdown
+---
+
+
+
+<div id="working-hours-word-data" class="section level2">
+<h2>working hours word data</h2>
+<p>Data from <a href="https://ourworldindata.org" class="uri">https://ourworldindata.org</a></p>
+<pre class="r"><code>library(readr)
+library(tidyverse)
+library(ggthemes)
+annual_working_hours_per_worker &lt;- read_csv(&quot;annual-working-hours-per-worker.csv&quot;)
+df2 &lt;- janitor::clean_names(annual_working_hours_per_worker)
+
+#filter out countries will be analysed
+df3 &lt;- df2 |&gt; filter(entity %in% c(&quot;China&quot;, 
+                                   &quot;Germany&quot;, &quot;Japan&quot;, &quot;United States&quot;)) |&gt; 
+              filter(year&gt;1949)
+
+## plot the data df3
+p2 &lt;- ggplot(df3,aes(year, average_annual_working_hours_per_worker/52, color=entity))+
+  geom_line(size=2)
+
+p2 &lt;- p2+ labs( title=&quot;Working hours in a week&quot;,
+                subtitle = &quot;Whole Year Working Hours divided by 52&quot;,
+                x = NULL, y=NULL,
+                caption = &quot;https://ourworldindata.org/&quot;) +
+                theme_economist() + 
+                theme(legend.title=element_blank(),
+                      legend.position = c(0.1, 0.13),
+                      legend.background = element_rect(fill=&#39;transparent&#39;))
+p2</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+</div>

@@ -1,0 +1,46 @@
+---
+title: Filter NAs in R tidyverse
+author: Guo Te
+date: '2022-10-25'
+slug: filter-nas-in-tidyverse
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+### Cautious! Read in csv by  **read.csv()** missing value will not be converted into NA
+Good solution: **read_csv()** in readr package missing value will  convert into NA
+
+
+```{r warning=FALSE, message=FALSE}
+library(palmerpenguins)
+library(tidyverse)
+```
+
+### Use skimr::skim(penguins) to get a summmary describtion
+```{r warning=FALSE, message=FALSE}
+skimr::skim(penguins)
+```
+
+###  Write a funtion to filter no need to specify the name of the columns
+```{r warning=FALSE, message=FALSE}
+rowAny <- function(x) rowSums(x) > 0 
+
+penguins %>%
+  filter(rowAny(
+    across(
+      .cols = everything(),
+      .fns = ~ is.na(.x)
+    )
+  ))
+
+
+```
+
+###  use if_any function but have specify the column names
+```{r warning=FALSE, message=FALSE}
+penguins %>% filter(if_any(c(species:year), ~ is.na(.)))
+```
+
+

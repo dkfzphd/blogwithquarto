@@ -1,0 +1,76 @@
+---
+title: ggplot-theme-fonts-example
+author: Guo Te
+date: '2022-09-08'
+slug: ggplot-theme-fonts-example
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+
+
+<div id="load-fonts" class="section level1">
+<h1>load fonts</h1>
+<pre class="r"><code># initial configuration
+windowsFonts()</code></pre>
+<pre><code>## $serif
+## [1] &quot;TT Times New Roman&quot;
+## 
+## $sans
+## [1] &quot;TT Arial&quot;
+## 
+## $mono
+## [1] &quot;TT Courier New&quot;</code></pre>
+<pre class="r"><code># load new font
+sysfonts::font_add_google(&quot;Roboto&quot;, family = &quot;Roboto&quot;)
+sysfonts::font_add_google(&quot;Lato&quot;, family = &quot;Lato&quot;)
+sysfonts::font_families()</code></pre>
+<pre><code>## [1] &quot;sans&quot;   &quot;serif&quot;  &quot;mono&quot;   &quot;Roboto&quot; &quot;Lato&quot;</code></pre>
+<pre class="r"><code># use it
+showtext::showtext_auto()</code></pre>
+</div>
+<div id="load-library" class="section level1">
+<h1>load library</h1>
+<pre class="r"><code>library(tidyverse)
+df &lt;- tibble(ChickWeight)
+ggplot(df, aes(Time, weight, group = Diet, color = Diet)) +
+  geom_smooth(aes(group = Diet), se = FALSE) +
+  theme(
+    axis.title = element_text(size = 16, family = &quot;Roboto&quot;),
+    axis.text.x = element_text(size = 12, family = &quot;Roboto&quot;),
+    axis.text.y = element_text(size = 12, family = &quot;Roboto&quot;),
+    plot.title = element_text(size = 20, face = &quot;bold&quot;, color = &quot;red2&quot;, family = &quot;Lato&quot;),
+    plot.subtitle = element_text(size = 14, color = &quot;blue4&quot;, family = &quot;Lato&quot;),
+    axis.line.x = element_line(color = &quot;gray8&quot;),
+    axis.line.y = element_line(color = &quot;gray8&quot;),
+    panel.background = element_rect(fill = &quot;white&quot;),
+    plot.background = element_rect(fill = &quot;white&quot;),
+    legend.position = c(0.1, 0.8),
+    legend.background = element_rect(fill = NA),
+    legend.key = element_rect(fill = NA),
+    plot.margin = unit(c(.5, .5, .5, .5), &quot;cm&quot;)
+  ) +
+  labs(
+    title = &quot;Effect of different feeds on body weight of chicks&quot;,
+    subtitle = &quot;After 20 days Diet3 is much better &quot;,
+    y = &quot;Chick Weight (g)&quot;,
+    x = &quot;Day&quot;
+  )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code>ggsave(filename = &quot;ChickWeight.pdf&quot;, plot = last_plot(), height = 6, width = 8)</code></pre>
+</div>
+<div id="pdf-convert-to-png" class="section level1">
+<h1>pdf convert to png</h1>
+<pre class="r"><code>pdftools::pdf_convert(
+  pdf = &quot;ChickWeight.pdf&quot;,
+  filenames = &quot;ChickWeight.png&quot;,
+  format = &quot;png&quot;, 
+  dpi = 200
+)</code></pre>
+<pre><code>## Warning in sprintf(filenames, pages, format): 2 arguments not used by format
+## &#39;ChickWeight.png&#39;</code></pre>
+<pre><code>## Converting page 1 to ChickWeight.png... done!</code></pre>
+<pre><code>## [1] &quot;ChickWeight.png&quot;</code></pre>
+</div>

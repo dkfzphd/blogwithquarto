@@ -1,0 +1,85 @@
+---
+title: ggplot2 - lineplot-dark
+author: Guo Te
+date: '2022-09-27'
+slug: ggplot2-lineplot-dark
+categories:
+  - R
+tags:
+  - Rmarkdown
+---
+
+
+
+<pre class="r"><code>library(tidyverse)
+library(readr)
+df_raw &lt;- read_csv(&quot;API_SM.POP.NETM_DS2_en_csv_v2_4558344.csv&quot;,skip = 4) |&gt; janitor::clean_names()
+
+df_raw &lt;- df_raw |&gt; select(-c(&quot;indicator_name&quot;, &quot;indicator_code&quot;))
+
+df_longer &lt;- df_raw |&gt;  pivot_longer(&quot;x1960&quot;:&quot;x2021&quot;,
+                          names_to = &quot;year&quot;,
+                          values_to = &quot;net_population&quot;)
+
+df_longer$net_population &lt;- as.numeric(df_longer$net_population)
+# drop_na
+df &lt;- drop_na(df_longer)
+
+# extract numbers from string ~ &quot;year&quot;
+library(stringr)
+df$year &lt;- df$year %&gt;% str_match_all(&quot;[0-9]+&quot;) %&gt;% unlist %&gt;% as.numeric</code></pre>
+<pre class="r"><code>library(hrbrthemes)
+library(scales)
+library(viridisLite)
+# filter some countries
+df_data &lt;- df |&gt; filter(country_name %in% c(&quot;China&quot;, 
+                                            &quot;India&quot;,&quot;United States&quot;,&quot;Germany&quot;)
+                        )
+
+# plot
+
+p &lt;- ggplot(data = df_data)+
+  geom_line(aes(year,net_population,color=country_name),
+            size = 2)+
+  geom_hline(yintercept = 0,color=&quot;red&quot;,linetype=2)+
+  scale_y_continuous(labels = unit_format(unit = &quot;&quot;, scale = 1e-6))+
+  scale_x_continuous(breaks = seq(1960,2030,by=10),
+                     labels = seq(1960,2030,by=10))+
+  labs(x = &quot;&quot;,
+       y = &quot;Net population (millions)&quot;,
+       title = &quot;Net migration&quot;,
+       caption = &quot;https://data.worldbank.org/&quot;)+
+  theme_modern_rc()+
+  theme(legend.title = element_blank(),
+        legend.position = &quot;top&quot;,
+        plot.title = element_text(size = 20))
+
+p + scale_colour_viridis_d(&quot;City\nCenter&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<pre class="r"><code># save plot
+name &lt;- &quot;Net_migration_dark&quot; # change the save filename here
+ggsave(filename = glue::glue(&#39;{name}.pdf&#39;), plot = last_plot(), 
+       height = 6, width = 8, units=&quot;in&quot;, device=cairo_pdf)
+pdftools::pdf_convert(
+  pdf = glue::glue(&#39;{name}.pdf&#39;),
+  filenames = glue::glue(&#39;{name}.png&#39;),
+  format = &quot;png&quot;, 
+  dpi = 600
+)</code></pre>
+<pre><code>## Converting page 1 to Net_migration_dark.png... done!</code></pre>
+<pre><code>## [1] &quot;Net_migration_dark.png&quot;</code></pre>
+<pre class="r"><code>library(grid)
+p
+grid.lines(
+  x = c(0, 1),
+  y = 1,
+  gp = gpar(col = &quot;#D13223&quot;, lwd = 2) # &quot;#D13223&quot;
+)
+grid.rect(
+  x = 0,
+  y = 1,
+  width = 0.2, # TODO 10 % of line / image width
+  height = 0.05,  # TODO ~2 % of line / image height
+  gp = gpar(fill = &quot;#D13223&quot;, col = NA)
+)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>

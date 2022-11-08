@@ -1,0 +1,98 @@
+---
+title: ggplot2-MoonPhrase
+author: Guo Te
+date: '2022-09-09'
+slug: ggplot2-moonphrase
+categories:
+  - R
+tags:
+  - Rmarkdown
+---
+
+```{r message=FALSE, warning=FALSE}
+# initial configuration
+windowsFonts()
+# load new font
+sysfonts::font_add_google("Roboto", family = "Roboto")
+sysfonts::font_add_google("Lato", family = "Lato")
+sysfonts::font_families()
+
+# use it
+showtext::showtext_auto()
+```
+
+# moon phrase data
+```{r message=FALSE, warning=FALSE}
+library(suncalc)
+library(tidyverse)
+library(lubridate)
+library(knitr)
+
+## use getMoonIllusmination function to get moon fraction, phase, and angle for 2018.
+Moon_2022 <-getMoonIllumination(date = seq.Date(as.Date("2022-01-01"), as.Date("2022-12-31"), by = 1), 
+                                 keep = c("fraction", "phase", "angle"))
+
+
+## Append Extra Info, so I can use ggplot to make calendar. 
+Moon_2022_df <- Moon_2022 %>% 
+  mutate(wkdy = fct_inorder(weekdays(date, abbreviate=T)), ## 2018 worked well because it starts on Monday
+         wkn = week(date), ## Week Number
+         mo = month(date, label=T, abbr=T), ## Month
+         day = day(date), ## Day
+         moon.phase = cut(#phase,breaks=seq(0,1,by=1/28), ## this doesn't work...
+                          phase,breaks=seq(0,1,by=1/56),
+                          ordered_result=T)) %>%
+  group_by(mo) %>% 
+  mutate(wkn.mo = dense_rank(wkn)) %>%
+  ungroup()
+
+## Simply cutting into 28 blocks didn't work out..  
+moon.font.tb <- tibble(
+  moon.font = c(NA, letters[rep(1:13,rep(2,13))], 0,0, letters[rep(14:26,rep(2,13))],NA),
+  moon.phase = levels(Moon_2022_df$moon.phase)
+)
+
+Moon_2022_df <- Moon_2022_df %>% left_join(moon.font.tb)
+
+## Show the data around today to see what data above looks like.
+Moon_2022_df %>% filter(between(date,today()-3,today()+3)) %>% kable()
+```
+# moon phrase data
+```{r message=FALSE, warning=FALSE}
+library(gggibbous)
+Moon_df <- Moon_2022_df %>% filter(date>"2022-8-25" & date < "2022-9-15")
+Moon_df %>% ggplot(aes(x=date, y=fraction)) + 
+  geom_moon(aes(ratio = fraction), size = 18, fill = "#FFDE00", color="#FFF38C") +
+    ylim(0,1.05)+
+    theme(
+    panel.grid = element_blank(),
+    axis.ticks = element_blank(),
+    axis.title = element_text(size = 12, family = "Roboto"),
+    axis.text.x = element_text(size = 18, family = "Roboto", color = "white"),
+    axis.text.y = element_blank(),
+    plot.caption = element_text(color = "white"),
+    plot.title = element_text(size = 28, face = "bold", color = "white", family="Lato"),
+    plot.subtitle = element_text(size = 20, color = "yellow",family="Lato"),
+    axis.line.y = element_blank(),
+    axis.line.x = element_line(color = "white"),
+    panel.background = element_rect(fill="black"),
+    plot.background = element_rect(fill ="black",color="black"),
+  )+
+  labs(
+    title = "Moon Phrase",
+    subtitle = "Aug.25 - Sep.15",
+    y = NULL,
+    x = NULL,
+    caption = "Data Source:R-suncalc"
+  )
+ggsave(filename = "Moon-Phrase.pdf", plot = last_plot(), height = 6, width = 8)
+pdftools::pdf_convert(
+  pdf = "Moon-Phrase.pdf",
+  filenames = "Moon-Phrase.png",
+  format = "png", 
+  dpi = 200
+)
+```
+
+Ref:
+https://www.r-bloggers.com/2018/05/making-calendar-with-ggplot-moon-phase-calendar-for-fun/

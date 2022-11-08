@@ -1,0 +1,54 @@
+---
+title: bar plot with labels
+author: Guo Te
+date: '2022-10-02'
+slug: bar-plot-with-labels
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+
+
+<pre class="r"><code># data from 王敏杰 老师
+# his book https://bookdown.org/wangminjie/R4DS/author.html
+
+d &lt;- tibble::tribble(
+     ~name, ~value,
+   &quot;Alice&quot;,   2.12,
+     &quot;Bob&quot;,  68.45,
+  &quot;Carlie&quot;,  15.84,
+    &quot;Dave&quot;,   7.38,
+     &quot;Eve&quot;,   0.56
+  )
+
+
+library(tidyverse)
+library(ggfittext)
+
+d %&gt;% 
+  ggplot(aes(x = value, y = fct_reorder(name, value)) ) +
+  geom_col(width = 0.6, fill = &quot;gray45&quot;) +
+  geom_text(aes(label = value, hjust = 1))  +
+  theme_classic() +
+  scale_x_continuous(expand = c(0, 0)) +
+  labs(x = NULL, y = NULL)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code># ggfittext to adjust the text position
+d %&gt;% 
+  ggplot(aes(x = value, y = fct_reorder(name, value)) ) +
+  geom_col(width = 0.6, fill = &quot;#99d594&quot;) +
+  scale_x_continuous(expand = c(0, 0)) +
+  geom_bar_text(aes(label = value), 
+                color = &quot;blue&quot;, 
+                vjust = 1, 
+                size = 4 * ggplot2::.pt, 
+                min.size = 4 * ggplot2::.pt,
+                padding.x = grid::unit(0, &quot;pt&quot;),
+                padding.y = grid::unit(0, &quot;pt&quot;),
+                outside = TRUE)+
+  labs(x = &quot;&quot;,
+       y = &quot;&quot;)+
+  theme_classic()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>

@@ -1,0 +1,72 @@
+---
+title: minor-breaks-ggh4x-ggplot2
+author: Guo Te
+date: '2022-10-31'
+slug: minor-breaks-ggh4x-ggplot2
+categories:
+  - R
+tags:
+  - R Markdown
+  - Rmarkdown
+---
+
+
+
+<pre class="r"><code>library(tidyverse)
+library(hrbrthemes)
+library(ggh4x)
+showtext::showtext.auto()</code></pre>
+<pre class="r"><code>set.seed(1030)
+df1 &lt;- tibble(
+  x1 = seq(1, 10, by = 1),
+  y1 = rnorm(10, mean = 3, sd = .8) + x1
+)</code></pre>
+<div id="set-minor_breaks" class="section level2">
+<h2>set minor_breaks</h2>
+<pre class="r"><code>ggplot(df1, aes(x1, y1)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(
+    minor_breaks = seq(5, 8, .1),
+    breaks = seq(1, 10, 1),
+    guide = &quot;axis_minor&quot;
+  )+
+   scale_y_continuous(
+    minor_breaks = seq(10, 12.5, .1), # set minor_breaks
+    breaks = seq(4, 13, 1),
+    guide = &quot;axis_minor&quot;
+  )+
+  labs(x=NULL,y=NULL
+       )+
+  theme_modern_rc()</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="set-minor_breaks-and-major-breaks-length-ratio-using-gghx-package" class="section level2">
+<h2>set minor_breaks and major breaks length ratio using gghx package</h2>
+<pre class="r"><code>ggplot(df1, aes(x1, y1)) +
+  geom_line(color=&quot;red&quot;) +
+  geom_point(color=&quot;yellow&quot;) +
+  scale_x_continuous(
+    minor_breaks = c(
+      seq(1, 4, .5),
+      seq(5, 8, .1)
+    ),
+    breaks = seq(1, 10, 1),
+    guide = &quot;axis_minor&quot;
+  ) +
+   scale_y_continuous(
+    minor_breaks = 
+      seq(5, 6, .1),
+    breaks = seq(5, 13, 1),
+    guide = &quot;axis_minor&quot;
+  )+
+  labs(title = &quot;Please ignore the aesthetic design &quot;,
+       subtitle = &quot;Just to highlight the function&quot;,
+       x=NULL,
+       y=NULL)+
+  theme_bw(28) +
+  theme(axis.ticks.length.x = unit(0.5, &quot;cm&quot;)) + # set ticks length
+  theme(ggh4x.axis.ticks.length.minor = rel(.5))+ # set minor / major ticks length ratio
+  theme(panel.grid = element_line(color = &quot;blue&quot;,size=.3))</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+</div>

@@ -1,0 +1,75 @@
+---
+title: examples-ggplot2
+author: Guo Te
+date: '2022-10-08'
+slug: examples-ggplot2
+categories:
+  - R
+tags:
+  - R Markdown
+---
+
+
+
+<div id="plot-with-title-color" class="section level2">
+<h2>Plot with <span style="color: red;"><strong>title color </strong></span></h2>
+<pre class="r"><code>library(ggplot2)
+library(ggtext)
+theme_set(theme_bw())
+data(&quot;ToothGrowth&quot;)
+ToothGrowth$dose &lt;- as.factor(ToothGrowth$dose)
+
+# position = position_dodge(.75) in order to align point and boxplot
+ggplot(ToothGrowth, aes(x = dose, y = len)) +
+  geom_boxplot(aes(fill = supp)) +
+  scale_fill_manual(values = c(&quot;gray99&quot;, &quot;gray99&quot;)) +
+  geom_point(aes(color = supp), position = position_dodge(.75), alpha = .8) +
+  scale_color_manual(values = c(&quot;red&quot;, &quot;blue&quot;)) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = &quot;&lt;span style = &#39;color: red;&#39;&gt;**OJ**&lt;/span&gt; and 
+                &lt;span style = &#39;color: blue;&#39;&gt;**VC**&lt;/span&gt; &lt;br&gt; 
+                tooth growth&quot;
+  ) +
+  theme(
+    plot.title = element_markdown(),
+    legend.position = &quot;top&quot;
+  )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<pre class="r"><code>#  relevel ToothGrowth$supp so VC will be plot first
+ToothGrowth$supp &lt;- relevel(ToothGrowth$supp, ref = &quot;VC&quot;)
+ggplot(ToothGrowth, aes(x = dose, y = len)) +
+  geom_boxplot(aes(fill = supp)) +
+  scale_fill_manual(values = c(&quot;gray99&quot;, &quot;gray99&quot;)) +
+  geom_point(aes(color = supp), position = position_dodge(.75), alpha = .8) +
+  scale_color_manual(values = c(&quot;blue&quot;, &quot;red&quot;)) +
+  labs(
+    x = NULL,
+    y = NULL,
+    title = &quot;&lt;span style = &#39;color: blue;&#39;&gt;**VC**&lt;/span&gt; and 
+                &lt;span style = &#39;color: red;&#39;&gt;**OJ**&lt;/span&gt; &lt;br&gt; 
+                tooth growth&quot;,
+    caption = &quot;Some rmarkdown bold **bold words**&lt;br&gt;(using made-up data)&quot;
+  ) +
+  theme(
+    plot.title = element_markdown(),
+    legend.position = &quot;top&quot;,
+    plot.caption = element_markdown()
+  )</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+</div>
+<div id="html" class="section level2">
+<h2>html</h2>
+<span class="emphasized" style="color: red;">emphasized word with red color</span>
+<br>
+<span class="bold" style="color: red;">word</span>
+<br>
+<p>
+The meeting will begin at 5:00 PM on <s>Saturday</s> now on Sunday.
+</p>
+<br>
+<p>
+This is some normal paragraph text, <strong>and this is some important text.</strong>
+</p>
+</div>

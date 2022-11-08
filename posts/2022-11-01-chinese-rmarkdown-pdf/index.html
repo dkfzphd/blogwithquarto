@@ -1,0 +1,37 @@
+---
+title: chinese-rmarkdown-pdf
+author: Guo Te
+date: '2022-11-01'
+slug: chinese-rmarkdown-pdf
+categories:
+  - R
+tags:
+  - R Markdown
+  - Rmarkdown
+---
+
+
+
+<div id="yaml-header-for-chinese-pdf-output" class="section level3">
+<h3>Yaml header for Chinese pdf output</h3>
+<pre><code>---  
+title: &quot;Your Report Title&quot;  
+author: &quot;YourName&quot;  
+date: &quot;2022-10-31&quot;  
+documentclass: ctexart  
+output:  
+  rticles::ctex:  
+    fig_caption: yes  
+    number_sections: yes  
+    toc: yes  
+editor_options:  
+  chunk_output_type: console  
+---</code></pre>
+</div>
+<div id="side-by-side-plots" class="section level3">
+<h3>side by side plots</h3>
+<pre class="r"><code>set.seed(81)
+boxplot(rnorm(10))
+plot(rnorm(10),col=&quot;red&quot;)</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="50%" /><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-2.png" width="50%" /></p>
+</div>
