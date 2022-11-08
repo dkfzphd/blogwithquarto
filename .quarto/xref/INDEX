@@ -10,5 +10,11 @@
   },
   "posts/welcome/index.qmd": {
     "index.html": "e98b7d25"
+  },
+  "posts/2022-07-07-/UntitledQMD.qmd": {
+    "UntitledQMD.html": "46aaec21"
+  },
+  "posts/First-Post-with-Quarto/index.qmd": {
+    "index.html": "bf5fad0a"
   }
 }

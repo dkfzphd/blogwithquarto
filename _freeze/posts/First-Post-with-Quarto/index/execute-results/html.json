@@ -1,0 +1,16 @@
+{
+  "hash": "07bd0c48da7fc4c6b6fa3c84f89662b7",
+  "result": {
+    "markdown": "---\ntitle: \"First BLOG test with Quarto\"\nauthor: \"Harlow Malloc\"\ndate: \"2022-11-08\"\ncategories: [news, code, analysis]\n---\n\n\n\"First BLOG test with Quarto\"\n\n::: {.cell}\n\n```{.r .cell-code}\nplot(trees)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

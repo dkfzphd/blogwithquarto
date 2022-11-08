@@ -1,0 +1,12 @@
+---
+title: "First BLOG test with Quarto"
+author: "Harlow Malloc"
+date: "2022-11-08"
+categories: [news, code, analysis]
+---
+
+"First BLOG test with Quarto"
+```{r}
+plot(trees)
+```
+

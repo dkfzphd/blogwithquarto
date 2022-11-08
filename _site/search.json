@@ -4,14 +4,14 @@
     "href": "index.html",
     "title": "少无适俗韵，性本爱丘山",
     "section": "",
-    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "news\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\n\n\nNov 8, 2022\n\n\nHarlow Malloc\n\n\n\n\n\n\n  \n\n\n\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nNov 5, 2022\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "About关于我",
     "section": "",
-    "text": "About this blog"
+    "text": "# About Me in Brief\n- Solid foundation in Histology\n- Experienced Molecular Biologist\n- Cancer Research - Liver Cancer\n- Gene therapy - Crispr-Cas related techniques\n- Statistical analysis with R programming\n- FELASA B Certificate"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -26,5 +26,19 @@
     "title": "Welcome To My Blog",
     "section": "",
     "text": "Since this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
+  },
+  {
+    "objectID": "posts/2022-07-07-/UntitledQMD.html",
+    "href": "posts/2022-07-07-/UntitledQMD.html",
+    "title": "First Post",
+    "section": "",
+    "text": "磕磕绊绊一路走来，一路如蹒跚学步，依旧不懂的很多。 感谢那些遇到的人，感谢那些或愉快或不怎么愉快的经历。 因为这所有的发生的人事物塑造了今天的我。\n感谢"
+  },
+  {
+    "objectID": "posts/First-Post-with-Quarto/index.html",
+    "href": "posts/First-Post-with-Quarto/index.html",
+    "title": "First BLOG test with Quarto",
+    "section": "",
+    "text": "plot(trees)"
   }
 ]
