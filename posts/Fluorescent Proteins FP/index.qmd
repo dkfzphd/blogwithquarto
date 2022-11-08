@@ -7,6 +7,8 @@ categories: [news, code, analysis]
 
 # Fluoresecent proteins(FP)
 
+![](Green_Fluorescent_Protein.gif)
+
 Ref:
 
 -   [A guide to choosing fluorescent proteins](https://pubmed.ncbi.nlm.nih.gov/16299475/)
@@ -37,5 +39,3 @@ Ref:
 -   Oxygen presence is needed for FPs expressed in living organisms
 -   Temperature 25 ^0^C or 37 ^0^C (some FPs Temp influenced the expression)
 -   Chaperones(配体) (In bacteria and mammalian cells may differ )
-
-
