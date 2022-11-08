@@ -14,7 +14,7 @@ about:
 
 Email: iscienceAT163.com
 
-\# About Me in Brief\
+** About Me in Brief**
 - Solid foundation in Histology\
 - Experienced Molecular Biologist\
 - Cancer Research - Liver Cancer\
