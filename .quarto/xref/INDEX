@@ -82,5 +82,11 @@
   },
   "posts/ggplot2-MoonPhrase/index.qmd": {
     "index.html": "7636944a"
+  },
+  "posts/draw-96wells/index.qmd": {
+    "index.html": "06ab2678"
+  },
+  "posts/sf-map/index.qmd": {
+    "index.html": "3de04127"
   }
 }

@@ -1,0 +1,16 @@
+{
+  "hash": "879cadb7ba8c7381358cc295e4400504",
+  "result": {
+    "markdown": "---\ntitle: \"Draw a 96 wells with ggplot2\" \nauthor: \"Te\"\ndate: \"2022-11-08\"\ncategories: [biology, code, analysis]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\n# Generate \"well\" coordinates x , y\ny <- LETTERS[1:8]\nx <- 1:12\n\n# Generate all the x, y combination and put into data.frame \"plate\"\nplate <- expand.grid(x,y)\n\n# Draw a 96-well\n# levels = LETTERS[8:1] to keep  \"A\" to \"H\" at y-axis\nggplot(plate,aes(Var1,factor(Var2,levels = LETTERS[8:1])))+\n  geom_point(size=8,color=\"#a2d2ff\")+\n  scale_x_continuous(breaks = seq(1,12,by=1), position = \"top\")+\n  scale_y_discrete(breaks=LETTERS[1:8])+\n  labs(x=NULL,\n       y=NULL)+\n  theme_bw()+\n  theme(legend.position = \"none\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n\nUpdate version without set y level\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\n\n# Generate \"well\" coordinates x , y\ny <- LETTERS[8:1] # just change LETTERS[1:8] to  LETTERS[8:1]\nx <- 1:12\n\n# Generate all the x, y combination and put into data.frame \"plate\"\nplate <- expand.grid(x,y)\n\n# Draw a 96-well\n\nggplot(plate,aes(Var1,Var2, color=Var2))+\n  geom_point(size=8)+\n  scale_x_continuous(breaks = seq(1,12,by=1), position = \"top\")+\n  scale_y_discrete(breaks=LETTERS[1:8])+\n  labs(x=NULL,\n       y=NULL)+\n  theme_bw()+\n  theme(legend.position = \"none\")\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
