@@ -106,8 +106,8 @@ ul.task-list li input[type="checkbox"] {
     <div class="quarto-title column-body">
       <h1 class="title">Molecular Cloning Summary</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-                <div class="quarto-category">code</div>
+                <div class="quarto-category">cloning</div>
+                <div class="quarto-category">molecular biology</div>
                 <div class="quarto-category">analysis</div>
               </div>
                   </div>
@@ -153,9 +153,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Gibson Assembly:（5-6个片段连接同样有效，如果受条件制约试剂可以自行配置）</li>
 <li>TEDA Cloning(super-money-saving)</li>
 </ul>
-<p>► 优点：No scar, gene 可以连续连接并且没有“接缝”</p>
+<p>► 优点：No scar, gene 可以连续连接并且没有”接缝”</p>
 <p>► 可以增加序列 也可以删除序列用于制造 将某个基因敲出， 引物合成的时候自然丢掉它</p>
-<p>► 注意点：因为它会将5‘端 chowing back ，Vector的线性化是单一酶切位点切开线性化的，请注意它的粘性末端sticky end，5’ overhang 回导致被chowing back and disappear。如果不特意在引物中设计将原有酶切位点序列加以保留，连接后就会损失了这个酶切位点。 Tool box in NEB url: https://nebuilder.neb.com/ （可以选择是否修复酶切位点，in case you lost it for further use）</p>
+<p>► 注意点：因为它会将5’端 chowing back ，Vector的线性化是单一酶切位点切开线性化的，请注意它的粘性末端sticky end，5’ overhang 回导致被chowing back and disappear。如果不特意在引物中设计将原有酶切位点序列加以保留，连接后就会损失了这个酶切位点。 Tool box in NEB url: https://nebuilder.neb.com/ （可以选择是否修复酶切位点，in case you lost it for further use）</p>
 <p>► 特殊情况处理：如果遇到不能利用单一酶切位点线性化Vector怎么办?（ 如基因当中存在酶切位点，如果切开Vector同时会导致基因断裂）直接利用Overlap site:homology sequence 进行连接，有些片段可以用PCR的方式（推荐使用高保真Q5 polymerase，但是这个酶合成序列后是Blunt end，如果进一步构建library文库可以用Taq酶+dATP, 加入到PCR纯化后的产物中进行修复A tail, 找不到dATP就用dNTP（ATGC混合物），实际使用上没有差别），或者用单核苷酸序列（Oligos）人工合成序列（合成互补的两条链同时直接加入你想改造的想法：如加入突变的位点或者Kozak序列或者加入Mutiple cloning sites(poly-linker等)，不必一次合成过长价格很贵序列错率高，利用Gibson Assembly的优势分段合成组合即可）</p>
 <p>► Tips:人工合成两条Oligos 你甚至可以直接考虑他们互补配对后自然就有stricky end,这样就省去了PCR-&gt;跑胶-&gt;切胶纯化的步骤。 此外PCR产物可以考虑使用PCR purification Kit进行纯化，如果模板使用了一个完整的质粒，由于质粒是有甲基化位点的，而PCR没有甲基化位点可以用DpnI 酶先Digestion 然后Heat inactive 进行纯化。（能不跑胶就不要做，浪费时间，最后回收的DNA含有agarose也会影响连接的效率）。 不切的Vector酶的意义,许多人忽略不切Vector酶的意义然而这些酶如果在引物当中引入homology sequence-uncut restiction enzyme site sequece-homology seuquence 利用Gibson Assembly 一连接自然而然加入了克隆位点用于后期加装各种调控元件。</p>
 </section>
