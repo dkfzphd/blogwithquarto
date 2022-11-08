@@ -3,7 +3,7 @@
     "path": "D:/LearningR/blogbyquarto/_quarto.yml",
     "project_path": "_quarto.yml",
     "type": "yaml",
-    "hash": "0",
+    "hash": "1182503837",
     "contents": "",
     "dirty": false,
     "created": 1667917930762.0,
@@ -11,14 +11,16 @@
     "relative_order": 2,
     "properties": {
         "source_window_id": "",
-        "Source": "Source"
+        "Source": "Source",
+        "cursorPosition": "4,19",
+        "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1667917925,
+    "lastKnownWriteTime": 1667918995,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1667917925,
+    "last_content_update": 1667918995245,
     "read_only": false,
     "read_only_alternatives": []
 }
