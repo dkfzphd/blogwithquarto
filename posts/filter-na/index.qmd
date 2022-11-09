@@ -9,6 +9,8 @@ tags:
   - R Markdown
 ---
 
+![](https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif){fig-align="center"}
+
 ### Cautious! Read in csv by **read.csv()** missing value will not be converted into NA
 
 Good solution: **read_csv()** in readr package missing value will convert into NA
@@ -45,4 +47,3 @@ penguins %>%
 ```{r warning=FALSE, message=FALSE}
 penguins %>% filter(if_any(c(species:year), ~ is.na(.)))
 ```
-

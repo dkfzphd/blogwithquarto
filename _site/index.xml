@@ -1053,6 +1053,11 @@ give correct results for longitude/latitude data</code></pre>
 
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/filter-na/https:/media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <section id="cautious-read-in-csv-by-read.csv-missing-value-will-not-be-converted-into-na" class="level3">
 <h3 class="anchored" data-anchor-id="cautious-read-in-csv-by-read.csv-missing-value-will-not-be-converted-into-na">Cautious! Read in csv by <strong>read.csv()</strong> missing value will not be converted into NA</h3>
 <p>Good solution: <strong>read_csv()</strong> in readr package missing value will convert into NA</p>
@@ -1316,6 +1321,7 @@ give correct results for longitude/latitude data</code></pre>
   <category>R</category>
   <guid>https://guote.netlify.app/posts/filter-na/index.html</guid>
   <pubDate>Mon, 24 Oct 2022 22:00:00 GMT</pubDate>
+  <media:content url="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>APA theme- ggplot2</title>
