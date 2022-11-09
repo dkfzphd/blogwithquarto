@@ -6,7 +6,7 @@ website:
   site-url: https://guote.netlify.app/
   description: "Te‘s BLOG"
   navbar:
-    background: "#072ac8"
+    background: "#0b3142"
     right:
       - about.qmd
       - icon: github
