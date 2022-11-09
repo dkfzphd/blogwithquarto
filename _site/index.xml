@@ -661,7 +661,7 @@ editor_options:
 
 
 
-
+<p><img src="https://guote.netlify.app/posts/sf-map/https:/media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" class="img-fluid"></p>
 <p>Download map from China website(<strong>be cautious about border and official government data</strong> )</p>
 <p>China Map geojson source website: https://geojson.cn/</p>
 <section id="example-1-map-to-map-heatmap" class="level2">
@@ -1000,6 +1000,7 @@ give correct results for longitude/latitude data</code></pre>
   <category>heatmap</category>
   <guid>https://guote.netlify.app/posts/sf-map/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>BLOG with blogdown</title>

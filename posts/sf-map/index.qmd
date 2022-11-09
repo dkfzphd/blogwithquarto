@@ -9,11 +9,14 @@ format:
     fig-height: 6
 ---
 
+![](https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif)
+
 Download map from China website(**be cautious about border and official government data** )
 
 China Map geojson source website: https://geojson.cn/
 
 ## Example 1: Map to Map-Heatmap
+
 ```{r}
 library(sf)
 library(tidyverse)
@@ -33,13 +36,13 @@ jingfei_china <- read_excel(here::here("posts/sf-map/jingfei-china.xlsx")) %>% j
 ```
 
 Filter data for plot map
+
 ```{r}
 map_china <- china_map  %>% select(-c(childrenNum:bbox)) 
 
 map_china <- left_join(map_china,jingfei_china,by="name")
 map_china$r_d_jing_fei <- as.numeric(map_china$r_d_jing_fei)
 ```
-
 
 ```{r}
 map_china %>%
@@ -77,6 +80,7 @@ map_china %>%
 ```
 
 ## Example 2: Coordinates to Province Location
+
 ```{r}
 library(sf)
 library(tidyverse)
@@ -88,8 +92,8 @@ china_map <- st_read(dsn = "https://geojson.cn/api/data/china.json", stringsAsFa
 
 ```
 
-
 lat,long read in
+
 ```{r}
 metro <- read_excel(here::here("posts/sf-map/metro.xlsx"))
 
@@ -97,6 +101,7 @@ metro_df <- metro %>% select("Entity ID","lon","lat")
 ```
 
 basic china map
+
 ```{r}
 map_china <- china_map  %>% select(-c(childrenNum:bbox)) 
 ```
@@ -157,11 +162,13 @@ metro_final <- left_join(metro, metro_df, by = "Entity ID") %>%
 ```
 
 summary number of sites in modern china province
+
 ```{r}
 table(metro_final$location) %>% sort(decreasing = TRUE)%>% knitr::kable()
 ```
 
 export data.frame to excel
+
 ```{r}
 # library("writexl")
 # write_xlsx(metro_final,"metro_final.xlsx")
@@ -180,5 +187,3 @@ ggplot(map_china) +
   geom_sf(data = sites, size = .5, color = "red", alpha = .3)+
   theme_void()
 ```
-
-
