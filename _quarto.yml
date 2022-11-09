@@ -17,7 +17,6 @@ format:
   html:
     theme: 
       light: yeti
-      dark: darkly
     highlight-style: eiffel
     css: styles.css
 
