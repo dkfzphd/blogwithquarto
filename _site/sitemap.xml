@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2022-11-09T04:26:27.331Z</lastmod>
+    <lastmod>2022-11-09T04:29:47.404Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://guote.netlify.app/posts/apa-themes/index.html</loc>
     <lastmod>2022-11-09T04:26:32.033Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/filter-na/index.html</loc>
+    <lastmod>2022-11-09T04:29:52.285Z</lastmod>
   </url>
 </urlset>
