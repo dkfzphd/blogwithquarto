@@ -257,5 +257,40 @@
     "title": "bar plot with labels",
     "section": "",
     "text": "# ggfittext to adjust the text position\nd %>% \n  ggplot(aes(x = value, y = fct_reorder(name, value)) ) +\n  geom_col(width = 0.6, fill = \"#99d594\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  geom_bar_text(aes(label = d$value), \n                color = \"blue\", \n                vjust = 1, \n                # size = 4 * ggplot2::.pt, \n                # min.size = 4 * ggplot2::.pt,\n                # padding.x = grid::unit(0, \"pt\"),\n                # padding.y = grid::unit(0, \"pt\"),\n                outside = TRUE)+\n  labs(x = \"\",\n       y = \"\")+\n  theme_classic()"
+  },
+  {
+    "objectID": "posts/apa-themes/index.html",
+    "href": "posts/apa-themes/index.html",
+    "title": "APA theme- ggplot2",
+    "section": "",
+    "text": "Christian https://christianburkhart.de/\nHow to set your APA 7 theme in RStudio Many researchers in the social sciences often need to create APA-style figures. Fortunately, there is a little trick that makes it easier to automatically set up an APA theme in ggplot2.\nhttps://ggplot2tor.com/tutorials/apa_theme_rprofile"
+  },
+  {
+    "objectID": "posts/apa-themes/index.html#code-part",
+    "href": "posts/apa-themes/index.html#code-part",
+    "title": "APA theme- ggplot2",
+    "section": "Code part",
+    "text": "Code part\n\nlibrary(tidyverse)\n# Set theme\n  apa_theme <- theme(\n    plot.margin = unit(c(1, 1, 1, 1), \"cm\"),\n    plot.background = element_rect(fill = \"white\", color = NA),\n    plot.title = element_text(size = 22, face = \"bold\",\n                              hjust = 0.5,\n                              margin = margin(b = 15)),\n    axis.line = element_line(color = \"black\", size = .5),\n    axis.title = element_text(size = 18, color = \"black\",\n                              face = \"bold\"),\n    axis.text = element_text(size = 15, color = \"black\"),\n    axis.text.x = element_text(margin = margin(t = 10)),\n    axis.title.y = element_text(margin = margin(r = 10)),\n    axis.ticks = element_line(size = .5),\n    panel.grid = element_blank(),\n    legend.position = c(0.20, 0.8),\n    legend.background = element_rect(color = \"black\"),\n    legend.text = element_text(size = 15),\n    legend.margin = margin(t = 5, l = 5, r = 5, b = 5),\n    legend.key = element_rect(color = NA, fill = NA)\n  )\n  \n  theme_set(theme_minimal(base_size = 18) +\n            apa_theme)"
+  },
+  {
+    "objectID": "posts/apa-themes/index.html#example",
+    "href": "posts/apa-themes/index.html#example",
+    "title": "APA theme- ggplot2",
+    "section": "Example",
+    "text": "Example\n\nAPA theme\n\npic <- ggplot(ToothGrowth) +\n aes(x = factor(dose), y = len, fill = supp, colour = supp) +\n geom_point(shape=ToothGrowth$supp,size = 1.5,position = position_dodge(0.2)) \npic\n\n\n\npic_apa <- pic+theme_set(theme_minimal(base_size = 18) +\n            apa_theme)\npic_apa"
+  },
+  {
+    "objectID": "posts/apa-themes/index.html#my-own-theme",
+    "href": "posts/apa-themes/index.html#my-own-theme",
+    "title": "APA theme- ggplot2",
+    "section": "my own theme",
+    "text": "my own theme\n\npic_own <- pic+theme(\n    axis.title = element_text(size = 16, family = \"Roboto\"),\n    axis.text.x = element_text(size = 12, family = \"Roboto\"),\n    axis.text.y = element_text(size = 12, family = \"Roboto\"),\n    plot.title = element_text(size = 20, face = \"bold\", color = \"red2\", family = \"Lato\"),\n    plot.subtitle = element_text(size = 14, color = \"blue4\", family = \"Lato\"),\n    axis.line.x = element_line(color = \"gray8\"),\n    axis.line.y = element_line(color = \"gray8\"),\n    panel.background = element_rect(fill = \"white\",color = \"white\"),\n    panel.border = element_rect(fill = NA, size=1),\n    plot.background = element_rect(fill = \"white\",color = \"gray45\"),\n    legend.position = c(0.1, 0.8),\n    legend.background = element_rect(fill = NA),\n    legend.key = element_rect(fill = NA),\n    plot.margin = unit(c(.5, .5, .5, .5), \"cm\")\n  )\npic_own"
+  },
+  {
+    "objectID": "posts/apa-themes/index.html#apa-theme-version-2-ref-httpsbookdown.orgcontent2015figures.html",
+    "href": "posts/apa-themes/index.html#apa-theme-version-2-ref-httpsbookdown.orgcontent2015figures.html",
+    "title": "APA theme- ggplot2",
+    "section": "APA theme version 2 ref: https://bookdown.org/content/2015/figures.html",
+    "text": "APA theme version 2 ref: https://bookdown.org/content/2015/figures.html\n\napatheme=theme_bw()+\n  theme(panel.grid.major=element_blank(),\n        panel.grid.minor=element_blank(),\n        panel.border=element_blank(),\n        axis.line=element_line(),\n        text=element_text(family='Arial'),\n        legend.title=element_blank(),\n        axis.text.y=element_text(size = 12),\n        axis.text.x=element_text(size = 12),\n        plot.tag = element_text(face = \"bold\"))\n\n# test apatheme version 2\npic + labs(tag=\"A\")+theme_bw()+\n  theme(panel.grid.major=element_blank(),\n        panel.grid.minor=element_blank(),\n        panel.border=element_blank(),\n        axis.line=element_line(),\n        text=element_text(family='Arial'),\n        legend.title=element_blank(),\n        axis.text.y=element_text(size = 12),\n        axis.text.x=element_text(size = 12),\n        plot.tag = element_text(face = \"bold\"))"
   }
 ]

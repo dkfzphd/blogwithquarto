@@ -8,15 +8,15 @@ categories:
 tags:
   - Rmarkdown
 ---
-[Christian](https://ggplot2tor.com/tutorials/apa_theme_rprofile)
-https://christianburkhart.de/
 
-How to set your APA 7 theme in RStudio
-Many researchers in the social sciences often need to create APA-style figures. Fortunately, there is a little trick that makes it easier to automatically set up an APA theme in ggplot2.
+[Christian](https://ggplot2tor.com/tutorials/apa_theme_rprofile) https://christianburkhart.de/
+
+How to set your APA 7 theme in RStudio Many researchers in the social sciences often need to create APA-style figures. Fortunately, there is a little trick that makes it easier to automatically set up an APA theme in ggplot2.
 
 https://ggplot2tor.com/tutorials/apa_theme_rprofile
 
 ## Code part
+
 ```{r warning=FALSE,message=FALSE}
 
 library(tidyverse)
@@ -48,7 +48,9 @@ library(tidyverse)
 ```
 
 ## Example
+
 ### APA theme
+
 ```{r warning=FALSE,message=FALSE}
 pic <- ggplot(ToothGrowth) +
  aes(x = factor(dose), y = len, fill = supp, colour = supp) +
@@ -61,6 +63,7 @@ pic_apa
 ```
 
 ## my own theme
+
 ```{r warning=FALSE,message=FALSE}
 pic_own <- pic+theme(
     axis.title = element_text(size = 16, family = "Roboto"),
@@ -82,6 +85,7 @@ pic_own
 ```
 
 ## APA theme version 2 ref: https://bookdown.org/content/2015/figures.html
+
 ```{r warning=FALSE,message=FALSE}
 apatheme=theme_bw()+
   theme(panel.grid.major=element_blank(),
@@ -106,5 +110,3 @@ pic + labs(tag="A")+theme_bw()+
         axis.text.x=element_text(size = 12),
         plot.tag = element_text(face = "bold"))
 ```
-
-
