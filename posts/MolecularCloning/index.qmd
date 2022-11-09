@@ -5,7 +5,7 @@ date: "2022-11-08"
 categories: [cloning, molecular biology, analysis]
 ---
 
-![](cloning.jpg)
+![](https://media.giphy.com/media/8vweV4faOBOgIiQrqa/giphy.gif){fig-align="center"}
 
 ## 分子克隆总结
 

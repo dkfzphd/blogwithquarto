@@ -469,8 +469,11 @@ font-style: italic;">## Show the data around today to see what data above looks 
 
 
 
-
-<p><img src="https://guote.netlify.app/posts/MolecularCloning/cloning.jpg" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/MolecularCloning/https:/media.giphy.com/media/8vweV4faOBOgIiQrqa/giphy.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <section id="分子克隆总结" class="level2">
 <h2 class="anchored" data-anchor-id="分子克隆总结">分子克隆总结</h2>
 <p>软件及网络工具：SnapGene , NEB Cloner 等</p>
@@ -508,7 +511,7 @@ font-style: italic;">## Show the data around today to see what data above looks 
   <category>analysis</category>
   <guid>https://guote.netlify.app/posts/MolecularCloning/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://guote.netlify.app/posts/MolecularCloning/cloning.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://media.giphy.com/media/8vweV4faOBOgIiQrqa/giphy.gif" medium="image" type="image/gif"/>
 </item>
 <item>
   <title>Monty Hall problem</title>

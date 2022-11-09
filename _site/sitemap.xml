@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2022-11-09T04:46:39.006Z</lastmod>
+    <lastmod>2022-11-09T04:50:18.698Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -51,5 +51,9 @@
   <url>
     <loc>https://guote.netlify.app/posts/sf-map/index.html</loc>
     <lastmod>2022-11-09T04:42:52.897Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/MolecularCloning/index.html</loc>
+    <lastmod>2022-11-09T04:50:17.745Z</lastmod>
   </url>
 </urlset>
