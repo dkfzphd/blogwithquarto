@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>Te‘s BLOG</title>
+<link>https://guote.netlify.app/index.html</link>
+<atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
+<description>Te‘s BLOG</description>
+<generator>quarto-1.1.189</generator>
+<lastBuildDate>Mon, 07 Nov 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>gganimate</title>
+  <dc:creator>Me</dc:creator>
+  <link>https://guote.netlify.app/posts/ceshi/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://guote.netlify.app/posts/ceshi/animate1.gif" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(gganimate)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">library</span>(ggthemes)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_economist_white</span>())</span>
+<span id="cb1-6"></span>
+<span id="cb1-7">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">15</span>,<span class="at" style="color: #657422;">by=</span><span class="fl" style="color: #AD0000;">0.1</span>)</span>
+<span id="cb1-8">y <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sin</span>(x)<span class="sc" style="color: #5E5E5E;">+</span><span class="fl" style="color: #AD0000;">0.8</span><span class="sc" style="color: #5E5E5E;">*</span>x<span class="fl" style="color: #AD0000;">+0.1</span><span class="sc" style="color: #5E5E5E;">*</span>x<span class="sc" style="color: #5E5E5E;">^</span><span class="dv" style="color: #AD0000;">2</span></span>
+<span id="cb1-9">df1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(x,y)</span>
+<span id="cb1-10">plot1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(df1,<span class="fu" style="color: #4758AB;">aes</span>(x,y))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-11">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">'#e63946'</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,<span class="fl" style="color: #AD0000;">1.9</span><span class="sc" style="color: #5E5E5E;">*</span>x),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">'black'</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">'#03045e'</span>, <span class="at" style="color: #657422;">alpha=</span><span class="fl" style="color: #AD0000;">0.5</span>, <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">3</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-14">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x=</span><span class="st" style="color: #20794D;">"Time"</span>,</span>
+<span id="cb1-15">       <span class="at" style="color: #657422;">y=</span><span class="st" style="color: #20794D;">"Ability"</span>)</span>
+<span id="cb1-16">plot1</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/ceshi/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">animate1 <span class="ot" style="color: #003B4F;">&lt;-</span> plot1 <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-2">              <span class="fu" style="color: #4758AB;">transition_reveal</span>(x)</span>
+<span id="cb2-3">animate1</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;">animate</span>(animate1, <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">800</span>, <span class="at" style="color: #657422;">width =</span><span class="dv" style="color: #AD0000;">800</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/ceshi/index_files/figure-html/unnamed-chunk-2-1.gif" class="img-fluid"></p>
+</div>
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">anim_save</span>(<span class="st" style="color: #20794D;">"animate1.gif"</span>, animate1)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?
+`geom_line()`: Each group consists of only one observation.
+ℹ Do you need to adjust the group aesthetic?</code></pre>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/ceshi/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/ceshi/animate1.gif" medium="image" type="image/gif"/>
+</item>
+<item>
+  <title>R中自动画流程图</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/DiagrammR/DiagrammR.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="r中自动画流程图" class="level2">
+<h2 class="anchored" data-anchor-id="r中自动画流程图">R中自动画流程图</h2>
+<section id="diagrammergrviz实践中的应用初试" class="level3">
+<h3 class="anchored" data-anchor-id="diagrammergrviz实践中的应用初试">DiagrammeR::grViz实践中的应用(初试)</h3>
+<p><strong>分子克隆的一般思路简图</strong></p>
+<p>说明</p>
+<ul>
+<li>无缝克隆要留有足够的同源序列</li>
+<li>平末端可以采用
+<ol type="1">
+<li>无缝克隆（保留足够长同源序列）</li>
+<li>T4 ligase克隆（Vector去磷酸化（防止自联）, Insert磷酸化）</li>
+</ol></li>
+</ul>
+<blockquote class="blockquote">
+<p>个人感觉：非常混乱的语言模式，但是又没有什么好的选择</p>
+</blockquote>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-8d87c97e2ed47b0f41ae" style="width:100%;height:580px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-8d87c97e2ed47b0f41ae">{"x":{"diagram":"\ndigraph flowchat{\n\n  # several \"node\" statements\n  node [shape = circle, fontname = Helvetica, fillcolor=\"#e9a3c9\", color=\"#e9a3c9\",style=filled]\n  Vector; Insert\n  # set other \"node\"s statements\n  node [shape = rect, fontname = Helvetica, color=\"#a1d76a\", fillcolor=\"#a1d76a\", style=filled]\n  \n  # several \"edge\" statements\n  edge[color=\"#0a9396\",style=filled,arrowhead=vee]\n  \n  Vector-> \"PCR or Synthesis\"->Linearized\n  Linearized->Seamless_Cloning\n  Vector->\"Non-linearized\"->Digestion->Purification->Linearized->Ligation\n  Insert->Sticky_end->Ligation\n  Insert->Blunt_end -> Seamless_Cloning->New_Plasmid\n  Ligation->New_Plasmid\n  \n  New_Plasmid[fillcolor=\"#ffcb77\",style=filled,color=\"#ffcb77\"] \n  # must add style=filled otherwise does not work with fillcolor\n  \n  subgraph {\n  rank = same; Vector; Insert; }\n  \n  subgraph {\n  rank = same; Linearized; Blunt_end; Sticky_end; }\n   \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="code-part" class="level3">
+<h3 class="anchored" data-anchor-id="code-part">Code part</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(DiagrammeR)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">grViz</span>(<span class="st" style="color: #20794D;">"</span></span>
+<span id="cb1-4"><span class="st" style="color: #20794D;">digraph flowchat{</span></span>
+<span id="cb1-5"></span>
+<span id="cb1-6"><span class="st" style="color: #20794D;">  # several 'node' statements</span></span>
+<span id="cb1-7"><span class="st" style="color: #20794D;">  node [shape = circle, fontname = Helvetica, fillcolor='#e9a3c9', color='#e9a3c9',style=filled]</span></span>
+<span id="cb1-8"><span class="st" style="color: #20794D;">  Vector; Insert</span></span>
+<span id="cb1-9"><span class="st" style="color: #20794D;">  # set other 'node's statements</span></span>
+<span id="cb1-10"><span class="st" style="color: #20794D;">  node [shape = rect, fontname = Helvetica, color='#a1d76a', fillcolor='#a1d76a', style=filled]</span></span>
+<span id="cb1-11"><span class="st" style="color: #20794D;">  </span></span>
+<span id="cb1-12"><span class="st" style="color: #20794D;">  # several 'edge' statements</span></span>
+<span id="cb1-13"><span class="st" style="color: #20794D;">  edge[color='#0a9396',style=filled,arrowhead=vee]</span></span>
+<span id="cb1-14"><span class="st" style="color: #20794D;">  </span></span>
+<span id="cb1-15"><span class="st" style="color: #20794D;">  Vector-&gt; 'PCR or Synthesis'-&gt;Linearized</span></span>
+<span id="cb1-16"><span class="st" style="color: #20794D;">  Linearized-&gt;Seamless_Cloning</span></span>
+<span id="cb1-17"><span class="st" style="color: #20794D;">  Vector-&gt;'Non-linearized'-&gt;Digestion-&gt;Purification-&gt;Linearized-&gt;Ligation</span></span>
+<span id="cb1-18"><span class="st" style="color: #20794D;">  Insert-&gt;Sticky_end-&gt;Ligation</span></span>
+<span id="cb1-19"><span class="st" style="color: #20794D;">  Insert-&gt;Blunt_end -&gt; Seamless_Cloning-&gt;New_Plasmid</span></span>
+<span id="cb1-20"><span class="st" style="color: #20794D;">  Ligation-&gt;New_Plasmid</span></span>
+<span id="cb1-21"><span class="st" style="color: #20794D;">  </span></span>
+<span id="cb1-22"><span class="st" style="color: #20794D;">  New_Plasmid[fillcolor='#ffcb77',style=filled,color='#ffcb77'] </span></span>
+<span id="cb1-23"><span class="st" style="color: #20794D;">  # must add style=filled otherwise does not work with fillcolor</span></span>
+<span id="cb1-24"><span class="st" style="color: #20794D;">  </span></span>
+<span id="cb1-25"><span class="st" style="color: #20794D;">  subgraph {</span></span>
+<span id="cb1-26"><span class="st" style="color: #20794D;">  rank = same; Vector; Insert; }</span></span>
+<span id="cb1-27"><span class="st" style="color: #20794D;">  </span></span>
+<span id="cb1-28"><span class="st" style="color: #20794D;">  subgraph {</span></span>
+<span id="cb1-29"><span class="st" style="color: #20794D;">  rank = same; Linearized; Blunt_end; Sticky_end; }</span></span>
+<span id="cb1-30"><span class="st" style="color: #20794D;">   </span></span>
+<span id="cb1-31"><span class="st" style="color: #20794D;">}"</span>,<span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">600</span>)</span></code></pre></div>
+</div>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/DiagrammR/DiagrammR.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Draw a 96 wells with ggplot2</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/draw-96wells/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-2"></span>
+<span id="cb1-3"><span class="co" style="color: #5E5E5E;"># Generate "well" coordinates x , y</span></span>
+<span id="cb1-4">y <span class="ot" style="color: #003B4F;">&lt;-</span> LETTERS[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">8</span>]</span>
+<span id="cb1-5">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">12</span></span>
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;"># Generate all the x, y combination and put into data.frame "plate"</span></span>
+<span id="cb1-8">plate <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">expand.grid</span>(x,y)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="co" style="color: #5E5E5E;"># Draw a 96-well</span></span>
+<span id="cb1-11"><span class="co" style="color: #5E5E5E;"># levels = LETTERS[8:1] to keep  "A" to "H" at y-axis</span></span>
+<span id="cb1-12"><span class="fu" style="color: #4758AB;">ggplot</span>(plate,<span class="fu" style="color: #4758AB;">aes</span>(Var1,<span class="fu" style="color: #4758AB;">factor</span>(Var2,<span class="at" style="color: #657422;">levels =</span> LETTERS[<span class="dv" style="color: #AD0000;">8</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">1</span>])))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">8</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#a2d2ff"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-14">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">12</span>,<span class="at" style="color: #657422;">by=</span><span class="dv" style="color: #AD0000;">1</span>), <span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"top"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;">scale_y_discrete</span>(<span class="at" style="color: #657422;">breaks=</span>LETTERS[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">8</span>])<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-16">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x=</span><span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb1-17">       <span class="at" style="color: #657422;">y=</span><span class="cn" style="color: #8f5902;">NULL</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-18">  <span class="fu" style="color: #4758AB;">theme_bw</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-19">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-96wells/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Update version without set y level</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb2-2"></span>
+<span id="cb2-3"><span class="co" style="color: #5E5E5E;"># Generate "well" coordinates x , y</span></span>
+<span id="cb2-4">y <span class="ot" style="color: #003B4F;">&lt;-</span> LETTERS[<span class="dv" style="color: #AD0000;">8</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">1</span>] <span class="co" style="color: #5E5E5E;"># just change LETTERS[1:8] to  LETTERS[8:1]</span></span>
+<span id="cb2-5">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">12</span></span>
+<span id="cb2-6"></span>
+<span id="cb2-7"><span class="co" style="color: #5E5E5E;"># Generate all the x, y combination and put into data.frame "plate"</span></span>
+<span id="cb2-8">plate <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">expand.grid</span>(x,y)</span>
+<span id="cb2-9"></span>
+<span id="cb2-10"><span class="co" style="color: #5E5E5E;"># Draw a 96-well</span></span>
+<span id="cb2-11"></span>
+<span id="cb2-12"><span class="fu" style="color: #4758AB;">ggplot</span>(plate,<span class="fu" style="color: #4758AB;">aes</span>(Var1,Var2, <span class="at" style="color: #657422;">color=</span>Var2))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-13">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">8</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-14">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">1</span>,<span class="dv" style="color: #AD0000;">12</span>,<span class="at" style="color: #657422;">by=</span><span class="dv" style="color: #AD0000;">1</span>), <span class="at" style="color: #657422;">position =</span> <span class="st" style="color: #20794D;">"top"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-15">  <span class="fu" style="color: #4758AB;">scale_y_discrete</span>(<span class="at" style="color: #657422;">breaks=</span>LETTERS[<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">8</span>])<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-16">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x=</span><span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb2-17">       <span class="at" style="color: #657422;">y=</span><span class="cn" style="color: #8f5902;">NULL</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-18">  <span class="fu" style="color: #4758AB;">theme_bw</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-19">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-96wells/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>biology</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/draw-96wells/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>First BLOG test with Quarto</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/First-Post-with-Quarto/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>“First BLOG test with Quarto”</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">plot</span>(trees)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/First-Post-with-Quarto/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/First-Post-with-Quarto/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Fluorescent Proteins FP</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="fluoresecent-proteinsfp" class="level1">
+<h1>Fluoresecent proteins(FP)</h1>
+<p><img src="https://guote.netlify.app/posts/Fluorescent Proteins FP/Green_Fluorescent_Protein.gif" class="img-fluid"></p>
+<p>Ref:</p>
+<ul>
+<li><p><a href="https://pubmed.ncbi.nlm.nih.gov/16299475/">A guide to choosing fluorescent proteins</a></p></li>
+<li><p><a href="https://www.thermofisher.com/order/fluorescence-spectraviewer#!/">Fluorescence-spectraviewer</a></p></li>
+</ul>
+<section id="basic-process" class="level2">
+<h2 class="anchored" data-anchor-id="basic-process">Basic Process</h2>
+<p><strong>FP_best_for_genernal_use</strong> -&gt; <strong>Genreal_Priciple</strong>-&gt; <strong>Trial_and_Error</strong></p>
+</section>
+<section id="genreal-priciple" class="level2">
+<h2 class="anchored" data-anchor-id="genreal-priciple">Genreal Priciple</h2>
+<ol type="1">
+<li><p>Express efficiently and without toxicity</p></li>
+<li><p>Sufficient photostability (stable ~ duration in the experiment)</p></li>
+<li><p>Fluoresecent proteins(FP) is to be expressed as a fusion protein, FP should not oligomerize(形成低聚物)</p></li>
+<li><p>FP should be insensitive to environmental effects.</p></li>
+<li><p>FP once being used in multiple-plex experiments should have minimal crosstalk in excitation and emission.</p></li>
+<li><p>FRET or selective optical labeling using photocon-vertible FPs.</p></li>
+</ol>
+</section>
+<section id="brightness-and-expression" class="level2">
+<h2 class="anchored" data-anchor-id="brightness-and-expression">Brightness and Expression</h2>
+<ul>
+<li>FP vendors is skeptical (claimed brightness may not be real)</li>
+<li>Oxygen presence is needed for FPs expressed in living organisms</li>
+<li>Temperature 25 <sup>0</sup>C or 37 <sup>0</sup>C (some FPs Temp influenced the expression)</li>
+<li>Chaperones(配体) (In bacteria and mammalian cells may differ )</li>
+</ul>
+
+
+</section>
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/Fluorescent Proteins FP/Green_Fluorescent_Protein.gif" medium="image" type="image/gif"/>
+</item>
+<item>
+  <title>MoonPhrase-ggplot2</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/ggplot2-MoonPhrase/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://guote.netlify.app/posts/ggplot2-MoonPhrase/Moon-Phrase.png" class="img-fluid"></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># initial configuration</span></span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">windowsFonts</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$serif
+[1] "TT Times New Roman"
+
+$sans
+[1] "TT Arial"
+
+$mono
+[1] "TT Courier New"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;"># load new font</span></span>
+<span id="cb3-2">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="st" style="color: #20794D;">"Roboto"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>)</span>
+<span id="cb3-3">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="st" style="color: #20794D;">"Lato"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Lato"</span>)</span>
+<span id="cb3-4">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_families</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sans"   "serif"  "mono"   "Roboto" "Lato"  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="co" style="color: #5E5E5E;"># use it</span></span>
+<span id="cb5-2">showtext<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">showtext_auto</span>()</span></code></pre></div>
+</div>
+<section id="moon-phrase-data" class="level1">
+<h1>moon phrase data</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="fu" style="color: #4758AB;">library</span>(suncalc)</span>
+<span id="cb6-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb6-3"><span class="fu" style="color: #4758AB;">library</span>(lubridate)</span>
+<span id="cb6-4"><span class="fu" style="color: #4758AB;">library</span>(knitr)</span>
+<span id="cb6-5"><span class="fu" style="color: #4758AB;">library</span>(DT)</span>
+<span id="cb6-6"></span>
+<span id="cb6-7"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## use getMoonIllusmination function to get moon fraction, phase, and angle for 2018.</span></span>
+<span id="cb6-8">Moon_2022 <span class="ot" style="color: #003B4F;">&lt;-</span><span class="fu" style="color: #4758AB;">getMoonIllumination</span>(<span class="at" style="color: #657422;">date =</span> <span class="fu" style="color: #4758AB;">seq.Date</span>(<span class="fu" style="color: #4758AB;">as.Date</span>(<span class="st" style="color: #20794D;">"2022-01-01"</span>), <span class="fu" style="color: #4758AB;">as.Date</span>(<span class="st" style="color: #20794D;">"2022-12-31"</span>), <span class="at" style="color: #657422;">by =</span> <span class="dv" style="color: #AD0000;">1</span>), </span>
+<span id="cb6-9">                                 <span class="at" style="color: #657422;">keep =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"fraction"</span>, <span class="st" style="color: #20794D;">"phase"</span>, <span class="st" style="color: #20794D;">"angle"</span>))</span>
+<span id="cb6-10"></span>
+<span id="cb6-11"></span>
+<span id="cb6-12"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## Append Extra Info, so I can use ggplot to make calendar. </span></span>
+<span id="cb6-13">Moon_2022_df <span class="ot" style="color: #003B4F;">&lt;-</span> Moon_2022 <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb6-14">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">wkdy =</span> <span class="fu" style="color: #4758AB;">fct_inorder</span>(<span class="fu" style="color: #4758AB;">weekdays</span>(date, <span class="at" style="color: #657422;">abbreviate=</span>T)), <span class="do" style="color: #5E5E5E;
+font-style: italic;">## 2018 worked well because it starts on Monday</span></span>
+<span id="cb6-15">         <span class="at" style="color: #657422;">wkn =</span> <span class="fu" style="color: #4758AB;">week</span>(date), <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Week Number</span></span>
+<span id="cb6-16">         <span class="at" style="color: #657422;">mo =</span> <span class="fu" style="color: #4758AB;">month</span>(date, <span class="at" style="color: #657422;">label=</span>T, <span class="at" style="color: #657422;">abbr=</span>T), <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Month</span></span>
+<span id="cb6-17">         <span class="at" style="color: #657422;">day =</span> <span class="fu" style="color: #4758AB;">day</span>(date), <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Day</span></span>
+<span id="cb6-18">         <span class="at" style="color: #657422;">moon.phase =</span> <span class="fu" style="color: #4758AB;">cut</span>(<span class="co" style="color: #5E5E5E;">#phase,breaks=seq(0,1,by=1/28), ## this doesn't work...</span></span>
+<span id="cb6-19">                          phase,<span class="at" style="color: #657422;">breaks=</span><span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">1</span>,<span class="at" style="color: #657422;">by=</span><span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">/</span><span class="dv" style="color: #AD0000;">56</span>),</span>
+<span id="cb6-20">                          <span class="at" style="color: #657422;">ordered_result=</span>T)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-21">  <span class="fu" style="color: #4758AB;">group_by</span>(mo) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb6-22">  <span class="fu" style="color: #4758AB;">mutate</span>(<span class="at" style="color: #657422;">wkn.mo =</span> <span class="fu" style="color: #4758AB;">dense_rank</span>(wkn)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb6-23">  <span class="fu" style="color: #4758AB;">ungroup</span>()</span>
+<span id="cb6-24"></span>
+<span id="cb6-25"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## Simply cutting into 28 blocks didn't work out..  </span></span>
+<span id="cb6-26">moon.font.tb <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(</span>
+<span id="cb6-27">  <span class="at" style="color: #657422;">moon.font =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="cn" style="color: #8f5902;">NA</span>, letters[<span class="fu" style="color: #4758AB;">rep</span>(<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">13</span>,<span class="fu" style="color: #4758AB;">rep</span>(<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>))], <span class="dv" style="color: #AD0000;">0</span>,<span class="dv" style="color: #AD0000;">0</span>, letters[<span class="fu" style="color: #4758AB;">rep</span>(<span class="dv" style="color: #AD0000;">14</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">26</span>,<span class="fu" style="color: #4758AB;">rep</span>(<span class="dv" style="color: #AD0000;">2</span>,<span class="dv" style="color: #AD0000;">13</span>))],<span class="cn" style="color: #8f5902;">NA</span>),</span>
+<span id="cb6-28">  <span class="at" style="color: #657422;">moon.phase =</span> <span class="fu" style="color: #4758AB;">levels</span>(Moon_2022_df<span class="sc" style="color: #5E5E5E;">$</span>moon.phase)</span>
+<span id="cb6-29">)</span>
+<span id="cb6-30"></span>
+<span id="cb6-31">Moon_2022_df <span class="ot" style="color: #003B4F;">&lt;-</span> Moon_2022_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">left_join</span>(moon.font.tb)</span>
+<span id="cb6-32"></span>
+<span id="cb6-33"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## Show the data around today to see what data above looks like.</span></span>
+<span id="cb6-34">Moon_2022_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(<span class="fu" style="color: #4758AB;">between</span>(date,<span class="fu" style="color: #4758AB;">today</span>()<span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">3</span>,<span class="fu" style="color: #4758AB;">today</span>()<span class="sc" style="color: #5E5E5E;">+</span><span class="dv" style="color: #AD0000;">3</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">datatable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+
+<div id="htmlwidget-26a34b1e18a8484aa3c3" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-26a34b1e18a8484aa3c3">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4","5","6","7"],["2022-11-05","2022-11-06","2022-11-07","2022-11-08","2022-11-09","2022-11-10","2022-11-11"],[0.877098861611855,0.939902537694047,0.980597176791684,0.998803152932537,0.995372276382852,0.972051892836037,0.931130232953849],[0.385986994147449,0.421163496447115,0.455516688157959,0.488985719662366,0.521670521849612,0.553465093970557,0.584524046620125],[-2.05630426967343,-2.05968106327459,-2.04638167248913,-2.06411956357507,1.26056987054231,1.31579056417061,1.4033057076856],["Sat","Sun","Mon","Tue","Wed","Thu","Fri"],[45,45,45,45,45,45,45],["Nov","Nov","Nov","Nov","Nov","Nov","Nov"],[5,6,7,8,9,10,11],["(0.375,0.393]","(0.411,0.429]","(0.446,0.464]","(0.482,0.5]","(0.518,0.536]","(0.536,0.554]","(0.571,0.589]"],[2,2,2,2,2,2,2],["k","l","m","0","n","n","o"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>date<\/th>\n      <th>fraction<\/th>\n      <th>phase<\/th>\n      <th>angle<\/th>\n      <th>wkdy<\/th>\n      <th>wkn<\/th>\n      <th>mo<\/th>\n      <th>day<\/th>\n      <th>moon.phase<\/th>\n      <th>wkn.mo<\/th>\n      <th>moon.font<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"columnDefs":[{"className":"dt-right","targets":[2,3,4,6,8,10]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="moon-phrase-data-1" class="level1">
+<h1>moon phrase data</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">library</span>(gggibbous)</span>
+<span id="cb7-2">Moon_df <span class="ot" style="color: #003B4F;">&lt;-</span> Moon_2022_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">filter</span>(date<span class="sc" style="color: #5E5E5E;">&gt;</span><span class="st" style="color: #20794D;">"2022-8-25"</span> <span class="sc" style="color: #5E5E5E;">&amp;</span> date <span class="sc" style="color: #5E5E5E;">&lt;</span> <span class="st" style="color: #20794D;">"2022-9-15"</span>)</span>
+<span id="cb7-3">Moon_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x=</span>date, <span class="at" style="color: #657422;">y=</span>fraction)) <span class="sc" style="color: #5E5E5E;">+</span> </span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;">geom_moon</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">ratio =</span> fraction), <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">18</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"#FFDE00"</span>, <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#FFF38C"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-5">    <span class="fu" style="color: #4758AB;">ylim</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="fl" style="color: #AD0000;">1.05</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-6">    <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb7-7">    <span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb7-8">    <span class="at" style="color: #657422;">axis.ticks =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb7-9">    <span class="at" style="color: #657422;">axis.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>),</span>
+<span id="cb7-10">    <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">18</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>),</span>
+<span id="cb7-11">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb7-12">    <span class="at" style="color: #657422;">plot.caption =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>),</span>
+<span id="cb7-13">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">28</span>, <span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>, <span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"Lato"</span>),</span>
+<span id="cb7-14">    <span class="at" style="color: #657422;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">20</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"yellow"</span>,<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">"Lato"</span>),</span>
+<span id="cb7-15">    <span class="at" style="color: #657422;">axis.line.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb7-16">    <span class="at" style="color: #657422;">axis.line.x =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>),</span>
+<span id="cb7-17">    <span class="at" style="color: #657422;">panel.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill=</span><span class="st" style="color: #20794D;">"black"</span>),</span>
+<span id="cb7-18">    <span class="at" style="color: #657422;">plot.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span><span class="st" style="color: #20794D;">"black"</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>),</span>
+<span id="cb7-19">  )<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-20">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb7-21">    <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"Moon Phrase"</span>,</span>
+<span id="cb7-22">    <span class="at" style="color: #657422;">subtitle =</span> <span class="st" style="color: #20794D;">"Aug.25 - Sep.15"</span>,</span>
+<span id="cb7-23">    <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb7-24">    <span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb7-25">    <span class="at" style="color: #657422;">caption =</span> <span class="st" style="color: #20794D;">"Data Source:R-suncalc"</span></span>
+<span id="cb7-26">  )</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/ggplot2-MoonPhrase/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">ggsave</span>(<span class="at" style="color: #657422;">filename =</span> <span class="st" style="color: #20794D;">"Moon-Phrase.pdf"</span>, <span class="at" style="color: #657422;">plot =</span> <span class="fu" style="color: #4758AB;">last_plot</span>(), <span class="at" style="color: #657422;">height =</span> <span class="dv" style="color: #AD0000;">6</span>, <span class="at" style="color: #657422;">width =</span> <span class="dv" style="color: #AD0000;">8</span>)</span>
+<span id="cb8-2">pdftools<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">pdf_convert</span>(</span>
+<span id="cb8-3">  <span class="at" style="color: #657422;">pdf =</span> <span class="st" style="color: #20794D;">"Moon-Phrase.pdf"</span>,</span>
+<span id="cb8-4">  <span class="at" style="color: #657422;">filenames =</span> <span class="st" style="color: #20794D;">"Moon-Phrase.png"</span>,</span>
+<span id="cb8-5">  <span class="at" style="color: #657422;">format =</span> <span class="st" style="color: #20794D;">"png"</span>, </span>
+<span id="cb8-6">  <span class="at" style="color: #657422;">dpi =</span> <span class="dv" style="color: #AD0000;">200</span></span>
+<span id="cb8-7">)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Converting page 1 to Moon-Phrase.png... done!</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Moon-Phrase.png"</code></pre>
+</div>
+</div>
+<p>Ref: https://www.r-bloggers.com/2018/05/making-calendar-with-ggplot-moon-phase-calendar-for-fun/</p>
+
+
+</section>
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/ggplot2-MoonPhrase/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/ggplot2-MoonPhrase/Moon-Phrase.png" medium="image" type="image/png" height="108" width="144"/>
+</item>
+<item>
+  <title>Molecular Cloning Summary</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/MolecularCloning/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://guote.netlify.app/posts/MolecularCloning/cloning.jpg" class="img-fluid"></p>
+<section id="分子克隆总结" class="level2">
+<h2 class="anchored" data-anchor-id="分子克隆总结">分子克隆总结</h2>
+<p>软件及网络工具：SnapGene , NEB Cloner 等</p>
+<p>连接方式：</p>
+<ul>
+<li>Gibson Assembly, T4 ligase, Gateway, Infusion, TOPO etc.<br>
+</li>
+<li>Gibson Assembly:（5-6个片段连接同样有效，如果受条件制约试剂可以自行配置）</li>
+<li>TEDA Cloning(super-money-saving)</li>
+</ul>
+<p>► 优点：No scar, gene 可以连续连接并且没有”接缝”</p>
+<p>► 可以增加序列 也可以删除序列用于制造 将某个基因敲出， 引物合成的时候自然丢掉它</p>
+<p>► 注意点：因为它会将5’端 chowing back ，Vector的线性化是单一酶切位点切开线性化的，请注意它的粘性末端sticky end，5’ overhang 回导致被chowing back and disappear。如果不特意在引物中设计将原有酶切位点序列加以保留，连接后就会损失了这个酶切位点。 Tool box in NEB url: https://nebuilder.neb.com/ （可以选择是否修复酶切位点，in case you lost it for further use）</p>
+<p>► 特殊情况处理：如果遇到不能利用单一酶切位点线性化Vector怎么办?（ 如基因当中存在酶切位点，如果切开Vector同时会导致基因断裂）直接利用Overlap site:homology sequence 进行连接，有些片段可以用PCR的方式（推荐使用高保真Q5 polymerase，但是这个酶合成序列后是Blunt end，如果进一步构建library文库可以用Taq酶+dATP, 加入到PCR纯化后的产物中进行修复A tail, 找不到dATP就用dNTP（ATGC混合物），实际使用上没有差别），或者用单核苷酸序列（Oligos）人工合成序列（合成互补的两条链同时直接加入你想改造的想法：如加入突变的位点或者Kozak序列或者加入Mutiple cloning sites(poly-linker等)，不必一次合成过长价格很贵序列错率高，利用Gibson Assembly的优势分段合成组合即可）</p>
+<p>► Tips:人工合成两条Oligos 你甚至可以直接考虑他们互补配对后自然就有stricky end,这样就省去了PCR-&gt;跑胶-&gt;切胶纯化的步骤。 此外PCR产物可以考虑使用PCR purification Kit进行纯化，如果模板使用了一个完整的质粒，由于质粒是有甲基化位点的，而PCR没有甲基化位点可以用DpnI 酶先Digestion 然后Heat inactive 进行纯化。（能不跑胶就不要做，浪费时间，最后回收的DNA含有agarose也会影响连接的效率）。 不切的Vector酶的意义,许多人忽略不切Vector酶的意义然而这些酶如果在引物当中引入homology sequence-uncut restiction enzyme site sequece-homology seuquence 利用Gibson Assembly 一连接自然而然加入了克隆位点用于后期加装各种调控元件。</p>
+</section>
+<section id="t4-ligase-用好了同样很厉害" class="level2">
+<h2 class="anchored" data-anchor-id="t4-ligase-用好了同样很厉害">T4 ligase （用好了同样很厉害）</h2>
+<p>1.突变及Oligos的使用参考Gibson Assembly的描述<br>
+2.根据条件适度选择Cloning Strategy</p>
+</section>
+<section id="topo克隆" class="level2">
+<h2 class="anchored" data-anchor-id="topo克隆">TOPO克隆</h2>
+<p>1.为了保真性 用Q5酶PCR 然后用Taq酶修复A tail<br>
+2.TOPO克隆阳性率极好，但注意连入的片段有正向的也有反向的<br>
+3.如果想连接TOPO克隆的两个片段（想法极其罕见，my previous boss did this, because our fusion pcr does not work,actually I feel amazing when he came up with the idea use two reverse oritation amplicons to assemble it together, details show below)</p>
+<p><strong>昨日旧梦，一把辛酸泪！不过虽然结果不好，困苦中终于把克隆基础打的特别扎实！</strong></p>
+
+
+</section>
+
+ ]]></description>
+  <category>cloning</category>
+  <category>molecular biology</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/MolecularCloning/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/MolecularCloning/cloning.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Monty Hall problem</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/Monty Hall problem/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<section id="三门问题路径分析" class="level3">
+<h3 class="anchored" data-anchor-id="三门问题路径分析">三门问题路径分析</h3>
+<p><img src="https://guote.netlify.app/posts/Monty Hall problem/image.jpg" class="img-fluid"></p>
+<p>三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。</p>
+<p>三门背后对应内容：1个Car, 2只羊（Goat1 , Goat2）</p>
+<p>三门问题一直以来困扰很多人，我们先看下面的路线图</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-30f612ea25a7fe0e45e4" style="width:100%;height:386px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-30f612ea25a7fe0e45e4">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="如果我们只关心能不能得到汽车" class="level3">
+<h3 class="anchored" data-anchor-id="如果我们只关心能不能得到汽车">如果我们只关心能不能得到汽车。</h3>
+<ol type="1">
+<li>从car 节点上看，keep策略1/3 * 1， switch策略2/3 * 1 .</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-903e309c7c4364071ee1" style="width:100%;height:386px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-903e309c7c4364071ee1">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\n\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\n\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<ol start="2" type="1">
+<li>从goat节点上看，keep策略2/3 * 1， switch策略1/3 * 1 .</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-990bae7d10443d57b0c6" style="width:100%;height:386px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-990bae7d10443d57b0c6">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\n \nparticipant -> goat_door [label=\"2/3\", fontsize=10]\n\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="三门问题的拓展版" class="level3">
+<h3 class="anchored" data-anchor-id="三门问题的拓展版">三门问题的拓展版</h3>
+<p>有三张纸牌：</p>
+<p>纸牌1： 2面都是黑色 card1: black-black</p>
+<p>纸牌2： 2面都是白色 card2: white-white</p>
+<p>纸牌3： 1面是白色，1面是黑色 card3: black-white</p>
+<p>问题：当你随机抽取一张牌看到的是牌面是黑色，请问这张牌背面是白色的概率？答案是1/3.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-4ada072fa6f6eddb49aa" style="width:100%;height:386px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4ada072fa6f6eddb49aa">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nblack;card1;card2;card3;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nblack -> card1 [label=\"2/3\", fontsize=8]\nblack -> card3 [label=\"1/3\", fontsize=8]\nblack -> card2 [label=\"0\", fontsize=8]\ncard1 -> \"black-at-back\" [label=\"1\", fontsize=8]\n\ncard3 -> \"white-at-back\" [label=\"1\", fontsize=8]\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<p><strong>当问题不清晰时就用路径分析，反直觉的点就会迎刃而解。</strong></p>
+
+
+</section>
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/Monty Hall problem/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/Monty Hall problem/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Post With Code</title>
+  <dc:creator>Harlow Malloc</dc:creator>
+  <link>https://guote.netlify.app/posts/post-with-code/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is a post with executable code.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/post-with-code/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>rmarkdown-latex-chinese-ctex</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<pre><code>---  
+title: "Your Report Title"  
+author: "YourName"  
+date: "2022-10-31"  
+documentclass: ctexart  
+output:  
+  rticles::ctex:  
+    fig_caption: yes  
+    number_sections: yes  
+    toc: yes  
+editor_options:  
+  chunk_output_type: console  
+---</code></pre>
+<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" class="img-fluid"></p>
+<pre><code>### side by side plots</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">set.seed</span>(<span class="dv" style="color: #AD0000;">81</span>)</span>
+<span id="cb3-2"><span class="fu" style="color: #4758AB;">boxplot</span>(<span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>))</span>
+<span id="cb3-3"><span class="fu" style="color: #4758AB;">plot</span>(<span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>),<span class="at" style="color: #657422;">col=</span><span class="st" style="color: #20794D;">"red"</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" style="width:50.0%"></p>
+</div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/index_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" style="width:50.0%"></p>
+</div>
+</div>
+<p>````</p>
+
+
+
+ ]]></description>
+  <category>rmarkdown</category>
+  <category>chinese</category>
+  <category>latex</category>
+  <guid>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>sf-map-heatmap</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/sf-map/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Download map from China website(<strong>be cautious about border and official government data</strong> )</p>
+<p>China Map geojson source website: https://geojson.cn/</p>
+<section id="example-1-map-to-map-heatmap" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-map-to-map-heatmap">Example 1: Map to Map-Heatmap</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages
+───────────────────────────────────────
+tidyverse 1.3.2 ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.3      ✔ forcats 0.5.2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">library</span>(readxl)</span>
+<span id="cb8-2"><span class="fu" style="color: #4758AB;">library</span>(hrbrthemes)</span>
+<span id="cb8-3">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="st" style="color: #20794D;">"Roboto Condensed"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto Condensed"</span>)</span>
+<span id="cb8-4">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_families</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "sans"             "serif"            "mono"             "Roboto Condensed"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">showtext<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">showtext.auto</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>'showtext.auto()' is now renamed to 'showtext_auto()'
+The old version still works, but consider using the new function in future code</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">china_map <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_read</span>(<span class="at" style="color: #657422;">dsn =</span> <span class="st" style="color: #20794D;">"https://geojson.cn/api/data/china.json"</span>, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `china' from data source `https://geojson.cn/api/data/china.json' using driver `GeoJSON'
+Simple feature collection with 36 features and 10 fields
+Geometry type: GEOMETRY
+Dimension:     XY
+Bounding box:  xmin: 73.50235 ymin: 17.9869 xmax: 135.0957 ymax: 53.56327
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="co" style="color: #5E5E5E;"># china_map  </span></span>
+<span id="cb14-2"></span>
+<span id="cb14-3"></span>
+<span id="cb14-4">jingfei_china <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_excel</span>(here<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">here</span>(<span class="st" style="color: #20794D;">"posts/sf-map/jingfei-china.xlsx"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> janitor<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">clean_names</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">name=</span>de_qu)</span></code></pre></div>
+</div>
+<p>Filter data for plot map</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> china_map  <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(childrenNum<span class="sc" style="color: #5E5E5E;">:</span>bbox)) </span>
+<span id="cb15-2"></span>
+<span id="cb15-3">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">left_join</span>(map_china,jingfei_china,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"name"</span>)</span>
+<span id="cb15-4">map_china<span class="sc" style="color: #5E5E5E;">$</span>r_d_jing_fei <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.numeric</span>(map_china<span class="sc" style="color: #5E5E5E;">$</span>r_d_jing_fei)</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">map_china <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb16-2">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill =</span> r_d_jing_fei)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-4">  <span class="fu" style="color: #4758AB;">scale_fill_gradient2</span>(<span class="at" style="color: #657422;">low =</span> <span class="st" style="color: #20794D;">"black"</span>, <span class="at" style="color: #657422;">mid =</span> <span class="st" style="color: #20794D;">"transparent"</span>, <span class="at" style="color: #657422;">high =</span> <span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-5">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name), <span class="at" style="color: #657422;">colour =</span> <span class="st" style="color: #20794D;">"gray95"</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-6">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb16-7">    <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"2021研究经费绝对量热度"</span>,</span>
+<span id="cb16-8">    <span class="at" style="color: #657422;">caption =</span> <span class="st" style="color: #20794D;">"国家统计局 | 2021年全国科技经费投入统计公报 | Plotbyme"</span>,</span>
+<span id="cb16-9">    <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb16-10">    <span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span></span>
+<span id="cb16-11">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-12">  <span class="fu" style="color: #4758AB;">theme_modern_rc</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb16-13">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb16-14">    <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
+<span id="cb16-15">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">22</span>, <span class="at" style="color: #657422;">hjust =</span> .<span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"wqy-microhei"</span>),</span>
+<span id="cb16-16">    <span class="at" style="color: #657422;">plot.caption =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">hjust =</span> <span class="fl" style="color: #AD0000;">0.9</span>,  <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"wqy-microhei"</span>)</span>
+<span id="cb16-17">  )</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+give correct results for longitude/latitude data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;"># save plot</span></span>
+<span id="cb18-2"><span class="co" style="color: #5E5E5E;"># name &lt;- "ResearchInvent_China2021" # change the save filename here</span></span>
+<span id="cb18-3"><span class="co" style="color: #5E5E5E;"># ggsave(filename = glue::glue('{name}.pdf'), plot = last_plot(), </span></span>
+<span id="cb18-4"><span class="co" style="color: #5E5E5E;">#        height = 6, width = 8, units="in", device=cairo_pdf)</span></span>
+<span id="cb18-5"><span class="co" style="color: #5E5E5E;"># pdftools::pdf_convert(</span></span>
+<span id="cb18-6"><span class="co" style="color: #5E5E5E;">#   pdf = glue::glue('{name}.pdf'),</span></span>
+<span id="cb18-7"><span class="co" style="color: #5E5E5E;">#   filenames = glue::glue('{name}.png'),</span></span>
+<span id="cb18-8"><span class="co" style="color: #5E5E5E;">#   format = "png", </span></span>
+<span id="cb18-9"><span class="co" style="color: #5E5E5E;">#   dpi = 600</span></span>
+<span id="cb18-10"><span class="co" style="color: #5E5E5E;"># )</span></span></code></pre></div>
+</div>
+</section>
+<section id="example-2-coordinates-to-province-location" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-coordinates-to-province-location">Example 2: Coordinates to Province Location</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb19-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb19-3"><span class="fu" style="color: #4758AB;">library</span>(readxl)</span>
+<span id="cb19-4"></span>
+<span id="cb19-5">showtext<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">showtext.auto</span>()</span>
+<span id="cb19-6"></span>
+<span id="cb19-7">china_map <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_read</span>(<span class="at" style="color: #657422;">dsn =</span> <span class="st" style="color: #20794D;">"https://geojson.cn/api/data/china.json"</span>, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Reading layer `china' from data source `https://geojson.cn/api/data/china.json' using driver `GeoJSON'
+Simple feature collection with 36 features and 10 fields
+Geometry type: GEOMETRY
+Dimension:     XY
+Bounding box:  xmin: 73.50235 ymin: 17.9869 xmax: 135.0957 ymax: 53.56327
+Geodetic CRS:  WGS 84</code></pre>
+</div>
+</div>
+<p>lat,long read in</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">metro <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_excel</span>(here<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">here</span>(<span class="st" style="color: #20794D;">"posts/sf-map/metro.xlsx"</span>))</span>
+<span id="cb21-2"></span>
+<span id="cb21-3">metro_df <span class="ot" style="color: #003B4F;">&lt;-</span> metro <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="st" style="color: #20794D;">"Entity ID"</span>,<span class="st" style="color: #20794D;">"lon"</span>,<span class="st" style="color: #20794D;">"lat"</span>)</span></code></pre></div>
+</div>
+<p>basic china map</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> china_map  <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(childrenNum<span class="sc" style="color: #5E5E5E;">:</span>bbox)) </span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">map_china <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb23-2">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb23-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb23-4">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name))</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+give correct results for longitude/latitude data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
+<span id="cb25-2"></span>
+<span id="cb25-3"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## pointsDF: A data.frame whose first column contains longitudes and</span></span>
+<span id="cb25-4"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##           whose second column contains latitudes.</span></span>
+<span id="cb25-5"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##</span></span>
+<span id="cb25-6"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## states:   An sf MULTIPOLYGON object with 50 states plus DC.</span></span>
+<span id="cb25-7"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##</span></span>
+<span id="cb25-8"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## name_col: Name of a column in `states` that supplies the states'</span></span>
+<span id="cb25-9"><span class="do" style="color: #5E5E5E;
+font-style: italic;">##           names.</span></span>
+<span id="cb25-10">lonlat_to_state <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(pointsDF,</span>
+<span id="cb25-11">                            <span class="at" style="color: #657422;">states =</span> map_china,</span>
+<span id="cb25-12">                            <span class="at" style="color: #657422;">name_col =</span> <span class="st" style="color: #20794D;">"name"</span>) {</span>
+<span id="cb25-13">    <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Convert points data.frame to an sf POINTS object</span></span>
+<span id="cb25-14">    pts <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(pointsDF, <span class="at" style="color: #657422;">coords =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>)</span>
+<span id="cb25-15"></span>
+<span id="cb25-16">    <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Transform spatial data to some planar coordinate system</span></span>
+<span id="cb25-17">    <span class="do" style="color: #5E5E5E;
+font-style: italic;">## (e.g. Web Mercator) as required for geometric operations</span></span>
+<span id="cb25-18">    states <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_transform</span>(states, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">3857</span>)</span>
+<span id="cb25-19">    pts <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_transform</span>(pts, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">3857</span>)</span>
+<span id="cb25-20"></span>
+<span id="cb25-21">    <span class="do" style="color: #5E5E5E;
+font-style: italic;">## Find names of state (if any) intersected by each point</span></span>
+<span id="cb25-22">    state_names <span class="ot" style="color: #003B4F;">&lt;-</span> states[[name_col]]</span>
+<span id="cb25-23">    ii <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.integer</span>(<span class="fu" style="color: #4758AB;">st_intersects</span>(pts, states))</span>
+<span id="cb25-24">    state_names[ii]</span>
+<span id="cb25-25">}</span>
+<span id="cb25-26"></span>
+<span id="cb25-27"><span class="do" style="color: #5E5E5E;
+font-style: italic;">## Test the function with points in Wisconsin, Oregon, and France</span></span>
+<span id="cb25-28">testPoints <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(metro_df<span class="sc" style="color: #5E5E5E;">$</span>lon, metro_df<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
+<span id="cb25-29"></span>
+<span id="cb25-30"><span class="co" style="color: #5E5E5E;"># lonlat_to_state(testPoints)</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">testPoints <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(metro_df<span class="sc" style="color: #5E5E5E;">$</span>lon, metro_df<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
+<span id="cb26-2"></span>
+<span id="cb26-3"><span class="co" style="color: #5E5E5E;"># get coordinate to location,  modern province</span></span>
+<span id="cb26-4">metro_df<span class="sc" style="color: #5E5E5E;">$</span>location <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">lonlat_to_state</span>(testPoints)</span>
+<span id="cb26-5"></span>
+<span id="cb26-6">metro_df <span class="ot" style="color: #003B4F;">&lt;-</span> metro_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(lon, lat))</span>
+<span id="cb26-7"></span>
+<span id="cb26-8">metro_final <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">left_join</span>(metro, metro_df, <span class="at" style="color: #657422;">by =</span> <span class="st" style="color: #20794D;">"Entity ID"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb26-9">  janitor<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">clean_names</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
+<span id="cb26-10">  <span class="fu" style="color: #4758AB;">unique</span>()</span></code></pre></div>
+</div>
+<p>summary number of sites in modern china province</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;">table</span>(metro_final<span class="sc" style="color: #5E5E5E;">$</span>location) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">sort</span>(<span class="at" style="color: #657422;">decreasing =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span> knitr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">kable</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Var1</th>
+<th style="text-align: right;">Freq</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">四川</td>
+<td style="text-align: right;">156</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">河南</td>
+<td style="text-align: right;">121</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">河北</td>
+<td style="text-align: right;">96</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">陕西</td>
+<td style="text-align: right;">92</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">山西</td>
+<td style="text-align: right;">91</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">山东</td>
+<td style="text-align: right;">90</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">江西</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">浙江</td>
+<td style="text-align: right;">67</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">湖南</td>
+<td style="text-align: right;">58</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">安徽</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">湖北</td>
+<td style="text-align: right;">57</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">广西</td>
+<td style="text-align: right;">56</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">福建</td>
+<td style="text-align: right;">44</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">广东</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">江苏</td>
+<td style="text-align: right;">43</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">重庆</td>
+<td style="text-align: right;">37</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">甘肃</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">海南</td>
+<td style="text-align: right;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">上海</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">内蒙古</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">天津</td>
+<td style="text-align: right;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">宁夏</td>
+<td style="text-align: right;">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>export data.frame to excel</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="co" style="color: #5E5E5E;"># library("writexl")</span></span>
+<span id="cb28-2"><span class="co" style="color: #5E5E5E;"># write_xlsx(metro_final,"metro_final.xlsx")</span></span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">sites <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">longitude =</span> metro_final<span class="sc" style="color: #5E5E5E;">$</span>lon, <span class="at" style="color: #657422;">latitude =</span> metro<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
+<span id="cb29-2"></span>
+<span id="cb29-3">sites <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(sites,</span>
+<span id="cb29-4">  <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"longitude"</span>, <span class="st" style="color: #20794D;">"latitude"</span>),</span>
+<span id="cb29-5">  <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>, <span class="at" style="color: #657422;">agr =</span> <span class="st" style="color: #20794D;">"constant"</span>)</span>
+<span id="cb29-6"></span>
+<span id="cb29-7"><span class="fu" style="color: #4758AB;">ggplot</span>(map_china) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb29-8">  <span class="fu" style="color: #4758AB;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb29-9">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb29-10">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">data =</span> sites, <span class="at" style="color: #657422;">size =</span> .<span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"red"</span>, <span class="at" style="color: #657422;">alpha =</span> .<span class="dv" style="color: #AD0000;">3</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb29-11">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
+give correct results for longitude/latitude data</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>sf</category>
+  <category>map</category>
+  <category>heatmap</category>
+  <guid>https://guote.netlify.app/posts/sf-map/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>BLOG with blogdown</title>
+  <dc:creator>Guo Te</dc:creator>
+  <link>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>我的第一篇博客-感谢</p>
+<p>终于部署好了自己的博客，感谢 <a href="https://yihui.org/cn/">谢益辉</a>和<a href="https://yuanfan.vercel.app/">袁凡</a>。</p>
+<p>磕磕绊绊一路走来，一路如蹒跚学步，依旧不懂的很多。 感谢那些遇到的人，感谢那些或愉快或不怎么愉快的经历。 因为这所有的发生的人事物塑造了今天的我。</p>
+<p><strong>感谢</strong></p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Welcome To My Blog</title>
+  <dc:creator>Tristan O'Malley</dc:creator>
+  <link>https://guote.netlify.app/posts/welcome/index.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>This is the first post in a Quarto blog. Welcome!</p>
+<p><img src="https://guote.netlify.app/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
+<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <guid>https://guote.netlify.app/posts/welcome/index.html</guid>
+  <pubDate>Fri, 04 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/welcome/thumbnail.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>

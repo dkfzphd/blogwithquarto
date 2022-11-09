@@ -1,0 +1,1 @@
+Sitemap: https://guote.netlify.app/sitemap.xml
