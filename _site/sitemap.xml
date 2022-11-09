@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2022-11-09T01:33:34.474Z</lastmod>
+    <lastmod>2022-11-09T01:37:45.277Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -11,5 +11,17 @@
   <url>
     <loc>https://guote.netlify.app/posts/ceshi/index.html</loc>
     <lastmod>2022-11-09T01:33:47.404Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/about.html</loc>
+    <lastmod>2022-11-09T01:37:36.261Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</loc>
+    <lastmod>2022-11-09T01:38:04.413Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</loc>
+    <lastmod>2022-11-09T01:38:14.745Z</lastmod>
   </url>
 </urlset>

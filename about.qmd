@@ -1,5 +1,5 @@
 ---
-title: "About 关于我"
+title: "About me"
 image: profile.jpg
 about:
   template: solana
@@ -12,10 +12,7 @@ about:
       href: https://github.com/dkfzphd
 ---
 
-
-
-**About Me in Brief**
-Contact: iscienceAT163.com
+**About Me in Brief** Contact: iscienceAT163.com
 
 <br> - Solid foundation in Histology\
 <br> - Experienced Molecular Biologist\
