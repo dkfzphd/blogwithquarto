@@ -91,5 +91,8 @@
   },
   "posts/rmarkdown-chinese-paper/index.qmd": {
     "index.html": "53c4b715"
+  },
+  "posts/bar-plot-with-labels/index.qmd": {
+    "index.html": "d1367ce3"
   }
 }
