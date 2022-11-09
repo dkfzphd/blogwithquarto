@@ -10,8 +10,6 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com/dkfzphd
-      - icon: twitter
-        href: https://twitter.com
       - icon: rss
         href: index.xml
 format:
