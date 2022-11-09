@@ -1,8 +1,8 @@
 ---
-title: "About关于我"
+title: "About 关于我"
 image: profile.jpg
 about:
-  template: jolla
+  template: solana
   links:
     - icon: linkedin
       text: LinkedIn
@@ -12,9 +12,10 @@ about:
       href: https://github.com/dkfzphd
 ---
 
-Email: iscienceAT163.com
 
-# About Me in Brief 
+
+**About Me in Brief**
+Contact: iscienceAT163.com
 
 <br> - Solid foundation in Histology\
 <br> - Experienced Molecular Biologist\
