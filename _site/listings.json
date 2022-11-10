@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/machine-learning-process/index.html",
       "/posts/ceshi/index.html",
       "/posts/DiagrammR/DiagrammR.html",
       "/posts/draw-96wells/index.html",
@@ -17,8 +18,7 @@
       "/posts/welcome/index.html",
       "/posts/filter-na/index.html",
       "/posts/apa-themes/index.html",
-      "/posts/bar-plot-with-labels/index.html",
-      "/posts/machine-learning-process/index.html"
+      "/posts/bar-plot-with-labels/index.html"
     ]
   }
 ]
