@@ -100,5 +100,8 @@
   },
   "posts/filter-na/index.qmd": {
     "index.html": "dbf762a8"
+  },
+  "posts/machine-learning-process/index.qmd": {
+    "index.html": "95fd36f7"
   }
 }
