@@ -462,26 +462,6 @@ font-style: italic;">## Show the data around today to see what data above looks 
   <media:content url="https://guote.netlify.app/posts/ggplot2-MoonPhrase/Moon-Phrase.png" medium="image" type="image/png" height="108" width="144"/>
 </item>
 <item>
-  <title>Learning progress of machine learning</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/machine-learning-process/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>2022-Nov-10 <br> Finished chapter 1,2 only scanning pdf docs<br> Ongoing:<br> Next chapter3<br> https://slds-lmu.github.io/i2ml/chapters/03_supervised_classification/03-01-tasks/ <br></p>
-
-
-
- ]]></description>
-  <category>code</category>
-  <category>mlr3</category>
-  <category>ml</category>
-  <category>r</category>
-  <guid>https://guote.netlify.app/posts/machine-learning-process/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
   <title>Molecular Cloning Summary</title>
   <dc:creator>Te</dc:creator>
   <link>https://guote.netlify.app/posts/MolecularCloning/index.html</link>
@@ -1535,6 +1515,26 @@ give correct results for longitude/latitude data</code></pre>
   <category>R</category>
   <guid>https://guote.netlify.app/posts/bar-plot-with-labels/index.html</guid>
   <pubDate>Sat, 01 Oct 2022 22:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Learning progress of machine learning</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/machine-learning-process/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>2022-Nov-10 <br> Finished chapter 1,2 only scanning pdf docs<br> Ongoing:<br> Next chapter3<br> https://slds-lmu.github.io/i2ml/chapters/03_supervised_classification/03-01-tasks/ <br></p>
+
+
+
+ ]]></description>
+  <category>code</category>
+  <category>mlr3</category>
+  <category>ml</category>
+  <category>r</category>
+  <guid>https://guote.netlify.app/posts/machine-learning-process/index.html</guid>
+  <pubDate>Invalid Date</pubDate>
 </item>
 </channel>
 </rss>
