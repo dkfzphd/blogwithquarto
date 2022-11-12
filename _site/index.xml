@@ -10,7 +10,94 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.1.189</generator>
-<lastBuildDate>Wed, 09 Nov 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Fri, 11 Nov 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Draw a Clock Face</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/draw-clock/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>library in need</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
+✔ tibble  3.1.8      ✔ dplyr   1.0.10
+✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+✔ readr   2.1.3      ✔ forcats 0.5.2 </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">library</span>(ggrepel)</span>
+<span id="cb5-2"><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_minimal</span>())</span></code></pre></div>
+</div>
+<p>data preparation</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;">#这里理解有点绕弯</span></span>
+<span id="cb6-2"><span class="co" style="color: #5E5E5E;"># 1. 从pi/2作为起点是因为正常坐标系和对应的时钟0点位置不同，要旋转pi/2</span></span>
+<span id="cb6-3"><span class="co" style="color: #5E5E5E;"># 2.从pi/2顺时针旋转一周应该是 -2 * pi，顺时针意味着负号</span></span>
+<span id="cb6-4"><span class="co" style="color: #5E5E5E;"># 3. length.out = 61 这里 从0到60的点一共是 </span></span>
+<span id="cb6-5"><span class="co" style="color: #5E5E5E;">#    61个点，点与点之间有60个分化，我们计算的是点坐标，因此要获得这61一个点的坐标位置length.out = 61</span></span>
+<span id="cb6-6"><span class="co" style="color: #5E5E5E;"># 4. 同理小时计算的是时间12个分化，计算13个点的坐标length.out = 13</span></span>
+<span id="cb6-7"></span>
+<span id="cb6-8">theta <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span> , <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">61</span>)</span>
+<span id="cb6-9"></span>
+<span id="cb6-10">radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">60</span>)</span>
+<span id="cb6-11">min_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">30</span></span>
+<span id="cb6-12">hour_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">30</span></span>
+<span id="cb6-13"></span>
+<span id="cb6-14">x <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(theta)</span>
+<span id="cb6-15">y <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(theta)</span>
+<span id="cb6-16"></span>
+<span id="cb6-17">hour_tick <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">13</span>)</span>
+<span id="cb6-18"></span>
+<span id="cb6-19">hour_x <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(hour_tick)</span>
+<span id="cb6-20">hour_y <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(hour_tick)</span>
+<span id="cb6-21"></span>
+<span id="cb6-22">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(x, y)</span>
+<span id="cb6-23">hour <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(hour_x, hour_y)</span>
+<span id="cb6-24"></span>
+<span id="cb6-25">center <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="at" style="color: #657422;">x=</span><span class="dv" style="color: #AD0000;">0</span>,<span class="at" style="color: #657422;">y=</span><span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
+</div>
+<p>plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(hour_x, hour_y)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-2">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>df, <span class="fu" style="color: #4758AB;">aes</span>(x, y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-3">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_x, <span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-4">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_x, <span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-5">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">8</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-6"> <span class="co" style="color: #5E5E5E;"># geom_path() +</span></span>
+<span id="cb7-7">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">11</span>,<span class="st" style="color: #20794D;">""</span>))) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-8">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>center,<span class="fu" style="color: #4758AB;">aes</span>(x,y),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb7-9">  <span class="fu" style="color: #4758AB;">coord_fixed</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<section id="online-tool" class="level3">
+<h3 class="anchored" data-anchor-id="online-tool">Online tool</h3>
+<p>https://www.blocklayer.com/clock-face</p>
+
+
+</section>
+
+ ]]></description>
+  <category>R</category>
+  <category>code</category>
+  <category>ggplot2</category>
+  <category>life</category>
+  <guid>https://guote.netlify.app/posts/draw-clock/index.html</guid>
+  <pubDate>Fri, 11 Nov 2022 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Learning progress of machine learning</title>
   <dc:creator>Te</dc:creator>
@@ -256,93 +343,6 @@
   <category>code</category>
   <category>analysis</category>
   <guid>https://guote.netlify.app/posts/draw-96wells/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Draw a Clock Face</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/draw-clock/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>library in need</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
-✔ tibble  3.1.8      ✔ dplyr   1.0.10
-✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-✔ readr   2.1.3      ✔ forcats 0.5.2 </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">library</span>(ggrepel)</span>
-<span id="cb5-2"><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_minimal</span>())</span></code></pre></div>
-</div>
-<p>data preparation</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;">#这里理解有点绕弯</span></span>
-<span id="cb6-2"><span class="co" style="color: #5E5E5E;"># 1. 从pi/2作为起点是因为正常坐标系和对应的时钟0点位置不同，要旋转pi/2</span></span>
-<span id="cb6-3"><span class="co" style="color: #5E5E5E;"># 2.从pi/2顺时针旋转一周应该是 -2 * pi，顺时针意味着负号</span></span>
-<span id="cb6-4"><span class="co" style="color: #5E5E5E;"># 3. length.out = 61 这里 从0到60的点一共是 </span></span>
-<span id="cb6-5"><span class="co" style="color: #5E5E5E;">#    61个点，点与点之间有60个分化，我们计算的是点坐标，因此要获得这61一个点的坐标位置length.out = 61</span></span>
-<span id="cb6-6"><span class="co" style="color: #5E5E5E;"># 4. 同理小时计算的是时间12个分化，计算13个点的坐标length.out = 13</span></span>
-<span id="cb6-7"></span>
-<span id="cb6-8">theta <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span> , <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">61</span>)</span>
-<span id="cb6-9"></span>
-<span id="cb6-10">radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">60</span>)</span>
-<span id="cb6-11">min_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">30</span></span>
-<span id="cb6-12">hour_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">30</span></span>
-<span id="cb6-13"></span>
-<span id="cb6-14">x <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(theta)</span>
-<span id="cb6-15">y <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(theta)</span>
-<span id="cb6-16"></span>
-<span id="cb6-17">hour_tick <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">13</span>)</span>
-<span id="cb6-18"></span>
-<span id="cb6-19">hour_x <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(hour_tick)</span>
-<span id="cb6-20">hour_y <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(hour_tick)</span>
-<span id="cb6-21"></span>
-<span id="cb6-22">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(x, y)</span>
-<span id="cb6-23">hour <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(hour_x, hour_y)</span>
-<span id="cb6-24"></span>
-<span id="cb6-25">center <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="at" style="color: #657422;">x=</span><span class="dv" style="color: #AD0000;">0</span>,<span class="at" style="color: #657422;">y=</span><span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
-</div>
-<p>plot</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(hour_x, hour_y)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-2">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>df, <span class="fu" style="color: #4758AB;">aes</span>(x, y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-3">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_x, <span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-4">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_x, <span class="fl" style="color: #AD0000;">0.5</span><span class="sc" style="color: #5E5E5E;">*</span>hour_y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-5">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">8</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-6"> <span class="co" style="color: #5E5E5E;"># geom_path() +</span></span>
-<span id="cb7-7">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">11</span>,<span class="st" style="color: #20794D;">""</span>))) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-8">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>center,<span class="fu" style="color: #4758AB;">aes</span>(x,y),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb7-9">  <span class="fu" style="color: #4758AB;">coord_fixed</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<section id="online-tool" class="level3">
-<h3 class="anchored" data-anchor-id="online-tool">Online tool</h3>
-<p>https://www.blocklayer.com/clock-face</p>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <category>code</category>
-  <category>ggplot2</category>
-  <category>life</category>
-  <guid>https://guote.netlify.app/posts/draw-clock/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 <item>
