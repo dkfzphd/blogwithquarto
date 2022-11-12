@@ -1,0 +1,57 @@
+---
+title: "Draw a Clock Face"
+author: "Te"
+date: "2022-11-08"
+categories: [R, code, ggplot2, life]
+---
+library in need
+```{r}
+library(tidyverse)
+library(ggrepel)
+theme_set(theme_minimal())
+```
+
+data preparation
+```{r}
+#这里理解有点绕弯
+# 1. 从pi/2作为起点是因为正常坐标系和对应的时钟0点位置不同，要旋转pi/2
+# 2.从pi/2顺时针旋转一周应该是 -2 * pi，顺时针意味着负号
+# 3. length.out = 61 这里 从0到60的点一共是 
+#    61个点，点与点之间有60个分化，我们计算的是点坐标，因此要获得这61一个点的坐标位置length.out = 61
+# 4. 同理小时计算的是时间12个分化，计算13个点的坐标length.out = 13
+
+theta <- seq(pi / 2, -2 * pi + pi / 2 , length.out = 61)
+
+radius <- seq(10, 30, length.out = 60)
+min_radius <- 30
+hour_radius <- 30
+
+x <- min_radius* cos(theta)
+y <- min_radius * sin(theta)
+
+hour_tick <- seq(pi / 2, -2 * pi + pi / 2, length.out = 13)
+
+hour_x <- hour_radius * cos(hour_tick)
+hour_y <- hour_radius * sin(hour_tick)
+
+df <- tibble(x, y)
+hour <- tibble(hour_x, hour_y)
+
+center <- tibble(x=0,y=0)
+```
+
+plot
+```{r}
+ggplot(data=hour,aes(hour_x, hour_y)) +
+  geom_point(data=df, aes(x, y),color="blue") +
+  geom_path(data=hour,aes(0.5*hour_x, 0.5*hour_y),color="blue") +
+  geom_point(data=hour,aes(0.5*hour_x, 0.5*hour_y),color="blue") +
+  geom_point(size=8,color="red") +
+ # geom_path() +
+  geom_text(data=hour,aes(label = c(12,1:11,""))) +
+  geom_point(data=center,aes(x,y),size=4, color="black")+
+  coord_fixed()
+```
+
+### Online tool
+https://www.blocklayer.com/clock-face

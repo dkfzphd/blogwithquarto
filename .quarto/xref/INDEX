@@ -103,5 +103,8 @@
   },
   "posts/machine-learning-process/index.qmd": {
     "index.html": "95fd36f7"
+  },
+  "posts/draw-clock/index.qmd": {
+    "index.html": "3d8024e4"
   }
 }
