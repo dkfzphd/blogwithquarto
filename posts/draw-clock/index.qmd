@@ -6,12 +6,13 @@ categories: [R, code, ggplot2, life]
 ---
 
 library in need
-
 ```{r}
 library(tidyverse)
 library(ggrepel)
 theme_set(theme_minimal())
 ```
+
+![](images/clock.png)library(tidyverse)
 
 data preparation
 
@@ -59,9 +60,7 @@ ggplot(data=hour,aes(hour_x, hour_y)) +
 
 ### Online tool
 
-
 <https://www.blocklayer.com/clock-face>
-
 
 data preparation
 
@@ -168,7 +167,9 @@ ggplot() +
     panel.grid.minor.x = element_blank()
   )
 ```
+
 new plot
+
 ```{r}
 ggplot()+
   geom_point(data=hour,aes(hour_x, hour_y))+
@@ -179,5 +180,3 @@ ggplot()+
   coord_fixed()+
   theme_void()
 ```
-
-

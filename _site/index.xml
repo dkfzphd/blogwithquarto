@@ -40,6 +40,7 @@
 <div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><span class="fu" style="color: #4758AB;">library</span>(ggrepel)</span>
 <span id="cb5-2"><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_minimal</span>())</span></code></pre></div>
 </div>
+<p><img src="https://guote.netlify.app/posts/draw-clock/images/clock.png" class="img-fluid">library(tidyverse)</p>
 <p>data preparation</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><span class="co" style="color: #5E5E5E;">#这里理解有点绕弯</span></span>
@@ -219,6 +220,7 @@
   <category>life</category>
   <guid>https://guote.netlify.app/posts/draw-clock/index.html</guid>
   <pubDate>Fri, 11 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/draw-clock/images/clock.png" medium="image" type="image/png" height="103" width="144"/>
 </item>
 <item>
   <title>Learning progress of machine learning</title>
