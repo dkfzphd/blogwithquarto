@@ -61,3 +61,123 @@ ggplot(data=hour,aes(hour_x, hour_y)) +
 
 
 <https://www.blocklayer.com/clock-face>
+
+
+data preparation
+
+```{r}
+#这里理解有点绕弯
+# 1. 从pi/2作为起点是因为正常坐标系和对应的时钟0点位置不同，要旋转pi/2
+# 2.从pi/2顺时针旋转一周应该是 -2 * pi，顺时针意味着负号
+# 3. length.out = 61 这里 从0到60的点一共是 
+#    61个点，点与点之间有60个分化，我们计算的是点坐标，因此要获得这61一个点的坐标位置length.out = 61
+# 4. 同理小时计算的是时间12个分化，计算13个点的坐标length.out = 13
+
+theta <- seq(pi / 2, -2 * pi + pi / 2 , length.out = 61)
+radius <- seq(10, 30, length.out = 61)
+
+theta1 <- seq(pi / 2, -2 * pi + pi / 2 , length.out = 13)
+radius1 <- seq(10, 30, length.out = 13)
+omega <- seq(0, pi  , length.out = 31)
+
+
+
+min_radius <- 31
+hour_radius <- 31
+
+x <- min_radius* cos(theta)
+y <- min_radius * sin(theta)
+
+hour_tick <- seq(pi / 2, -2 * pi + pi / 2, length.out = 13)
+
+hour_x <- hour_radius * cos(hour_tick)
+hour_y <- hour_radius * sin(hour_tick)
+
+curl_df <- tibble(x=radius* cos(theta),
+                  y=radius* sin(theta))
+
+curl_point <- tibble(x=radius1* cos(theta1),
+                  y=radius1* sin(theta1))
+df <- tibble(x, y)
+hour <- tibble(hour_x, hour_y)
+
+center <- tibble(x=0,y=0)
+```
+
+plot
+
+```{r}
+ggplot(data=hour,aes(hour_x, hour_y)) +
+  geom_abline(intercept = 0, slope = sin(omega)/cos(omega),color="gray95")+
+  geom_abline(intercept = 0, slope = c(0,tan(seq(0,pi,length.out=7))),color="#ade8f4")+
+  geom_point(data=df, aes(x, y),color="blue") +
+  #geom_path(data=hour,aes(0.3*hour_x, 0.3*hour_y),color="blue") +
+  #geom_point(data=hour,aes(0.3*hour_x, 0.3*hour_y),color="black") +
+  geom_point(size=8,color="#fc4854") +
+  #geom_path(data=curl_df,aes(x,y),color="blue") +
+  #geom_point(data=curl_point,aes(x,y),color="red") +
+  #geom_path(data=curl_df,aes(-x,-y),color="red") +
+  #geom_point(data=curl_point,aes(-x,-y),color="blue") +
+  geom_text(data=hour,aes(label = c(12,1:11,""))) +
+  geom_point(data=center,aes(x,y),size=4, color="black")+
+  labs(x=NULL,
+       y=NULL)+
+  coord_fixed()+
+  theme(
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.grid = element_blank()
+  )
+```
+
+```{r}
+ggplot(data = hour, aes(hour_x, hour_y, color = factor(hour_y))) +
+  geom_point(data = df, aes(x, y), color = "black") +
+  geom_point(size = 12) +
+  geom_text(data = hour, color = "black", aes(label = c("12", 1:11, ""))) +
+  geom_point(data = center, aes(x, y), size = 4, color = "black") +
+  geom_path(data = df, aes(1.07 * x, 1.07 * y), color = "black") +
+  geom_path(data = df, aes(0.93 * x, 0.93 * y), color = "black") +
+  labs(
+    y = NULL,
+    x = NULL,
+  ) +
+  coord_fixed() +
+  theme(legend.position = "none",
+        axis.text.x = element_blank(),
+    axis.text.y = element_blank(),
+    panel.grid = element_blank())
+  
+```
+
+```{r}
+ggplot() +
+  geom_vline(xintercept = seq(0, 60, by = 1), color = "gray85") +
+  geom_vline(xintercept = seq(0, 60, by = 5)) +
+  geom_hline(yintercept = c(28, 30)) +
+  scale_x_continuous(breaks = seq(0, 60, by = 5), labels = c(0:12)) +
+  ylim(0, 31) +
+  labs(
+    y = NULL,
+    x = NULL,
+  ) +
+  coord_polar() +
+  theme(
+    axis.text.x = element_text(size=18),
+    axis.text.y = element_blank(),
+    panel.grid.minor.x = element_blank()
+  )
+```
+new plot
+```{r}
+ggplot()+
+  geom_point(data=hour,aes(hour_x, hour_y))+
+  geom_path(data=curl_df,aes(x,y),color="blue") +
+  geom_point(data=curl_point,aes(x,y),color="red") +
+  geom_path(data=curl_df,aes(-x,-y),color="red") +
+  geom_point(data=df, aes(x, y),color="black") +
+  coord_fixed()+
+  theme_void()
+```
+
+

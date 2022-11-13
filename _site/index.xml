@@ -86,6 +86,128 @@
 <section id="online-tool" class="level3">
 <h3 class="anchored" data-anchor-id="online-tool">Online tool</h3>
 <p><a href="https://www.blocklayer.com/clock-face" class="uri">https://www.blocklayer.com/clock-face</a></p>
+<p>data preparation</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="co" style="color: #5E5E5E;">#这里理解有点绕弯</span></span>
+<span id="cb8-2"><span class="co" style="color: #5E5E5E;"># 1. 从pi/2作为起点是因为正常坐标系和对应的时钟0点位置不同，要旋转pi/2</span></span>
+<span id="cb8-3"><span class="co" style="color: #5E5E5E;"># 2.从pi/2顺时针旋转一周应该是 -2 * pi，顺时针意味着负号</span></span>
+<span id="cb8-4"><span class="co" style="color: #5E5E5E;"># 3. length.out = 61 这里 从0到60的点一共是 </span></span>
+<span id="cb8-5"><span class="co" style="color: #5E5E5E;">#    61个点，点与点之间有60个分化，我们计算的是点坐标，因此要获得这61一个点的坐标位置length.out = 61</span></span>
+<span id="cb8-6"><span class="co" style="color: #5E5E5E;"># 4. 同理小时计算的是时间12个分化，计算13个点的坐标length.out = 13</span></span>
+<span id="cb8-7"></span>
+<span id="cb8-8">theta <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span> , <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">61</span>)</span>
+<span id="cb8-9">radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">61</span>)</span>
+<span id="cb8-10"></span>
+<span id="cb8-11">theta1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span> , <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">13</span>)</span>
+<span id="cb8-12">radius1 <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">10</span>, <span class="dv" style="color: #AD0000;">30</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">13</span>)</span>
+<span id="cb8-13">omega <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>, pi  , <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">31</span>)</span>
+<span id="cb8-14"></span>
+<span id="cb8-15"></span>
+<span id="cb8-16"></span>
+<span id="cb8-17">min_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">31</span></span>
+<span id="cb8-18">hour_radius <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">31</span></span>
+<span id="cb8-19"></span>
+<span id="cb8-20">x <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(theta)</span>
+<span id="cb8-21">y <span class="ot" style="color: #003B4F;">&lt;-</span> min_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(theta)</span>
+<span id="cb8-22"></span>
+<span id="cb8-23">hour_tick <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">seq</span>(pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">2</span> <span class="sc" style="color: #5E5E5E;">*</span> pi <span class="sc" style="color: #5E5E5E;">+</span> pi <span class="sc" style="color: #5E5E5E;">/</span> <span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">length.out =</span> <span class="dv" style="color: #AD0000;">13</span>)</span>
+<span id="cb8-24"></span>
+<span id="cb8-25">hour_x <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(hour_tick)</span>
+<span id="cb8-26">hour_y <span class="ot" style="color: #003B4F;">&lt;-</span> hour_radius <span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(hour_tick)</span>
+<span id="cb8-27"></span>
+<span id="cb8-28">curl_df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="at" style="color: #657422;">x=</span>radius<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(theta),</span>
+<span id="cb8-29">                  <span class="at" style="color: #657422;">y=</span>radius<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(theta))</span>
+<span id="cb8-30"></span>
+<span id="cb8-31">curl_point <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="at" style="color: #657422;">x=</span>radius1<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">cos</span>(theta1),</span>
+<span id="cb8-32">                  <span class="at" style="color: #657422;">y=</span>radius1<span class="sc" style="color: #5E5E5E;">*</span> <span class="fu" style="color: #4758AB;">sin</span>(theta1))</span>
+<span id="cb8-33">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(x, y)</span>
+<span id="cb8-34">hour <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(hour_x, hour_y)</span>
+<span id="cb8-35"></span>
+<span id="cb8-36">center <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(<span class="at" style="color: #657422;">x=</span><span class="dv" style="color: #AD0000;">0</span>,<span class="at" style="color: #657422;">y=</span><span class="dv" style="color: #AD0000;">0</span>)</span></code></pre></div>
+</div>
+<p>plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(hour_x, hour_y)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-2">  <span class="fu" style="color: #4758AB;">geom_abline</span>(<span class="at" style="color: #657422;">intercept =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">slope =</span> <span class="fu" style="color: #4758AB;">sin</span>(omega)<span class="sc" style="color: #5E5E5E;">/</span><span class="fu" style="color: #4758AB;">cos</span>(omega),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"gray95"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-3">  <span class="fu" style="color: #4758AB;">geom_abline</span>(<span class="at" style="color: #657422;">intercept =</span> <span class="dv" style="color: #AD0000;">0</span>, <span class="at" style="color: #657422;">slope =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="fu" style="color: #4758AB;">tan</span>(<span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>,pi,<span class="at" style="color: #657422;">length.out=</span><span class="dv" style="color: #AD0000;">7</span>))),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#ade8f4"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-4">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>df, <span class="fu" style="color: #4758AB;">aes</span>(x, y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-5">  <span class="co" style="color: #5E5E5E;">#geom_path(data=hour,aes(0.3*hour_x, 0.3*hour_y),color="blue") +</span></span>
+<span id="cb9-6">  <span class="co" style="color: #5E5E5E;">#geom_point(data=hour,aes(0.3*hour_x, 0.3*hour_y),color="black") +</span></span>
+<span id="cb9-7">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">8</span>,<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"#fc4854"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-8">  <span class="co" style="color: #5E5E5E;">#geom_path(data=curl_df,aes(x,y),color="blue") +</span></span>
+<span id="cb9-9">  <span class="co" style="color: #5E5E5E;">#geom_point(data=curl_point,aes(x,y),color="red") +</span></span>
+<span id="cb9-10">  <span class="co" style="color: #5E5E5E;">#geom_path(data=curl_df,aes(-x,-y),color="red") +</span></span>
+<span id="cb9-11">  <span class="co" style="color: #5E5E5E;">#geom_point(data=curl_point,aes(-x,-y),color="blue") +</span></span>
+<span id="cb9-12">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">12</span>,<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">11</span>,<span class="st" style="color: #20794D;">""</span>))) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-13">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>center,<span class="fu" style="color: #4758AB;">aes</span>(x,y),<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-14">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x=</span><span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb9-15">       <span class="at" style="color: #657422;">y=</span><span class="cn" style="color: #8f5902;">NULL</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-16">  <span class="fu" style="color: #4758AB;">coord_fixed</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb9-17">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb9-18">    <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb9-19">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb9-20">    <span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb9-21">  )</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data =</span> hour, <span class="fu" style="color: #4758AB;">aes</span>(hour_x, hour_y, <span class="at" style="color: #657422;">color =</span> <span class="fu" style="color: #4758AB;">factor</span>(hour_y))) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-2">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data =</span> df, <span class="fu" style="color: #4758AB;">aes</span>(x, y), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-3">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-4">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="at" style="color: #657422;">data =</span> hour, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>, <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"12"</span>, <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">11</span>, <span class="st" style="color: #20794D;">""</span>))) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-5">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data =</span> center, <span class="fu" style="color: #4758AB;">aes</span>(x, y), <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">4</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-6">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data =</span> df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">1.07</span> <span class="sc" style="color: #5E5E5E;">*</span> x, <span class="fl" style="color: #AD0000;">1.07</span> <span class="sc" style="color: #5E5E5E;">*</span> y), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-7">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data =</span> df, <span class="fu" style="color: #4758AB;">aes</span>(<span class="fl" style="color: #AD0000;">0.93</span> <span class="sc" style="color: #5E5E5E;">*</span> x, <span class="fl" style="color: #AD0000;">0.93</span> <span class="sc" style="color: #5E5E5E;">*</span> y), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-8">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb10-9">    <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb10-10">    <span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb10-11">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-12">  <span class="fu" style="color: #4758AB;">coord_fixed</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb10-13">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
+<span id="cb10-14">        <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb10-15">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb10-16">    <span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>())</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-2">  <span class="fu" style="color: #4758AB;">geom_vline</span>(<span class="at" style="color: #657422;">xintercept =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">60</span>, <span class="at" style="color: #657422;">by =</span> <span class="dv" style="color: #AD0000;">1</span>), <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"gray85"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-3">  <span class="fu" style="color: #4758AB;">geom_vline</span>(<span class="at" style="color: #657422;">xintercept =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">60</span>, <span class="at" style="color: #657422;">by =</span> <span class="dv" style="color: #AD0000;">5</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-4">  <span class="fu" style="color: #4758AB;">geom_hline</span>(<span class="at" style="color: #657422;">yintercept =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">28</span>, <span class="dv" style="color: #AD0000;">30</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-5">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">seq</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">60</span>, <span class="at" style="color: #657422;">by =</span> <span class="dv" style="color: #AD0000;">5</span>), <span class="at" style="color: #657422;">labels =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">12</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-6">  <span class="fu" style="color: #4758AB;">ylim</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">31</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-7">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
+<span id="cb11-8">    <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb11-9">    <span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
+<span id="cb11-10">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-11">  <span class="fu" style="color: #4758AB;">coord_polar</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb11-12">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb11-13">    <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">18</span>),</span>
+<span id="cb11-14">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb11-15">    <span class="at" style="color: #657422;">panel.grid.minor.x =</span> <span class="fu" style="color: #4758AB;">element_blank</span>()</span>
+<span id="cb11-16">  )</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>new plot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><span class="fu" style="color: #4758AB;">ggplot</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-2">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>hour,<span class="fu" style="color: #4758AB;">aes</span>(hour_x, hour_y))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-3">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data=</span>curl_df,<span class="fu" style="color: #4758AB;">aes</span>(x,y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-4">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>curl_point,<span class="fu" style="color: #4758AB;">aes</span>(x,y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-5">  <span class="fu" style="color: #4758AB;">geom_path</span>(<span class="at" style="color: #657422;">data=</span>curl_df,<span class="fu" style="color: #4758AB;">aes</span>(<span class="sc" style="color: #5E5E5E;">-</span>x,<span class="sc" style="color: #5E5E5E;">-</span>y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-6">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">data=</span>df, <span class="fu" style="color: #4758AB;">aes</span>(x, y),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-7">  <span class="fu" style="color: #4758AB;">coord_fixed</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb12-8">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/draw-clock/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 
 
 </section>
