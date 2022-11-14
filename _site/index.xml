@@ -848,12 +848,12 @@ font-style: italic;">## Show the data around today to see what data above looks 
 
 
 
-
 <pre><code>---  
 title: "Your Report Title"  
 author: "YourName"  
 date: "2022-10-31"  
 documentclass: ctexart  
+geometry: "left=3cm,right=3cm,top=2.5cm,bottom=2.5cm"
 output:  
   rticles::ctex:  
     fig_caption: yes  
