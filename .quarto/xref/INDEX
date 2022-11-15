@@ -106,5 +106,11 @@
   },
   "posts/draw-clock/index.qmd": {
     "index.html": "3d8024e4"
+  },
+  "posts/Basic-LaTeX-Preamble/index.qmd": {
+    "index.html": "6be6a561"
+  },
+  "posts/Basic-LaTeX-Preamble/index.ipynb": {
+    "index.html": "ffdd1447"
   }
 }
