@@ -1,7 +1,7 @@
 {
-  "hash": "be878174d874885667cc43977c39a994",
+  "hash": "c57dcc0492cea20ad884e86446cafe10",
   "result": {
-    "markdown": "---\ntitle: \"Quarto Presentations\"\nsubtitle: \"test with Reveal.js\"\nformat:\n  revealjs: \n    slide-number: true\n    chalkboard: \n      buttons: false\n    preview-links: auto\n    logo: images/quarto.png\n    css: styles.css\n    footer: <https://quarto.org>\n---\n\n## A tree plot\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-revealjs/unnamed-chunk-1-1.png){width=960}\n:::\n:::\n\n\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## A slide with two columns\n:::: {.columns}\n\n::: {.column width=\"40%\"}\n- Left column wow\n- Left column wow\n- Left column wow\n:::\n\n::: {.column width=\"60%\"}\n- Right column cool\n- Right column cool\n- Right column cool\n:::\n\n::::\n\n## Thank you\n![](https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif)\n",
+    "markdown": "---\ntitle: \"Test Quarto Presentation\"\nauthor: \"Te\"\nformat: revealjs\ndate: \"2022-11-22\"\n---\n\n## A tree plot\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-revealjs/unnamed-chunk-1-1.png){width=960}\n:::\n:::\n\n\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## A slide with two columns\n:::: {.columns}\n\n::: {.column width=\"40%\"}\n- Left column wow\n- Left column wow\n- Left column wow\n:::\n\n::: {.column width=\"60%\"}\n- Right column cool\n- Right column cool\n- Right column cool\n:::\n\n::::\n\n## Thank you\n![](https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif)\n",
     "supporting": [
       "index_files"
     ],

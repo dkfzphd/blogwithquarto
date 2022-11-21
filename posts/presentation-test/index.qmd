@@ -1,15 +1,8 @@
 ---
-title: "Quarto Presentations"
-subtitle: "test with Reveal.js"
-format:
-  revealjs: 
-    slide-number: true
-    chalkboard: 
-      buttons: false
-    preview-links: auto
-    logo: images/quarto.png
-    css: styles.css
-    footer: <https://quarto.org>
+title: "Test Quarto Presentation"
+author: "Te"
+format: revealjs
+date: "2022-11-22"
 ---
 ## A tree plot
 ```{r}

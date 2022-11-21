@@ -10,7 +10,16 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.1.189</generator>
-<lastBuildDate>Mon, 14 Nov 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 21 Nov 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>{B4F502887207:/posts/presentation-test/index.html}</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/presentation-test/index.html</link>
+  <description>{B4F502887207:/posts/presentation-test/index.html}</description>
+  <guid>https://guote.netlify.app/posts/presentation-test/index.html</guid>
+  <pubDate>Mon, 21 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif" medium="image" type="image/gif"/>
+</item>
 <item>
   <title>A Basic LaTeX Preamble</title>
   <dc:creator>Te</dc:creator>
@@ -1785,15 +1794,6 @@ give correct results for longitude/latitude data</code></pre>
   <category>R</category>
   <guid>https://guote.netlify.app/posts/bar-plot-with-labels/index.html</guid>
   <pubDate>Sat, 01 Oct 2022 22:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>{B4F502887207:/posts/presentation-test/index.html}</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/presentation-test/index.html</link>
-  <description>{B4F502887207:/posts/presentation-test/index.html}</description>
-  <guid>https://guote.netlify.app/posts/presentation-test/index.html</guid>
-  <pubDate>Mon, 21 Nov 2022 23:05:06 GMT</pubDate>
-  <media:content url="https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif" medium="image" type="image/gif"/>
 </item>
 </channel>
 </rss>
