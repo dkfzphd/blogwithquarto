@@ -1,0 +1,48 @@
+---
+title: "Quarto Presentations"
+subtitle: "test with Reveal.js"
+format:
+  revealjs: 
+    slide-number: true
+    chalkboard: 
+      buttons: false
+    preview-links: auto
+    logo: images/quarto.png
+    css: styles.css
+    footer: <https://quarto.org>
+---
+## A tree plot
+```{r}
+plot(trees)
+```
+
+
+## Getting up
+
+- Turn off alarm
+- Get out of bed
+
+## Going to sleep
+
+- Get in bed
+- Count sheep
+
+## A slide with two columns
+:::: {.columns}
+
+::: {.column width="40%"}
+- Left column wow
+- Left column wow
+- Left column wow
+:::
+
+::: {.column width="60%"}
+- Right column cool
+- Right column cool
+- Right column cool
+:::
+
+::::
+
+## Thank you
+![](https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif)

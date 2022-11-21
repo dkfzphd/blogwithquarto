@@ -1,0 +1,20 @@
+{
+  "hash": "be878174d874885667cc43977c39a994",
+  "result": {
+    "markdown": "---\ntitle: \"Quarto Presentations\"\nsubtitle: \"test with Reveal.js\"\nformat:\n  revealjs: \n    slide-number: true\n    chalkboard: \n      buttons: false\n    preview-links: auto\n    logo: images/quarto.png\n    css: styles.css\n    footer: <https://quarto.org>\n---\n\n## A tree plot\n\n::: {.cell}\n::: {.cell-output-display}\n![](index_files/figure-revealjs/unnamed-chunk-1-1.png){width=960}\n:::\n:::\n\n\n\n## Getting up\n\n- Turn off alarm\n- Get out of bed\n\n## Going to sleep\n\n- Get in bed\n- Count sheep\n\n## A slide with two columns\n:::: {.columns}\n\n::: {.column width=\"40%\"}\n- Left column wow\n- Left column wow\n- Left column wow\n:::\n\n::: {.column width=\"60%\"}\n- Right column cool\n- Right column cool\n- Right column cool\n:::\n\n::::\n\n## Thank you\n![](https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif)\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {
+      "include-after-body": [
+        "\r\n<script>\r\n  // htmlwidgets need to know to resize themselves when slides are shown/hidden.\r\n  // Fire the \"slideenter\" event (handled by htmlwidgets.js) when the current\r\n  // slide changes (different for each slide format).\r\n  (function () {\r\n    function fireSlideChanged(previousSlide, currentSlide) {\r\n\r\n      // dispatch for htmlwidgets\r\n      const event = window.document.createEvent(\"Event\");\r\n      event.initEvent(\"slideenter\", true, true);\r\n      window.document.dispatchEvent(event);\r\n\r\n      // dispatch for shiny\r\n      if (window.jQuery) {\r\n        if (previousSlide) {\r\n          window.jQuery(previousSlide).trigger(\"hidden\");\r\n        }\r\n        if (currentSlide) {\r\n          window.jQuery(currentSlide).trigger(\"shown\");\r\n        }\r\n      }\r\n    }\r\n\r\n    // hookup for reveal\r\n    if (window.Reveal) {\r\n      window.Reveal.addEventListener(\"slidechanged\", function(event) {\r\n        fireSlideChanged(event.previousSlide, event.currentSlide);\r\n      });\r\n    }\r\n\r\n    // hookup for slidy\r\n    if (window.w3c_slidy) {\r\n      window.w3c_slidy.add_observer(function (slide_num) {\r\n        // slide_num starts at position 1\r\n        fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);\r\n      });\r\n    }\r\n\r\n  })();\r\n</script>\r\n\r\n"
+      ]
+    },
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -69,9 +69,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-author','listing-subtitle','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-date","listing-title","listing-author","listing-subtitle","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -150,7 +150,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(20)</span></div><div class="category" data-category="Preamble">Preamble <span class="quarto-category-count">(2)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(4)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(10)</span></div><div class="category" data-category="biology">biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="chinese">chinese <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cloning">cloning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(11)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="heatmap">heatmap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="latex">latex <span class="quarto-category-count">(3)</span></div><div class="category" data-category="life">life <span class="quarto-category-count">(1)</span></div><div class="category" data-category="map">map <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ml">ml <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mlr3">mlr3 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="molecular biology">molecular biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(8)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(1)</span></div><div class="category" data-category="report">report <span class="quarto-category-count">(2)</span></div><div class="category" data-category="rmarkdown">rmarkdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sf">sf <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(19)</span></div><div class="category" data-category="Preamble">Preamble <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(4)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(9)</span></div><div class="category" data-category="biology">biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="chinese">chinese <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cloning">cloning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(10)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(2)</span></div><div class="category" data-category="heatmap">heatmap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="latex">latex <span class="quarto-category-count">(2)</span></div><div class="category" data-category="life">life <span class="quarto-category-count">(1)</span></div><div class="category" data-category="map">map <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ml">ml <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mlr3">mlr3 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="molecular biology">molecular biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(7)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(1)</span></div><div class="category" data-category="report">report <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rmarkdown">rmarkdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sf">sf <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
 
@@ -169,45 +169,25 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="latex,report,Preamble" data-listing-date-sort="1668985200000" data-listing-file-modified-sort="1669042079850" data-listing-reading-time-sort="0.01">
+<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1669071903209" data-listing-reading-time-sort="0.24">
 <div class="thumbnail">
-<a href="./posts/test-20221121/index.html">
-<div class="thumbnail-image">
-
-</div>
-</a><p><a href="./posts/test-20221121/index.html"></a></p>
+<p><a href="./posts/presentation-test/index.html"> <img src="https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif" class="thumnail-image"> </a></p>
 </div>
 <div class="body">
-<a href="./posts/test-20221121/index.html">
+<a href="./posts/presentation-test/index.html">
 <h3 class="no-anchor listing-title">
-test for Dr.Qiu
+Quarto Presentations
 </h3>
 <div class="listing-subtitle">
-
+test with Reveal.js
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('latex'); return false;">
-latex
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('report'); return false;">
-report
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Preamble'); return false;">
-Preamble
-</div>
-</div>
-<a href="./posts/test-20221121/index.html">
 <div class="listing-description">
-Hello Dr.Qiu
+
 </div>
 </a>
 </div>
 <div class="metadata">
-<a href="./posts/test-20221121/index.html">
-<div class="listing-date">
-Nov 21, 2022
-</div>
+<a href="./posts/presentation-test/index.html">
 <div class="listing-author">
 Te
 </div>
@@ -347,48 +327,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667959659848" data-listing-reading-time-sort="0.26">
-<div class="thumbnail">
-<p><a href="./posts/ceshi/index.html"> <img src="./posts/ceshi/animate1.gif" class="thumnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/ceshi/index.html">
-<h3 class="no-anchor listing-title">
-gganimate
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/ceshi/index.html">
-<div class="listing-description">
-<img src="animate1.gif" class="img-fluid">
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/ceshi/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Me
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667922224669" data-listing-reading-time-sort="1.23">
+<div class="quarto-post image-right" data-index="4" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667922224669" data-listing-reading-time-sort="1.23">
 <div class="thumbnail">
 <a href="./posts/DiagrammR/DiagrammR.html">
 <div class="thumbnail-image">
@@ -433,7 +372,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="biology,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667923729856" data-listing-reading-time-sort="0.645">
+<div class="quarto-post image-right" data-index="5" data-categories="biology,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667923729856" data-listing-reading-time-sort="0.645">
 <div class="thumbnail">
 <a href="./posts/draw-96wells/index.html">
 <div class="thumbnail-image">
@@ -478,7 +417,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667925692940" data-listing-reading-time-sort="0.025">
+<div class="quarto-post image-right" data-index="6" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667925692940" data-listing-reading-time-sort="0.025">
 <div class="thumbnail">
 <a href="./posts/First-Post-with-Quarto/index.html">
 <div class="thumbnail-image">
@@ -523,7 +462,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667928201886" data-listing-reading-time-sort="0.67">
+<div class="quarto-post image-right" data-index="7" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667928201886" data-listing-reading-time-sort="0.67">
 <div class="thumbnail">
 <p><a href="./posts/Fluorescent Proteins FP/index.html"> <img src="./posts/Fluorescent Proteins FP/Green_Fluorescent_Protein.gif" class="thumnail-image"> </a></p>
 </div>
@@ -564,7 +503,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="ggplot2,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667927995806" data-listing-reading-time-sort="2.405">
+<div class="quarto-post image-right" data-index="8" data-categories="ggplot2,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667927995806" data-listing-reading-time-sort="2.405">
 <div class="thumbnail">
 <p><a href="./posts/ggplot2-MoonPhrase/index.html"> <img src="./posts/ggplot2-MoonPhrase/Moon-Phrase.png" class="thumnail-image"> </a></p>
 </div>
@@ -605,7 +544,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="cloning,molecular biology,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667969417089" data-listing-reading-time-sort="0.65">
+<div class="quarto-post image-right" data-index="9" data-categories="cloning,molecular biology,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667969417089" data-listing-reading-time-sort="0.65">
 <div class="thumbnail">
 <p><a href="./posts/MolecularCloning/index.html"> <img src="https://media.giphy.com/media/8vweV4faOBOgIiQrqa/giphy.gif" class="thumnail-image"> </a></p>
 </div>
@@ -646,7 +585,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667926125325" data-listing-reading-time-sort="1.015">
+<div class="quarto-post image-right" data-index="10" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667926125325" data-listing-reading-time-sort="1.015">
 <div class="thumbnail">
 <p><a href="./posts/Monty Hall problem/index.html"> <img src="./posts/Monty Hall problem/image.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -687,7 +626,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667917926594" data-listing-reading-time-sort="0.045">
+<div class="quarto-post image-right" data-index="11" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667917926594" data-listing-reading-time-sort="0.045">
 <div class="thumbnail">
 <p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -728,7 +667,7 @@ Harlow Malloc
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="rmarkdown,chinese,latex" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1668440217594" data-listing-reading-time-sort="0.595">
+<div class="quarto-post image-right" data-index="12" data-categories="rmarkdown,chinese,latex" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1668440217594" data-listing-reading-time-sort="0.595">
 <div class="thumbnail">
 <p><a href="./posts/rmarkdown-chinese-paper/index.html"> <img src="./posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -769,7 +708,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="sf,map,heatmap" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667968899290" data-listing-reading-time-sort="2.885">
+<div class="quarto-post image-right" data-index="13" data-categories="sf,map,heatmap" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667968899290" data-listing-reading-time-sort="2.885">
 <div class="thumbnail">
 <p><a href="./posts/sf-map/index.html"> <img src="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" class="thumnail-image"> </a></p>
 </div>
@@ -810,7 +749,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="15" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667921830560" data-listing-reading-time-sort="0.01">
+<div class="quarto-post image-right" data-index="14" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1667921830560" data-listing-reading-time-sort="0.01">
 <div class="thumbnail">
 <a href="./posts/Thanks about Blogdown Blog/index.html">
 <div class="thumbnail-image">
@@ -855,7 +794,7 @@ Guo Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="16" data-categories="news" data-listing-date-sort="1667602800000" data-listing-file-modified-sort="1667960397754" data-listing-reading-time-sort="0.16">
+<div class="quarto-post image-right" data-index="15" data-categories="news" data-listing-date-sort="1667602800000" data-listing-file-modified-sort="1667960397754" data-listing-reading-time-sort="0.16">
 <div class="thumbnail">
 <p><a href="./posts/welcome/index.html"> <img src="./posts/welcome/thumbnail.jpg" class="thumnail-image"> </a></p>
 </div>
@@ -890,7 +829,7 @@ Tristan O’Malley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="17" data-categories="R" data-listing-date-sort="1666648800000" data-listing-file-modified-sort="1667969192804" data-listing-reading-time-sort="0.45">
+<div class="quarto-post image-right" data-index="16" data-categories="R" data-listing-date-sort="1666648800000" data-listing-file-modified-sort="1667969192804" data-listing-reading-time-sort="0.45">
 <div class="thumbnail">
 <p><a href="./posts/filter-na/index.html"> <img src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" class="thumnail-image"> </a></p>
 </div>
@@ -925,7 +864,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="18" data-categories="R" data-listing-date-sort="1664920800000" data-listing-file-modified-sort="1667967977969" data-listing-reading-time-sort="3.425">
+<div class="quarto-post image-right" data-index="17" data-categories="R" data-listing-date-sort="1664920800000" data-listing-file-modified-sort="1667967977969" data-listing-reading-time-sort="3.425">
 <div class="thumbnail">
 <a href="./posts/apa-themes/index.html">
 <div class="thumbnail-image">
@@ -964,7 +903,7 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="19" data-categories="R" data-listing-date-sort="1664661600000" data-listing-file-modified-sort="1667967919923" data-listing-reading-time-sort="1.42">
+<div class="quarto-post image-right" data-index="18" data-categories="R" data-listing-date-sort="1664661600000" data-listing-file-modified-sort="1667967919923" data-listing-reading-time-sort="1.42">
 <div class="thumbnail">
 <a href="./posts/bar-plot-with-labels/index.html">
 <div class="thumbnail-image">
