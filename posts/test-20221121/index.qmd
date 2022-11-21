@@ -1,8 +1,0 @@
----
-title: "test for Dr.Qiu"
-author: "Te"
-date: "2022-11-21"
-categories: [latex, report, Preamble]
----
-
-Hello Dr.Qiu
