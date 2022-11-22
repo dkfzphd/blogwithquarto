@@ -4,38 +4,80 @@ author: "Te"
 format: revealjs
 date: "2022-11-22"
 ---
+
 ## A tree plot
+
 ```{r}
 plot(trees)
 ```
 
-
 ## Getting up
 
-- Turn off alarm
-- Get out of bed
+-   Turn off alarm
+-   Get out of bed
 
 ## Going to sleep
 
-- Get in bed
-- Count sheep
+-   Get in bed
+-   Count sheep
 
 ## A slide with two columns
-:::: {.columns}
 
+::: columns
 ::: {.column width="40%"}
-- Left column wow
-- Left column wow
-- Left column wow
+-   Left column wow
+-   Left column wow
+-   Left column wow
 :::
 
 ::: {.column width="60%"}
-- Right column cool
-- Right column cool
-- Right column cool
+-   Right column cool
+-   Right column cool
+-   Right column cool
+:::
 :::
 
-::::
+## Call out block 1
+
+- callout-note
+
+::: {.callout-note}
+Note that there are five types of callouts, including:
+`note`, `warning`, `important`, `tip`, and `caution`.
+:::
+
+- callout-tip
+
+::: {.callout-tip}
+This is an example of a callout with a caption.
+:::
+
+## Call out block 2
+callout-caution
+
+::: {.callout-caution collapse="true"}
+This is an example of a 'folded' caution callout that can be expanded by the user. You can use `collapse="true"` to collapse it by default or `collapse="false"` to make a collapsible callout that is expanded by default.
+:::
+
+callout-warning
+
+::: {.callout-warning}
+This is an example of a callout with a caption.
+:::
+
+## Call out block 3
+- callout-tip
+
+::: {.callout-tip}
+This is an example of a callout with a caption.
+:::
+
+- callout-important
+
+::: {.callout-important}
+This is an example of a callout with a caption.
+:::
 
 ## Thank you
+
 ![](https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif)

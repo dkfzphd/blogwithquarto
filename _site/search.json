@@ -383,5 +383,33 @@
     "title": "Test Quarto Presentation",
     "section": "A slide with two columns",
     "text": "A slide with two columns\n\n\n\nLeft column wow\nLeft column wow\nLeft column wow\n\n\n\nRight column cool\nRight column cool\nRight column cool"
+  },
+  {
+    "objectID": "posts/presentation-test/index.html#do-not-study",
+    "href": "posts/presentation-test/index.html#do-not-study",
+    "title": "Test Quarto Presentation",
+    "section": "Do not study",
+    "text": "Do not study\n:::: ::: {.callout-note} Note that there are five types of callouts, including: note, warning, important, tip, and caution. :::\n\n\n\n\n\n\nTip With Caption\n\n\nThis is an example of a callout with a caption.\n\n\n\n\n\n\n\n\n\nExpand To Learn About Collapse\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default.\n\n\n\n:::: ## Thank you"
+  },
+  {
+    "objectID": "posts/presentation-test/index.html#call-out-block-1",
+    "href": "posts/presentation-test/index.html#call-out-block-1",
+    "title": "Test Quarto Presentation",
+    "section": "Call out block 1",
+    "text": "Call out block 1\n\ncallout-note\n\n\n\n\n\n\n\nNote\n\n\nNote that there are five types of callouts, including: note, warning, important, tip, and caution.\n\n\n\n\ncallout-tip\n\n\n\n\n\n\n\nTip\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "posts/presentation-test/index.html#call-out-block-2",
+    "href": "posts/presentation-test/index.html#call-out-block-2",
+    "title": "Test Quarto Presentation",
+    "section": "Call out block 2",
+    "text": "Call out block 2\ncallout-caution\n\n\n\n\n\n\nDanger\n\n\nThis is an example of a ‘folded’ caution callout that can be expanded by the user. You can use collapse=\"true\" to collapse it by default or collapse=\"false\" to make a collapsible callout that is expanded by default.\n\n\n\ncallout-warning\n\n\n\n\n\n\nWarning\n\n\nThis is an example of a callout with a caption."
+  },
+  {
+    "objectID": "posts/presentation-test/index.html#call-out-block-3",
+    "href": "posts/presentation-test/index.html#call-out-block-3",
+    "title": "Test Quarto Presentation",
+    "section": "Call out block 3",
+    "text": "Call out block 3\n\ncallout-tip\n\n\n\n\n\n\n\nTip\n\n\nThis is an example of a callout with a caption.\n\n\n\n\ncallout-important\n\n\n\n\n\n\n\nImportant\n\n\nThis is an example of a callout with a caption."
   }
 ]
