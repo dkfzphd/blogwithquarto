@@ -30,7 +30,7 @@ Basically the same way with Excel and the code will automatically generated.
 
 ## Solution 2
 
-R is language that is designed for statistics. And R has some many great packages `gt`, `gtsummary`, `gtExtra` `kable`, `kableExtra` ...
+R is language that is designed for statistics. And R has some many great packages to make tables `gt`, `gtsummary`, `gtExtra` `kable`, `kableExtra` ...
 
 The only thing you need to care about is the data manipulation itself, with a fw lines of code the Table is automatically generated and formatted based on your syntax.
 
