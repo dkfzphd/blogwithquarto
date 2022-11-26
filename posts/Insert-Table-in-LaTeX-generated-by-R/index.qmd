@@ -5,6 +5,8 @@ date: "2022-11-26"
 categories: [LaTeX,table, kableExtra]
 ---
 
+## ![](kableplot.png)
+
 ## Table syntax in LaTeX is complicated
 
 Inserting(Generating ) Table in LaTeX is a headache.(At least for me). This is due to the complex LaTeX Table syntax,for instance, unlimited `&` for column alignment,that is not to mention alignment inside column above it.
@@ -13,30 +15,28 @@ Inserting(Generating ) Table in LaTeX is a headache.(At least for me). This is d
 
 [Tables generator for LaTeX, html, markdown](https://www.tablesgenerator.com/#)
 
-Very easy basically the same way with Excel and the code will automatically generated. 
+Very easy basically the same way with Excel and the code will automatically generated.
 
-- Pro
+-   Pro
 
-  1. For a small datasets, 
-  2. Input and formatting is very straightforward and intuitive.
+    1.  For a small datasets,
+    2.  Input and formatting is very straightforward and intuitive.
 
-- Cons
+-   Cons
 
-  1. You can not do any calculation beyond the the text itself.
-  2. It is incapable of processing large datasets.
-  3. Risk of errors arising from typos.
-  
+    1.  You can not do any calculation beyond the the text itself.
+    2.  It is incapable of processing large datasets.
+    3.  Risk of errors arising from typos.
+
 ## Solution 2
 
-R is language that is designed for statistics. And R has some many great packages
-`gt`, `gtsummary`, `gtExtra` `kable`, `kableExtra` ... 
+R is language that is designed for statistics. And R has some many great packages `gt`, `gtsummary`, `gtExtra` `kable`, `kableExtra` ...
 
 The only thing you need to care about is the data manipulation itself, with a fw lines of code the Table is automatically generated and formatted based on your syntax.
 
 **So it will be great if one can adopt the Table directed from R to LaTeX**
 
-Here I introduce a method was written in the  `kableExtra` file called
-[Create Awesome LaTeX Table with knitr::kable and kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
+Here I introduce a method was written in the `kableExtra` file called [Create Awesome LaTeX Table with knitr::kable and kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
 
 The solution is put "latex" in the R code, then the output will be converted into LaTeX code with the data inside and one can directly copy and paste into LaTeX IDE.
 
@@ -54,15 +54,15 @@ dt%>%
 
 From R code to LaTeX code is
 
-```R
+``` r
 dt%>%
   kbl("latex",caption = "Recreating booktabs style table") %>%
   kable_classic(full_width = F, html_font = "Cambria")
 ```
 
-
 The LaTeX code is
-```Tex
+
+``` tex
 \begin{table}
 
 \caption{Recreating booktabs style table}
@@ -86,27 +86,22 @@ Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440\\
 ```
 
 More complex tables may use package in TeX system
-```
--  \usepackage{booktabs}
--  \usepackage{longtable}
--  \usepackage{array}
--  \usepackage{multirow}
--  \usepackage{wrapfig}
--  \usepackage{float}
--  \usepackage{colortbl}
--  \usepackage{pdflscape}
--  \usepackage{tabu}
--  \usepackage{threeparttable}
--  \usepackage{threeparttablex}
--  \usepackage[normalem]{ulem}
--  \usepackage{makecell}
--  \usepackage{xcolor}
-```
+
+    -  \usepackage{booktabs}
+    -  \usepackage{longtable}
+    -  \usepackage{array}
+    -  \usepackage{multirow}
+    -  \usepackage{wrapfig}
+    -  \usepackage{float}
+    -  \usepackage{colortbl}
+    -  \usepackage{pdflscape}
+    -  \usepackage{tabu}
+    -  \usepackage{threeparttable}
+    -  \usepackage{threeparttablex}
+    -  \usepackage[normalem]{ulem}
+    -  \usepackage{makecell}
+    -  \usepackage{xcolor}
 
 ## Solution 3
 
-**Why Not use Rmarkdown/Quarto directly an article or a Report**
-It is pdf friendly.<br>
-Easily deal with in column plot which is still very diffcult for TeX system.
-
-
+**Why Not use Rmarkdown/Quarto directly an article or a Report** It is pdf friendly.<br> Easily deal with in column plot which is still very diffcult for TeX system.

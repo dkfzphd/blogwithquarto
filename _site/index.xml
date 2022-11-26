@@ -19,6 +19,9 @@
 
 
 
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" class="img-fluid"></h2>
+</section>
 <section id="table-syntax-in-latex-is-complicated" class="level2">
 <h2 class="anchored" data-anchor-id="table-syntax-in-latex-is-complicated">Table syntax in LaTeX is complicated</h2>
 <p>Inserting(Generating ) Table in LaTeX is a headache.(At least for me). This is due to the complex LaTeX Table syntax,for instance, unlimited <code>&amp;</code> for column alignment,that is not to mention alignment inside column above it.</p>
