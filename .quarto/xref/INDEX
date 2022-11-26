@@ -118,5 +118,8 @@
   },
   "posts/presentation-test/index.qmd": {
     "index.html": "b055d895"
+  },
+  "posts/Insert-Table-in-LaTeX-generated-by-R/index.qmd": {
+    "index.html": "3aba517a"
   }
 }
