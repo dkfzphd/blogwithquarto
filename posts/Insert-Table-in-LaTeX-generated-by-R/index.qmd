@@ -15,7 +15,7 @@ Inserting(Generating ) Table in LaTeX is a headache.(At least for me). This is d
 
 [Tables generator for LaTeX, html, markdown](https://www.tablesgenerator.com/#)
 
-Very easy basically the same way with Excel and the code will automatically generated.
+Basically the same way with Excel and the code will automatically generated.
 
 -   Pro
 
