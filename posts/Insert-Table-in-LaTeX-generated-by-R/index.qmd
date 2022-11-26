@@ -104,4 +104,5 @@ More complex tables may use package in TeX system
 
 ## Solution 3
 
-**Why Not use Rmarkdown/Quarto directly an article or a Report** It is pdf friendly.<br> Easily deal with in column plot which is still very diffcult for TeX system.
+**Why Not use Rmarkdown/Quarto directly for an article or a Report** <br>
+It is pdf friendly.<br> Easily deal with in column plot which is still very diffcult for TeX system.
