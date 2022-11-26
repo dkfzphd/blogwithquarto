@@ -5,7 +5,7 @@ date: "2022-11-26"
 categories: [LaTeX,table, kableExtra]
 ---
 
-## ![](kableplot.png)
+![](kableplot.png)
 
 ## Table syntax in LaTeX is complicated
 

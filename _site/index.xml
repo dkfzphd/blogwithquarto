@@ -19,9 +19,7 @@
 
 
 
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section"><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" class="img-fluid"></h2>
-</section>
+<p><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" class="img-fluid"></p>
 <section id="table-syntax-in-latex-is-complicated" class="level2">
 <h2 class="anchored" data-anchor-id="table-syntax-in-latex-is-complicated">Table syntax in LaTeX is complicated</h2>
 <p>Inserting(Generating ) Table in LaTeX is a headache.(At least for me). This is due to the complex LaTeX Table syntax,for instance, unlimited <code>&amp;</code> for column alignment,that is not to mention alignment inside column above it.</p>
@@ -180,6 +178,7 @@
   <category>kableExtra</category>
   <guid>https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/index.html</guid>
   <pubDate>Fri, 25 Nov 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" medium="image" type="image/png" height="57" width="144"/>
 </item>
 <item>
   <title>{B4F502887207:/posts/presentation-test/index.html}</title>
