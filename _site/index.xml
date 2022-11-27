@@ -19,10 +19,19 @@
 
 
 
-<p><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" class="img-fluid"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 <section id="table-syntax-in-latex-is-complicated" class="level2">
 <h2 class="anchored" data-anchor-id="table-syntax-in-latex-is-complicated">Table syntax in LaTeX is complicated</h2>
-<p>Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of &amp; symbol as a maker for column alignment. It gets even worse for left/center/right alignment within the same column.</p>
+<p>Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax, for instance, the unlimited use of “&amp;” as a maker for column alignment. It gets even worse for left/center/right alignment within the same column. What else if we want some extra color for labeling data magnitude?</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/https:/media.giphy.com/media/qRY3cPYRkyQh2/giphy.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </section>
 <section id="solution-1" class="level2">
 <h2 class="anchored" data-anchor-id="solution-1">Solution 1</h2>

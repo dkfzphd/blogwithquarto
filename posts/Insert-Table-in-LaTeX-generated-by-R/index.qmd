@@ -5,11 +5,13 @@ date: "2022-11-26"
 categories: [LaTeX,table, kableExtra]
 ---
 
-![](kableplot.png)
+![](kableplot.png){fig-align="center"}
 
 ## Table syntax in LaTeX is complicated
 
-Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of & symbol as a maker for column alignment. It gets even worse for left/center/right alignment within the same column.
+Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax, for instance, the unlimited use of "&" as a maker for column alignment. It gets even worse for left/center/right alignment within the same column. What else if we want some extra color for labeling data magnitude?
+
+![](https://media.giphy.com/media/qRY3cPYRkyQh2/giphy.gif){fig-align="center"}
 
 ## Solution 1
 
@@ -23,7 +25,7 @@ Basically the same way as with Excel and the code will automatically generated.
     2.  The input and formatting are very straightforward and intuitive.
 
 -   Cons
-    
+
     1.  You cannot do any calculation beyond the text itself.
     2.  It is not capable of processing large datasets.
     3.  Risk of errors arising from typos.
@@ -52,7 +54,7 @@ dt%>%
   kable_classic(full_width = F, html_font = "Cambria")
 ```
 
-From R code to LaTeX code 
+From R code to LaTeX code
 
 ``` r
 dt%>%
@@ -104,9 +106,7 @@ More complex tables may use these packages in TeX system
 
 ## Solution 3
 
-**Why not use Rmarkdown/Quarto directly for an article or a Report** <br>
-It is pdf document friendly.<br> 
-Easily deal with inline column plot, which is still very diffcult for TeX system.
+**Why not use Rmarkdown/Quarto directly for an article or a Report** <br> It is pdf document friendly.<br> Easily deal with inline column plot, which is still very diffcult for TeX system.
 
 ```{r}
 mpg_list <- split(mtcars$mpg, mtcars$cyl)
@@ -125,4 +125,3 @@ inline_plot %>%
   column_spec(7, image = spec_plot(mpg_list, disp_list, type = "p")) %>%
   column_spec(8, image = spec_plot(mpg_list, polymin = 5))
 ```
-
