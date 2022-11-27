@@ -220,32 +220,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><img src="kableplot.png" class="img-fluid"></p>
 <section id="table-syntax-in-latex-is-complicated" class="level2">
 <h2 class="anchored" data-anchor-id="table-syntax-in-latex-is-complicated">Table syntax in LaTeX is complicated</h2>
-<p>Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of <code>&amp;</code> symbol as a maker for column alignment.It gets even worse for left/center/right alignment within the same column.</p>
+<p>Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of &amp; symbol as a maker for column alignment.It gets even worse for left/center/right alignment within the same column.</p>
 </section>
 <section id="solution-1" class="level2">
 <h2 class="anchored" data-anchor-id="solution-1">Solution 1</h2>
 <p><a href="https://www.tablesgenerator.com/#">Tables generator for LaTeX, html, markdown</a></p>
-<p>Basically the same way with Excel and the code will automatically generated.</p>
+<p>Basically the same way as with Excel and the code will automatically generated.</p>
 <ul>
 <li><p>Pro</p>
 <ol type="1">
-<li>For a small datasets,</li>
-<li>Input and formatting is very straightforward and intuitive.</li>
+<li>For small datasets,</li>
+<li>The input and formatting are very straightforward and intuitive.</li>
 </ol></li>
 <li><p>Cons</p>
 <ol type="1">
-<li>You can not do any calculation beyond the the text itself.</li>
-<li>It is incapable of processing large datasets.</li>
+<li>You cannot do any calculation beyond the text itself.</li>
+<li>It is not capable of processing large datasets.</li>
 <li>Risk of errors arising from typos.</li>
 </ol></li>
 </ul>
 </section>
 <section id="solution-2" class="level2">
 <h2 class="anchored" data-anchor-id="solution-2">Solution 2</h2>
-<p>R is language that is designed for statistics. And R has some many great packages to make tables <code>gt</code>, <code>gtsummary</code>, <code>gtExtra</code> <code>kable</code>, <code>kableExtra</code> …</p>
-<p>The only thing you need to care about is the data manipulation itself, with a fw lines of code the Table is automatically generated and formatted based on your syntax.</p>
-<p><strong>So it will be great if one can adopt the Table directed from R to LaTeX</strong></p>
-<p>Here I introduce a method was written in the <code>kableExtra</code> file called <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">Create Awesome LaTeX Table with knitr::kable and kableExtra</a></p>
+<p>R is a language designed for statistics. And R has many great packages to make tables <code>gt, gtsummary, gtExtrakable, kableExtra</code> , etc.</p>
+<p>The only thing you need to care about is the data manipulation itself, with a fw lines of code the table is automatically generated and formatted based on your syntax.</p>
+<p><strong>So it would be great if one could adopt the table directed from R to LaTeX</strong></p>
+<p>Here I introduce a method that was written in the kableExtra file called <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">Create Awesome LaTeX Table with knitr::kable and kableExtra</a></p>
 <p>The solution is put “latex” in the R code, then the output will be converted into LaTeX code with the data inside and one can directly copy and paste into LaTeX IDE.</p>
 <p>Example: <code>kbl(data,"latex",  booktabs = T)</code></p>
 <div class="cell">
@@ -322,7 +322,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </div>
 </div>
-<p>From R code to LaTeX code is</p>
+<p>From R code to LaTeX code</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dt<span class="sc">%&gt;%</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>(<span class="st">"latex"</span>,<span class="at">caption =</span> <span class="st">"Recreating booktabs style table"</span>) <span class="sc">%&gt;%</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_classic</span>(<span class="at">full_width =</span> F, <span class="at">html_font =</span> <span class="st">"Cambria"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -347,7 +347,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="fu">\hline</span></span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">tabular</span>}</span>
 <span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">table</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>More complex tables may use package in TeX system</p>
+<p>More complex tables may use these packages in TeX system</p>
 <pre><code>-  \usepackage{booktabs}
 -  \usepackage{longtable}
 -  \usepackage{array}
@@ -365,7 +365,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="solution-3" class="level2">
 <h2 class="anchored" data-anchor-id="solution-3">Solution 3</h2>
-<p><strong>Why Not use Rmarkdown/Quarto directly for an article or a Report</strong> <br> It is pdf friendly.<br> Easily deal with in column plot which is still very diffcult for TeX system.</p>
+<p><strong>Why not use Rmarkdown/Quarto directly for an article or a Report</strong> <br> It is pdf document friendly.<br> Easily deal with in column plot, which is still very diffcult for TeX system.</p>
 
 
 </section>

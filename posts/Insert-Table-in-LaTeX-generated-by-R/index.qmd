@@ -9,34 +9,34 @@ categories: [LaTeX,table, kableExtra]
 
 ## Table syntax in LaTeX is complicated
 
-Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of `&` symbol as a maker for column alignment.It gets even worse for left/center/right alignment within the same column.
+Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of & symbol as a maker for column alignment.It gets even worse for left/center/right alignment within the same column.
 
 ## Solution 1
 
 [Tables generator for LaTeX, html, markdown](https://www.tablesgenerator.com/#)
 
-Basically the same way with Excel and the code will automatically generated.
+Basically the same way as with Excel and the code will automatically generated.
 
 -   Pro
 
-    1.  For a small datasets,
-    2.  Input and formatting is very straightforward and intuitive.
+    1.  For small datasets,
+    2.  The input and formatting are very straightforward and intuitive.
 
 -   Cons
-
-    1.  You can not do any calculation beyond the the text itself.
-    2.  It is incapable of processing large datasets.
+    
+    1.  You cannot do any calculation beyond the text itself.
+    2.  It is not capable of processing large datasets.
     3.  Risk of errors arising from typos.
 
 ## Solution 2
 
-R is language that is designed for statistics. And R has some many great packages to make tables `gt`, `gtsummary`, `gtExtra` `kable`, `kableExtra` ...
+R is a language designed for statistics. And R has many great packages to make tables `gt, gtsummary, gtExtrakable, kableExtra` , etc.
 
-The only thing you need to care about is the data manipulation itself, with a fw lines of code the Table is automatically generated and formatted based on your syntax.
+The only thing you need to care about is the data manipulation itself, with a fw lines of code the table is automatically generated and formatted based on your syntax.
 
-**So it will be great if one can adopt the Table directed from R to LaTeX**
+**So it would be great if one could adopt the table directed from R to LaTeX**
 
-Here I introduce a method was written in the `kableExtra` file called [Create Awesome LaTeX Table with knitr::kable and kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
+Here I introduce a method that was written in the kableExtra file called [Create Awesome LaTeX Table with knitr::kable and kableExtra](https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf)
 
 The solution is put "latex" in the R code, then the output will be converted into LaTeX code with the data inside and one can directly copy and paste into LaTeX IDE.
 
@@ -52,7 +52,7 @@ dt%>%
   kable_classic(full_width = F, html_font = "Cambria")
 ```
 
-From R code to LaTeX code is
+From R code to LaTeX code 
 
 ``` r
 dt%>%
@@ -85,7 +85,7 @@ Hornet Sportabout & 18.7 & 8 & 360 & 175 & 3.15 & 3.440\\
 \end{table}
 ```
 
-More complex tables may use package in TeX system
+More complex tables may use these packages in TeX system
 
     -  \usepackage{booktabs}
     -  \usepackage{longtable}
@@ -104,5 +104,6 @@ More complex tables may use package in TeX system
 
 ## Solution 3
 
-**Why Not use Rmarkdown/Quarto directly for an article or a Report** <br>
-It is pdf friendly.<br> Easily deal with in column plot which is still very diffcult for TeX system.
+**Why not use Rmarkdown/Quarto directly for an article or a Report** <br>
+It is pdf document friendly.<br> 
+Easily deal with in column plot, which is still very diffcult for TeX system.
