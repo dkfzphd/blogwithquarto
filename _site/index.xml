@@ -46,8 +46,7 @@
 <h2 class="anchored" data-anchor-id="solution-2">Solution 2</h2>
 <p>R is a language designed for statistics. And R has many great packages to make tables <code>gt, gtsummary, gtExtrakable, kableExtra</code> , etc.</p>
 <p>The only thing you need to care about is the data manipulation itself, with a few lines of code the table is automatically generated and formatted based on your syntax.</p>
-<p><strong>So it would be great if one could adopt the table directed from R to LaTeX</strong></p>
-<p>Here I introduce a method that was written in the kableExtra file called <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">Create Awesome LaTeX Table with knitr::kable and kableExtra</a></p>
+<p><strong>So, it would be great if one could adopt the table directly from R to LaTeX.</strong><br> Here I introduce a method that was written in the kableExtra file called <a href="https://haozhu233.github.io/kableExtra/awesome_table_in_pdf.pdf">Create Awesome LaTeX Table with knitr::kable and kableExtra</a></p>
 <p>The solution is put “latex” in the R code, then the output will be converted into LaTeX code with the data inside and one can directly copy and paste into LaTeX IDE.</p>
 <p>Example: <code>kbl(data,"latex",  booktabs = T)</code></p>
 <div class="cell">
