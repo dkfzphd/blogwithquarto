@@ -9,7 +9,7 @@ categories: [LaTeX,table, kableExtra]
 
 ## Table syntax in LaTeX is complicated
 
-Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of & symbol as a maker for column alignment.It gets even worse for left/center/right alignment within the same column.
+Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax,for instance, the unlimited use of & symbol as a maker for column alignment. It gets even worse for left/center/right alignment within the same column.
 
 ## Solution 1
 
