@@ -32,7 +32,7 @@ Basically the same way as with Excel and the code will automatically generated.
 
 R is a language designed for statistics. And R has many great packages to make tables `gt, gtsummary, gtExtrakable, kableExtra` , etc.
 
-The only thing you need to care about is the data manipulation itself, with a fw lines of code the table is automatically generated and formatted based on your syntax.
+The only thing you need to care about is the data manipulation itself, with a few lines of code the table is automatically generated and formatted based on your syntax.
 
 **So it would be great if one could adopt the table directed from R to LaTeX**
 
