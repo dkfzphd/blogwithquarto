@@ -106,7 +106,7 @@ More complex tables may use these packages in TeX system
 
 ## Solution 3
 
-**Why not use Rmarkdown/Quarto directly for an article or a Report** <br> It is pdf document friendly.<br> Easily deal with inline column plot, which is still very diffcult for TeX system.
+**Why not use Rmarkdown/Quarto directly for an article or a report** <br> It is pdf document friendly.<br> Easily deal with inline column plot, which is still very diffcult for TeX system.
 
 ```{r}
 mpg_list <- split(mtcars$mpg, mtcars$cyl)
