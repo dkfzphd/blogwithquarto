@@ -4,8 +4,12 @@ author: "Te"
 date: "2022-12-04"
 categories: [ggplot2,stat_function, disribution, probability]
 ---
-The resource of the code is learning from 
-https://r-graphics.org/recipe-miscgraph-function-shade
+
+The resource of the code is learning from
+
+[Winston Chang
+
+-R graphics cookbook](https://r-graphics.org/recipe-miscgraph-function-shade)
 
 ```{r plot, message=FALSE, warning=FALSE}
 library(tidyverse)
@@ -35,4 +39,3 @@ ggplot(betadf,aes(p,y))+
   scale_x_continuous(breaks = c(0.00, 0.10, 0.20, 0.30, 0.45, 1.00))+
   stat_function(fun = areafunction, geom = "area", fill="red", alpha=.3 )
 ```
-
