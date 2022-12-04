@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2022-11-27T00:46:48.289Z</lastmod>
+    <lastmod>2022-12-04T18:48:30.381Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -79,5 +79,9 @@
   <url>
     <loc>https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/index.html</loc>
     <lastmod>2022-11-27T00:46:46.262Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/Shading-a-Subregion-Under-a-Function-Curve/index.html</loc>
+    <lastmod>2022-12-04T18:48:29.320Z</lastmod>
   </url>
 </urlset>

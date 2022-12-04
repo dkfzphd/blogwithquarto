@@ -1,0 +1,38 @@
+---
+title: "Shading a Subregion Under a Function Curve"
+author: "Te"
+date: "2022-12-04"
+categories: [ggplot2,stat_function, disribution, probability]
+---
+The resource of the code is learning from 
+https://r-graphics.org/recipe-miscgraph-function-shade
+
+```{r plot, message=FALSE, warning=FALSE}
+library(tidyverse)
+theme_set(theme_bw())
+#define range
+p = seq(0, 1, by=0.001)
+y <- dbeta(p, 2, 10)
+
+#create plot of Beta distribution with shape parameters 2 and 10
+plot(p, y, type='l', col=4)
+
+
+# create a function to make the shade area
+areafunction <-  function(x) {
+    y <- dbeta(x, 2, 10)
+    y[x < 0.1  |  x > 0.45 ] <- NA
+    y[0.2< x & x < 0.3 ] <- NA
+    return(y)
+}
+
+# make the data into data frame then give it to ggplot2
+betadf <- tibble(p,y)
+
+# plot
+ggplot(betadf,aes(p,y))+
+  geom_line()+
+  scale_x_continuous(breaks = c(0.00, 0.10, 0.20, 0.30, 0.45, 1.00))+
+  stat_function(fun = areafunction, geom = "area", fill="red", alpha=.3 )
+```
+
