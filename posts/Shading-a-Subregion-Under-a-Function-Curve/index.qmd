@@ -7,9 +7,7 @@ categories: [ggplot2,stat_function, disribution, probability]
 
 The resource of the code is learning from
 
-[Winston Chang
-
--R graphics cookbook](https://r-graphics.org/recipe-miscgraph-function-shade)
+[Winston Chang-R graphics cookbook](https://r-graphics.org/recipe-miscgraph-function-shade)
 
 ```{r plot, message=FALSE, warning=FALSE}
 library(tidyverse)
