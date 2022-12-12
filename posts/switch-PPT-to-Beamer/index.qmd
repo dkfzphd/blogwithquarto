@@ -1,0 +1,32 @@
+---
+title: "PPT to LaTeX Beamer"
+author: "Te"
+date: "2022-12-12"
+categories: [LaTeX,PPT, Beamer]
+---
+
+The idea of converting MS-PowerPoint to LaTeX was not a sudden or impulsive one. It was a thought that I have been considering for some time.
+
+When creating a presentation for work or academic communication, it is important to avoid being overly flashy or decorative. Instead, focus on removing extraneous information and conveying the message as simply, quickly, and accurately as possible. This will help to ensure that the audience understands and retains the information being presented.
+
+LaTeX has pre-made macro packages that make it easy to create text boxes, add emphasis to text, and control the gradual appearance of text using a simple markup language. Additionally, LaTeX allows users to quickly generate handouts. These features make it an ideal tool for creating presentations that are clear, concise, and professional.
+
+A great learning resource is [Offical Guides for Beamer Class](https://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf)
+
+A screen shot of the Simple Beamer
+
+![](ppt-cut.png){fig-align="center"}
+
+[The Demo Beamer pdf full document](https://github.com/dkfzphd/Latex-Templates/blob/main/Simple%20Beamer%20Theme/sample.pdf)
+
+[Github repository for the Simple Beamer](https://github.com/dkfzphd/Latex-Templates/tree/main/Simple%20Beamer%20Theme)
+
+**As a summary**
+
+There are several advantages to using LaTeX Beamer for presentations instead of MS-PowerPoint. LaTeX Beamer has a number of pre-made templates and macro packages that make it easy to create professional-looking presentations. Additionally, the LaTeX language is more powerful and flexible than the one used by MS-PowerPoint, allowing users to create complex layouts and incorporate mathematical equations and other specialized content into their presentations.
+
+One potential disadvantage of using LaTeX Beamer is that it has a steeper learning curve than MS-PowerPoint. LaTeX is a programming language, so it requires some knowledge of coding in order to use it effectively. However, once you have learned the basics of LaTeX, it can be a powerful tool for creating high-quality presentations.
+
+Another potential disadvantage is that LaTeX Beamer is not as widely used as MS-PowerPoint, so there may be fewer resources available to help you learn how to use it. However, there are many online communities and forums where users can share tips and advice on using LaTeX Beamer, so support is available if you need it.
+
+Overall, the decision to switch from MS-PowerPoint to LaTeX Beamer will depend on your personal preferences and needs. If you are willing to invest the time and effort to learn LaTeX, it can be a powerful tool for creating professional-looking presentations.

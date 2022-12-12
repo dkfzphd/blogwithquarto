@@ -10,7 +10,43 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.1.189</generator>
-<lastBuildDate>Sat, 03 Dec 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 11 Dec 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>PPT to LaTeX Beamer</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/switch-PPT-to-Beamer/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>The idea of converting MS-PowerPoint to LaTeX was not a sudden or impulsive one. It was a thought that I have been considering for some time.</p>
+<p>When creating a presentation for work or academic communication, it is important to avoid being overly flashy or decorative. Instead, focus on removing extraneous information and conveying the message as simply, quickly, and accurately as possible. This will help to ensure that the audience understands and retains the information being presented.</p>
+<p>LaTeX has pre-made macro packages that make it easy to create text boxes, add emphasis to text, and control the gradual appearance of text using a simple markup language. Additionally, LaTeX allows users to quickly generate handouts. These features make it an ideal tool for creating presentations that are clear, concise, and professional.</p>
+<p>A great learning resource is <a href="https://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf">Offical Guides for Beamer Class</a></p>
+<p>A screen shot of the Simple Beamer</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/switch-PPT-to-Beamer/ppt-cut.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<p><a href="https://github.com/dkfzphd/Latex-Templates/blob/main/Simple%20Beamer%20Theme/sample.pdf">The Demo Beamer pdf full document</a></p>
+<p><a href="https://github.com/dkfzphd/Latex-Templates/tree/main/Simple%20Beamer%20Theme">Github repository for the Simple Beamer</a></p>
+<p><strong>As a summary</strong></p>
+<p>There are several advantages to using LaTeX Beamer for presentations instead of MS-PowerPoint. LaTeX Beamer has a number of pre-made templates and macro packages that make it easy to create professional-looking presentations. Additionally, the LaTeX language is more powerful and flexible than the one used by MS-PowerPoint, allowing users to create complex layouts and incorporate mathematical equations and other specialized content into their presentations.</p>
+<p>One potential disadvantage of using LaTeX Beamer is that it has a steeper learning curve than MS-PowerPoint. LaTeX is a programming language, so it requires some knowledge of coding in order to use it effectively. However, once you have learned the basics of LaTeX, it can be a powerful tool for creating high-quality presentations.</p>
+<p>Another potential disadvantage is that LaTeX Beamer is not as widely used as MS-PowerPoint, so there may be fewer resources available to help you learn how to use it. However, there are many online communities and forums where users can share tips and advice on using LaTeX Beamer, so support is available if you need it.</p>
+<p>Overall, the decision to switch from MS-PowerPoint to LaTeX Beamer will depend on your personal preferences and needs. If you are willing to invest the time and effort to learn LaTeX, it can be a powerful tool for creating professional-looking presentations.</p>
+
+
+
+ ]]></description>
+  <category>LaTeX</category>
+  <category>PPT</category>
+  <category>Beamer</category>
+  <guid>https://guote.netlify.app/posts/switch-PPT-to-Beamer/index.html</guid>
+  <pubDate>Sun, 11 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/switch-PPT-to-Beamer/ppt-cut.png" medium="image" type="image/png" height="72" width="144"/>
+</item>
 <item>
   <title>Shading a Subregion Under a Function Curve</title>
   <dc:creator>Te</dc:creator>
@@ -2157,131 +2193,6 @@ give correct results for longitude/latitude data</code></pre>
   <guid>https://guote.netlify.app/posts/filter-na/index.html</guid>
   <pubDate>Mon, 24 Oct 2022 22:00:00 GMT</pubDate>
   <media:content url="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif" medium="image" type="image/gif"/>
-</item>
-<item>
-  <title>APA theme- ggplot2</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/apa-themes/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p><a href="https://ggplot2tor.com/tutorials/apa_theme_rprofile">Christian</a> https://christianburkhart.de/</p>
-<p>How to set your APA 7 theme in RStudio Many researchers in the social sciences often need to create APA-style figures. Fortunately, there is a little trick that makes it easier to automatically set up an APA theme in ggplot2.</p>
-<p>https://ggplot2tor.com/tutorials/apa_theme_rprofile</p>
-<section id="code-part" class="level2">
-<h2 class="anchored" data-anchor-id="code-part">Code part</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;"># Set theme</span></span>
-<span id="cb1-3">  apa_theme <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">theme</span>(</span>
-<span id="cb1-4">    <span class="at" style="color: #657422;">plot.margin =</span> <span class="fu" style="color: #4758AB;">unit</span>(<span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>, <span class="dv" style="color: #AD0000;">1</span>), <span class="st" style="color: #20794D;">"cm"</span>),</span>
-<span id="cb1-5">    <span class="at" style="color: #657422;">plot.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"white"</span>, <span class="at" style="color: #657422;">color =</span> <span class="cn" style="color: #8f5902;">NA</span>),</span>
-<span id="cb1-6">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">22</span>, <span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>,</span>
-<span id="cb1-7">                              <span class="at" style="color: #657422;">hjust =</span> <span class="fl" style="color: #AD0000;">0.5</span>,</span>
-<span id="cb1-8">                              <span class="at" style="color: #657422;">margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="at" style="color: #657422;">b =</span> <span class="dv" style="color: #AD0000;">15</span>)),</span>
-<span id="cb1-9">    <span class="at" style="color: #657422;">axis.line =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>, <span class="at" style="color: #657422;">size =</span> .<span class="dv" style="color: #AD0000;">5</span>),</span>
-<span id="cb1-10">    <span class="at" style="color: #657422;">axis.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">18</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>,</span>
-<span id="cb1-11">                              <span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>),</span>
-<span id="cb1-12">    <span class="at" style="color: #657422;">axis.text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">15</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>),</span>
-<span id="cb1-13">    <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="at" style="color: #657422;">t =</span> <span class="dv" style="color: #AD0000;">10</span>)),</span>
-<span id="cb1-14">    <span class="at" style="color: #657422;">axis.title.y =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="at" style="color: #657422;">r =</span> <span class="dv" style="color: #AD0000;">10</span>)),</span>
-<span id="cb1-15">    <span class="at" style="color: #657422;">axis.ticks =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">size =</span> .<span class="dv" style="color: #AD0000;">5</span>),</span>
-<span id="cb1-16">    <span class="at" style="color: #657422;">panel.grid =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb1-17">    <span class="at" style="color: #657422;">legend.position =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">0.20</span>, <span class="fl" style="color: #AD0000;">0.8</span>),</span>
-<span id="cb1-18">    <span class="at" style="color: #657422;">legend.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"black"</span>),</span>
-<span id="cb1-19">    <span class="at" style="color: #657422;">legend.text =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">15</span>),</span>
-<span id="cb1-20">    <span class="at" style="color: #657422;">legend.margin =</span> <span class="fu" style="color: #4758AB;">margin</span>(<span class="at" style="color: #657422;">t =</span> <span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">l =</span> <span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">r =</span> <span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">b =</span> <span class="dv" style="color: #AD0000;">5</span>),</span>
-<span id="cb1-21">    <span class="at" style="color: #657422;">legend.key =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">color =</span> <span class="cn" style="color: #8f5902;">NA</span>, <span class="at" style="color: #657422;">fill =</span> <span class="cn" style="color: #8f5902;">NA</span>)</span>
-<span id="cb1-22">  )</span>
-<span id="cb1-23">  </span>
-<span id="cb1-24">  <span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_minimal</span>(<span class="at" style="color: #657422;">base_size =</span> <span class="dv" style="color: #AD0000;">18</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-25">            apa_theme)</span></code></pre></div>
-</div>
-</section>
-<section id="example" class="level2">
-<h2 class="anchored" data-anchor-id="example">Example</h2>
-<section id="apa-theme" class="level3">
-<h3 class="anchored" data-anchor-id="apa-theme">APA theme</h3>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1">pic <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">ggplot</span>(ToothGrowth) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-2"> <span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> <span class="fu" style="color: #4758AB;">factor</span>(dose), <span class="at" style="color: #657422;">y =</span> len, <span class="at" style="color: #657422;">fill =</span> supp, <span class="at" style="color: #657422;">colour =</span> supp) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-3"> <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="at" style="color: #657422;">shape=</span>ToothGrowth<span class="sc" style="color: #5E5E5E;">$</span>supp,<span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">1.5</span>,<span class="at" style="color: #657422;">position =</span> <span class="fu" style="color: #4758AB;">position_dodge</span>(<span class="fl" style="color: #AD0000;">0.2</span>)) </span>
-<span id="cb2-4">pic</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/apa-themes/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">pic_apa <span class="ot" style="color: #003B4F;">&lt;-</span> pic<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">theme_set</span>(<span class="fu" style="color: #4758AB;">theme_minimal</span>(<span class="at" style="color: #657422;">base_size =</span> <span class="dv" style="color: #AD0000;">18</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb3-2">            apa_theme)</span>
-<span id="cb3-3">pic_apa</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/apa-themes/index_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-</section>
-<section id="my-own-theme" class="level2">
-<h2 class="anchored" data-anchor-id="my-own-theme">my own theme</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1">pic_own <span class="ot" style="color: #003B4F;">&lt;-</span> pic<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">theme</span>(</span>
-<span id="cb4-2">    <span class="at" style="color: #657422;">axis.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">16</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>),</span>
-<span id="cb4-3">    <span class="at" style="color: #657422;">axis.text.x =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>),</span>
-<span id="cb4-4">    <span class="at" style="color: #657422;">axis.text.y =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto"</span>),</span>
-<span id="cb4-5">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">20</span>, <span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"red2"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Lato"</span>),</span>
-<span id="cb4-6">    <span class="at" style="color: #657422;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">14</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue4"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Lato"</span>),</span>
-<span id="cb4-7">    <span class="at" style="color: #657422;">axis.line.x =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"gray8"</span>),</span>
-<span id="cb4-8">    <span class="at" style="color: #657422;">axis.line.y =</span> <span class="fu" style="color: #4758AB;">element_line</span>(<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"gray8"</span>),</span>
-<span id="cb4-9">    <span class="at" style="color: #657422;">panel.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"white"</span>,<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>),</span>
-<span id="cb4-10">    <span class="at" style="color: #657422;">panel.border =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="cn" style="color: #8f5902;">NA</span>, <span class="at" style="color: #657422;">size=</span><span class="dv" style="color: #AD0000;">1</span>),</span>
-<span id="cb4-11">    <span class="at" style="color: #657422;">plot.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"white"</span>,<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"gray45"</span>),</span>
-<span id="cb4-12">    <span class="at" style="color: #657422;">legend.position =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="fl" style="color: #AD0000;">0.1</span>, <span class="fl" style="color: #AD0000;">0.8</span>),</span>
-<span id="cb4-13">    <span class="at" style="color: #657422;">legend.background =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="cn" style="color: #8f5902;">NA</span>),</span>
-<span id="cb4-14">    <span class="at" style="color: #657422;">legend.key =</span> <span class="fu" style="color: #4758AB;">element_rect</span>(<span class="at" style="color: #657422;">fill =</span> <span class="cn" style="color: #8f5902;">NA</span>),</span>
-<span id="cb4-15">    <span class="at" style="color: #657422;">plot.margin =</span> <span class="fu" style="color: #4758AB;">unit</span>(<span class="fu" style="color: #4758AB;">c</span>(.<span class="dv" style="color: #AD0000;">5</span>, .<span class="dv" style="color: #AD0000;">5</span>, .<span class="dv" style="color: #AD0000;">5</span>, .<span class="dv" style="color: #AD0000;">5</span>), <span class="st" style="color: #20794D;">"cm"</span>)</span>
-<span id="cb4-16">  )</span>
-<span id="cb4-17">pic_own  </span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/apa-themes/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-</section>
-<section id="apa-theme-version-2-ref-httpsbookdown.orgcontent2015figures.html" class="level2">
-<h2 class="anchored" data-anchor-id="apa-theme-version-2-ref-httpsbookdown.orgcontent2015figures.html">APA theme version 2 ref: https://bookdown.org/content/2015/figures.html</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">apatheme<span class="ot" style="color: #003B4F;">=</span><span class="fu" style="color: #4758AB;">theme_bw</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-2">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">panel.grid.major=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-3">        <span class="at" style="color: #657422;">panel.grid.minor=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-4">        <span class="at" style="color: #657422;">panel.border=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-5">        <span class="at" style="color: #657422;">axis.line=</span><span class="fu" style="color: #4758AB;">element_line</span>(),</span>
-<span id="cb5-6">        <span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">'Arial'</span>),</span>
-<span id="cb5-7">        <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-8">        <span class="at" style="color: #657422;">axis.text.y=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>),</span>
-<span id="cb5-9">        <span class="at" style="color: #657422;">axis.text.x=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>),</span>
-<span id="cb5-10">        <span class="at" style="color: #657422;">plot.tag =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>))</span>
-<span id="cb5-11"></span>
-<span id="cb5-12"><span class="co" style="color: #5E5E5E;"># test apatheme version 2</span></span>
-<span id="cb5-13">pic <span class="sc" style="color: #5E5E5E;">+</span> <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">tag=</span><span class="st" style="color: #20794D;">"A"</span>)<span class="sc" style="color: #5E5E5E;">+</span><span class="fu" style="color: #4758AB;">theme_bw</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb5-14">  <span class="fu" style="color: #4758AB;">theme</span>(<span class="at" style="color: #657422;">panel.grid.major=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-15">        <span class="at" style="color: #657422;">panel.grid.minor=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-16">        <span class="at" style="color: #657422;">panel.border=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-17">        <span class="at" style="color: #657422;">axis.line=</span><span class="fu" style="color: #4758AB;">element_line</span>(),</span>
-<span id="cb5-18">        <span class="at" style="color: #657422;">text=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">family=</span><span class="st" style="color: #20794D;">'Arial'</span>),</span>
-<span id="cb5-19">        <span class="at" style="color: #657422;">legend.title=</span><span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
-<span id="cb5-20">        <span class="at" style="color: #657422;">axis.text.y=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>),</span>
-<span id="cb5-21">        <span class="at" style="color: #657422;">axis.text.x=</span><span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">12</span>),</span>
-<span id="cb5-22">        <span class="at" style="color: #657422;">plot.tag =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">face =</span> <span class="st" style="color: #20794D;">"bold"</span>))</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/apa-themes/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>R</category>
-  <guid>https://guote.netlify.app/posts/apa-themes/index.html</guid>
-  <pubDate>Tue, 04 Oct 2022 22:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
