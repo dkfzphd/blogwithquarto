@@ -127,5 +127,8 @@
   },
   "posts/switch-PPT-to-Beamer/index.qmd": {
     "index.html": "6c02a6f5"
+  },
+  "posts/cellpose2.0-cell-segmentation/index.qmd": {
+    "index.html": "55fdbdb7"
   }
 }
