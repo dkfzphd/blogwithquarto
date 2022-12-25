@@ -130,5 +130,8 @@
   },
   "posts/cellpose2.0-cell-segmentation/index.qmd": {
     "index.html": "55fdbdb7"
+  },
+  "posts/image-analysis-resources/index.qmd": {
+    "index.html": "efa99148"
   }
 }

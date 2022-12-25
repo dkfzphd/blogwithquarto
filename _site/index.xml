@@ -10,7 +10,27 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Fri, 23 Dec 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sat, 24 Dec 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Image-Analysis-Resources</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/image-analysis-resources/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>Using ImageJ’s graphical user interface to manually perform image analysis tasks can be time-consuming and prone to errors, as it requires repeating the same steps over and over again. This can make it difficult to reproduce the results of an analysis, as it is not always clear exactly how the analysis was performed. In contrast, <strong>using Python</strong> to automate image analysis tasks allows for the creation of custom pipelines that can be easily reproduced and modified as needed. This makes it easier to ensure the <strong>reliability and reproducibility</strong> of the results, which is important for scientific research. Additionally, using Python to automate image analysis tasks can be more efficient than performing the same tasks manually in ImageJ, as it allows for the creation of custom scripts that can be run on large datasets with minimal effort.</p>
+<p><a href="https://haesleinhuepf.github.io/BioImageAnalysisNotebooks/intro.html">Bio-image Analysis Notebooks</a></p>
+
+
+
+ ]]></description>
+  <category>Image-Analysis</category>
+  <category>python</category>
+  <category>scikit-image</category>
+  <guid>https://guote.netlify.app/posts/image-analysis-resources/index.html</guid>
+  <pubDate>Sat, 24 Dec 2022 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>cellpose2.0-cell segmentation-python based</title>
   <dc:creator>Te</dc:creator>
@@ -1918,26 +1938,6 @@ give correct results for longitude/latitude data</code></pre>
   <category>analysis</category>
   <guid>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Welcome To My Blog</title>
-  <dc:creator>Tristan O&#39;Malley</dc:creator>
-  <link>https://guote.netlify.app/posts/welcome/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p>This is the first post in a Quarto blog. Welcome!</p>
-<p><img src="https://guote.netlify.app/posts/welcome/thumbnail.jpg" class="img-fluid"></p>
-<p>Since this post doesn’t specify an explicit <code>image</code>, the first image in the post will be used in the listing page of posts.</p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <guid>https://guote.netlify.app/posts/welcome/index.html</guid>
-  <pubDate>Fri, 04 Nov 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://guote.netlify.app/posts/welcome/thumbnail.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
