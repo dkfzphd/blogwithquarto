@@ -11,7 +11,11 @@ There are various methods for cell segmentation, including manual segmentation, 
 
 Cell segmentation is used in many applications, including cell counting, cell tracking, and cell classification. It can be useful in a wide range of research areas, including cell biology, cancer research, and drug discovery.
 
-Cellpose2.0 is amazing good.
-[Paper-Cellpose2.0](https://www.nature.com/articles/s41592-022-01663-4)
+Cellpose2.0 is amazing good. [Paper-Cellpose2.0](https://www.nature.com/articles/s41592-022-01663-4)
 
 [Offical website](https://www.cellpose.org/)
+
+**Some useful guidance for using cellpose**
+
+1.  [Fiji-cellpose-wrappers](https://github.com/BIOP/ijl-utilities-wrappers)
+2.  [cellpose 2.0 tutorial: how to train your own cellular segmentation model](https://www.youtube.com/watch?v=5qANHWoubZU&t=1385s&ab_channel=CarsenStringer)
