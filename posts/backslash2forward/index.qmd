@@ -1,0 +1,32 @@
+---
+title: "backslash \\ to forward slash /" 
+author: "Te"
+date: "2022-12-27"
+categories: [R, filepath, slash]
+---
+
+In R, you can use the gsub function to replace the backslashes in a string with forward slashes. Here is an example of how you can use gsub:
+
+```{r}
+x <- "C:\\Users\\MyName\\Documents\\file.txt"
+
+x_new <- gsub("\\\\", "/", x)
+
+x
+x_new
+```
+
+This will replace all the backslashes in the string x with forward slashes. The result will be stored in a new string x, which will contain the modified version of the original string.
+
+Alternatively, you can use the sub function to replace only the first occurrence of a backslash in the string. Here is an example of how you can use sub:
+
+```{r}
+x <- "C:\\Users\\MyName\\Documents\\file.txt"
+x <- sub("\\\\", "/", x, fixed = TRUE)
+```
+
+This will replace only the first backslash in the string x with a forward slash. The fixed = TRUE argument tells sub to treat the pattern as a string, rather than a regular expression.
+
+**But I recommended Notepad++**
+
+![](images/backslash2forward.png){fig-align="center"}

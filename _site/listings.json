@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/backslash2forward/index.html",
       "/posts/image-analysis-resources/index.html",
       "/posts/cellpose2.0-cell-segmentation/index.html",
       "/posts/switch-PPT-to-Beamer/index.html",

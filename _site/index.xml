@@ -10,7 +10,54 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Sat, 24 Dec 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 26 Dec 2022 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>backslash  to forward slash /</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/backslash2forward/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<p>In R, you can use the gsub function to replace the backslashes in a string with forward slashes. Here is an example of how you can use gsub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"C:</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">Users</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">MyName</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">Documents</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">file.txt"</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3">x_new <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">gsub</span>(<span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\\\\</span><span class="st" style="color: #20794D;">"</span>, <span class="st" style="color: #20794D;">"/"</span>, x)</span>
+<span id="cb1-4"></span>
+<span id="cb1-5">x</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:\\Users\\MyName\\Documents\\file.txt"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1">x_new</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/MyName/Documents/file.txt"</code></pre>
+</div>
+</div>
+<p>This will replace all the backslashes in the string x with forward slashes. The result will be stored in a new string x, which will contain the modified version of the original string.</p>
+<p>Alternatively, you can use the sub function to replace only the first occurrence of a backslash in the string. Here is an example of how you can use sub:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="st" style="color: #20794D;">"C:</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">Users</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">MyName</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">Documents</span><span class="sc" style="color: #5E5E5E;">\\</span><span class="st" style="color: #20794D;">file.txt"</span></span>
+<span id="cb5-2">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">sub</span>(<span class="st" style="color: #20794D;">"</span><span class="sc" style="color: #5E5E5E;">\\\\</span><span class="st" style="color: #20794D;">"</span>, <span class="st" style="color: #20794D;">"/"</span>, x, <span class="at" style="color: #657422;">fixed =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)</span></code></pre></div>
+</div>
+<p>This will replace only the first backslash in the string x with a forward slash. The fixed = TRUE argument tells sub to treat the pattern as a string, rather than a regular expression.</p>
+<p><strong>But I recommended Notepad++</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/backslash2forward/images/backslash2forward.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+
+
+
+ ]]></description>
+  <category>R</category>
+  <category>filepath</category>
+  <category>slash</category>
+  <guid>https://guote.netlify.app/posts/backslash2forward/index.html</guid>
+  <pubDate>Mon, 26 Dec 2022 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/backslash2forward/images/backslash2forward.png" medium="image" type="image/png" height="93" width="144"/>
+</item>
 <item>
   <title>Image-Analysis-Resources</title>
   <dc:creator>Te</dc:creator>
@@ -1920,29 +1967,6 @@ give correct results for longitude/latitude data</code></pre>
   <guid>https://guote.netlify.app/posts/sf-map/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
   <media:content url="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" medium="image" type="image/gif"/>
-</item>
-<item>
-  <title>BLOG with blogdown</title>
-  <dc:creator>Guo Te</dc:creator>
-  <link>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p>我的第一篇博客-感谢</p>
-<p>终于部署好了自己的博客，感谢 <a href="https://yihui.org/cn/">谢益辉</a>和<a href="https://yuanfan.vercel.app/">袁凡</a>。</p>
-<p>磕磕绊绊一路走来，一路如蹒跚学步，依旧不懂的很多。 感谢那些遇到的人，感谢那些或愉快或不怎么愉快的经历。 因为这所有的发生的人事物塑造了今天的我。</p>
-<p><strong>感谢</strong></p>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://guote.netlify.app/posts/Thanks about Blogdown Blog/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
