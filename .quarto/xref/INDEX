@@ -136,5 +136,8 @@
   },
   "posts/backslash2forward/index.qmd": {
     "index.html": "cfa440db"
+  },
+  "posts/explore-ggplot2-pointpath-linestyle/index.qmd": {
+    "index.html": "840635f9"
   }
 }

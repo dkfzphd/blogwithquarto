@@ -1,0 +1,40 @@
+---
+title: "Draw a pointpath linestyle with ggplot2" 
+author: "Te"
+date: "2023-01-31"
+categories: [ggplot2, code, pointpath]
+---
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(ggrepel)
+set.seed(13)
+x <- 1:13
+a <- rnorm(n =13, mean = 1, sd=18)
+b <- rnorm(n =13, mean = -13, sd=8)
+
+df <- tibble(x,a,b)
+
+ggplot(data = df)+
+  geom_line(aes(x,a),size = 1.5, color = "blue4") +
+  geom_point(aes(x,a),color = "blue4", pch = 19, size = 3) +
+  geom_point(aes(x,a),color = "white", pch = 19, size = 1.5)+
+  
+  geom_line(aes(x,b),size = 1.5, color = "red") +
+  geom_point(aes(x,b),color = "red", pch = 19, size = 3) +
+  geom_point(aes(x,b),color = "white", pch = 19, size = 1.5)+
+  geom_text_repel(aes(x,b,label =round(b,1)),color="red", xlim = c(0,Inf))+
+  geom_text_repel(aes(x,a,label =round(a,1)),color="blue4", xlim = c(0,Inf))+
+  geom_hline(yintercept = 0)+
+  labs(x = "Month", 
+       y = "Value",
+       title = "Same style with Beijing Review")+
+  scale_x_continuous(breaks = c(1:13))+
+  theme_classic()+
+  theme(
+    axis.ticks.x = element_blank(),
+    axis.line.x = element_blank(),
+    plot.title = element_text(hjust = 0.5)
+    )
+```
+

@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/explore-ggplot2-pointpath-linestyle/index.html",
       "/posts/backslash2forward/index.html",
       "/posts/image-analysis-resources/index.html",
       "/posts/cellpose2.0-cell-segmentation/index.html",

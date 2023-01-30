@@ -1,0 +1,16 @@
+{
+  "hash": "fc9f076a9fc309f26b2e90c934bd2d4b",
+  "result": {
+    "markdown": "---\ntitle: \"Draw a pointpath linestyle with ggplot2\" \nauthor: \"Te\"\ndate: \"2023-01-31\"\ncategories: [ggplot2, code, pointpath]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(ggrepel)\nset.seed(13)\nx <- 1:13\na <- rnorm(n =13, mean = 1, sd=18)\nb <- rnorm(n =13, mean = -13, sd=8)\n\ndf <- tibble(x,a,b)\n\nggplot(data = df)+\n  geom_line(aes(x,a),size = 1.5, color = \"blue4\") +\n  geom_point(aes(x,a),color = \"blue4\", pch = 19, size = 3) +\n  geom_point(aes(x,a),color = \"white\", pch = 19, size = 1.5)+\n  \n  geom_line(aes(x,b),size = 1.5, color = \"red\") +\n  geom_point(aes(x,b),color = \"red\", pch = 19, size = 3) +\n  geom_point(aes(x,b),color = \"white\", pch = 19, size = 1.5)+\n  geom_text_repel(aes(x,b,label =round(b,1)),color=\"red\", xlim = c(0,Inf))+\n  geom_text_repel(aes(x,a,label =round(a,1)),color=\"blue4\", xlim = c(0,Inf))+\n  geom_hline(yintercept = 0)+\n  labs(x = \"Month\", \n       y = \"Value\",\n       title = \"Same style with Beijing Review\")+\n  scale_x_continuous(breaks = c(1:13))+\n  theme_classic()+\n  theme(\n    axis.ticks.x = element_blank(),\n    axis.line.x = element_blank(),\n    plot.title = element_text(hjust = 0.5)\n    )\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

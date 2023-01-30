@@ -10,7 +10,60 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.2.269</generator>
-<lastBuildDate>Mon, 26 Dec 2022 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 30 Jan 2023 23:00:00 GMT</lastBuildDate>
+<item>
+  <title>Draw a pointpath linestyle with ggplot2</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/explore-ggplot2-pointpath-linestyle/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;">library</span>(ggrepel)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;">set.seed</span>(<span class="dv" style="color: #AD0000;">13</span>)</span>
+<span id="cb1-4">x <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">13</span></span>
+<span id="cb1-5">a <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rnorm</span>(<span class="at" style="color: #657422;">n =</span><span class="dv" style="color: #AD0000;">13</span>, <span class="at" style="color: #657422;">mean =</span> <span class="dv" style="color: #AD0000;">1</span>, <span class="at" style="color: #657422;">sd=</span><span class="dv" style="color: #AD0000;">18</span>)</span>
+<span id="cb1-6">b <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">rnorm</span>(<span class="at" style="color: #657422;">n =</span><span class="dv" style="color: #AD0000;">13</span>, <span class="at" style="color: #657422;">mean =</span> <span class="sc" style="color: #5E5E5E;">-</span><span class="dv" style="color: #AD0000;">13</span>, <span class="at" style="color: #657422;">sd=</span><span class="dv" style="color: #AD0000;">8</span>)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">df <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">tibble</span>(x,a,b)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="fu" style="color: #4758AB;">ggplot</span>(<span class="at" style="color: #657422;">data =</span> df)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-11">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,a),<span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">1.5</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue4"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-12">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,a),<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue4"</span>, <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">19</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">3</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-13">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,a),<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>, <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">19</span>, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">1.5</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-14">  </span>
+<span id="cb1-15">  <span class="fu" style="color: #4758AB;">geom_line</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,b),<span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">1.5</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-16">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,b),<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"red"</span>, <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">19</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">3</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-17">  <span class="fu" style="color: #4758AB;">geom_point</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,b),<span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"white"</span>, <span class="at" style="color: #657422;">pch =</span> <span class="dv" style="color: #AD0000;">19</span>, <span class="at" style="color: #657422;">size =</span> <span class="fl" style="color: #AD0000;">1.5</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-18">  <span class="fu" style="color: #4758AB;">geom_text_repel</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,b,<span class="at" style="color: #657422;">label =</span><span class="fu" style="color: #4758AB;">round</span>(b,<span class="dv" style="color: #AD0000;">1</span>)),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"red"</span>, <span class="at" style="color: #657422;">xlim =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="cn" style="color: #8f5902;">Inf</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-19">  <span class="fu" style="color: #4758AB;">geom_text_repel</span>(<span class="fu" style="color: #4758AB;">aes</span>(x,a,<span class="at" style="color: #657422;">label =</span><span class="fu" style="color: #4758AB;">round</span>(a,<span class="dv" style="color: #AD0000;">1</span>)),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"blue4"</span>, <span class="at" style="color: #657422;">xlim =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>,<span class="cn" style="color: #8f5902;">Inf</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-20">  <span class="fu" style="color: #4758AB;">geom_hline</span>(<span class="at" style="color: #657422;">yintercept =</span> <span class="dv" style="color: #AD0000;">0</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-21">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">"Month"</span>, </span>
+<span id="cb1-22">       <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">"Value"</span>,</span>
+<span id="cb1-23">       <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"Same style with Beijing Review"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-24">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">breaks =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">13</span>))<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-25">  <span class="fu" style="color: #4758AB;">theme_classic</span>()<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-26">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
+<span id="cb1-27">    <span class="at" style="color: #657422;">axis.ticks.x =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-28">    <span class="at" style="color: #657422;">axis.line.x =</span> <span class="fu" style="color: #4758AB;">element_blank</span>(),</span>
+<span id="cb1-29">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">hjust =</span> <span class="fl" style="color: #AD0000;">0.5</span>)</span>
+<span id="cb1-30">    )</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/explore-ggplot2-pointpath-linestyle/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>ggplot2</category>
+  <category>code</category>
+  <category>pointpath</category>
+  <guid>https://guote.netlify.app/posts/explore-ggplot2-pointpath-linestyle/index.html</guid>
+  <pubDate>Mon, 30 Jan 2023 23:00:00 GMT</pubDate>
+</item>
 <item>
   <title>backslash  to forward slash /</title>
   <dc:creator>Te</dc:creator>
@@ -1618,355 +1671,6 @@ editor_options:
   <guid>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
   <media:content url="https://guote.netlify.app/posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>sf-map-heatmap</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/sf-map/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<p><img src="https://guote.netlify.app/posts/sf-map/https:/media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" class="img-fluid"></p>
-<p>Download map from China website(<strong>be cautious about border and official government data</strong> )</p>
-<p>China Map geojson source website: https://geojson.cn/</p>
-<section id="example-1-map-to-map-heatmap" class="level2">
-<h2 class="anchored" data-anchor-id="example-1-map-to-map-heatmap">Example 1: Map to Map-Heatmap</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Linking to GEOS 3.9.1, GDAL 3.4.3, PROJ 7.2.1; sf_use_s2() is TRUE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching packages
-───────────────────────────────────────
-tidyverse 1.3.2 ──</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>✔ ggplot2 3.4.0      ✔ purrr   0.3.5 
-✔ tibble  3.1.8      ✔ dplyr   1.0.10
-✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-✔ readr   2.1.3      ✔ forcats 0.5.2 </code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.2.2</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><span class="fu" style="color: #4758AB;">library</span>(readxl)</span>
-<span id="cb8-2"><span class="fu" style="color: #4758AB;">library</span>(hrbrthemes)</span>
-<span id="cb8-3">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_add_google</span>(<span class="st" style="color: #20794D;">"Roboto Condensed"</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"Roboto Condensed"</span>)</span>
-<span id="cb8-4">sysfonts<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">font_families</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "sans"             "serif"            "mono"             "Roboto Condensed"</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1">showtext<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">showtext.auto</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>'showtext.auto()' is now renamed to 'showtext_auto()'
-The old version still works, but consider using the new function in future code</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1">china_map <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_read</span>(<span class="at" style="color: #657422;">dsn =</span> <span class="st" style="color: #20794D;">"https://geojson.cn/api/data/china.json"</span>, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `china' from data source `https://geojson.cn/api/data/china.json' using driver `GeoJSON'
-Simple feature collection with 36 features and 10 fields
-Geometry type: GEOMETRY
-Dimension:     XY
-Bounding box:  xmin: 73.50235 ymin: 17.9869 xmax: 135.0957 ymax: 53.56327
-Geodetic CRS:  WGS 84</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><span class="co" style="color: #5E5E5E;"># china_map  </span></span>
-<span id="cb14-2"></span>
-<span id="cb14-3"></span>
-<span id="cb14-4">jingfei_china <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_excel</span>(here<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">here</span>(<span class="st" style="color: #20794D;">"posts/sf-map/jingfei-china.xlsx"</span>)) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> janitor<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">clean_names</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">rename</span>(<span class="at" style="color: #657422;">name=</span>de_qu)</span></code></pre></div>
-</div>
-<p>Filter data for plot map</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> china_map  <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(childrenNum<span class="sc" style="color: #5E5E5E;">:</span>bbox)) </span>
-<span id="cb15-2"></span>
-<span id="cb15-3">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">left_join</span>(map_china,jingfei_china,<span class="at" style="color: #657422;">by=</span><span class="st" style="color: #20794D;">"name"</span>)</span>
-<span id="cb15-4">map_china<span class="sc" style="color: #5E5E5E;">$</span>r_d_jing_fei <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.numeric</span>(map_china<span class="sc" style="color: #5E5E5E;">$</span>r_d_jing_fei)</span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1">map_china <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb16-2">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">fill =</span> r_d_jing_fei)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-4">  <span class="fu" style="color: #4758AB;">scale_fill_gradient2</span>(<span class="at" style="color: #657422;">low =</span> <span class="st" style="color: #20794D;">"black"</span>, <span class="at" style="color: #657422;">mid =</span> <span class="st" style="color: #20794D;">"transparent"</span>, <span class="at" style="color: #657422;">high =</span> <span class="st" style="color: #20794D;">"red"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-5">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name), <span class="at" style="color: #657422;">colour =</span> <span class="st" style="color: #20794D;">"gray95"</span>, <span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">2</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-6">  <span class="fu" style="color: #4758AB;">labs</span>(</span>
-<span id="cb16-7">    <span class="at" style="color: #657422;">title =</span> <span class="st" style="color: #20794D;">"2021研究经费绝对量热度"</span>,</span>
-<span id="cb16-8">    <span class="at" style="color: #657422;">caption =</span> <span class="st" style="color: #20794D;">"国家统计局 | 2021年全国科技经费投入统计公报 | Plotbyme"</span>,</span>
-<span id="cb16-9">    <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>,</span>
-<span id="cb16-10">    <span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span></span>
-<span id="cb16-11">  ) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-12">  <span class="fu" style="color: #4758AB;">theme_modern_rc</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb16-13">  <span class="fu" style="color: #4758AB;">theme</span>(</span>
-<span id="cb16-14">    <span class="at" style="color: #657422;">legend.position =</span> <span class="st" style="color: #20794D;">"none"</span>,</span>
-<span id="cb16-15">    <span class="at" style="color: #657422;">plot.title =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">size =</span> <span class="dv" style="color: #AD0000;">22</span>, <span class="at" style="color: #657422;">hjust =</span> .<span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"wqy-microhei"</span>),</span>
-<span id="cb16-16">    <span class="at" style="color: #657422;">plot.caption =</span> <span class="fu" style="color: #4758AB;">element_text</span>(<span class="at" style="color: #657422;">hjust =</span> <span class="fl" style="color: #AD0000;">0.9</span>,  <span class="at" style="color: #657422;">family =</span> <span class="st" style="color: #20794D;">"wqy-microhei"</span>)</span>
-<span id="cb16-17">  )</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-give correct results for longitude/latitude data</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;"># save plot</span></span>
-<span id="cb18-2"><span class="co" style="color: #5E5E5E;"># name &lt;- "ResearchInvent_China2021" # change the save filename here</span></span>
-<span id="cb18-3"><span class="co" style="color: #5E5E5E;"># ggsave(filename = glue::glue('{name}.pdf'), plot = last_plot(), </span></span>
-<span id="cb18-4"><span class="co" style="color: #5E5E5E;">#        height = 6, width = 8, units="in", device=cairo_pdf)</span></span>
-<span id="cb18-5"><span class="co" style="color: #5E5E5E;"># pdftools::pdf_convert(</span></span>
-<span id="cb18-6"><span class="co" style="color: #5E5E5E;">#   pdf = glue::glue('{name}.pdf'),</span></span>
-<span id="cb18-7"><span class="co" style="color: #5E5E5E;">#   filenames = glue::glue('{name}.png'),</span></span>
-<span id="cb18-8"><span class="co" style="color: #5E5E5E;">#   format = "png", </span></span>
-<span id="cb18-9"><span class="co" style="color: #5E5E5E;">#   dpi = 600</span></span>
-<span id="cb18-10"><span class="co" style="color: #5E5E5E;"># )</span></span></code></pre></div>
-</div>
-</section>
-<section id="example-2-coordinates-to-province-location" class="level2">
-<h2 class="anchored" data-anchor-id="example-2-coordinates-to-province-location">Example 2: Coordinates to Province Location</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
-<span id="cb19-2"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
-<span id="cb19-3"><span class="fu" style="color: #4758AB;">library</span>(readxl)</span>
-<span id="cb19-4"></span>
-<span id="cb19-5">showtext<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">showtext.auto</span>()</span>
-<span id="cb19-6"></span>
-<span id="cb19-7">china_map <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_read</span>(<span class="at" style="color: #657422;">dsn =</span> <span class="st" style="color: #20794D;">"https://geojson.cn/api/data/china.json"</span>, <span class="at" style="color: #657422;">stringsAsFactors =</span> <span class="cn" style="color: #8f5902;">FALSE</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Reading layer `china' from data source `https://geojson.cn/api/data/china.json' using driver `GeoJSON'
-Simple feature collection with 36 features and 10 fields
-Geometry type: GEOMETRY
-Dimension:     XY
-Bounding box:  xmin: 73.50235 ymin: 17.9869 xmax: 135.0957 ymax: 53.56327
-Geodetic CRS:  WGS 84</code></pre>
-</div>
-</div>
-<p>lat,long read in</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1">metro <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">read_excel</span>(here<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">here</span>(<span class="st" style="color: #20794D;">"posts/sf-map/metro.xlsx"</span>))</span>
-<span id="cb21-2"></span>
-<span id="cb21-3">metro_df <span class="ot" style="color: #003B4F;">&lt;-</span> metro <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="st" style="color: #20794D;">"Entity ID"</span>,<span class="st" style="color: #20794D;">"lon"</span>,<span class="st" style="color: #20794D;">"lat"</span>)</span></code></pre></div>
-</div>
-<p>basic china map</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1">map_china <span class="ot" style="color: #003B4F;">&lt;-</span> china_map  <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(childrenNum<span class="sc" style="color: #5E5E5E;">:</span>bbox)) </span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1">map_china <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb23-2">  <span class="fu" style="color: #4758AB;">ggplot</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb23-3">  <span class="fu" style="color: #4758AB;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb23-4">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name))</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-give correct results for longitude/latitude data</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><span class="fu" style="color: #4758AB;">library</span>(sf)</span>
-<span id="cb25-2"></span>
-<span id="cb25-3"><span class="do" style="color: #5E5E5E;
-font-style: italic;">## pointsDF: A data.frame whose first column contains longitudes and</span></span>
-<span id="cb25-4"><span class="do" style="color: #5E5E5E;
-font-style: italic;">##           whose second column contains latitudes.</span></span>
-<span id="cb25-5"><span class="do" style="color: #5E5E5E;
-font-style: italic;">##</span></span>
-<span id="cb25-6"><span class="do" style="color: #5E5E5E;
-font-style: italic;">## states:   An sf MULTIPOLYGON object with 50 states plus DC.</span></span>
-<span id="cb25-7"><span class="do" style="color: #5E5E5E;
-font-style: italic;">##</span></span>
-<span id="cb25-8"><span class="do" style="color: #5E5E5E;
-font-style: italic;">## name_col: Name of a column in `states` that supplies the states'</span></span>
-<span id="cb25-9"><span class="do" style="color: #5E5E5E;
-font-style: italic;">##           names.</span></span>
-<span id="cb25-10">lonlat_to_state <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="cf" style="color: #003B4F;">function</span>(pointsDF,</span>
-<span id="cb25-11">                            <span class="at" style="color: #657422;">states =</span> map_china,</span>
-<span id="cb25-12">                            <span class="at" style="color: #657422;">name_col =</span> <span class="st" style="color: #20794D;">"name"</span>) {</span>
-<span id="cb25-13">    <span class="do" style="color: #5E5E5E;
-font-style: italic;">## Convert points data.frame to an sf POINTS object</span></span>
-<span id="cb25-14">    pts <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(pointsDF, <span class="at" style="color: #657422;">coords =</span> <span class="dv" style="color: #AD0000;">1</span><span class="sc" style="color: #5E5E5E;">:</span><span class="dv" style="color: #AD0000;">2</span>, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>)</span>
-<span id="cb25-15"></span>
-<span id="cb25-16">    <span class="do" style="color: #5E5E5E;
-font-style: italic;">## Transform spatial data to some planar coordinate system</span></span>
-<span id="cb25-17">    <span class="do" style="color: #5E5E5E;
-font-style: italic;">## (e.g. Web Mercator) as required for geometric operations</span></span>
-<span id="cb25-18">    states <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_transform</span>(states, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">3857</span>)</span>
-<span id="cb25-19">    pts <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_transform</span>(pts, <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">3857</span>)</span>
-<span id="cb25-20"></span>
-<span id="cb25-21">    <span class="do" style="color: #5E5E5E;
-font-style: italic;">## Find names of state (if any) intersected by each point</span></span>
-<span id="cb25-22">    state_names <span class="ot" style="color: #003B4F;">&lt;-</span> states[[name_col]]</span>
-<span id="cb25-23">    ii <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">as.integer</span>(<span class="fu" style="color: #4758AB;">st_intersects</span>(pts, states))</span>
-<span id="cb25-24">    state_names[ii]</span>
-<span id="cb25-25">}</span>
-<span id="cb25-26"></span>
-<span id="cb25-27"><span class="do" style="color: #5E5E5E;
-font-style: italic;">## Test the function with points in Wisconsin, Oregon, and France</span></span>
-<span id="cb25-28">testPoints <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(metro_df<span class="sc" style="color: #5E5E5E;">$</span>lon, metro_df<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
-<span id="cb25-29"></span>
-<span id="cb25-30"><span class="co" style="color: #5E5E5E;"># lonlat_to_state(testPoints)</span></span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1">testPoints <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(metro_df<span class="sc" style="color: #5E5E5E;">$</span>lon, metro_df<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
-<span id="cb26-2"></span>
-<span id="cb26-3"><span class="co" style="color: #5E5E5E;"># get coordinate to location,  modern province</span></span>
-<span id="cb26-4">metro_df<span class="sc" style="color: #5E5E5E;">$</span>location <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">lonlat_to_state</span>(testPoints)</span>
-<span id="cb26-5"></span>
-<span id="cb26-6">metro_df <span class="ot" style="color: #003B4F;">&lt;-</span> metro_df <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">select</span>(<span class="sc" style="color: #5E5E5E;">-</span><span class="fu" style="color: #4758AB;">c</span>(lon, lat))</span>
-<span id="cb26-7"></span>
-<span id="cb26-8">metro_final <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">left_join</span>(metro, metro_df, <span class="at" style="color: #657422;">by =</span> <span class="st" style="color: #20794D;">"Entity ID"</span>) <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb26-9">  janitor<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">clean_names</span>() <span class="sc" style="color: #5E5E5E;">%&gt;%</span></span>
-<span id="cb26-10">  <span class="fu" style="color: #4758AB;">unique</span>()</span></code></pre></div>
-</div>
-<p>summary number of sites in modern china province</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><span class="fu" style="color: #4758AB;">table</span>(metro_final<span class="sc" style="color: #5E5E5E;">$</span>location) <span class="sc" style="color: #5E5E5E;">%&gt;%</span> <span class="fu" style="color: #4758AB;">sort</span>(<span class="at" style="color: #657422;">decreasing =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)<span class="sc" style="color: #5E5E5E;">%&gt;%</span> knitr<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">kable</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<table class="table table-sm table-striped">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Var1</th>
-<th style="text-align: right;">Freq</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">四川</td>
-<td style="text-align: right;">156</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">河南</td>
-<td style="text-align: right;">121</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">河北</td>
-<td style="text-align: right;">96</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">陕西</td>
-<td style="text-align: right;">92</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">山西</td>
-<td style="text-align: right;">91</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">山东</td>
-<td style="text-align: right;">90</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">江西</td>
-<td style="text-align: right;">67</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">浙江</td>
-<td style="text-align: right;">67</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">湖南</td>
-<td style="text-align: right;">58</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">安徽</td>
-<td style="text-align: right;">57</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">湖北</td>
-<td style="text-align: right;">57</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">广西</td>
-<td style="text-align: right;">56</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">福建</td>
-<td style="text-align: right;">44</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">广东</td>
-<td style="text-align: right;">43</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">江苏</td>
-<td style="text-align: right;">43</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">重庆</td>
-<td style="text-align: right;">37</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">甘肃</td>
-<td style="text-align: right;">26</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">海南</td>
-<td style="text-align: right;">7</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">上海</td>
-<td style="text-align: right;">2</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">内蒙古</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">天津</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">宁夏</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>export data.frame to excel</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><span class="co" style="color: #5E5E5E;"># library("writexl")</span></span>
-<span id="cb28-2"><span class="co" style="color: #5E5E5E;"># write_xlsx(metro_final,"metro_final.xlsx")</span></span></code></pre></div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1">sites <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">data.frame</span>(<span class="at" style="color: #657422;">longitude =</span> metro_final<span class="sc" style="color: #5E5E5E;">$</span>lon, <span class="at" style="color: #657422;">latitude =</span> metro<span class="sc" style="color: #5E5E5E;">$</span>lat)</span>
-<span id="cb29-2"></span>
-<span id="cb29-3">sites <span class="ot" style="color: #003B4F;">&lt;-</span> <span class="fu" style="color: #4758AB;">st_as_sf</span>(sites,</span>
-<span id="cb29-4">  <span class="at" style="color: #657422;">coords =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="st" style="color: #20794D;">"longitude"</span>, <span class="st" style="color: #20794D;">"latitude"</span>),</span>
-<span id="cb29-5">  <span class="at" style="color: #657422;">crs =</span> <span class="dv" style="color: #AD0000;">4326</span>, <span class="at" style="color: #657422;">agr =</span> <span class="st" style="color: #20794D;">"constant"</span>)</span>
-<span id="cb29-6"></span>
-<span id="cb29-7"><span class="fu" style="color: #4758AB;">ggplot</span>(map_china) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb29-8">  <span class="fu" style="color: #4758AB;">geom_sf</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb29-9">  <span class="fu" style="color: #4758AB;">geom_sf_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> name),<span class="at" style="color: #657422;">color=</span><span class="st" style="color: #20794D;">"black"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb29-10">  <span class="fu" style="color: #4758AB;">geom_sf</span>(<span class="at" style="color: #657422;">data =</span> sites, <span class="at" style="color: #657422;">size =</span> .<span class="dv" style="color: #AD0000;">5</span>, <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"red"</span>, <span class="at" style="color: #657422;">alpha =</span> .<span class="dv" style="color: #AD0000;">3</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb29-11">  <span class="fu" style="color: #4758AB;">theme_void</span>()</span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in st_point_on_surface.sfc(sf::st_zm(x)): st_point_on_surface may not
-give correct results for longitude/latitude data</code></pre>
-</div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/sf-map/index_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="768"></p>
-</div>
-</div>
-
-
-</section>
-
- ]]></description>
-  <category>sf</category>
-  <category>map</category>
-  <category>heatmap</category>
-  <guid>https://guote.netlify.app/posts/sf-map/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif" medium="image" type="image/gif"/>
 </item>
 </channel>
 </rss>
