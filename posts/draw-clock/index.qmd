@@ -6,6 +6,7 @@ categories: [R, code, ggplot2, life]
 ---
 
 library in need
+
 ```{r}
 library(tidyverse)
 library(ggrepel)

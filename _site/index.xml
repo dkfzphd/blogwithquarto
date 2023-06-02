@@ -10,7 +10,75 @@
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
 <generator>quarto-1.2.335</generator>
-<lastBuildDate>Mon, 30 Jan 2023 23:00:00 GMT</lastBuildDate>
+<lastBuildDate>Thu, 01 Jun 2023 22:00:00 GMT</lastBuildDate>
+<item>
+  <title>Bar plot with labels ggfittext</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># data from 王敏杰 老师</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;"># his book https://bookdown.org/wangminjie/R4DS/author.html</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">d <span class="ot" style="color: #003B4F;">&lt;-</span> tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tribble</span>(</span>
+<span id="cb1-5">     <span class="sc" style="color: #5E5E5E;">~</span>name, <span class="sc" style="color: #5E5E5E;">~</span>value,</span>
+<span id="cb1-6">   <span class="st" style="color: #20794D;">"Alice"</span>,   <span class="fl" style="color: #AD0000;">2.12</span>,</span>
+<span id="cb1-7">     <span class="st" style="color: #20794D;">"Bob"</span>,  <span class="fl" style="color: #AD0000;">68.45</span>,</span>
+<span id="cb1-8">  <span class="st" style="color: #20794D;">"Carlie"</span>,  <span class="fl" style="color: #AD0000;">15.84</span>,</span>
+<span id="cb1-9">    <span class="st" style="color: #20794D;">"Dave"</span>,   <span class="fl" style="color: #AD0000;">7.38</span>,</span>
+<span id="cb1-10">     <span class="st" style="color: #20794D;">"Eve"</span>,   <span class="fl" style="color: #AD0000;">0.56</span></span>
+<span id="cb1-11">  )</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-15"><span class="fu" style="color: #4758AB;">library</span>(ggfittext)</span>
+<span id="cb1-16"></span>
+<span id="cb1-17">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb1-18">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-19">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"gray45"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-20">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> value, <span class="at" style="color: #657422;">hjust =</span> <span class="dv" style="color: #AD0000;">1</span>))  <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-21">  <span class="fu" style="color: #4758AB;">theme_classic</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-22">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-23">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;"># ggfittext to adjust the text position</span></span>
+<span id="cb2-2">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"#99d594"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-6">  <span class="fu" style="color: #4758AB;">geom_bar_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> d<span class="sc" style="color: #5E5E5E;">$</span>value), </span>
+<span id="cb2-7">                <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue"</span>, </span>
+<span id="cb2-8">                <span class="at" style="color: #657422;">vjust =</span> <span class="dv" style="color: #AD0000;">1</span>, </span>
+<span id="cb2-9">                <span class="co" style="color: #5E5E5E;"># size = 4 * ggplot2::.pt, </span></span>
+<span id="cb2-10">                <span class="co" style="color: #5E5E5E;"># min.size = 4 * ggplot2::.pt,</span></span>
+<span id="cb2-11">                <span class="co" style="color: #5E5E5E;"># padding.x = grid::unit(0, "pt"),</span></span>
+<span id="cb2-12">                <span class="co" style="color: #5E5E5E;"># padding.y = grid::unit(0, "pt"),</span></span>
+<span id="cb2-13">                <span class="at" style="color: #657422;">outside =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-14">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">""</span>,</span>
+<span id="cb2-15">       <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">""</span>,</span>
+<span id="cb2-16">       <span class="at" style="color: #657422;">title=</span><span class="st" style="color: #20794D;">"Welcome Kai to visit here"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-17">  <span class="fu" style="color: #4758AB;">theme_classic</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</guid>
+  <pubDate>Thu, 01 Jun 2023 22:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Draw a pointpath linestyle with ggplot2</title>
   <dc:creator>Te</dc:creator>
@@ -1276,74 +1344,6 @@ Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children,
   <category>r</category>
   <guid>https://guote.netlify.app/posts/machine-learning-process/index.html</guid>
   <pubDate>Wed, 09 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Bar plot with labels ggfittext</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># data from 王敏杰 老师</span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;"># his book https://bookdown.org/wangminjie/R4DS/author.html</span></span>
-<span id="cb1-3"></span>
-<span id="cb1-4">d <span class="ot" style="color: #003B4F;">&lt;-</span> tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tribble</span>(</span>
-<span id="cb1-5">     <span class="sc" style="color: #5E5E5E;">~</span>name, <span class="sc" style="color: #5E5E5E;">~</span>value,</span>
-<span id="cb1-6">   <span class="st" style="color: #20794D;">"Alice"</span>,   <span class="fl" style="color: #AD0000;">2.12</span>,</span>
-<span id="cb1-7">     <span class="st" style="color: #20794D;">"Bob"</span>,  <span class="fl" style="color: #AD0000;">68.45</span>,</span>
-<span id="cb1-8">  <span class="st" style="color: #20794D;">"Carlie"</span>,  <span class="fl" style="color: #AD0000;">15.84</span>,</span>
-<span id="cb1-9">    <span class="st" style="color: #20794D;">"Dave"</span>,   <span class="fl" style="color: #AD0000;">7.38</span>,</span>
-<span id="cb1-10">     <span class="st" style="color: #20794D;">"Eve"</span>,   <span class="fl" style="color: #AD0000;">0.56</span></span>
-<span id="cb1-11">  )</span>
-<span id="cb1-12"></span>
-<span id="cb1-13"></span>
-<span id="cb1-14"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
-<span id="cb1-15"><span class="fu" style="color: #4758AB;">library</span>(ggfittext)</span>
-<span id="cb1-16"></span>
-<span id="cb1-17">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
-<span id="cb1-18">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-19">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"gray45"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-20">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> value, <span class="at" style="color: #657422;">hjust =</span> <span class="dv" style="color: #AD0000;">1</span>))  <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-21">  <span class="fu" style="color: #4758AB;">theme_classic</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-22">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb1-23">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;"># ggfittext to adjust the text position</span></span>
-<span id="cb2-2">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
-<span id="cb2-3">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-4">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"#99d594"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-5">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-6">  <span class="fu" style="color: #4758AB;">geom_bar_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> d<span class="sc" style="color: #5E5E5E;">$</span>value), </span>
-<span id="cb2-7">                <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue"</span>, </span>
-<span id="cb2-8">                <span class="at" style="color: #657422;">vjust =</span> <span class="dv" style="color: #AD0000;">1</span>, </span>
-<span id="cb2-9">                <span class="co" style="color: #5E5E5E;"># size = 4 * ggplot2::.pt, </span></span>
-<span id="cb2-10">                <span class="co" style="color: #5E5E5E;"># min.size = 4 * ggplot2::.pt,</span></span>
-<span id="cb2-11">                <span class="co" style="color: #5E5E5E;"># padding.x = grid::unit(0, "pt"),</span></span>
-<span id="cb2-12">                <span class="co" style="color: #5E5E5E;"># padding.y = grid::unit(0, "pt"),</span></span>
-<span id="cb2-13">                <span class="at" style="color: #657422;">outside =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-14">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">""</span>,</span>
-<span id="cb2-15">       <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">""</span>,</span>
-<span id="cb2-16">       <span class="at" style="color: #657422;">title=</span><span class="st" style="color: #20794D;">"Welcome Kai to visit here"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
-<span id="cb2-17">  <span class="fu" style="color: #4758AB;">theme_classic</span>()</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
-</div>
-</div>
-
-
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 <item>
   <title>R中自动画流程图</title>

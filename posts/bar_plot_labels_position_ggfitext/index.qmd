@@ -1,7 +1,7 @@
 ---
 title: Bar plot with labels ggfittext
 author: "Te"
-date: "2022-11-08"
+date: "2023-06-02"
 categories: [news, code, analysis]
 ---
 
