@@ -1,0 +1,16 @@
+{
+  "hash": "7e9d2b80f30faf1a0949f3d13a467daa",
+  "result": {
+    "markdown": "---\ntitle: Bar plot with labels ggfittext\nauthor: \"Te\"\ndate: \"2022-11-08\"\ncategories: [news, code, analysis]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\n# data from 王敏杰 老师\n# his book https://bookdown.org/wangminjie/R4DS/author.html\n\nd <- tibble::tribble(\n     ~name, ~value,\n   \"Alice\",   2.12,\n     \"Bob\",  68.45,\n  \"Carlie\",  15.84,\n    \"Dave\",   7.38,\n     \"Eve\",   0.56\n  )\n\n\nlibrary(tidyverse)\nlibrary(ggfittext)\n\nd %>% \n  ggplot(aes(x = value, y = fct_reorder(name, value)) ) +\n  geom_col(width = 0.6, fill = \"gray45\") +\n  geom_text(aes(label = value, hjust = 1))  +\n  theme_classic() +\n  scale_x_continuous(expand = c(0, 0)) +\n  labs(x = NULL, y = NULL)\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\n# ggfittext to adjust the text position\nd %>% \n  ggplot(aes(x = value, y = fct_reorder(name, value)) ) +\n  geom_col(width = 0.6, fill = \"#99d594\") +\n  scale_x_continuous(expand = c(0, 0)) +\n  geom_bar_text(aes(label = d$value), \n                color = \"blue\", \n                vjust = 1, \n                # size = 4 * ggplot2::.pt, \n                # min.size = 4 * ggplot2::.pt,\n                # padding.x = grid::unit(0, \"pt\"),\n                # padding.y = grid::unit(0, \"pt\"),\n                outside = TRUE)+\n  labs(x = \"\",\n       y = \"\",\n       title=\"Welcome Kai to visit here\")+\n  theme_classic()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-2-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

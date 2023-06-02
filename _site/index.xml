@@ -9,7 +9,7 @@
 <link>https://guote.netlify.app/index.html</link>
 <atom:link href="https://guote.netlify.app/index.xml" rel="self" type="application/rss+xml"/>
 <description>Te‘s BLOG</description>
-<generator>quarto-1.2.269</generator>
+<generator>quarto-1.2.335</generator>
 <lastBuildDate>Mon, 30 Jan 2023 23:00:00 GMT</lastBuildDate>
 <item>
   <title>Draw a pointpath linestyle with ggplot2</title>
@@ -749,10 +749,179 @@
   <media:content url="https://guote.netlify.app/posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png" medium="image" type="image/png" height="57" width="144"/>
 </item>
 <item>
-  <title></title>
+  <title>Test Quarto Presentation</title>
   <dc:creator>Te</dc:creator>
   <link>https://guote.netlify.app/posts/presentation-test/index.html</link>
-  <description><![CDATA[ undefined ]]></description>
+  <description><![CDATA[ 
+
+
+
+<section id="a-tree-plot" class="level2">
+<h2 class="anchored" data-anchor-id="a-tree-plot">A tree plot</h2>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/presentation-test/index_files/figure-revealjs/unnamed-chunk-1-1.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</section>
+<section id="the-alarm-clock-is-ringing" class="level2">
+<h2 class="anchored" data-anchor-id="the-alarm-clock-is-ringing">The alarm clock is ringing</h2>
+<div class="incremental">
+<ul class="incremental">
+<li>Turn off for another 5 min</li>
+<li>Ring again</li>
+<li>Get up with sleepy-eyed</li>
+</ul>
+</div>
+</section>
+<section id="getting-up" class="level2">
+<h2 class="anchored" data-anchor-id="getting-up">Getting up</h2>
+<ul>
+<li>Turn off alarm</li>
+<li>Get out of bed</li>
+</ul>
+</section>
+<section id="going-to-sleep" class="level2">
+<h2 class="anchored" data-anchor-id="going-to-sleep">Going to sleep</h2>
+<ul>
+<li>Get in bed</li>
+<li>Count sheep</li>
+</ul>
+</section>
+<section id="a-slide-with-two-columns" class="level2">
+<h2 class="anchored" data-anchor-id="a-slide-with-two-columns">A slide with two columns</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<ul>
+<li>Left column wow</li>
+<li>Left column wow</li>
+<li>Left column wow</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<ul>
+<li>Right column cool</li>
+<li>Right column cool</li>
+<li>Right column cool</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="call-out-block-1" class="level2">
+<h2 class="anchored" data-anchor-id="call-out-block-1">Call out block 1</h2>
+<ul>
+<li>callout-note</li>
+</ul>
+<div class="callout-note callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.</p>
+</div>
+</div>
+<ul>
+<li>callout-tip</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</section>
+<section id="call-out-block-2" class="level2">
+<h2 class="anchored" data-anchor-id="call-out-block-2">Call out block 2</h2>
+<p>callout-caution</p>
+<div class="callout-caution callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Danger
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This is an example of a ‘folded’ caution callout that can be expanded by the user. You can use <code>collapse="true"</code> to collapse it by default or <code>collapse="false"</code> to make a collapsible callout that is expanded by default.</p>
+</div>
+</div>
+</div>
+<p>callout-warning</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</section>
+<section id="call-out-block-3" class="level2">
+<h2 class="anchored" data-anchor-id="call-out-block-3">Call out block 3</h2>
+<ul>
+<li>callout-tip</li>
+</ul>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+<ul>
+<li>callout-important</li>
+</ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This is an example of a callout with a caption.</p>
+</div>
+</div>
+</section>
+<section id="thank-you" class="level2">
+<h2 class="anchored" data-anchor-id="thank-you">Thank you</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://guote.netlify.app/posts/presentation-test/https:/media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+
+
+</section>
+
+ ]]></description>
   <guid>https://guote.netlify.app/posts/presentation-test/index.html</guid>
   <pubDate>Mon, 21 Nov 2022 23:00:00 GMT</pubDate>
   <media:content url="https://media.giphy.com/media/21HtXqCprrU7Xsr0qo/giphy.gif" medium="image" type="image/gif"/>
@@ -770,7 +939,7 @@
 <p><img src="https://guote.netlify.app/posts/Basic-LaTeX-Preamble/https:/cdn.pixabay.com/photo/2016/11/29/06/15/plans-1867745_960_720.jpg" class="img-fluid figure-img" width="500"></p>
 </figure>
 </div>
-<pre class="{latex}"><code>\documentclass[a4paper,11pt]{article}
+<pre><code>\documentclass[a4paper,11pt]{article}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{hyperref}
 \hypersetup{
@@ -1109,6 +1278,74 @@ Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children,
   <pubDate>Wed, 09 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>Bar plot with labels ggfittext</title>
+  <dc:creator>Te</dc:creator>
+  <link>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;"># data from 王敏杰 老师</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;"># his book https://bookdown.org/wangminjie/R4DS/author.html</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">d <span class="ot" style="color: #003B4F;">&lt;-</span> tibble<span class="sc" style="color: #5E5E5E;">::</span><span class="fu" style="color: #4758AB;">tribble</span>(</span>
+<span id="cb1-5">     <span class="sc" style="color: #5E5E5E;">~</span>name, <span class="sc" style="color: #5E5E5E;">~</span>value,</span>
+<span id="cb1-6">   <span class="st" style="color: #20794D;">"Alice"</span>,   <span class="fl" style="color: #AD0000;">2.12</span>,</span>
+<span id="cb1-7">     <span class="st" style="color: #20794D;">"Bob"</span>,  <span class="fl" style="color: #AD0000;">68.45</span>,</span>
+<span id="cb1-8">  <span class="st" style="color: #20794D;">"Carlie"</span>,  <span class="fl" style="color: #AD0000;">15.84</span>,</span>
+<span id="cb1-9">    <span class="st" style="color: #20794D;">"Dave"</span>,   <span class="fl" style="color: #AD0000;">7.38</span>,</span>
+<span id="cb1-10">     <span class="st" style="color: #20794D;">"Eve"</span>,   <span class="fl" style="color: #AD0000;">0.56</span></span>
+<span id="cb1-11">  )</span>
+<span id="cb1-12"></span>
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="fu" style="color: #4758AB;">library</span>(tidyverse)</span>
+<span id="cb1-15"><span class="fu" style="color: #4758AB;">library</span>(ggfittext)</span>
+<span id="cb1-16"></span>
+<span id="cb1-17">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb1-18">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-19">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"gray45"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-20">  <span class="fu" style="color: #4758AB;">geom_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> value, <span class="at" style="color: #657422;">hjust =</span> <span class="dv" style="color: #AD0000;">1</span>))  <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-21">  <span class="fu" style="color: #4758AB;">theme_classic</span>() <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-22">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb1-23">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="cn" style="color: #8f5902;">NULL</span>, <span class="at" style="color: #657422;">y =</span> <span class="cn" style="color: #8f5902;">NULL</span>)</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;"># ggfittext to adjust the text position</span></span>
+<span id="cb2-2">d <span class="sc" style="color: #5E5E5E;">%&gt;%</span> </span>
+<span id="cb2-3">  <span class="fu" style="color: #4758AB;">ggplot</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">x =</span> value, <span class="at" style="color: #657422;">y =</span> <span class="fu" style="color: #4758AB;">fct_reorder</span>(name, value)) ) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-4">  <span class="fu" style="color: #4758AB;">geom_col</span>(<span class="at" style="color: #657422;">width =</span> <span class="fl" style="color: #AD0000;">0.6</span>, <span class="at" style="color: #657422;">fill =</span> <span class="st" style="color: #20794D;">"#99d594"</span>) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-5">  <span class="fu" style="color: #4758AB;">scale_x_continuous</span>(<span class="at" style="color: #657422;">expand =</span> <span class="fu" style="color: #4758AB;">c</span>(<span class="dv" style="color: #AD0000;">0</span>, <span class="dv" style="color: #AD0000;">0</span>)) <span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-6">  <span class="fu" style="color: #4758AB;">geom_bar_text</span>(<span class="fu" style="color: #4758AB;">aes</span>(<span class="at" style="color: #657422;">label =</span> d<span class="sc" style="color: #5E5E5E;">$</span>value), </span>
+<span id="cb2-7">                <span class="at" style="color: #657422;">color =</span> <span class="st" style="color: #20794D;">"blue"</span>, </span>
+<span id="cb2-8">                <span class="at" style="color: #657422;">vjust =</span> <span class="dv" style="color: #AD0000;">1</span>, </span>
+<span id="cb2-9">                <span class="co" style="color: #5E5E5E;"># size = 4 * ggplot2::.pt, </span></span>
+<span id="cb2-10">                <span class="co" style="color: #5E5E5E;"># min.size = 4 * ggplot2::.pt,</span></span>
+<span id="cb2-11">                <span class="co" style="color: #5E5E5E;"># padding.x = grid::unit(0, "pt"),</span></span>
+<span id="cb2-12">                <span class="co" style="color: #5E5E5E;"># padding.y = grid::unit(0, "pt"),</span></span>
+<span id="cb2-13">                <span class="at" style="color: #657422;">outside =</span> <span class="cn" style="color: #8f5902;">TRUE</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-14">  <span class="fu" style="color: #4758AB;">labs</span>(<span class="at" style="color: #657422;">x =</span> <span class="st" style="color: #20794D;">""</span>,</span>
+<span id="cb2-15">       <span class="at" style="color: #657422;">y =</span> <span class="st" style="color: #20794D;">""</span>,</span>
+<span id="cb2-16">       <span class="at" style="color: #657422;">title=</span><span class="st" style="color: #20794D;">"Welcome Kai to visit here"</span>)<span class="sc" style="color: #5E5E5E;">+</span></span>
+<span id="cb2-17">  <span class="fu" style="color: #4758AB;">theme_classic</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+
+ ]]></description>
+  <category>news</category>
+  <category>code</category>
+  <category>analysis</category>
+  <guid>https://guote.netlify.app/posts/bar_plot_labels_position_ggfitext/index.html</guid>
+  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
+</item>
+<item>
   <title>R中自动画流程图</title>
   <dc:creator>Te</dc:creator>
   <link>https://guote.netlify.app/posts/DiagrammR/DiagrammR.html</link>
@@ -1262,7 +1499,6 @@ Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children,
 
 
 
-
 <p>“First BLOG test with Quarto”</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;">plot</span>(trees)</span></code></pre></div>
@@ -1285,7 +1521,6 @@ Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children,
   <dc:creator>Te</dc:creator>
   <link>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -1338,7 +1573,6 @@ Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children,
   <dc:creator>Te</dc:creator>
   <link>https://guote.netlify.app/posts/ggplot2-MoonPhrase/index.html</link>
   <description><![CDATA[ 
-
 
 
 
@@ -1537,7 +1771,6 @@ font-style: italic;">## Show the data around today to see what data above looks 
 
 
 
-
 <section id="三门问题路径分析" class="level3">
 <h3 class="anchored" data-anchor-id="三门问题路径分析">三门问题路径分析</h3>
 <p><img src="https://guote.netlify.app/posts/Monty Hall problem/image.jpg" class="img-fluid"></p>
@@ -1606,7 +1839,6 @@ font-style: italic;">## Show the data around today to see what data above looks 
 
 
 
-
 <p>This is a post with executable code.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="dv" style="color: #AD0000;">1</span> <span class="sc" style="color: #5E5E5E;">+</span> <span class="dv" style="color: #AD0000;">1</span></span></code></pre></div>
@@ -1624,53 +1856,6 @@ font-style: italic;">## Show the data around today to see what data above looks 
   <guid>https://guote.netlify.app/posts/post-with-code/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
   <media:content url="https://guote.netlify.app/posts/post-with-code/image.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>rmarkdown-latex-chinese-ctex</title>
-  <dc:creator>Te</dc:creator>
-  <link>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<pre><code>---  
-title: "Your Report Title"  
-author: "YourName"  
-date: "2022-10-31"  
-documentclass: ctexart  
-geometry: "left=3cm,right=3cm,top=2.5cm,bottom=2.5cm"
-output:  
-  rticles::ctex:  
-    fig_caption: yes  
-    number_sections: yes  
-    toc: yes  
-editor_options:  
-  chunk_output_type: console  
----</code></pre>
-<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" class="img-fluid"></p>
-<pre><code>### side by side plots</code></pre>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;">set.seed</span>(<span class="dv" style="color: #AD0000;">81</span>)</span>
-<span id="cb3-2"><span class="fu" style="color: #4758AB;">boxplot</span>(<span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>))</span>
-<span id="cb3-3"><span class="fu" style="color: #4758AB;">plot</span>(<span class="fu" style="color: #4758AB;">rnorm</span>(<span class="dv" style="color: #AD0000;">10</span>),<span class="at" style="color: #657422;">col=</span><span class="st" style="color: #20794D;">"red"</span>)</span></code></pre></div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/index_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid" style="width:50.0%"></p>
-</div>
-<div class="cell-output-display">
-<p><img src="https://guote.netlify.app/posts/rmarkdown-chinese-paper/index_files/figure-html/unnamed-chunk-1-2.png" class="img-fluid" style="width:50.0%"></p>
-</div>
-</div>
-<p>````</p>
-
-
-
- ]]></description>
-  <category>rmarkdown</category>
-  <category>chinese</category>
-  <category>latex</category>
-  <guid>https://guote.netlify.app/posts/rmarkdown-chinese-paper/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-  <media:content url="https://guote.netlify.app/posts/rmarkdown-chinese-paper/youzhiqingnian.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>

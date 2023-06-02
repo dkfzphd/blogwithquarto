@@ -139,5 +139,8 @@
   },
   "posts/explore-ggplot2-pointpath-linestyle/index.qmd": {
     "index.html": "840635f9"
+  },
+  "posts/bar_plot_labels_position_ggfitext/index.qmd": {
+    "index.html": "c1695769"
   }
 }
