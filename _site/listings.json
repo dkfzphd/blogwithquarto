@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/ggplot2-mini-ticks/index.html",
       "/posts/high-resolution-review/index.html",
       "/posts/bar_plot_labels_position_ggfitext/index.html",
       "/posts/explore-ggplot2-pointpath-linestyle/index.html",

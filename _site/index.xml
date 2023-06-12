@@ -12,6 +12,379 @@
 <generator>quarto-1.3.353</generator>
 <lastBuildDate>Sun, 11 Jun 2023 22:00:00 GMT</lastBuildDate>
 <item>
+  <title>Mini ticks ggplot2</title>
+  <dc:creator>Te </dc:creator>
+  <link>https://guote.netlify.app/posts/ggplot2-mini-ticks/index.html</link>
+  <description><![CDATA[ 
+
+
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(hrbrthemes)</span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggh4x)</span>
+<span id="cb1-4">showtext<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">showtext.auto</span>()</span></code></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">set.seed</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1030</span>)</span>
+<span id="cb2-2">df1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">tibble</span>(</span>
+<span id="cb2-3">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">by =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb2-4">  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y1 =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rnorm</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">mean =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">sd =</span> .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> x1</span>
+<span id="cb2-5">)</span></code></pre></div>
+</div>
+<section id="set-minor_breaks" class="level2">
+<h2 class="anchored" data-anchor-id="set-minor_breaks">set minor_breaks</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df1, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(x1, y1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(</span>
+<span id="cb3-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb3-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb3-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">guide =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"axis_minor"</span></span>
+<span id="cb3-8">  )<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-9">   <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(</span>
+<span id="cb3-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">12.5</span>, .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>), <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set minor_breaks</span></span>
+<span id="cb3-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb3-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">guide =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"axis_minor"</span></span>
+<span id="cb3-13">  )<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span></span>
+<span id="cb3-15">       )<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_modern_rc</span>()</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/ggplot2-mini-ticks/index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="set-minor_breaks-and-major-breaks-length-ratio-using-gghx-package" class="level2">
+<h2 class="anchored" data-anchor-id="set-minor_breaks-and-major-breaks-length-ratio-using-gghx-package">set minor_breaks and major breaks length ratio using gghx package</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df1, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(x1, y1)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-2">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"red"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-3">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color=</span><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"yellow"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_x_continuous</span>(</span>
+<span id="cb4-5">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(</span>
+<span id="cb4-6">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>),</span>
+<span id="cb4-7">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">8</span>, .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb4-8">    ),</span>
+<span id="cb4-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb4-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">guide =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"axis_minor"</span></span>
+<span id="cb4-11">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-12">   <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_y_continuous</span>(</span>
+<span id="cb4-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">minor_breaks =</span> </span>
+<span id="cb4-14">      <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">6</span>, .<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb4-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">breaks =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">13</span>, <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb4-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">guide =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"axis_minor"</span></span>
+<span id="cb4-17">  )<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-18">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Please ignore the aesthetic design "</span>,</span>
+<span id="cb4-19">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Just to highlight the function"</span>,</span>
+<span id="cb4-20">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>,</span>
+<span id="cb4-21">       <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y=</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NULL</span>)<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-22">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_bw</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">28</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-23">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.ticks.length.x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set ticks length</span></span>
+<span id="cb4-24">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ggh4x.axis.ticks.length.minor =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rel</span>(.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>))<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># set minor / major ticks length ratio</span></span>
+<span id="cb4-25">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">panel.grid =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"blue"</span>,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size=</span>.<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>))</span></code></pre></div>
+<div class="cell-output-display">
+<p><img src="https://guote.netlify.app/posts/ggplot2-mini-ticks/index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <category>mini ticks</category>
+  <category>ggplot2</category>
+  <guid>https://guote.netlify.app/posts/ggplot2-mini-ticks/index.html</guid>
+  <pubDate>Sun, 11 Jun 2023 22:00:00 GMT</pubDate>
+</item>
+<item>
   <title>Convert PDF to PNG to obtainHigh Resolution Plot Figure</title>
   <dc:creator>Te </dc:creator>
   <link>https://guote.netlify.app/posts/high-resolution-review/index.html</link>
@@ -4722,73 +5095,6 @@ font-style: inherit;">200</span></span>
   <category>molecular biology</category>
   <category>analysis</category>
   <guid>https://guote.netlify.app/posts/MolecularCloning/index.html</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Monty Hall problem</title>
-  <dc:creator>Te </dc:creator>
-  <link>https://guote.netlify.app/posts/Monty Hall problem/index.html</link>
-  <description><![CDATA[ 
-
-
-
-<section id="三门问题路径分析" class="level3">
-<h3 class="anchored" data-anchor-id="三门问题路径分析">三门问题路径分析</h3>
-<p><img src="https://guote.netlify.app/posts/Monty Hall problem/image.jpg" class="img-fluid"></p>
-<p>三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。</p>
-<p>三门背后对应内容：1个Car, 2只羊（Goat1 , Goat2）</p>
-<p>三门问题一直以来困扰很多人，我们先看下面的路线图</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-30f612ea25a7fe0e45e4" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-30f612ea25a7fe0e45e4">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="如果我们只关心能不能得到汽车" class="level3">
-<h3 class="anchored" data-anchor-id="如果我们只关心能不能得到汽车">如果我们只关心能不能得到汽车。</h3>
-<ol type="1">
-<li>从car 节点上看，keep策略1/3 * 1， switch策略2/3 * 1 .</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-903e309c7c4364071ee1" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-903e309c7c4364071ee1">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\n\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\n\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<ol start="2" type="1">
-<li>从goat节点上看，keep策略2/3 * 1， switch策略1/3 * 1 .</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-990bae7d10443d57b0c6" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-990bae7d10443d57b0c6">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\n \nparticipant -> goat_door [label=\"2/3\", fontsize=10]\n\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="三门问题的拓展版" class="level3">
-<h3 class="anchored" data-anchor-id="三门问题的拓展版">三门问题的拓展版</h3>
-<p>有三张纸牌：</p>
-<p>纸牌1： 2面都是黑色 card1: black-black</p>
-<p>纸牌2： 2面都是白色 card2: white-white</p>
-<p>纸牌3： 1面是白色，1面是黑色 card3: black-white</p>
-<p>问题：当你随机抽取一张牌看到的是牌面是黑色，请问这张牌背面是白色的概率？答案是1/3.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-4ada072fa6f6eddb49aa" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ada072fa6f6eddb49aa">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nblack;card1;card2;card3;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nblack -> card1 [label=\"2/3\", fontsize=8]\nblack -> card3 [label=\"1/3\", fontsize=8]\nblack -> card2 [label=\"0\", fontsize=8]\ncard1 -> \"black-at-back\" [label=\"1\", fontsize=8]\n\ncard3 -> \"white-at-back\" [label=\"1\", fontsize=8]\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<p><strong>当问题不清晰时就用路径分析，反直觉的点就会迎刃而解。</strong></p>
-
-
-</section>
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://guote.netlify.app/posts/Monty Hall problem/index.html</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 </channel>

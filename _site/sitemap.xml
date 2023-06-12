@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2023-06-12T05:19:44.162Z</lastmod>
+    <lastmod>2023-06-12T05:39:18.962Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -127,5 +127,9 @@
   <url>
     <loc>https://guote.netlify.app/posts/high-resolution-review/index.html</loc>
     <lastmod>2023-06-12T05:19:46.703Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/ggplot2-mini-ticks/index.html</loc>
+    <lastmod>2023-06-12T05:39:23.218Z</lastmod>
   </url>
 </urlset>

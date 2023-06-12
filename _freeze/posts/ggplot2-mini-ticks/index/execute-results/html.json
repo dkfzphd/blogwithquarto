@@ -1,0 +1,16 @@
+{
+  "hash": "05acaa69c982a5b58c2f5a06306968f2",
+  "result": {
+    "markdown": "---\ntitle: \"Mini ticks ggplot2\"\nauthor: \"Te\"\ndate: \"2023-06-12\"\ncategories: [mini ticks, ggplot2]\n---\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(hrbrthemes)\nlibrary(ggh4x)\nshowtext::showtext.auto()\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nset.seed(1030)\ndf1 <- tibble(\n  x1 = seq(1, 10, by = 1),\n  y1 = rnorm(10, mean = 3, sd = .8) + x1\n)\n```\n:::\n\n\n## set minor_breaks\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(df1, aes(x1, y1)) +\n  geom_line() +\n  geom_point() +\n  scale_x_continuous(\n    minor_breaks = seq(5, 8, .1),\n    breaks = seq(1, 10, 1),\n    guide = \"axis_minor\"\n  )+\n   scale_y_continuous(\n    minor_breaks = seq(10, 12.5, .1), # set minor_breaks\n    breaks = seq(4, 13, 1),\n    guide = \"axis_minor\"\n  )+\n  labs(x=NULL,y=NULL\n       )+\n  theme_modern_rc()\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n\n\n## set minor_breaks and major breaks length ratio using gghx package\n\n::: {.cell}\n\n```{.r .cell-code}\nggplot(df1, aes(x1, y1)) +\n  geom_line(color=\"red\") +\n  geom_point(color=\"yellow\") +\n  scale_x_continuous(\n    minor_breaks = c(\n      seq(1, 4, .5),\n      seq(5, 8, .1)\n    ),\n    breaks = seq(1, 10, 1),\n    guide = \"axis_minor\"\n  ) +\n   scale_y_continuous(\n    minor_breaks = \n      seq(5, 6, .1),\n    breaks = seq(5, 13, 1),\n    guide = \"axis_minor\"\n  )+\n  labs(title = \"Please ignore the aesthetic design \",\n       subtitle = \"Just to highlight the function\",\n       x=NULL,\n       y=NULL)+\n  theme_bw(28) +\n  theme(axis.ticks.length.x = unit(0.5, \"cm\")) + # set ticks length\n  theme(ggh4x.axis.ticks.length.minor = rel(.5))+ # set minor / major ticks length ratio\n  theme(panel.grid = element_line(color = \"blue\",size=.3))\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-4-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

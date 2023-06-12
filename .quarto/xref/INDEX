@@ -145,5 +145,8 @@
   },
   "posts/high-resolution-review/index.qmd": {
     "index.html": "4af769bd"
+  },
+  "posts/ggplot2-mini-ticks/index.qmd": {
+    "index.html": "00b7c170"
   }
 }

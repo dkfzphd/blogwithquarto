@@ -1,0 +1,70 @@
+---
+title: "Mini ticks ggplot2"
+author: "Te"
+date: "2023-06-12"
+categories: [mini ticks, ggplot2]
+---
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(hrbrthemes)
+library(ggh4x)
+showtext::showtext.auto()
+```
+
+```{r message=FALSE, warning=FALSE}
+set.seed(1030)
+df1 <- tibble(
+  x1 = seq(1, 10, by = 1),
+  y1 = rnorm(10, mean = 3, sd = .8) + x1
+)
+```
+
+## set minor_breaks
+```{r message=FALSE, warning=FALSE}
+ggplot(df1, aes(x1, y1)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(
+    minor_breaks = seq(5, 8, .1),
+    breaks = seq(1, 10, 1),
+    guide = "axis_minor"
+  )+
+   scale_y_continuous(
+    minor_breaks = seq(10, 12.5, .1), # set minor_breaks
+    breaks = seq(4, 13, 1),
+    guide = "axis_minor"
+  )+
+  labs(x=NULL,y=NULL
+       )+
+  theme_modern_rc()
+```
+
+## set minor_breaks and major breaks length ratio using gghx package
+```{r message=FALSE, warning=FALSE}
+ggplot(df1, aes(x1, y1)) +
+  geom_line(color="red") +
+  geom_point(color="yellow") +
+  scale_x_continuous(
+    minor_breaks = c(
+      seq(1, 4, .5),
+      seq(5, 8, .1)
+    ),
+    breaks = seq(1, 10, 1),
+    guide = "axis_minor"
+  ) +
+   scale_y_continuous(
+    minor_breaks = 
+      seq(5, 6, .1),
+    breaks = seq(5, 13, 1),
+    guide = "axis_minor"
+  )+
+  labs(title = "Please ignore the aesthetic design ",
+       subtitle = "Just to highlight the function",
+       x=NULL,
+       y=NULL)+
+  theme_bw(28) +
+  theme(axis.ticks.length.x = unit(0.5, "cm")) + # set ticks length
+  theme(ggh4x.axis.ticks.length.minor = rel(.5))+ # set minor / major ticks length ratio
+  theme(panel.grid = element_line(color = "blue",size=.3))
+```
