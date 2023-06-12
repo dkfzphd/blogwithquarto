@@ -33,16 +33,16 @@ ggplot(df, aes(Time, weight, group = Diet, color = Diet)) +
     y = "Chick Weight (g)",
     x = "Day"
   )
-ggsave(filename = "ChickWeight.pdf", plot = last_plot(), height = 6, width = 8)
+# ggsave(filename = "ChickWeight.pdf", plot = last_plot(), height = 6, width = 8)
 ```
 
 # pdf convert to png
 ```{r}
 
-pdftools::pdf_convert(
-  pdf = "ChickWeight.pdf",
-  filenames = "ChickWeight.png",
-  format = "png", 
-  dpi = 200
-)
+# pdftools::pdf_convert(
+#   pdf = "ChickWeight.pdf",
+#   filenames = "ChickWeight.png",
+#   format = "png", 
+#   dpi = 200
+# )
 ```

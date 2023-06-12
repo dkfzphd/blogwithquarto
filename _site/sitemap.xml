@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://guote.netlify.app/index.html</loc>
-    <lastmod>2023-06-02T18:36:23.517Z</lastmod>
+    <lastmod>2023-06-12T05:19:44.162Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Fluorescent Proteins FP/index.html</loc>
@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/draw-clock/index.html</loc>
-    <lastmod>2023-06-02T18:32:20.680Z</lastmod>
+    <lastmod>2023-06-12T05:19:42.231Z</lastmod>
   </url>
   <url>
     <loc>https://guote.netlify.app/posts/Basic-LaTeX-Preamble/index.html</loc>
@@ -123,5 +123,9 @@
   <url>
     <loc>https://guote.netlify.app/posts/post-with-code/index.html</loc>
     <lastmod>2023-06-02T18:32:27.245Z</lastmod>
+  </url>
+  <url>
+    <loc>https://guote.netlify.app/posts/high-resolution-review/index.html</loc>
+    <lastmod>2023-06-12T05:19:46.703Z</lastmod>
   </url>
 </urlset>

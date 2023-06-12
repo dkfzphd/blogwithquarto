@@ -1,0 +1,16 @@
+{
+  "hash": "67ece56bd88227cbcdab350ecfec6aa0",
+  "result": {
+    "markdown": "---\ntitle: \"Convert PDF to PNG to obtainHigh Resolution Plot Figure \"\nauthor: \"Te\"\ndate: \"2023-06-12\"\ncategories: [ggplot2, high resolution, analysis, anti-aliasing]\n---\n\n\n# load library \n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\ndf <- tibble(ChickWeight)\nggplot(df, aes(Time, weight, group = Diet, color = Diet)) +\n  geom_smooth(aes(group = Diet), se = FALSE) +\n  theme(\n    axis.title = element_text(size = 16, family = \"Roboto\"),\n    axis.text.x = element_text(size = 12, family = \"Roboto\"),\n    axis.text.y = element_text(size = 12, family = \"Roboto\"),\n    plot.title = element_text(size = 20, face = \"bold\", color = \"red2\", family = \"Lato\"),\n    plot.subtitle = element_text(size = 14, color = \"blue4\", family = \"Lato\"),\n    axis.line.x = element_line(color = \"gray8\"),\n    axis.line.y = element_line(color = \"gray8\"),\n    panel.background = element_rect(fill = \"white\"),\n    plot.background = element_rect(fill = \"white\"),\n    legend.position = c(0.1, 0.8),\n    legend.background = element_rect(fill = NA),\n    legend.key = element_rect(fill = NA),\n    plot.margin = unit(c(.5, .5, .5, .5), \"cm\")\n  ) +\n  labs(\n    title = \"Effect of different feeds on body weight of chicks\",\n    subtitle = \"After 20 days Diet3 is much better \",\n    y = \"Chick Weight (g)\",\n    x = \"Day\"\n  )\n```\n\n::: {.cell-output-display}\n![](index_files/figure-html/unnamed-chunk-1-1.png){width=672}\n:::\n\n```{.r .cell-code}\n# ggsave(filename = \"ChickWeight.pdf\", plot = last_plot(), height = 6, width = 8)\n```\n:::\n\n\n# pdf convert to png\n\n::: {.cell}\n\n```{.r .cell-code}\n# pdftools::pdf_convert(\n#   pdf = \"ChickWeight.pdf\",\n#   filenames = \"ChickWeight.png\",\n#   format = \"png\", \n#   dpi = 200\n# )\n```\n:::\n",
+    "supporting": [
+      "index_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
