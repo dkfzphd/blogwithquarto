@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/posts/i-am-back/index.html",
+      "/posts/economist-charts/index.html",
       "/posts/high-resolution-review/index.html",
       "/posts/ggplot2-mini-ticks/index.html",
       "/posts/bar_plot_labels_position_ggfitext/index.html",

@@ -30,6 +30,419 @@
   <pubDate>Sat, 07 Feb 2026 23:00:00 GMT</pubDate>
 </item>
 <item>
+  <title>How to Create Economist Style Charts in R</title>
+  <dc:creator>Te Guo</dc:creator>
+  <link>https://guote.netlify.app/posts/economist-charts/</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The visual style of <em>The Economist</em> is instantly recognizable: the light blue-gray background, the clean horizontal grid lines, and the bold red tag in the top left. In this post, I will show you how to recreate this professional look using R and <code>ggplot2</code>.</p>
+<p>We will use the <code>ggthemes</code> package, which provides a ready-made <code>theme_economist()</code>.</p>
+<p>First, let’s load the necessary libraries.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 加载必要的包</span></span>
+<span id="cb1-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Load necessary packages</span></span>
+<span id="cb1-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggplot2)</span>
+<span id="cb1-4"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(ggthemes)</span>
+<span id="cb1-5"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">library</span>(dplyr)</span></code></pre></div></div>
+<section id="line-chart-economic-trends-折线图" class="level2">
+<h2 class="anchored" data-anchor-id="line-chart-economic-trends-折线图">1. Line Chart: Economic Trends (折线图)</h2>
+<p>Line charts are perfect for time series data. We use the built-in <code>economics</code> dataset.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1. 准备数据：计算个人储蓄率</span></span>
+<span id="cb2-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prepare data: calculate personal savings rate</span></span>
+<span id="cb2-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">data</span>(economics)</span>
+<span id="cb2-4"></span>
+<span id="cb2-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 2. 绘制折线图</span></span>
+<span id="cb2-6"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create line chart</span></span>
+<span id="cb2-7">p1 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(economics, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> psavert)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-8">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#014d64"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 使用 Economist 风格的深蓝色 (Use Economist dark blue)</span></span>
+<span id="cb2-9">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb2-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Personal Savings Rate"</span>,        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 标题 (Title)</span></span>
+<span id="cb2-11">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"US economics data"</span>,         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 副标题 (Subtitle)</span></span>
+<span id="cb2-12">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Savings Rate (%)"</span>,                 <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Y轴标签 (Y-axis label)</span></span>
+<span id="cb2-13">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>,                                 <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># X轴留空 (Leave X-axis blank)</span></span>
+<span id="cb2-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Source: ggplot2 economics"</span>   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 数据来源 (Data source)</span></span>
+<span id="cb2-15">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-16">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_economist</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 应用 Economist 主题 (Apply Economist theme)</span></span>
+<span id="cb2-17">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_economist</span>()                   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 应用颜色标尺 (Apply color scale)</span></span>
+<span id="cb2-18"></span>
+<span id="cb2-19"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 显示图表</span></span>
+<span id="cb2-20"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Show chart</span></span>
+<span id="cb2-21">p1</span></code></pre></div></div>
+</section>
+<section id="bar-chart-ranking-cars-柱状图" class="level2">
+<h2 class="anchored" data-anchor-id="bar-chart-ranking-cars-柱状图">2. Bar Chart: Ranking Cars (柱状图)</h2>
+<p>For ranking or comparing categories, a horizontal bar chart works best. Let’s look at the <code>mtcars</code> dataset.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 1. 准备数据：按马力(hp)选取前10辆车</span></span>
+<span id="cb3-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Prepare data: select top 10 cars by horsepower</span></span>
+<span id="cb3-3">df_bar <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> mtcars <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-4">  tibble<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rownames_to_column</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"car"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">arrange</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">desc</span>(hp)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">%&gt;%</span></span>
+<span id="cb3-6">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">slice</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span>
+<span id="cb3-7"></span>
+<span id="cb3-8"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 2. 绘制柱状图</span></span>
+<span id="cb3-9"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create bar chart</span></span>
+<span id="cb3-10">p2 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df_bar, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reorder</span>(car, hp), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> hp)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-11">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_col</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"#014d64"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>              <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 使用 Economist 深蓝色填充 (Fill with Economist dark blue)</span></span>
+<span id="cb3-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_flip</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                            <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 翻转坐标轴变成条形图 (Flip coordinates for horizontal bars)</span></span>
+<span id="cb3-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb3-14">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Top 10 Powerful Cars"</span>,         <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 标题</span></span>
+<span id="cb3-15">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Horsepower (hp) by model"</span>,  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 副标题</span></span>
+<span id="cb3-16">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Horsepower"</span>,                       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Y轴</span></span>
+<span id="cb3-17">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">""</span>,                                 <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># X轴</span></span>
+<span id="cb3-18">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Source: mtcars dataset"</span>      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 来源</span></span>
+<span id="cb3-19">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb3-20">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_economist</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">horizontal =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">FALSE</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># horizontal=FALSE 让网格线适应翻转后的坐标 (Adjust grid for flipped coords)</span></span>
+<span id="cb3-21">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(</span>
+<span id="cb3-22">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">axis.text.y =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>)   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 左对齐 Y 轴文字 (Left-align Y-axis text)</span></span>
+<span id="cb3-23">  )</span>
+<span id="cb3-24"></span>
+<span id="cb3-25"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 显示图表</span></span>
+<span id="cb3-26">p2</span></code></pre></div></div>
+</section>
+<section id="scatter-plot-correlation-散点图" class="level2">
+<h2 class="anchored" data-anchor-id="scatter-plot-correlation-散点图">3. Scatter Plot: Correlation (散点图)</h2>
+<p>Scatter plots show relationships. We will use the <code>iris</code> dataset to see the relationship between sepal length and width.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 绘制散点图</span></span>
+<span id="cb4-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Create scatter plot</span></span>
+<span id="cb4-3">p3 <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(iris, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> Sepal.Length, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> Sepal.Width, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> Species)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-4">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_point</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">alpha =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 点的大小和透明度 (Point size and opacity)</span></span>
+<span id="cb4-5">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(</span>
+<span id="cb4-6">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Iris Sepal Dimensions"</span>,        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 标题</span></span>
+<span id="cb4-7">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Length vs Width by Species"</span>,<span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 副标题</span></span>
+<span id="cb4-8">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sepal Length"</span>,                     <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># X轴</span></span>
+<span id="cb4-9">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Sepal Width"</span>,                      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Y轴</span></span>
+<span id="cb4-10">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Source: iris dataset"</span>        <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 来源</span></span>
+<span id="cb4-11">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb4-12">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_economist</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                       <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 应用主题</span></span>
+<span id="cb4-13">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">scale_color_economist</span>() <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span>                 <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 使用 Economist 调色板 (Use Economist color palette)</span></span>
+<span id="cb4-14">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"right"</span>)          <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 图例放在右侧 (Legend on the right)</span></span>
+<span id="cb4-15"></span>
+<span id="cb4-16"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 显示图表</span></span>
+<span id="cb4-17">p3</span></code></pre></div></div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<p>Using <code>theme_economist()</code> allows us to instantly achieve a publication-quality look. The key elements are: 1. <strong>Background</strong>: The signature blue-gray. 2. <strong>Grid</strong>: White horizontal grid lines. 3. <strong>Typography</strong>: Clean, professional fonts.</p>
+<p>I hope this helps you create beautiful charts in R!</p>
+
+
+</section>
+
+ ]]></description>
+  <category>Data Visualization</category>
+  <category>R</category>
+  <category>ggplot2</category>
+  <guid>https://guote.netlify.app/posts/economist-charts/</guid>
+  <pubDate>Sat, 07 Feb 2026 23:00:00 GMT</pubDate>
+  <media:content url="https://guote.netlify.app/posts/economist-charts/economist_preview.png" medium="image" type="image/png"/>
+</item>
+<item>
   <title>Convert PDF to PNG to obtainHigh Resolution Plot Figure</title>
   <dc:creator>Te </dc:creator>
   <link>https://guote.netlify.app/posts/high-resolution-review/</link>
@@ -4342,74 +4755,6 @@ font-style: inherit;">"none"</span>)</span></code></pre></div></div>
   <category>code</category>
   <category>analysis</category>
   <guid>https://guote.netlify.app/posts/Fluorescent Proteins FP/</guid>
-  <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Monty Hall problem</title>
-  <dc:creator>Te </dc:creator>
-  <link>https://guote.netlify.app/posts/Monty Hall problem/</link>
-  <description><![CDATA[ 
-
-
-
-
-<section id="三门问题路径分析" class="level3">
-<h3 class="anchored" data-anchor-id="三门问题路径分析">三门问题路径分析</h3>
-<p><img src="https://guote.netlify.app/posts/Monty Hall problem/image.jpg" class="img-fluid"></p>
-<p>三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。</p>
-<p>三门背后对应内容：1个Car, 2只羊（Goat1 , Goat2）</p>
-<p>三门问题一直以来困扰很多人，我们先看下面的路线图</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-30f612ea25a7fe0e45e4" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-30f612ea25a7fe0e45e4">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="如果我们只关心能不能得到汽车" class="level3">
-<h3 class="anchored" data-anchor-id="如果我们只关心能不能得到汽车">如果我们只关心能不能得到汽车。</h3>
-<ol type="1">
-<li>从car 节点上看，keep策略1/3 * 1， switch策略2/3 * 1 .</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-903e309c7c4364071ee1" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-903e309c7c4364071ee1">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\n\ncar_door -> car  [label=\"keep\", fontsize=10, color=\"green\"]\nparticipant -> goat_door [label=\"2/3\", fontsize=10]\ngoat_door -> car [label=\"switch\", fontsize=10, color=\"red\"]\n\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<ol start="2" type="1">
-<li>从goat节点上看，keep策略2/3 * 1， switch策略1/3 * 1 .</li>
-</ol>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-990bae7d10443d57b0c6" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-990bae7d10443d57b0c6">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nparticipant;car_door;goat_door; goat;\n\nnode[fontname=\"Arial Black\", fillcolor=\"white\", color=\"#EB1D36\", style=filled, shape=oval]\ncar;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nparticipant -> car_door [label=\"1/3\", fontsize=10]\ncar_door -> goat [label=\"switch\", fontsize=10, color=\"red\"]\n \nparticipant -> goat_door [label=\"2/3\", fontsize=10]\n\ngoat_door -> goat  [label=\"keep\", fontsize=10,color=\"green\"]\n\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-</section>
-<section id="三门问题的拓展版" class="level3">
-<h3 class="anchored" data-anchor-id="三门问题的拓展版">三门问题的拓展版</h3>
-<p>有三张纸牌：</p>
-<p>纸牌1： 2面都是黑色 card1: black-black</p>
-<p>纸牌2： 2面都是白色 card2: white-white</p>
-<p>纸牌3： 1面是白色，1面是黑色 card3: black-white</p>
-<p>问题：当你随机抽取一张牌看到的是牌面是黑色，请问这张牌背面是白色的概率？答案是1/3.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="htmlwidget-4ada072fa6f6eddb49aa" style="width:100%;height:386px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-4ada072fa6f6eddb49aa">{"x":{"diagram":"\ndigraph flowchart{\nrankdir=LR; \n\nnode[fontname=\"Arial Black\", fillcolor=\"#9DD6DF\", color=\"#FF0063\", style=filled, shape=oval]\nblack;card1;card2;card3;\n\nedge[fontname=arial, color=blue, style=filled, arrowhead=vee]\n\nblack -> card1 [label=\"2/3\", fontsize=8]\nblack -> card3 [label=\"1/3\", fontsize=8]\nblack -> card2 [label=\"0\", fontsize=8]\ncard1 -> \"black-at-back\" [label=\"1\", fontsize=8]\n\ncard3 -> \"white-at-back\" [label=\"1\", fontsize=8]\n\n#subgraph{rank=same; D;B}\n#subgraph{rank=same; C}\n\n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
-</div>
-</div>
-<p><strong>当问题不清晰时就用路径分析，反直觉的点就会迎刃而解。</strong></p>
-
-
-</section>
-
- ]]></description>
-  <category>news</category>
-  <category>code</category>
-  <category>analysis</category>
-  <guid>https://guote.netlify.app/posts/Monty Hall problem/</guid>
   <pubDate>Mon, 07 Nov 2022 23:00:00 GMT</pubDate>
 </item>
 </channel>

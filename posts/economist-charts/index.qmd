@@ -1,0 +1,116 @@
+---
+title: "How to Create Economist Style Charts in R"
+author: "Te Guo"
+date: "2026-02-08"
+categories: [Data Visualization, R, ggplot2]
+image: "economist_preview.png"
+description: "A step-by-step guide to recreating the iconic visual style of The Economist using ggplot2 and ggthemes."
+---
+
+The visual style of *The Economist* is instantly recognizable: the light blue-gray background, the clean horizontal grid lines, and the bold red tag in the top left. In this post, I will show you how to recreate this professional look using R and `ggplot2`.
+
+We will use the `ggthemes` package, which provides a ready-made `theme_economist()`.
+
+First, let's load the necessary libraries.
+
+```r
+# 加载必要的包
+# Load necessary packages
+library(ggplot2)
+library(ggthemes)
+library(dplyr)
+```
+
+## 1. Line Chart: Economic Trends (折线图)
+
+Line charts are perfect for time series data. We use the built-in `economics` dataset.
+
+```r
+# 1. 准备数据：计算个人储蓄率
+# Prepare data: calculate personal savings rate
+data(economics)
+
+# 2. 绘制折线图
+# Create line chart
+p1 <- ggplot(economics, aes(x = date, y = psavert)) +
+  geom_line(color = "#014d64", size = 1) +  # 使用 Economist 风格的深蓝色 (Use Economist dark blue)
+  labs(
+    title = "Personal Savings Rate",        # 标题 (Title)
+    subtitle = "US economics data",         # 副标题 (Subtitle)
+    y = "Savings Rate (%)",                 # Y轴标签 (Y-axis label)
+    x = "",                                 # X轴留空 (Leave X-axis blank)
+    caption = "Source: ggplot2 economics"   # 数据来源 (Data source)
+  ) +
+  theme_economist() +                       # 应用 Economist 主题 (Apply Economist theme)
+  scale_color_economist()                   # 应用颜色标尺 (Apply color scale)
+
+# 显示图表
+# Show chart
+p1
+```
+
+## 2. Bar Chart: Ranking Cars (柱状图)
+
+For ranking or comparing categories, a horizontal bar chart works best. Let's look at the `mtcars` dataset.
+
+```r
+# 1. 准备数据：按马力(hp)选取前10辆车
+# Prepare data: select top 10 cars by horsepower
+df_bar <- mtcars %>%
+  tibble::rownames_to_column("car") %>%
+  arrange(desc(hp)) %>%
+  slice(1:10)
+
+# 2. 绘制柱状图
+# Create bar chart
+p2 <- ggplot(df_bar, aes(x = reorder(car, hp), y = hp)) +
+  geom_col(fill = "#014d64") +              # 使用 Economist 深蓝色填充 (Fill with Economist dark blue)
+  coord_flip() +                            # 翻转坐标轴变成条形图 (Flip coordinates for horizontal bars)
+  labs(
+    title = "Top 10 Powerful Cars",         # 标题
+    subtitle = "Horsepower (hp) by model",  # 副标题
+    y = "Horsepower",                       # Y轴
+    x = "",                                 # X轴
+    caption = "Source: mtcars dataset"      # 来源
+  ) +
+  theme_economist(horizontal = FALSE) +     # horizontal=FALSE 让网格线适应翻转后的坐标 (Adjust grid for flipped coords)
+  theme(
+    axis.text.y = element_text(hjust = 0)   # 左对齐 Y 轴文字 (Left-align Y-axis text)
+  )
+
+# 显示图表
+p2
+```
+
+## 3. Scatter Plot: Correlation (散点图)
+
+Scatter plots show relationships. We will use the `iris` dataset to see the relationship between sepal length and width.
+
+```r
+# 绘制散点图
+# Create scatter plot
+p3 <- ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point(size = 3, alpha = 0.8) +       # 点的大小和透明度 (Point size and opacity)
+  labs(
+    title = "Iris Sepal Dimensions",        # 标题
+    subtitle = "Length vs Width by Species",# 副标题
+    x = "Sepal Length",                     # X轴
+    y = "Sepal Width",                      # Y轴
+    caption = "Source: iris dataset"        # 来源
+  ) +
+  theme_economist() +                       # 应用主题
+  scale_color_economist() +                 # 使用 Economist 调色板 (Use Economist color palette)
+  theme(legend.position = "right")          # 图例放在右侧 (Legend on the right)
+
+# 显示图表
+p3
+```
+
+## Summary
+
+Using `theme_economist()` allows us to instantly achieve a publication-quality look. The key elements are:
+1.  **Background**: The signature blue-gray.
+2.  **Grid**: White horizontal grid lines.
+3.  **Typography**: Clean, professional fonts.
+
+I hope this helps you create beautiful charts in R!
