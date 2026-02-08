@@ -1,40 +1,66 @@
 /* css styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto&display=swap');
+/* Typography for "Editorial" Feel */
+body {
+  font-family: "Merriweather", serif;
+  /* Serif for body text is very "New York Times" / Academic */
+  line-height: 1.9;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto", sans-serif;
+  /* Clean sans-serif headings */
+  font-weight: 700;
+  color: #111;
+}
 
 h1.title {
-  font-family: "Roboto";
-  font-size: 30px;
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
 }
 
-/* Wide Screen Adaptations */
-@media (min-width: 1400px) {
-  body .page-columns .column-page,
-  body .page-columns .column-body-outset {
-    grid-column: page-start / page-end;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  .quarto-container {
-    max-width: 1400px;
-  }
-  
-  /* Increase font size for very large screens */
-  html {
-    font-size: 18px;
-  }
+/* Post Listing Styling */
+.quarto-post {
+  padding-bottom: 2em;
+  border-bottom: 1px solid #eee;
+  /* Subtle separator */
+  margin-bottom: 2em;
 }
 
-/* General Readability Improvements */
-body {
-  line-height: 1.8; /* More spacing for easier reading */
+.quarto-post .metadata {
+  font-family: "Roboto", sans-serif;
+  font-size: 0.9em;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-/* Make images in grid cards look nice */
-.card-img-top {
-  height: 200px;
-  object-fit: cover;
+.quarto-post .listing-title {
+  font-family: "Merriweather", serif;
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 0.2em;
+}
+
+/* Sidebar Categories */
+.quarto-listing-category-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  margin-bottom: 1em;
+}
+
+/* Ensure images don't dominate */
+.thumbnail-image {
+  border-radius: 4px;
+  /* Slight rounding */
 }
