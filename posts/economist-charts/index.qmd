@@ -5,6 +5,9 @@ date: "2026-02-08"
 categories: [Data Visualization, R, ggplot2, Advanced]
 image: "economist_preview.png"
 description: "A deep dive into recreating The Economist's exact visual style, including the signature red header tag and custom grid styling, without relying on pre-built themes."
+format:
+  html:
+    embed-resources: true
 execute:
   warning: false
   message: false
