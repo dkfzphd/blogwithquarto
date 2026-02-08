@@ -154,5 +154,8 @@
   },
   "posts/economist-charts/index.qmd": {
     "index.html": "b4c1c476"
+  },
+  "posts/economist-charts-v2/index.qmd": {
+    "index.html": "82da8e21"
   }
 }
