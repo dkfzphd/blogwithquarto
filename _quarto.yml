@@ -2,9 +2,9 @@ project:
   type: website
 
 website:
-  title: "Te‘s BLOG"
+  title: "Te Guo"
   site-url: https://guote.netlify.app/
-  description: "Te‘s BLOG"
+  description: "Te Guo - Researcher"
   navbar:
     background: "#0b3142"
     right:
@@ -16,7 +16,7 @@ website:
 format:
   html:
     theme: 
-      light: yeti
+      light: minimal
     highlight-style: eiffel
     css: styles.css
 
