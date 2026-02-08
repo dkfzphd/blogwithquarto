@@ -7,3 +7,34 @@ h1.title {
   font-family: "Roboto";
   font-size: 30px;
 }
+
+/* Wide Screen Adaptations */
+@media (min-width: 1400px) {
+  body .page-columns .column-page,
+  body .page-columns .column-body-outset {
+    grid-column: page-start / page-end;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .quarto-container {
+    max-width: 1400px;
+  }
+  
+  /* Increase font size for very large screens */
+  html {
+    font-size: 18px;
+  }
+}
+
+/* General Readability Improvements */
+body {
+  line-height: 1.8; /* More spacing for easier reading */
+}
+
+/* Make images in grid cards look nice */
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}

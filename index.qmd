@@ -3,10 +3,11 @@ title: "少无适俗韵，性本爱丘山"
 listing:
   contents: posts
   sort: "date desc"
-  type: default
+  type: grid
   categories: true
   sort-ui: false
   filter-ui: true
+  fields: [image, date, title, author, reading-time]
   feed: true
 page-layout: full
 title-block-banner: true
