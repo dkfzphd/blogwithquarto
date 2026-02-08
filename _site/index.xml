@@ -39,10 +39,10 @@
 
 
 <p>In a previous attempt, we used <code>ggthemes</code>, which is great for a quick start. But to <em>truly</em> replicate <em>The Economist</em>, we need the signature <strong>red rectangle (tag)</strong> in the top-left corner and precise control over the grid and typography.</p>
-<p>Here is how to do it “the hard way” — manually building the theme and using the <code>grid</code> package to draw the red tag.</p>
+<p>Here is how to do it “the hard way” — manually building the theme and using <code>annotation_custom</code> to embed the red tag directly into the plot.</p>
 <section id="setup-libraries-and-custom-theme-设置加载包和自定义主题" class="level2">
 <h2 class="anchored" data-anchor-id="setup-libraries-and-custom-theme-设置加载包和自定义主题">1. Setup: Libraries and Custom Theme (设置：加载包和自定义主题)</h2>
-<p>We will define a function <code>add_economist_tag()</code> that draws the red rectangle object.</p>
+<p>We will define a custom theme function and a special function to add the red tag.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 加载必要的包</span></span>
@@ -58,58 +58,55 @@ font-style: inherit;">library</span>(dplyr)</span>
 <span id="cb1-5"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">library</span>(grid)</span>
-<span id="cb1-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">library</span>(gridExtra)</span>
-<span id="cb1-7"></span>
-<span id="cb1-8"><span class="co" style="color: #5E5E5E;
+<span id="cb1-6"></span>
+<span id="cb1-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 定义 Economist 风格颜色</span></span>
-<span id="cb1-9"><span class="co" style="color: #5E5E5E;
+<span id="cb1-8"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Define Economist colors</span></span>
-<span id="cb1-10">econ_bg   <span class="ot" style="color: #003B4F;
+<span id="cb1-9">econ_bg   <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#d5e4eb"</span>   <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 背景蓝灰色 (Blue-gray background)</span></span>
-<span id="cb1-11">econ_grid <span class="ot" style="color: #003B4F;
+<span id="cb1-10">econ_grid <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ffffff"</span>   <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 白色网格 (White grid)</span></span>
-<span id="cb1-12">econ_red  <span class="ot" style="color: #003B4F;
+<span id="cb1-11">econ_red  <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#ed1b24"</span>   <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 标志性红色 (Iconic Red)</span></span>
-<span id="cb1-13">econ_blue <span class="ot" style="color: #003B4F;
+<span id="cb1-12">econ_blue <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"#014d64"</span>   <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 深蓝色线条 (Dark blue lines)</span></span>
-<span id="cb1-14"></span>
-<span id="cb1-15"><span class="co" style="color: #5E5E5E;
+<span id="cb1-13"></span>
+<span id="cb1-14"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 自定义主题函数</span></span>
-<span id="cb1-16"><span class="co" style="color: #5E5E5E;
+<span id="cb1-15"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Custom Theme Function</span></span>
-<span id="cb1-17">theme_economist_manual <span class="ot" style="color: #003B4F;
+<span id="cb1-16">theme_economist_manual <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span>() {</span>
-<span id="cb1-18">  <span class="fu" style="color: #4758AB;
+<span id="cb1-17">  <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme_minimal</span>(<span class="at" style="color: #657422;
 background-color: null;
@@ -118,13 +115,13 @@ background-color: null;
 font-style: inherit;">14</span>) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
-<span id="cb1-19">    <span class="fu" style="color: #4758AB;
+<span id="cb1-18">    <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">theme</span>(</span>
-<span id="cb1-20">      <span class="co" style="color: #5E5E5E;
+<span id="cb1-19">      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 背景颜色 (Background color)</span></span>
-<span id="cb1-21">      <span class="at" style="color: #657422;
+<span id="cb1-20">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.background  =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -135,7 +132,7 @@ background-color: null;
 font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">NA</span>),</span>
-<span id="cb1-22">      <span class="at" style="color: #657422;
+<span id="cb1-21">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.background =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -146,11 +143,11 @@ background-color: null;
 font-style: inherit;">color =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">NA</span>),</span>
-<span id="cb1-23">      </span>
-<span id="cb1-24">      <span class="co" style="color: #5E5E5E;
+<span id="cb1-22">      </span>
+<span id="cb1-23">      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 网格线：只保留水平白线 (Grid lines: horizontal white only)</span></span>
-<span id="cb1-25">      <span class="at" style="color: #657422;
+<span id="cb1-24">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -161,21 +158,50 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1.2</span>),</span>
-<span id="cb1-26">      <span class="at" style="color: #657422;
+<span id="cb1-25">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major.x =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb1-27">      <span class="at" style="color: #657422;
+<span id="cb1-26">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.minor =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb1-28">      </span>
-<span id="cb1-29">      <span class="co" style="color: #5E5E5E;
+<span id="cb1-27">      </span>
+<span id="cb1-28">      <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 增加顶部边距，给红标留位置 (Add top margin for the red tag)</span></span>
+<span id="cb1-29">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">margin</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">t =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">l =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">unit =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>),</span>
+<span id="cb1-30"></span>
+<span id="cb1-31">      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 文字排版 (Typography)</span></span>
-<span id="cb1-30">      <span class="at" style="color: #657422;
+<span id="cb1-32">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.title    =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -200,7 +226,7 @@ background-color: null;
 font-style: inherit;">b =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">5</span>)),</span>
-<span id="cb1-31">      <span class="at" style="color: #657422;
+<span id="cb1-33">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.subtitle =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -221,7 +247,7 @@ background-color: null;
 font-style: inherit;">b =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">15</span>)),</span>
-<span id="cb1-32">      <span class="at" style="color: #657422;
+<span id="cb1-34">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">plot.caption  =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -246,14 +272,14 @@ background-color: null;
 font-style: inherit;">t =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>)),</span>
-<span id="cb1-33">      <span class="at" style="color: #657422;
+<span id="cb1-35">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.title    =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),  <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 隐藏轴标题 (Hide axis titles)</span></span>
-<span id="cb1-34">      <span class="at" style="color: #657422;
+<span id="cb1-36">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">axis.text     =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -266,105 +292,56 @@ background-color: null;
 font-style: inherit;">size =</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">10</span>),</span>
-<span id="cb1-35">      </span>
-<span id="cb1-36">      <span class="co" style="color: #5E5E5E;
+<span id="cb1-37">      </span>
+<span id="cb1-38">      <span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 图例 (Legend)</span></span>
-<span id="cb1-37">      <span class="at" style="color: #657422;
+<span id="cb1-39">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.position =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"top"</span>,</span>
-<span id="cb1-38">      <span class="at" style="color: #657422;
+<span id="cb1-40">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.justification =</span> <span class="st" style="color: #20794D;
 background-color: null;
 font-style: inherit;">"left"</span>,</span>
-<span id="cb1-39">      <span class="at" style="color: #657422;
+<span id="cb1-41">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.background =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>(),</span>
-<span id="cb1-40">      <span class="at" style="color: #657422;
+<span id="cb1-42">      <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">legend.key =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">element_blank</span>()</span>
-<span id="cb1-41">    )</span>
-<span id="cb1-42">}</span>
-<span id="cb1-43"></span>
-<span id="cb1-44"><span class="co" style="color: #5E5E5E;
+<span id="cb1-43">    )</span>
+<span id="cb1-44">}</span>
+<span id="cb1-45"></span>
+<span id="cb1-46"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 绘制红色标签的黑科技函数</span></span>
-<span id="cb1-45"><span class="co" style="color: #5E5E5E;
+font-style: inherit;"># 黑科技：使用 annotation_custom 添加红标</span></span>
+<span id="cb1-47"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Magic function to draw the red tag</span></span>
-<span id="cb1-46">add_economist_tag <span class="ot" style="color: #003B4F;
+font-style: inherit;"># Advanced: Use annotation_custom to add the red tag</span></span>
+<span id="cb1-48"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 这会将红标作为图表的一部分，确保它不会丢失 (Ensures tag is part of the plot object)</span></span>
+<span id="cb1-49">add_economist_tag <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">function</span>(plot) {</span>
-<span id="cb1-47">  <span class="co" style="color: #5E5E5E;
+font-style: inherit;">function</span>() {</span>
+<span id="cb1-50">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"># 创建红色矩形 (Create red rectangle)</span></span>
-<span id="cb1-48">  tag <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rectGrob</span>(</span>
-<span id="cb1-49">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.02</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"npc"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"npc"</span>) <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mm"</span>),</span>
-<span id="cb1-50">    <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">15</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mm"</span>), <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">8</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"mm"</span>),</span>
+font-style: inherit;">annotation_custom</span>(</span>
 <span id="cb1-51">    <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">grob =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">0</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">vjust =</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>,</span>
-<span id="cb1-52">    <span class="at" style="color: #657422;
+font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -374,39 +351,163 @@ font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #65
 background-color: null;
 font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">NA</span>)</span>
-<span id="cb1-53">  )</span>
-<span id="cb1-54">  </span>
-<span id="cb1-55">  <span class="co" style="color: #5E5E5E;
+font-style: inherit;">NA</span>)), </span>
+<span id="cb1-52">    <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"># 将矩形添加到图表顶部 (Add to top of plot)</span></span>
-<span id="cb1-56">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">xmin =</span> <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">grid.arrange</span>(plot, <span class="at" style="color: #657422;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">top =</span> <span class="fu" style="color: #4758AB;
+font-style: inherit;">Inf</span>, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">textGrob</span>(<span class="st" style="color: #20794D;
+font-style: inherit;">xmax =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">""</span>, <span class="at" style="color: #657422;
+font-style: inherit;">Inf</span>,   <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Stretch across x (controlled by grob width usually, but here we place it manually)</span></span>
+<span id="cb1-53">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>,  <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>    <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Place at top</span></span>
+<span id="cb1-54">  )</span>
+<span id="cb1-55">}</span>
+<span id="cb1-56"></span>
+<span id="cb1-57"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 更好的红标方法：直接在坐标系外绘制</span></span>
+<span id="cb1-58"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># A robust function to add the tag</span></span>
+<span id="cb1-59">with_red_tag <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(p) {</span>
+<span id="cb1-60">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 使用 coord_cartesian(clip = "off") 允许在绘图区外绘制</span></span>
+<span id="cb1-61">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Use clip = "off" to draw outside the panel</span></span>
+<span id="cb1-62">  p <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb1-63">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">coord_cartesian</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">clip =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"off"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-64">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">margin</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">t =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">r =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">b =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">l =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb1-65">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotation_custom</span>(</span>
+<span id="cb1-66">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">grob =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">gpar</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">fontsize =</span> <span class="dv" style="color: #AD0000;
+font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">1</span>))) <span class="co" style="color: #5E5E5E;
+font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;"># 增加顶部边距 (Add margin)</span></span>
-<span id="cb1-57">  <span class="fu" style="color: #4758AB;
+font-style: inherit;">NA</span>), <span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;">grid.draw</span>(tag)</span>
-<span id="cb1-58">}</span></code></pre></div></div>
+font-style: inherit;">width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.5</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.8</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>),</span>
+<span id="cb1-67">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Anchor to top-left</span></span>
+<span id="cb1-68">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span></span>
+<span id="cb1-69">    )</span>
+<span id="cb1-70">}</span></code></pre></div></div>
 </section>
 <section id="line-chart-inflation-rate-折线图" class="level2">
 <h2 class="anchored" data-anchor-id="line-chart-inflation-rate-折线图">2. Line Chart: Inflation Rate (折线图)</h2>
-<p>Let’s visualize inflation data.</p>
+<p>Let’s visualize inflation data. We use <code>annotation_custom</code> to place the red block.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># 1. 准备数据</span></span>
@@ -430,10 +531,10 @@ font-style: inherit;">"2000-01-01"</span>)</span>
 <span id="cb2-5"></span>
 <span id="cb2-6"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 2. 基础绘图</span></span>
+font-style: inherit;"># 2. 基础绘图 + 红标</span></span>
 <span id="cb2-7"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Basic Plot</span></span>
+font-style: inherit;"># Plot with Red Tag</span></span>
 <span id="cb2-8">p1 <span class="ot" style="color: #003B4F;
 background-color: null;
 font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
@@ -492,42 +593,29 @@ background-color: null;
 font-style: inherit;"># Y轴放在右侧模仿 Economist (Y-axis on right)</span></span>
 <span id="cb2-16">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">theme_economist_manual</span>()</span>
-<span id="cb2-17"></span>
-<span id="cb2-18"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">theme_economist_manual</span>() <span class="sc" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 3. 添加红标并输出</span></span>
-<span id="cb2-19"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">+</span></span>
+<span id="cb2-17">  <span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Add red tag and output</span></span>
-<span id="cb2-20"><span class="co" style="color: #5E5E5E;
+font-style: inherit;"># 关键步骤：关闭裁剪并添加红标 (Key step: Turn off clipping and add tag)</span></span>
+<span id="cb2-18">  <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;"># 注意：在 RStudio 或 Quarto 中，grid.draw 可能不会直接显示在新行</span></span>
-<span id="cb2-21"><span class="co" style="color: #5E5E5E;
+font-style: inherit;">coord_cartesian</span>(<span class="at" style="color: #657422;
 background-color: null;
-font-style: inherit;"># Note: grid.draw works best when saving or rendering</span></span>
-<span id="cb2-22">p1</span>
-<span id="cb2-23"><span class="fu" style="color: #4758AB;
+font-style: inherit;">clip =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">grid.draw</span>(<span class="fu" style="color: #4758AB;
+font-style: inherit;">"off"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-19">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotation_custom</span>(</span>
+<span id="cb2-20">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">grob =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">x =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.96</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.08</span>, <span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">height =</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.04</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -537,7 +625,253 @@ font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #65
 background-color: null;
 font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">NA</span>)))</span></code></pre></div></div>
+font-style: inherit;">NA</span>)), </span>
+<span id="cb2-21">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">-</span><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, </span>
+<span id="cb2-22">      <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">Inf</span></span>
+<span id="cb2-23">  ) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-24">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 微调红标位置 (Fine tune tag position using plot specific coordinates if needed, </span></span>
+<span id="cb2-25">  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># or better: use a fixed annotation outside)</span></span>
+<span id="cb2-26">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">plot.title =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">element_text</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">margin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">margin</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">t =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">20</span>))) <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Push title down</span></span>
+<span id="cb2-27"></span>
+<span id="cb2-28"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 这里我们使用一个更加通用的 "Grobs" 方法来确保位置绝对正确</span></span>
+<span id="cb2-29"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Using a simpler Geom for the tag to guarantee visibility</span></span>
+<span id="cb2-30">p1_final <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> p1 <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> </span>
+<span id="cb2-31">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">annotation_custom</span>(</span>
+<span id="cb2-32">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">grob =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">unit</span>(<span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"cm"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gpar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">hjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">vjust =</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span>), </span>
+<span id="cb2-33">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(df_line<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>date),  <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Place at min X</span></span>
+<span id="cb2-34">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">xmax =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">min</span>(df_line<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>date), </span>
+<span id="cb2-35">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymin =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(df_line<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>uempmed) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Place above max Y</span></span>
+<span id="cb2-36">    <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">ymax =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">max</span>(df_line<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>uempmed) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb2-37">  )</span>
+<span id="cb2-38"></span>
+<span id="cb2-39"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 让我们尝试最稳健的方法：grid 覆盖 (Let's try the most robust method: Grid overlay)</span></span>
+<span id="cb2-40"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 并在最后明确打印 (And explicitly print)</span></span>
+<span id="cb2-41"></span>
+<span id="cb2-42">p1_base <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">&lt;-</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ggplot</span>(df_line, <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">aes</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> date, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> uempmed)) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-43">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">geom_line</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">color =</span> econ_blue, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">size =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1.2</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-44">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">labs</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">title =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Unemployment Duration"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Weeks"</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"Source: BLS"</span>) <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span></span>
+<span id="cb2-45">  <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">theme_economist_manual</span>()</span>
+<span id="cb2-46"></span>
+<span id="cb2-47"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 强制输出</span></span>
+<span id="cb2-48"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(p1_base)</span>
+<span id="cb2-49"></span>
+<span id="cb2-50"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># 注意：在网页中，我们用 grid.draw 叠加红标</span></span>
+<span id="cb2-51"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Note: In the web page, we overlay the red tag</span></span>
+<span id="cb2-52"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">grid.rect</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">x =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.95</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">height =</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.025</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">just =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"left"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>), <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">gpar</span>(<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">NA</span>))</span></code></pre></div></div>
 </section>
 <section id="bar-chart-categorical-data-柱状图" class="level2">
 <h2 class="anchored" data-anchor-id="bar-chart-categorical-data-柱状图">3. Bar Chart: Categorical Data (柱状图)</h2>
@@ -637,12 +971,12 @@ font-style: inherit;">"Fuel Efficiency"</span>,</span>
 background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Miles per Gallon (Top 8 Models)"</span>,</span>
+font-style: inherit;">"Miles per Gallon"</span>,</span>
 <span id="cb3-16">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Source: Motor Trend Car Road Tests"</span></span>
+font-style: inherit;">"Source: Motor Trend"</span></span>
 <span id="cb3-17">  ) <span class="sc" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">+</span></span>
@@ -657,19 +991,17 @@ font-style: inherit;">theme</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">panel.grid.major.y =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">element_blank</span>()) <span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># 移除柱状图的横线 (Remove horizontal lines for bars)</span></span>
+font-style: inherit;">element_blank</span>())</span>
 <span id="cb3-20"></span>
 <span id="cb3-21"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># 3. 显示</span></span>
-<span id="cb3-22">p2</span>
+font-style: inherit;"># 3. Explicit Print and Tag</span></span>
+<span id="cb3-22"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">print</span>(p2)</span>
 <span id="cb3-23"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">grid.draw</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
+font-style: inherit;">grid.rect</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -677,15 +1009,23 @@ font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.96</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.95</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.08</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">height =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.04</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.025</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">just =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"left"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>), <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -695,7 +1035,7 @@ font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #65
 background-color: null;
 font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">NA</span>)))</span></code></pre></div></div>
+font-style: inherit;">NA</span>))</span></code></pre></div></div>
 </section>
 <section id="scatter-plot-散点图" class="level2">
 <h2 class="anchored" data-anchor-id="scatter-plot-散点图">4. Scatter Plot (散点图)</h2>
@@ -758,7 +1098,7 @@ font-style: inherit;">"Iris Dimensions"</span>,</span>
 background-color: null;
 font-style: inherit;">subtitle =</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"Sepal Length vs. Petal Length"</span>,</span>
+font-style: inherit;">"Sepal vs Petal"</span>,</span>
 <span id="cb4-7">    <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">caption =</span> <span class="st" style="color: #20794D;
@@ -771,12 +1111,15 @@ font-style: inherit;">+</span></span>
 background-color: null;
 font-style: inherit;">theme_economist_manual</span>()</span>
 <span id="cb4-10"></span>
-<span id="cb4-11">p3</span>
+<span id="cb4-11"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Explicit Print</span></span>
 <span id="cb4-12"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">grid.draw</span>(<span class="fu" style="color: #4758AB;
+font-style: inherit;">print</span>(p3)</span>
+<span id="cb4-13"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">rectGrob</span>(<span class="at" style="color: #657422;
+font-style: inherit;">grid.rect</span>(<span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">x =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -784,15 +1127,23 @@ font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">y =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.96</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.95</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">width =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.08</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.05</span>, <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">height =</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">0.04</span>, <span class="at" style="color: #657422;
+font-style: inherit;">0.025</span>, <span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">just =</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">c</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"left"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"top"</span>), <span class="at" style="color: #657422;
 background-color: null;
 font-style: inherit;">gp =</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -802,11 +1153,11 @@ font-style: inherit;">fill =</span> econ_red, <span class="at" style="color: #65
 background-color: null;
 font-style: inherit;">col =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
-font-style: inherit;">NA</span>)))</span></code></pre></div></div>
+font-style: inherit;">NA</span>))</span></code></pre></div></div>
 </section>
 <section id="summary" class="level2">
 <h2 class="anchored" data-anchor-id="summary">Summary</h2>
-<p>By manually defining the theme colors and using <code>grid.draw</code> to place the red rectangle, we achieve a result that is pixel-perfect to <em>The Economist</em>. No shortcuts!</p>
+<p>We have used <code>theme_economist_manual()</code> to set the colors and <code>grid.rect()</code> with explicit <code>print()</code> to ensure the charts and their tags appear correctly.</p>
 
 
 </section>

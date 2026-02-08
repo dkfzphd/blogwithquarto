@@ -12,11 +12,11 @@ execute:
 
 In a previous attempt, we used `ggthemes`, which is great for a quick start. But to *truly* replicate *The Economist*, we need the signature **red rectangle (tag)** in the top-left corner and precise control over the grid and typography.
 
-Here is how to do it "the hard way" — manually building the theme and using the `grid` package to draw the red tag.
+Here is how to do it "the hard way" — manually building the theme and using `annotation_custom` to embed the red tag directly into the plot.
 
 ## 1. Setup: Libraries and Custom Theme (设置：加载包和自定义主题)
 
-We will define a function `add_economist_tag()` that draws the red rectangle object.
+We will define a custom theme function and a special function to add the red tag.
 
 ```r
 # 加载必要的包
@@ -24,7 +24,6 @@ We will define a function `add_economist_tag()` that draws the red rectangle obj
 library(ggplot2)
 library(dplyr)
 library(grid)
-library(gridExtra)
 
 # 定义 Economist 风格颜色
 # Define Economist colors
@@ -47,6 +46,9 @@ theme_economist_manual <- function() {
       panel.grid.major.x = element_blank(),
       panel.grid.minor = element_blank(),
       
+      # 增加顶部边距，给红标留位置 (Add top margin for the red tag)
+      plot.margin = margin(t = 2, r = 1, b = 1, l = 1, unit = "cm"),
+
       # 文字排版 (Typography)
       plot.title    = element_text(face = "bold", size = 16, hjust = 0, margin = margin(b = 5)),
       plot.subtitle = element_text(size = 12, hjust = 0, margin = margin(b = 15)),
@@ -62,26 +64,36 @@ theme_economist_manual <- function() {
     )
 }
 
-# 绘制红色标签的黑科技函数
-# Magic function to draw the red tag
-add_economist_tag <- function(plot) {
-  # 创建红色矩形 (Create red rectangle)
-  tag <- rectGrob(
-    x = unit(0.02, "npc"), y = unit(1, "npc") - unit(2, "mm"),
-    width = unit(15, "mm"), height = unit(8, "mm"),
-    hjust = 0, vjust = 1,
-    gp = gpar(fill = econ_red, col = NA)
+# 黑科技：使用 annotation_custom 添加红标
+# Advanced: Use annotation_custom to add the red tag
+# 这会将红标作为图表的一部分，确保它不会丢失 (Ensures tag is part of the plot object)
+add_economist_tag <- function() {
+  annotation_custom(
+    grob = rectGrob(gp = gpar(fill = econ_red, col = NA)), 
+    xmin = -Inf, xmax = Inf,   # Stretch across x (controlled by grob width usually, but here we place it manually)
+    ymin = Inf,  ymax = Inf    # Place at top
   )
-  
-  # 将矩形添加到图表顶部 (Add to top of plot)
-  grid.arrange(plot, top = textGrob("", gp = gpar(fontsize = 1))) # 增加顶部边距 (Add margin)
-  grid.draw(tag)
+}
+
+# 更好的红标方法：直接在坐标系外绘制
+# A robust function to add the tag
+with_red_tag <- function(p) {
+  # 使用 coord_cartesian(clip = "off") 允许在绘图区外绘制
+  # Use clip = "off" to draw outside the panel
+  p + 
+    coord_cartesian(clip = "off") +
+    theme(plot.margin = margin(t = 1.5, r = 0.5, b = 0.5, l = 0.5, "cm")) +
+    annotation_custom(
+      grob = rectGrob(gp = gpar(fill = econ_red, col = NA), width = unit(1.5, "cm"), height = unit(0.8, "cm"), hjust = 0, vjust = 1),
+      xmin = -Inf, xmax = -Inf, # Anchor to top-left
+      ymin = Inf, ymax = Inf
+    )
 }
 ```
 
 ## 2. Line Chart: Inflation Rate (折线图)
 
-Let's visualize inflation data.
+Let's visualize inflation data. We use `annotation_custom` to place the red block.
 
 ```r
 # 1. 准备数据
@@ -89,8 +101,8 @@ Let's visualize inflation data.
 data(economics)
 df_line <- economics %>% filter(date > "2000-01-01")
 
-# 2. 基础绘图
-# Basic Plot
+# 2. 基础绘图 + 红标
+# Plot with Red Tag
 p1 <- ggplot(df_line, aes(x = date, y = uempmed)) +
   geom_line(color = econ_blue, size = 1.2) +
   labs(
@@ -99,14 +111,43 @@ p1 <- ggplot(df_line, aes(x = date, y = uempmed)) +
     caption = "Source: US Bureau of Labor Statistics"
   ) +
   scale_y_continuous(position = "right") + # Y轴放在右侧模仿 Economist (Y-axis on right)
+  theme_economist_manual() +
+  # 关键步骤：关闭裁剪并添加红标 (Key step: Turn off clipping and add tag)
+  coord_cartesian(clip = "off") +
+  annotation_custom(
+      grob = rectGrob(gp = gpar(fill = econ_red, col = NA)), 
+      xmin = -Inf, xmax = -Inf, 
+      ymin = Inf, ymax = Inf
+  ) + 
+  # 微调红标位置 (Fine tune tag position using plot specific coordinates if needed, 
+  # or better: use a fixed annotation outside)
+  theme(plot.title = element_text(margin = margin(t = 20))) # Push title down
+
+# 这里我们使用一个更加通用的 "Grobs" 方法来确保位置绝对正确
+# Using a simpler Geom for the tag to guarantee visibility
+p1_final <- p1 + 
+  annotation_custom(
+    grob = rectGrob(width = unit(2, "cm"), height = unit(1, "cm"), gp = gpar(fill = econ_red, col = NA), hjust = 0, vjust = 0), 
+    xmin = min(df_line$date),  # Place at min X
+    xmax = min(df_line$date), 
+    ymin = max(df_line$uempmed) + 2, # Place above max Y
+    ymax = max(df_line$uempmed) + 2
+  )
+
+# 让我们尝试最稳健的方法：grid 覆盖 (Let's try the most robust method: Grid overlay)
+# 并在最后明确打印 (And explicitly print)
+
+p1_base <- ggplot(df_line, aes(x = date, y = uempmed)) +
+  geom_line(color = econ_blue, size = 1.2) +
+  labs(title = "Unemployment Duration", subtitle = "Weeks", caption = "Source: BLS") +
   theme_economist_manual()
 
-# 3. 添加红标并输出
-# Add red tag and output
-# 注意：在 RStudio 或 Quarto 中，grid.draw 可能不会直接显示在新行
-# Note: grid.draw works best when saving or rendering
-p1
-grid.draw(rectGrob(x = 0.05, y = 0.96, width = 0.08, height = 0.04, gp = gpar(fill = econ_red, col = NA)))
+# 强制输出
+print(p1_base)
+
+# 注意：在网页中，我们用 grid.draw 叠加红标
+# Note: In the web page, we overlay the red tag
+grid.rect(x = 0.05, y = 0.95, width = 0.05, height = 0.025, just = c("left", "top"), gp = gpar(fill = econ_red, col = NA))
 ```
 
 ## 3. Bar Chart: Categorical Data (柱状图)
@@ -126,15 +167,15 @@ p2 <- ggplot(df_bar, aes(x = reorder(model, mpg), y = mpg)) +
   coord_flip() +
   labs(
     title = "Fuel Efficiency",
-    subtitle = "Miles per Gallon (Top 8 Models)",
-    caption = "Source: Motor Trend Car Road Tests"
+    subtitle = "Miles per Gallon",
+    caption = "Source: Motor Trend"
   ) +
   theme_economist_manual() +
-  theme(panel.grid.major.y = element_blank()) # 移除柱状图的横线 (Remove horizontal lines for bars)
+  theme(panel.grid.major.y = element_blank())
 
-# 3. 显示
-p2
-grid.draw(rectGrob(x = 0.05, y = 0.96, width = 0.08, height = 0.04, gp = gpar(fill = econ_red, col = NA)))
+# 3. Explicit Print and Tag
+print(p2)
+grid.rect(x = 0.05, y = 0.95, width = 0.05, height = 0.025, just = c("left", "top"), gp = gpar(fill = econ_red, col = NA))
 ```
 
 ## 4. Scatter Plot (散点图)
@@ -145,15 +186,16 @@ p3 <- ggplot(iris, aes(x = Sepal.Length, y = Petal.Length)) +
   geom_smooth(method = "lm", color = econ_red, size = 1, se = FALSE) +
   labs(
     title = "Iris Dimensions",
-    subtitle = "Sepal Length vs. Petal Length",
+    subtitle = "Sepal vs Petal",
     caption = "Source: Fisher's Iris Data"
   ) +
   theme_economist_manual()
 
-p3
-grid.draw(rectGrob(x = 0.05, y = 0.96, width = 0.08, height = 0.04, gp = gpar(fill = econ_red, col = NA)))
+# Explicit Print
+print(p3)
+grid.rect(x = 0.05, y = 0.95, width = 0.05, height = 0.025, just = c("left", "top"), gp = gpar(fill = econ_red, col = NA))
 ```
 
 ## Summary
 
-By manually defining the theme colors and using `grid.draw` to place the red rectangle, we achieve a result that is pixel-perfect to *The Economist*. No shortcuts!
+We have used `theme_economist_manual()` to set the colors and `grid.rect()` with explicit `print()` to ensure the charts and their tags appear correctly.
