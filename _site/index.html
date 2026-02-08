@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.353">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Te‘s BLOG - 少无适俗韵，性本爱丘山</title>
+<title>少无适俗韵，性本爱丘山 – Te‘s BLOG</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,21 +32,29 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="./">
 <script src="site_libs/quarto-listing/list.min.js"></script>
 <script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-33d886fd3cb67a5c2e0705f8ceac6491.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -55,8 +63,10 @@ ul.task-list li input[type="checkbox"] {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit"
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script>
@@ -90,47 +100,74 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
-<link rel="alternate" type="application/rss+xml" title="Te‘s BLOG" href="index.xml"></head>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
-<body class="nav-fixed">
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="Te‘s BLOG" href="index.xml" data-external="1"></head>
+
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Te‘s BLOG</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
- <span class="menu-text">About me</span></a>
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About me</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/dkfzphd" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/dkfzphd"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml" rel="" target=""><i class="bi bi-rss" role="img">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -143,7 +180,7 @@ ul.task-list li input[type="checkbox"] {
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-page-left">
 
       
     
@@ -156,9 +193,10 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(29)</span></div><div class="category" data-category="Beamer">Beamer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Image-Analysis">Image-Analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ImageJ">ImageJ <span class="quarto-category-count">(1)</span></div><div class="category" data-category="LaTeX">LaTeX <span class="quarto-category-count">(2)</span></div><div class="category" data-category="PPT">PPT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Preamble">Preamble <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(11)</span></div><div class="category" data-category="anti-aliasing">anti-aliasing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="biology">biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="chinese">chinese <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cloning">cloning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(12)</span></div><div class="category" data-category="disribution">disribution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="filepath">filepath <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ggplot2">ggplot2 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="heatmap">heatmap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="high resolution">high resolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="image analysis">image analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="kableExtra">kableExtra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="latex">latex <span class="quarto-category-count">(2)</span></div><div class="category" data-category="life">life <span class="quarto-category-count">(1)</span></div><div class="category" data-category="map">map <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mini ticks">mini ticks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ml">ml <span class="quarto-category-count">(1)</span></div><div class="category" data-category="mlr3">mlr3 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="molecular biology">molecular biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(8)</span></div><div class="category" data-category="pointpath">pointpath <span class="quarto-category-count">(1)</span></div><div class="category" data-category="probability">probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="python">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="r">r <span class="quarto-category-count">(1)</span></div><div class="category" data-category="report">report <span class="quarto-category-count">(1)</span></div><div class="category" data-category="rmarkdown">rmarkdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="scikit-image">scikit-image <span class="quarto-category-count">(1)</span></div><div class="category" data-category="sf">sf <span class="quarto-category-count">(1)</span></div><div class="category" data-category="slash">slash <span class="quarto-category-count">(1)</span></div><div class="category" data-category="stat_function">stat_function <span class="quarto-category-count">(1)</span></div><div class="category" data-category="table">table <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(30)</span></div><div class="category" data-category="YW5hbHlzaXM=">analysis <span class="quarto-category-count">(11)</span></div><div class="category" data-category="YW50aS1hbGlhc2luZw==">anti-aliasing <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QmVhbWVy">Beamer <span class="quarto-category-count">(1)</span></div><div class="category" data-category="YmlvbG9neQ==">biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2hpbmVzZQ==">chinese <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y2xvbmluZw==">cloning <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Y29kZQ==">code <span class="quarto-category-count">(12)</span></div><div class="category" data-category="ZGlzcmlidXRpb24=">disribution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="ZmlsZXBhdGg=">filepath <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Z2dwbG90Mg==">ggplot2 <span class="quarto-category-count">(6)</span></div><div class="category" data-category="aGVhdG1hcA==">heatmap <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aGlnaCUyMHJlc29sdXRpb24=">high resolution <span class="quarto-category-count">(1)</span></div><div class="category" data-category="aW1hZ2UlMjBhbmFseXNpcw==">image analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1hZ2UtQW5hbHlzaXM=">Image-Analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SW1hZ2VK">ImageJ <span class="quarto-category-count">(1)</span></div><div class="category" data-category="a2FibGVFeHRyYQ==">kableExtra <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TGFUZVg=">LaTeX <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGF0ZXg=">latex <span class="quarto-category-count">(2)</span></div><div class="category" data-category="bGlmZQ==">life <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWFw">map <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWluaSUyMHRpY2tz">mini ticks <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWw=">ml <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bWxyMw==">mlr3 <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bW9sZWN1bGFyJTIwYmlvbG9neQ==">molecular biology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TmV3cw==">News <span class="quarto-category-count">(1)</span></div><div class="category" data-category="bmV3cw==">news <span class="quarto-category-count">(8)</span></div><div class="category" data-category="cG9pbnRwYXRo">pointpath <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UFBU">PPT <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJlYW1ibGU=">Preamble <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHJvYmFiaWxpdHk=">probability <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(5)</span></div><div class="category" data-category="cg==">r <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cmVwb3J0">report <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cm1hcmtkb3du">rmarkdown <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2Npa2l0LWltYWdl">scikit-image <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2Y=">sf <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c2xhc2g=">slash <span class="quarto-category-count">(1)</span></div><div class="category" data-category="c3RhdF9mdW5jdGlvbg==">stat_function <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGFibGU=">table <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+
 
 
 
@@ -175,35 +213,71 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="mini ticks,ggplot2" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1686548323982" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/ggplot2-mini-ticks/index.html"> <p class="card-img-top"><img src="posts\ggplot2-mini-ticks\index_files\figure-html\unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="0" data-categories="TmV3cw==" data-listing-date-sort="1770505200000" data-listing-file-modified-sort="1770549336734" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="3">
+<div class="thumbnail"><a href="./posts/i-am-back/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/ggplot2-mini-ticks/index.html">
 <h3 class="no-anchor listing-title">
-Mini ticks ggplot2
+<a href="./posts/i-am-back/index.html" class="no-external">I am back</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('mini ticks'); return false;">
-mini ticks
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-</div>
-<a href="./posts/ggplot2-mini-ticks/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TmV3cw=='); return false;">News</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/i-am-back/index.html" class="no-external">
+I am back!
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/ggplot2-mini-ticks/index.html">
+<a href="./posts/i-am-back/index.html" class="no-external">
+<div class="listing-date">
+Feb 8, 2026
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="Z2dwbG90MiUyQ2hpZ2glMjByZXNvbHV0aW9uJTJDYW5hbHlzaXMlMkNhbnRpLWFsaWFzaW5n" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1770548624587" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="239">
+<div class="thumbnail"><a href="./posts/high-resolution-review/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/high-resolution-review/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/high-resolution-review/index.html" class="no-external">Convert PDF to PNG to obtainHigh Resolution Plot Figure</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGlnaCUyMHJlc29sdXRpb24='); return false;">high resolution</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW50aS1hbGlhc2luZw=='); return false;">anti-aliasing</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/high-resolution-review/index.html" class="no-external">
+
+
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2">df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(ChickWeight)</span>
+<span id="cb1-3"><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(Time, weight, <span class="at">group =</span> Diet, <span class="at">color =</span> Diet)) <span class="sc">+</span></span>
+<span id="cb1-4">  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">group =</span> Diet), <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb1-5">  <span class="fu">theme</span>(</span>
+<span id="cb1-6">    <span class="at">axis.t…</span><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="st"></span></span><span id="cb1-7"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="st"></span></span><span id="cb1-8"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="st"></span></span><span id="cb1-9"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="st"></span></span><span id="cb1-10"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="st"></span></span><span id="cb1-11"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="st"></span></span><span id="cb1-12"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="st"></span></span><span id="cb1-13"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="st"></span></span><span id="cb1-14"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="st"></span></span><span id="cb1-15"><span class="at"></span><span class="fu"></span><span class="fl"></span><span class="fl"></span></span><span id="cb1-16"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="cn"></span></span><span id="cb1-17"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="cn"></span></span><span id="cb1-18"><span class="at"></span><span class="fu"></span><span class="fu"></span><span class="dv"></span><span class="dv"></span><span class="dv"></span><span class="dv"></span><span class="st"></span></span><span id="cb1-19"><span class="sc"></span></span><span id="cb1-20"><span class="fu"></span></span><span id="cb1-21"><span class="at"></span><span class="st"></span></span><span id="cb1-22"><span class="at"></span><span class="st"></span></span><span id="cb1-23"><span class="at"></span><span class="st"></span></span><span id="cb1-24"><span class="at"></span><span class="st"></span></span><span id="cb1-25"></span></code></pre></div></div><div class="cell-output-display"><div><figure class="figure"><p></p></figure></div></div><div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><span class="co"></span></span></code></pre></div></div></div>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/high-resolution-review/index.html" class="no-external">
 <div class="listing-date">
 Jun 12, 2023
 </div>
@@ -213,41 +287,34 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="ggplot2,high resolution,analysis,anti-aliasing" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1686547171217" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/high-resolution-review/index.html"> <p class="card-img-top"><img src="posts\high-resolution-review\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="2" data-categories="bWluaSUyMHRpY2tzJTJDZ2dwbG90Mg==" data-listing-date-sort="1686520800000" data-listing-file-modified-sort="1770548624587" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="271">
+<div class="thumbnail"><a href="./posts/ggplot2-mini-ticks/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/ggplot2-mini-ticks/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/high-resolution-review/index.html">
 <h3 class="no-anchor listing-title">
-Convert PDF to PNG to obtainHigh Resolution Plot Figure
+<a href="./posts/ggplot2-mini-ticks/index.html" class="no-external">Mini ticks ggplot2</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('high resolution'); return false;">
-high resolution
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('anti-aliasing'); return false;">
-anti-aliasing
-</div>
-</div>
-<a href="./posts/high-resolution-review/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWluaSUyMHRpY2tz'); return false;">mini ticks</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/ggplot2-mini-ticks/index.html" class="no-external">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu">library</span>(hrbrthemes)</span>
+<span id="cb1-3"><span class="fu">library</span>(ggh4x)</span>
+<span id="cb1-4">showtext<span class="sc">::</span><span class="fu">showtext.auto</span>()</span></code></pre></div></div>
+
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/high-resolution-review/index.html">
+<a href="./posts/ggplot2-mini-ticks/index.html" class="no-external">
 <div class="listing-date">
 Jun 12, 2023
 </div>
@@ -257,38 +324,39 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="news,code,analysis" data-listing-date-sort="1685656800000" data-listing-file-modified-sort="1685730979175" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/bar_plot_labels_position_ggfitext/index.html"> <p class="card-img-top"><img src="posts\bar_plot_labels_position_ggfitext\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="3" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1685656800000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="295">
+<div class="thumbnail"><a href="./posts/bar_plot_labels_position_ggfitext/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/bar_plot_labels_position_ggfitext/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/bar_plot_labels_position_ggfitext/index.html">
 <h3 class="no-anchor listing-title">
-Bar plot with labels ggfittext
+<a href="./posts/bar_plot_labels_position_ggfitext/index.html" class="no-external">Bar plot with labels ggfittext</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/bar_plot_labels_position_ggfitext/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/bar_plot_labels_position_ggfitext/index.html" class="no-external">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co"># data from 王敏杰 老师</span></span>
+<span id="cb1-2"><span class="co"># his book https://bookdown.org/wangminjie/R4DS/author.html</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">d <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb1-5">     <span class="sc">~</span>name, <span class="sc">~</span>value,</span>
+<span id="cb1-6">   <span class="st">"Alice"</span>,   <span class="fl">2.12</span>,</span>
+<span id="cb1-7">     <span class="st">"Bob"</span>,  <span class="fl">68.45</span>,</span>
+<span id="cb1-8">  <span class="st">"Carlie"</span>…<span class="fl"></span></span><span id="cb1-9"><span class="st"></span><span class="fl"></span></span><span id="cb1-10"><span class="st"></span><span class="fl"></span></span><span id="cb1-11"></span><span id="cb1-12"></span><span id="cb1-13"></span><span id="cb1-14"><span class="fu"></span></span><span id="cb1-15"><span class="fu"></span></span><span id="cb1-16"></span><span id="cb1-17"><span class="sc"></span></span><span id="cb1-18"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="at"></span><span class="fu"></span><span class="sc"></span></span><span id="cb1-19"><span class="fu"></span><span class="at"></span><span class="fl"></span><span class="at"></span><span class="st"></span><span class="sc"></span></span><span id="cb1-20"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="at"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-21"><span class="fu"></span><span class="sc"></span></span><span id="cb1-22"><span class="fu"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-23"><span class="fu"></span><span class="at"></span><span class="cn"></span><span class="at"></span><span class="cn"></span></span></code></pre></div></div><div class="cell-output-display"><div><figure class="figure"><p></p></figure></div></div>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/bar_plot_labels_position_ggfitext/index.html">
+<a href="./posts/bar_plot_labels_position_ggfitext/index.html" class="no-external">
 <div class="listing-date">
 Jun 2, 2023
 </div>
@@ -298,38 +366,42 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="ggplot2,code,pointpath" data-listing-date-sort="1675119600000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/explore-ggplot2-pointpath-linestyle/index.html"> <p class="card-img-top"><img src="posts\explore-ggplot2-pointpath-linestyle\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="4" data-categories="Z2dwbG90MiUyQ2NvZGUlMkNwb2ludHBhdGg=" data-listing-date-sort="1675119600000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="158">
+<div class="thumbnail"><a href="./posts/explore-ggplot2-pointpath-linestyle/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/explore-ggplot2-pointpath-linestyle/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/explore-ggplot2-pointpath-linestyle/index.html">
 <h3 class="no-anchor listing-title">
-Draw a pointpath linestyle with ggplot2
+<a href="./posts/explore-ggplot2-pointpath-linestyle/index.html" class="no-external">Draw a pointpath linestyle with ggplot2</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('pointpath'); return false;">
-pointpath
-</div>
-</div>
-<a href="./posts/explore-ggplot2-pointpath-linestyle/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cG9pbnRwYXRo'); return false;">pointpath</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/explore-ggplot2-pointpath-linestyle/index.html" class="no-external">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><span class="fu">library</span>(ggrepel)</span>
+<span id="cb1-3"><span class="fu">set.seed</span>(<span class="dv">13</span>)</span>
+<span id="cb1-4">x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">13</span></span>
+<span id="cb1-5">a <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span><span class="dv">13</span>, <span class="at">mean =</span> <span class="dv">1</span>, <span class="at">sd=</span><span class="dv">18</span>)</span>
+<span id="cb1-6">b <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="at">n =</span><span class="dv">13</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">13</span>, <span class="at">sd=</span><span class="dv">8</span>)</span>
+<span id="cb1-7"></span>
+<span id="cb1-8">df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(x,a,b)</span>
+<span id="cb1-9"></span>
+<span id="cb1-10"><span class="fu">ggplot</span>(<span class="at">data =</span> df)<span class="sc">+</span></span>
+<span id="cb1-11">  <span class="fu">…</span><span class="fu"></span><span class="at"></span><span class="fl"></span><span class="at"></span><span class="st"></span><span class="sc"></span></span><span id="cb1-12"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-13"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="fl"></span><span class="sc"></span></span><span id="cb1-14"></span><span id="cb1-15"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="fl"></span><span class="at"></span><span class="st"></span><span class="sc"></span></span><span id="cb1-16"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-17"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="dv"></span><span class="at"></span><span class="fl"></span><span class="sc"></span></span><span id="cb1-18"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="cn"></span><span class="sc"></span></span><span id="cb1-19"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="at"></span><span class="st"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="cn"></span><span class="sc"></span></span><span id="cb1-20"><span class="fu"></span><span class="at"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-21"><span class="fu"></span><span class="at"></span><span class="st"></span></span><span id="cb1-22"><span class="at"></span><span class="st"></span></span><span id="cb1-23"><span class="at"></span><span class="st"></span><span class="sc"></span></span><span id="cb1-24"><span class="fu"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="sc"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-25"><span class="fu"></span><span class="sc"></span></span><span id="cb1-26"><span class="fu"></span></span><span id="cb1-27"><span class="at"></span><span class="fu"></span></span><span id="cb1-28"><span class="at"></span><span class="fu"></span></span><span id="cb1-29"><span class="at"></span><span class="fu"></span><span class="at"></span><span class="fl"></span></span><span id="cb1-30"></span></code></pre></div></div><div class="cell-output-display"><div><figure class="figure"><p></p></figure></div></div>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/explore-ggplot2-pointpath-linestyle/index.html">
+<a href="./posts/explore-ggplot2-pointpath-linestyle/index.html" class="no-external">
 <div class="listing-date">
 Jan 31, 2023
 </div>
@@ -339,38 +411,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="R,filepath,slash" data-listing-date-sort="1672095600000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/backslash2forward/index.html"> <p class="card-img-top"><img src="posts\backslash2forward\images\backslash2forward.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="5" data-categories="UiUyQ2ZpbGVwYXRoJTJDc2xhc2g=" data-listing-date-sort="1672095600000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="139">
+<div class="thumbnail"><a href="./posts/backslash2forward/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/backslash2forward/images/backslash2forward.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/backslash2forward/index.html">
 <h3 class="no-anchor listing-title">
-backslash &nbsp;to forward slash /
+<a href="./posts/backslash2forward/index.html" class="no-external">backslash &nbsp;to forward slash /</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZmlsZXBhdGg='); return false;">filepath</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c2xhc2g='); return false;">slash</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('filepath'); return false;">
-filepath
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('slash'); return false;">
-slash
-</div>
-</div>
-<a href="./posts/backslash2forward/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/backslash2forward/index.html" class="no-external">
 In R, you can use the gsub function to replace the backslashes in a string with forward slashes. Here is an example of how you can use gsub:
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/backslash2forward/index.html">
+<a href="./posts/backslash2forward/index.html" class="no-external">
 <div class="listing-date">
 Dec 27, 2022
 </div>
@@ -380,38 +445,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="Image-Analysis,python,scikit-image" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/image-analysis-resources/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="6" data-categories="SW1hZ2UtQW5hbHlzaXMlMkNweXRob24lMkNzY2lraXQtaW1hZ2U=" data-listing-date-sort="1671922800000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="138">
+<div class="thumbnail"><a href="./posts/image-analysis-resources/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/image-analysis-resources/index.html">
 <h3 class="no-anchor listing-title">
-Image-Analysis-Resources
+<a href="./posts/image-analysis-resources/index.html" class="no-external">Image-Analysis-Resources</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2UtQW5hbHlzaXM='); return false;">Image-Analysis</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c2Npa2l0LWltYWdl'); return false;">scikit-image</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('Image-Analysis'); return false;">
-Image-Analysis
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('scikit-image'); return false;">
-scikit-image
-</div>
-</div>
-<a href="./posts/image-analysis-resources/index.html">
-<div class="listing-description">
-Using ImageJ’s graphical user interface to manually perform image analysis tasks can be time-consuming and prone to errors, as it requires repeating the…<strong></strong><strong></strong>
-</div>
-</a>
+<div class="delink listing-description"><a href="./posts/image-analysis-resources/index.html" class="no-external">
+Using ImageJ’s graphical user interface to manually perform image analysis tasks can be time-consuming and prone to errors, as it requires repeating the same steps over and…<strong></strong><strong></strong>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/image-analysis-resources/index.html">
+<a href="./posts/image-analysis-resources/index.html" class="no-external">
 <div class="listing-date">
 Dec 25, 2022
 </div>
@@ -421,38 +479,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="python,ImageJ,image analysis" data-listing-date-sort="1671836400000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/cellpose2.0-cell-segmentation/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="7" data-categories="cHl0aG9uJTJDSW1hZ2VKJTJDaW1hZ2UlMjBhbmFseXNpcw==" data-listing-date-sort="1671836400000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="172">
+<div class="thumbnail"><a href="./posts/cellpose2.0-cell-segmentation/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/cellpose2.0-cell-segmentation/index.html">
 <h3 class="no-anchor listing-title">
-cellpose2.0-cell segmentation-python based
+<a href="./posts/cellpose2.0-cell-segmentation/index.html" class="no-external">cellpose2.0-cell segmentation-python based</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('SW1hZ2VK'); return false;">ImageJ</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aW1hZ2UlMjBhbmFseXNpcw=='); return false;">image analysis</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('python'); return false;">
-python
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ImageJ'); return false;">
-ImageJ
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('image analysis'); return false;">
-image analysis
-</div>
-</div>
-<a href="./posts/cellpose2.0-cell-segmentation/index.html">
-<div class="listing-description">
-Cell segmentation is the process of…
-</div>
-</a>
+<div class="delink listing-description"><a href="./posts/cellpose2.0-cell-segmentation/index.html" class="no-external">
+Cell segmentation is the process of identifying and isolating individual cells in an image or volume. It is a fundamental step in many image analysis pipelines, particularly…
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/cellpose2.0-cell-segmentation/index.html">
+<a href="./posts/cellpose2.0-cell-segmentation/index.html" class="no-external">
 <div class="listing-date">
 Dec 24, 2022
 </div>
@@ -462,38 +513,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="LaTeX,PPT,Beamer" data-listing-date-sort="1670799600000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/switch-PPT-to-Beamer/index.html"> <p class="card-img-top"><img src="posts\switch-PPT-to-Beamer\ppt-cut.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="8" data-categories="TGFUZVglMkNQUFQlMkNCZWFtZXI=" data-listing-date-sort="1670799600000" data-listing-file-modified-sort="1770548624589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="366">
+<div class="thumbnail"><a href="./posts/switch-PPT-to-Beamer/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/switch-PPT-to-Beamer/ppt-cut.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/switch-PPT-to-Beamer/index.html">
 <h3 class="no-anchor listing-title">
-PPT to LaTeX Beamer
+<a href="./posts/switch-PPT-to-Beamer/index.html" class="no-external">PPT to LaTeX Beamer</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TGFUZVg='); return false;">LaTeX</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UFBU'); return false;">PPT</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('QmVhbWVy'); return false;">Beamer</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
-LaTeX
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('PPT'); return false;">
-PPT
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Beamer'); return false;">
-Beamer
-</div>
-</div>
-<a href="./posts/switch-PPT-to-Beamer/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/switch-PPT-to-Beamer/index.html" class="no-external">
 The idea of converting MS-PowerPoint to LaTeX was not a sudden or impulsive one. It was a thought that I have been considering for some time.
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/switch-PPT-to-Beamer/index.html">
+<a href="./posts/switch-PPT-to-Beamer/index.html" class="no-external">
 <div class="listing-date">
 Dec 12, 2022
 </div>
@@ -503,41 +547,33 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="ggplot2,stat_function,disribution,probability" data-listing-date-sort="1670108400000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html"> <p class="card-img-top"><img src="posts\Shading-a-Subregion-Under-a-Function-Curve\index_files\figure-html\plot-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="9" data-categories="Z2dwbG90MiUyQ3N0YXRfZnVuY3Rpb24lMkNkaXNyaWJ1dGlvbiUyQ3Byb2JhYmlsaXR5" data-listing-date-sort="1670108400000" data-listing-file-modified-sort="1770548624585" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="114">
+<div class="thumbnail"><a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/Shading-a-Subregion-Under-a-Function-Curve/index_files/figure-html/plot-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html">
 <h3 class="no-anchor listing-title">
-Shading a Subregion Under a Function Curve
+<a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html" class="no-external">Shading a Subregion Under a Function Curve</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('c3RhdF9mdW5jdGlvbg=='); return false;">stat_function</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('ZGlzcmlidXRpb24='); return false;">disribution</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHJvYmFiaWxpdHk='); return false;">probability</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('stat_function'); return false;">
-stat_function
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('disribution'); return false;">
-disribution
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('probability'); return false;">
-probability
-</div>
-</div>
-<a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html" class="no-external">
 The resource of the code is learning from
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html">
+<a href="./posts/Shading-a-Subregion-Under-a-Function-Curve/index.html" class="no-external">
 <div class="listing-date">
 Dec 4, 2022
 </div>
@@ -547,39 +583,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="LaTeX,table,kableExtra" data-listing-date-sort="1669417200000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html"> <p class="card-img-top"><img src="posts\Insert-Table-in-LaTeX-generated-by-R\kableplot.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="10" data-categories="TGFUZVglMkN0YWJsZSUyQ2thYmxlRXh0cmE=" data-listing-date-sort="1669417200000" data-listing-file-modified-sort="1770548624584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="678">
+<div class="thumbnail"><a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/Insert-Table-in-LaTeX-generated-by-R/kableplot.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html">
 <h3 class="no-anchor listing-title">
-‘Insert’ Table in LaTeX generated by R. Table (R code to LaTeX code)
+<a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html" class="no-external">‘Insert’ Table in LaTeX generated by R. Table (R code to LaTeX code)</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('LaTeX'); return false;">
-LaTeX
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('table'); return false;">
-table
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('kableExtra'); return false;">
-kableExtra
-</div>
-</div>
-<a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html">
-<div class="listing-description">
 
-Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax, for instance, the unlimited…
+<div class="listing-category" onclick="window.quartoListingCategory('TGFUZVg='); return false;">LaTeX</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('dGFibGU='); return false;">table</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('a2FibGVFeHRyYQ=='); return false;">kableExtra</div>
+
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html" class="no-external">
+Inserting (Generating) Table in LaTeX causes physical and psychological pain (at least for me). That is due to the complex LaTeX Table syntax, for instance, the unlimited…
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html">
+<a href="./posts/Insert-Table-in-LaTeX-generated-by-R/index.html" class="no-external">
 <div class="listing-date">
 Nov 26, 2022
 </div>
@@ -589,25 +617,22 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-listing-date-sort="1669071600000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/presentation-test/index.html"> <p class="card-img-top"><img src="posts\presentation-test\index_files\figure-revealjs\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/presentation-test/index.html">
-<h3 class="no-anchor listing-title">
-Test Quarto Presentation
-</h3>
-<div class="listing-subtitle">
+<div class="quarto-post image-right" data-index="11" data-listing-date-sort="1669071600000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="194">
+<div class="thumbnail"><a href="./posts/presentation-test/index.html" class="no-external">
 
-</div>
-<div class="listing-description">
-Note that there are five types of callouts, including: <code>note</code>, <code>warning</code>, <code>important</code>, <code>tip</code>, and <code>caution</code>.
-</div>
-</a>
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/presentation-test/index.html" class="no-external">Test Quarto Presentation</a>
+</h3>
+<div class="delink listing-description"><a href="./posts/presentation-test/index.html" class="no-external">
+
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/presentation-test/index.html">
+<a href="./posts/presentation-test/index.html" class="no-external">
 <div class="listing-date">
 Nov 22, 2022
 </div>
@@ -617,38 +642,35 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="latex,report,Preamble" data-listing-date-sort="1668466800000" data-listing-file-modified-sort="1682241160028" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7">
-<div class="thumbnail">
-<p><a href="./posts/Basic-LaTeX-Preamble/index.html"> <p class="card-img-top"><img src="https://cdn.pixabay.com/photo/2016/11/29/06/15/plans-1867745_960_720.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="12" data-categories="bGF0ZXglMkNyZXBvcnQlMkNQcmVhbWJsZQ==" data-listing-date-sort="1668466800000" data-listing-file-modified-sort="1770548624580" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1278">
+<div class="thumbnail"><a href="./posts/Basic-LaTeX-Preamble/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/Basic-LaTeX-Preamble/index.html">
 <h3 class="no-anchor listing-title">
-A Basic LaTeX Preamble
+<a href="./posts/Basic-LaTeX-Preamble/index.html" class="no-external">A Basic LaTeX Preamble</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('latex'); return false;">
-latex
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('report'); return false;">
-report
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('Preamble'); return false;">
-Preamble
-</div>
-</div>
-<a href="./posts/Basic-LaTeX-Preamble/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGF0ZXg='); return false;">latex</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cmVwb3J0'); return false;">report</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('UHJlYW1ibGU='); return false;">Preamble</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/Basic-LaTeX-Preamble/index.html" class="no-external">
+
+<figure class="figure">
+<p></p>
+</figure>
+
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Basic-LaTeX-Preamble/index.html">
+<a href="./posts/Basic-LaTeX-Preamble/index.html" class="no-external">
 <div class="listing-date">
 Nov 15, 2022
 </div>
@@ -658,41 +680,33 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="12" data-categories="R,code,ggplot2,life" data-listing-date-sort="1668207600000" data-listing-file-modified-sort="1685730975106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/draw-clock/index.html"> <p class="card-img-top"><img src="posts\draw-clock\images\clock.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="13" data-categories="UiUyQ2NvZGUlMkNnZ3Bsb3QyJTJDbGlmZQ==" data-listing-date-sort="1668207600000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="597">
+<div class="thumbnail"><a href="./posts/draw-clock/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/draw-clock/images/clock.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/draw-clock/index.html">
 <h3 class="no-anchor listing-title">
-Draw a Clock Face
+<a href="./posts/draw-clock/index.html" class="no-external">Draw a Clock Face</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGlmZQ=='); return false;">life</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('life'); return false;">
-life
-</div>
-</div>
-<a href="./posts/draw-clock/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/draw-clock/index.html" class="no-external">
 library in need
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/draw-clock/index.html">
+<a href="./posts/draw-clock/index.html" class="no-external">
 <div class="listing-date">
 Nov 12, 2022
 </div>
@@ -702,41 +716,33 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="13" data-categories="code,mlr3,ml,r" data-listing-date-sort="1668034800000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/machine-learning-process/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="14" data-categories="Y29kZSUyQ21scjMlMkNtbCUyQ3I=" data-listing-date-sort="1668034800000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="10">
+<div class="thumbnail"><a href="./posts/machine-learning-process/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/machine-learning-process/index.html">
 <h3 class="no-anchor listing-title">
-Learning progress of machine learning
+<a href="./posts/machine-learning-process/index.html" class="no-external">Learning progress of machine learning</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWxyMw=='); return false;">mlr3</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWw='); return false;">ml</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cg=='); return false;">r</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('mlr3'); return false;">
-mlr3
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('ml'); return false;">
-ml
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('r'); return false;">
-r
-</div>
-</div>
-<a href="./posts/machine-learning-process/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/machine-learning-process/index.html" class="no-external">
 2022-Nov-10 <br> Finished chapter 1,2 only scanning pdf docs<br> Ongoing:<br> Next chapter3<br> https://slds-lmu.github.io/i2ml/chapters/03_supervised_classification/03-01-tasks/ <br>
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/machine-learning-process/index.html">
+<a href="./posts/machine-learning-process/index.html" class="no-external">
 <div class="listing-date">
 Nov 10, 2022
 </div>
@@ -746,325 +752,31 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="14" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160028" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/DiagrammR/DiagrammR.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="15" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="9">
+<div class="thumbnail"><a href="./posts/post-with-code/index.html" class="no-external">
+
+<img loading="lazy" src="./posts/post-with-code/image.jpg" class="thumbnail-image">
+
+</a></div>
 <div class="body">
-<a href="./posts/DiagrammR/DiagrammR.html">
 <h3 class="no-anchor listing-title">
-R中自动画流程图
+<a href="./posts/post-with-code/index.html" class="no-external">Post With Code</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/DiagrammR/DiagrammR.html">
-<div class="listing-description">
-<strong>分子克隆的一般思路简图</strong>
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/DiagrammR/DiagrammR.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-categories="biology,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/draw-96wells/index.html"> <p class="card-img-top"><img src="posts\draw-96wells\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/draw-96wells/index.html">
-<h3 class="no-anchor listing-title">
-Draw a 96 wells with ggplot2
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('biology'); return false;">
-biology
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/draw-96wells/index.html">
-<div class="listing-description">
-Update version without set y level
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/draw-96wells/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1685730710685" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/First-Post-with-Quarto/index.html"> <p class="card-img-top"><img src="posts\First-Post-with-Quarto\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/First-Post-with-Quarto/index.html">
-<h3 class="no-anchor listing-title">
-First BLOG test with Quarto
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/First-Post-with-Quarto/index.html">
-<div class="listing-description">
-“First BLOG test with Quarto”
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/First-Post-with-Quarto/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/Fluorescent Proteins FP/index.html"> <p class="card-img-top"><img src="posts\Fluorescent Proteins FP\Green_Fluorescent_Protein.gif"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Fluorescent Proteins FP/index.html">
-<h3 class="no-anchor listing-title">
-Fluorescent Proteins FP
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/Fluorescent Proteins FP/index.html">
-<div class="listing-description">
-Ref:
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Fluorescent Proteins FP/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-categories="ggplot2,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/ggplot2-MoonPhrase/index.html"> <p class="card-img-top"><img src="posts\ggplot2-MoonPhrase\Moon-Phrase.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/ggplot2-MoonPhrase/index.html">
-<h3 class="no-anchor listing-title">
-MoonPhrase-ggplot2
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('ggplot2'); return false;">
-ggplot2
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/ggplot2-MoonPhrase/index.html">
-<div class="listing-description">
-Ref: https://www.r-bloggers.com/2018/05/making-calendar-with-ggplot-moon-phase-calendar-for-fun/
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/ggplot2-MoonPhrase/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-categories="cloning,molecular biology,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/MolecularCloning/index.html"> <p class="card-img-top"><img src="https://media.giphy.com/media/8vweV4faOBOgIiQrqa/giphy.gif"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/MolecularCloning/index.html">
-<h3 class="no-anchor listing-title">
-Molecular Cloning Summary
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('cloning'); return false;">
-cloning
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('molecular biology'); return false;">
-molecular biology
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/MolecularCloning/index.html">
-<div class="listing-description">
-软件及网络工具：SnapGene , NEB Cloner 等
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/MolecularCloning/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="20" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/Monty Hall problem/index.html"> <p class="card-img-top"><img src="posts\Monty Hall problem\image.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
-<div class="body">
-<a href="./posts/Monty Hall problem/index.html">
-<h3 class="no-anchor listing-title">
-Monty Hall problem
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/Monty Hall problem/index.html">
-<div class="listing-description">
-三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/Monty Hall problem/index.html">
-<div class="listing-date">
-Nov 8, 2022
-</div>
-<div class="listing-author">
-Te
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="21" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/post-with-code/index.html"> <img src="./posts/post-with-code/image.jpg" class="thumbnail-image"> </a></p>
-</div>
-<div class="body">
-<a href="./posts/post-with-code/index.html">
-<h3 class="no-anchor listing-title">
-Post With Code
-</h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/post-with-code/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/post-with-code/index.html" class="no-external">
 This is a post with executable code.
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/post-with-code/index.html">
+<a href="./posts/post-with-code/index.html" class="no-external">
 <div class="listing-date">
 Nov 8, 2022
 </div>
@@ -1074,38 +786,31 @@ Harlow Malloc
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="22" data-categories="rmarkdown,chinese,latex" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/rmarkdown-chinese-paper/index.html"> <p class="card-img-top"><img src="posts\rmarkdown-chinese-paper\youzhiqingnian.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="16" data-categories="YmlvbG9neSUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="129">
+<div class="thumbnail"><a href="./posts/draw-96wells/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/draw-96wells/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/rmarkdown-chinese-paper/index.html">
 <h3 class="no-anchor listing-title">
-rmarkdown-latex-chinese-ctex
+<a href="./posts/draw-96wells/index.html" class="no-external">Draw a 96 wells with ggplot2</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YmlvbG9neQ=='); return false;">biology</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('rmarkdown'); return false;">
-rmarkdown
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('chinese'); return false;">
-chinese
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('latex'); return false;">
-latex
-</div>
-</div>
-<a href="./posts/rmarkdown-chinese-paper/index.html">
-<div class="listing-description">
-````
-</div>
-</a>
+<div class="delink listing-description"><a href="./posts/draw-96wells/index.html" class="no-external">
+Update version without set y level
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/rmarkdown-chinese-paper/index.html">
+<a href="./posts/draw-96wells/index.html" class="no-external">
 <div class="listing-date">
 Nov 8, 2022
 </div>
@@ -1115,38 +820,133 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="23" data-categories="sf,map,heatmap" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3">
-<div class="thumbnail">
-<p><a href="./posts/sf-map/index.html"> <p class="card-img-top"><img src="https://media.giphy.com/media/d2jjuAZzDSVLZ5kI/giphy-downsized.gif"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="17" data-categories="Y2xvbmluZyUyQ21vbGVjdWxhciUyMGJpb2xvZ3klMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="130">
+<div class="thumbnail"><a href="./posts/MolecularCloning/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/sf-map/index.html">
 <h3 class="no-anchor listing-title">
-sf-map-heatmap
+<a href="./posts/MolecularCloning/index.html" class="no-external">Molecular Cloning Summary</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2xvbmluZw=='); return false;">cloning</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bW9sZWN1bGFyJTIwYmlvbG9neQ=='); return false;">molecular biology</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
+<div class="delink listing-description"><a href="./posts/MolecularCloning/index.html" class="no-external">
+软件及网络工具：SnapGene , NEB Cloner 等
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/MolecularCloning/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
 </a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="18" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="134">
+<div class="thumbnail"><a href="./posts/Fluorescent Proteins FP/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/Fluorescent Proteins FP/Green_Fluorescent_Protein.gif"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Fluorescent Proteins FP/index.html" class="no-external">Fluorescent Proteins FP</a>
+</h3>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('sf'); return false;">
-sf
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('map'); return false;">
-map
+<div class="delink listing-description"><a href="./posts/Fluorescent Proteins FP/index.html" class="no-external">
+Ref:
+</a></div>
 </div>
-<div class="listing-category" onclick="window.quartoListingCategory('heatmap'); return false;">
-heatmap
+<div class="metadata">
+<a href="./posts/Fluorescent Proteins FP/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
 </div>
 </div>
-<a href="./posts/sf-map/index.html">
-<div class="listing-description">
+<div class="quarto-post image-right" data-index="19" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="203">
+<div class="thumbnail"><a href="./posts/Monty Hall problem/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/Monty Hall problem/image.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Monty Hall problem/index.html" class="no-external">Monty Hall problem</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/Monty Hall problem/index.html" class="no-external">
+三门问题（Monty Hall problem）亦称为蒙提霍尔问题、蒙特霍问题或蒙提霍尔悖论，大致出自美国的电视游戏节目Let’s Make a Deal。问题名字来自该节目的主持人蒙提·霍尔（Monty Hall）。参赛者会看见三扇关闭了的门，其中一扇的后面有一辆汽车，选中后面有车的那扇门可赢得该汽车，另外两扇门后面则各藏有一只山羊。
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/Monty Hall problem/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="20" data-categories="c2YlMkNtYXAlMkNoZWF0bWFw" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="577">
+<div class="thumbnail"><a href="./posts/sf-map/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/sf-map/index_files/figure-html/unnamed-chunk-3-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/sf-map/index.html" class="no-external">sf-map-heatmap</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('c2Y='); return false;">sf</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bWFw'); return false;">map</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('aGVhdG1hcA=='); return false;">heatmap</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/sf-map/index.html" class="no-external">
 Download map from China website(<strong>be cautious about border and official government data</strong> )
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/sf-map/index.html">
+<a href="./posts/sf-map/index.html" class="no-external">
 <div class="listing-date">
 Nov 8, 2022
 </div>
@@ -1156,38 +956,65 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="24" data-categories="news,code,analysis" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/Thanks about Blogdown Blog/index.html"> <div class="listing-item-img-placeholder card-img-top" >&nbsp;</div> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="21" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624580" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="5">
+<div class="thumbnail"><a href="./posts/First-Post-with-Quarto/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/First-Post-with-Quarto/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/Thanks about Blogdown Blog/index.html">
 <h3 class="no-anchor listing-title">
-BLOG with blogdown
+<a href="./posts/First-Post-with-Quarto/index.html" class="no-external">First BLOG test with Quarto</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('code'); return false;">
-code
-</div>
-<div class="listing-category" onclick="window.quartoListingCategory('analysis'); return false;">
-analysis
-</div>
-</div>
-<a href="./posts/Thanks about Blogdown Blog/index.html">
-<div class="listing-description">
-我的第一篇博客-感谢
-</div>
-</a>
+<div class="delink listing-description"><a href="./posts/First-Post-with-Quarto/index.html" class="no-external">
+“First BLOG test with Quarto”
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Thanks about Blogdown Blog/index.html">
+<a href="./posts/First-Post-with-Quarto/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="22" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624585" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="2">
+<div class="thumbnail"><a href="./posts/Thanks about Blogdown Blog/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/Thanks about Blogdown Blog/index.html" class="no-external">BLOG with blogdown</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/Thanks about Blogdown Blog/index.html" class="no-external">
+我的第一篇博客-感谢
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/Thanks about Blogdown Blog/index.html" class="no-external">
 <div class="listing-date">
 Nov 8, 2022
 </div>
@@ -1197,32 +1024,129 @@ Guo Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="25" data-categories="news" data-listing-date-sort="1667602800000" data-listing-file-modified-sort="1682241160060" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/welcome/index.html"> <p class="card-img-top"><img data-src="posts\welcome\thumbnail.jpg"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="23" data-categories="bmV3cyUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624580" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="246">
+<div class="thumbnail"><a href="./posts/DiagrammR/DiagrammR.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/welcome/index.html">
 <h3 class="no-anchor listing-title">
-Welcome To My Blog
+<a href="./posts/DiagrammR/DiagrammR.html" class="no-external">R中自动画流程图</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('news'); return false;">
-news
-</div>
-</div>
-<a href="./posts/welcome/index.html">
-<div class="listing-description">
-This is the first post in a Quarto blog. Welcome!
-</div>
-</a>
+<div class="delink listing-description"><a href="./posts/DiagrammR/DiagrammR.html" class="no-external">
+<strong>分子克隆的一般思路简图</strong>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/welcome/index.html">
+<a href="./posts/DiagrammR/DiagrammR.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="24" data-categories="Z2dwbG90MiUyQ2NvZGUlMkNhbmFseXNpcw==" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624587" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="481">
+<div class="thumbnail"><a href="./posts/ggplot2-MoonPhrase/index.html" class="no-external">
+
+<p class="card-img-top"><img src="posts/ggplot2-MoonPhrase/Moon-Phrase.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/ggplot2-MoonPhrase/index.html" class="no-external">MoonPhrase-ggplot2</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Z2dwbG90Mg=='); return false;">ggplot2</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y29kZQ=='); return false;">code</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('YW5hbHlzaXM='); return false;">analysis</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/ggplot2-MoonPhrase/index.html" class="no-external">
+Ref: https://www.r-bloggers.com/2018/05/making-calendar-with-ggplot-moon-phase-calendar-for-fun/
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/ggplot2-MoonPhrase/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="25" data-categories="cm1hcmtkb3duJTJDY2hpbmVzZSUyQ2xhdGV4" data-listing-date-sort="1667862000000" data-listing-file-modified-sort="1770548624588" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="119">
+<div class="thumbnail"><a href="./posts/rmarkdown-chinese-paper/index.html" class="no-external">
+
+<p class="card-img-top"><img data-src="posts/rmarkdown-chinese-paper/youzhiqingnian.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/rmarkdown-chinese-paper/index.html" class="no-external">rmarkdown-latex-chinese-ctex</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('cm1hcmtkb3du'); return false;">rmarkdown</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Y2hpbmVzZQ=='); return false;">chinese</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('bGF0ZXg='); return false;">latex</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/rmarkdown-chinese-paper/index.html" class="no-external">
+````
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/rmarkdown-chinese-paper/index.html" class="no-external">
+<div class="listing-date">
+Nov 8, 2022
+</div>
+<div class="listing-author">
+Te
+</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="26" data-categories="bmV3cw==" data-listing-date-sort="1667602800000" data-listing-file-modified-sort="1770548624589" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="32">
+<div class="thumbnail"><a href="./posts/welcome/index.html" class="no-external">
+
+<p class="card-img-top"><img data-src="posts/welcome/thumbnail.jpg"  class="thumbnail-image card-img"/></p>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/welcome/index.html" class="no-external">Welcome To My Blog</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('bmV3cw=='); return false;">news</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/welcome/index.html" class="no-external">
+This is the first post in a Quarto blog. Welcome!
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/welcome/index.html" class="no-external">
 <div class="listing-date">
 Nov 5, 2022
 </div>
@@ -1232,32 +1156,27 @@ Tristan O’Malley
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="26" data-categories="R" data-listing-date-sort="1666648800000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1">
-<div class="thumbnail">
-<p><a href="./posts/filter-na/index.html"> <p class="card-img-top"><img data-src="https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="27" data-categories="Ug==" data-listing-date-sort="1666648800000" data-listing-file-modified-sort="1770548624587" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="90">
+<div class="thumbnail"><a href="./posts/filter-na/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
 <div class="body">
-<a href="./posts/filter-na/index.html">
 <h3 class="no-anchor listing-title">
-Filter NAs in R tidyverse
+<a href="./posts/filter-na/index.html" class="no-external">Filter NAs in R tidyverse</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./posts/filter-na/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/filter-na/index.html" class="no-external">
 Good solution: <strong>read_csv()</strong> in readr package missing value will convert into NA
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/filter-na/index.html">
+<a href="./posts/filter-na/index.html" class="no-external">
 <div class="listing-date">
 Oct 25, 2022
 </div>
@@ -1267,32 +1186,27 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="27" data-categories="R" data-listing-date-sort="1664920800000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/apa-themes/index.html"> <p class="card-img-top"><img data-src="posts\apa-themes\index_files\figure-html\unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="28" data-categories="Ug==" data-listing-date-sort="1664920800000" data-listing-file-modified-sort="1770548624585" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="685">
+<div class="thumbnail"><a href="./posts/apa-themes/index.html" class="no-external">
+
+<p class="card-img-top"><img data-src="posts/apa-themes/index_files/figure-html/unnamed-chunk-2-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/apa-themes/index.html">
 <h3 class="no-anchor listing-title">
-APA theme- ggplot2
+<a href="./posts/apa-themes/index.html" class="no-external">APA theme- ggplot2</a>
 </h3>
-<div class="listing-subtitle">
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
 </div>
-</a>
-<div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./posts/apa-themes/index.html">
-<div class="listing-description">
+<div class="delink listing-description"><a href="./posts/apa-themes/index.html" class="no-external">
 Christian https://christianburkhart.de/
-</div>
-</a>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/apa-themes/index.html">
+<a href="./posts/apa-themes/index.html" class="no-external">
 <div class="listing-date">
 Oct 5, 2022
 </div>
@@ -1302,32 +1216,35 @@ Te
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="28" data-categories="R" data-listing-date-sort="1664661600000" data-listing-file-modified-sort="1682241160044" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2">
-<div class="thumbnail">
-<p><a href="./posts/bar-plot-with-labels/index.html"> <p class="card-img-top"><img data-src="posts\bar-plot-with-labels\index_files\figure-html\unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p> </a></p>
-</div>
+<div class="quarto-post image-right" data-index="29" data-categories="Ug==" data-listing-date-sort="1664661600000" data-listing-file-modified-sort="1770548624586" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="284">
+<div class="thumbnail"><a href="./posts/bar-plot-with-labels/index.html" class="no-external">
+
+<p class="card-img-top"><img data-src="posts/bar-plot-with-labels/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
+
+</a></div>
 <div class="body">
-<a href="./posts/bar-plot-with-labels/index.html">
 <h3 class="no-anchor listing-title">
-bar plot with labels
+<a href="./posts/bar-plot-with-labels/index.html" class="no-external">bar plot with labels</a>
 </h3>
-<div class="listing-subtitle">
-
-</div>
-</a>
 <div class="listing-categories">
-<div class="listing-category" onclick="window.quartoListingCategory('R'); return false;">
-R
-</div>
-</div>
-<a href="./posts/bar-plot-with-labels/index.html">
-<div class="listing-description">
+
+<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
 
 </div>
-</a>
+<div class="delink listing-description"><a href="./posts/bar-plot-with-labels/index.html" class="no-external">
+
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><span class="co"># data from 王敏杰 老师</span></span>
+<span id="cb1-2"><span class="co"># his book https://bookdown.org/wangminjie/R4DS/author.html</span></span>
+<span id="cb1-3"></span>
+<span id="cb1-4">d <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb1-5">     <span class="sc">~</span>name, <span class="sc">~</span>value,</span>
+<span id="cb1-6">   <span class="st">"Alice"</span>,   <span class="fl">2.12</span>,</span>
+<span id="cb1-7">     <span class="st">"Bob"</span>,  <span class="fl">68.45</span>,</span>
+<span id="cb1-8">  <span class="st">"Carlie"</span>…<span class="fl"></span></span><span id="cb1-9"><span class="st"></span><span class="fl"></span></span><span id="cb1-10"><span class="st"></span><span class="fl"></span></span><span id="cb1-11"></span><span id="cb1-12"></span><span id="cb1-13"></span><span id="cb1-14"><span class="fu"></span></span><span id="cb1-15"><span class="fu"></span></span><span id="cb1-16"></span><span id="cb1-17"><span class="sc"></span></span><span id="cb1-18"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="at"></span><span class="fu"></span><span class="sc"></span></span><span id="cb1-19"><span class="fu"></span><span class="at"></span><span class="fl"></span><span class="at"></span><span class="st"></span><span class="sc"></span></span><span id="cb1-20"><span class="fu"></span><span class="fu"></span><span class="at"></span><span class="at"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-21"><span class="fu"></span><span class="sc"></span></span><span id="cb1-22"><span class="fu"></span><span class="at"></span><span class="fu"></span><span class="dv"></span><span class="dv"></span><span class="sc"></span></span><span id="cb1-23"><span class="fu"></span><span class="at"></span><span class="cn"></span><span class="at"></span><span class="cn"></span></span></code></pre></div></div><div class="cell-output-display"><div><figure class="figure"><p></p></figure></div></div>
+</a></div>
 </div>
 <div class="metadata">
-<a href="./posts/bar-plot-with-labels/index.html">
+<a href="./posts/bar-plot-with-labels/index.html" class="no-external">
 <div class="listing-date">
 Oct 2, 2022
 </div>
@@ -1338,51 +1255,64 @@ Te
 </div>
 </div>
 </div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
+<div class="listing-no-matching d-none">No matching items</div>
 <nav id="listing-pagination" class="listing-pagination" aria-label="Page Navigation">
   <ul class="pagination"></ul>
 </nav>
 </div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1390,195 +1320,348 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/guote\.netlify\.app\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+
 
 
 
