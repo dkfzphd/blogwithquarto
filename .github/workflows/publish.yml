@@ -1,0 +1,36 @@
+
+on:
+  push:
+    branches: main
+  workflow_dispatch:
+
+name: Render and Publish
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.4.550
+
+      # We skip R installation because we rely on _freeze for existing R posts.
+
+      - name: Render and Publish
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: netlify
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        # NETLIFY_SITE_ID is optional if you haven't linked it yet via _quarto.yml or _publish.yml, 
+        # but typically 'quarto publish' can figure it out or create a new site if not specified, 
+        # or uses the one in _publish.yml if it exists. 
+        # If the user wants to enforce a specific site ID, we can pass it, but the action doesn't documented 
+        # a direct input for it other than env vars which quarto CLI picks up.
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
