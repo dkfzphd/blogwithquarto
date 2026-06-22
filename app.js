@@ -85,11 +85,12 @@ function initActiveNavLink() {
 // Shared function to fetch all indexed blog posts
 async function fetchPosts() {
   try {
-    const response = await fetch('posts.json');
+    // Append a timestamp to prevent the browser from caching the JSON index file
+    const response = await fetch('posts.json?t=' + new Date().getTime());
     if (!response.ok) {
       throw new Error('Failed to load posts index');
     }
-    return await response.ok ? response.json() : [];
+    return response.json();
   } catch (error) {
     console.error('Error fetching blog index:', error);
     return [];
