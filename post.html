@@ -227,7 +227,8 @@
 
       for (const ext of fileExtensions) {
         try {
-          const response = await fetch(`posts/${postId}/index.${ext}`);
+          // Append a timestamp to bypass CDN and browser caching of the raw files
+          const response = await fetch(`posts/${postId}/index.${ext}?t=` + new Date().getTime());
           if (response.ok) {
             rawMarkdown = await response.text();
             fetchSuccess = true;
