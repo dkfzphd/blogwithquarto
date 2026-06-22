@@ -13,6 +13,20 @@
     "id": "thoughts-on-ai"
   },
   {
+    "title": "使用 R 语言进行病理图像的单细胞定量空间分析",
+    "author": "Te Guo",
+    "date": "2026-06-22",
+    "description": "病理图像经深度学习算法分割后，如何使用 R 语言（主要是 spatstat 和 ggplot2）对提取出的单细胞物理空间坐标进行定量密度计算、聚类以及肿瘤浸润深度建模。",
+    "categories": [
+      "R",
+      "Image Analysis",
+      "Biostatistics",
+      "Chinese"
+    ],
+    "image": "posts/r-image-quantitative-analysis/cover.png",
+    "id": "r-image-quantitative-analysis"
+  },
+  {
     "title": "我如何使用 AI：从科研、编程到日常写作",
     "author": "Te",
     "date": "2026-06-22",
