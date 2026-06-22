@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read Article - Te Guo</title>
+  <meta name="description" content="Scientific and data analysis blog article.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Prism.js Tomorrow syntax theme -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+  
+  <style>
+    /* Reader adjustments and sticky TOC layout */
+    .post-container-layout {
+      display: grid;
+      grid-template-columns: 1fr 250px;
+      gap: 3rem;
+      align-items: start;
+    }
+    
+    .toc-container {
+      position: sticky;
+      top: 6.5rem;
+      background-color: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 1.5rem;
+      max-height: calc(100vh - 10rem);
+      overflow-y: auto;
+      box-shadow: var(--shadow-sm);
+    }
+    
+    .toc-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-primary);
+    }
+    
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+    }
+    
+    .toc-item-h2 {
+      padding-left: 0;
+      font-weight: 500;
+    }
+    
+    .toc-item-h3 {
+      padding-left: 1rem;
+      color: var(--text-muted);
+    }
+    
+    .toc-list a {
+      color: var(--text-secondary);
+      transition: color var(--transition-fast);
+    }
+    
+    .toc-list a:hover {
+      color: var(--accent-color);
+    }
+
+    @media (max-width: 1024px) {
+      .post-container-layout {
+        grid-template-columns: 1fr;
+      }
+      .toc-container {
+        display: none; /* Hide TOC sidebar on mobile */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        Te Guo <span></span>
+      </a>
+      
+      <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L18.36 5.64zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M12.3 22c5.07 0 9.18-4.1 9.18-9.18 0-2.62-1.11-4.99-2.9-6.66-.41-.38-1.05-.14-1.13.41a8.177 8.177 0 0 1-8.15 7.02c-3.79 0-7.07-2.6-8.03-6.22-.15-.56-.81-.74-1.2-.3A9.155 9.155 0 0 0 2 12.82c0 5.07 4.11 9.18 9.18 9.18h1.12z"/>
+          </svg>
+        </button>
+        
+        <a href="https://github.com/dkfzphd" target="_blank" class="github-link" aria-label="GitHub Profile">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Body Content -->
+  <main class="container" style="padding-top: 7rem;">
+    <div class="post-wrapper">
+      
+      <!-- Back Link -->
+      <a href="blog.html" class="post-back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12,19 5,12 12,5"></polyline>
+        </svg>
+        Back to all articles
+      </a>
+
+      <!-- Article Header -->
+      <header class="post-header">
+        <div class="post-header-categories" id="post-categories">
+          <!-- Dynamic Category Tags -->
+        </div>
+        <h1 class="post-title" id="post-title">Loading article...</h1>
+        <div class="post-meta-details">
+          <span id="post-date">--</span>
+          <span>•</span>
+          <span id="post-author">--</span>
+          <span>•</span>
+          <span id="post-readtime">-- min read</span>
+        </div>
+      </header>
+
+      <!-- Post Cover Image -->
+      <div class="post-cover-image" id="post-cover-container" style="display: none;">
+        <img id="post-cover" src="" alt="Article cover image">
+      </div>
+
+      <!-- Layout: Content & TOC -->
+      <div class="post-container-layout">
+        <!-- Post Body -->
+        <article class="post-content" id="post-content">
+          <p style="text-align: center; color: var(--text-muted);">Loading post contents...</p>
+        </article>
+
+        <!-- Table of Contents Sidebar -->
+        <aside class="toc-container" id="toc-sidebar" style="display: none;">
+          <div class="toc-title" id="toc-title-header">Table of Contents</div>
+          <ul class="toc-list" id="toc-list">
+            <!-- Dynamic TOC items -->
+          </ul>
+        </aside>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div>
+        <p>&copy; 2026 Te Guo. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: var(--text-muted);">Powered by Pure HTML, CSS & JavaScript</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/dkfzphd" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/teguo/" target="_blank">LinkedIn</a>
+        <a href="mailto:iscience@163.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Marked.js for Markdown Parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <!-- Prism.js for Code Highlighting -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-r.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-yaml.min.js"></script>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const titleEl = document.getElementById('post-title');
+      const dateEl = document.getElementById('post-date');
+      const authorEl = document.getElementById('post-author');
+      const readtimeEl = document.getElementById('post-readtime');
+      const categoriesEl = document.getElementById('post-categories');
+      const coverContainer = document.getElementById('post-cover-container');
+      const coverImg = document.getElementById('post-cover');
+      const contentEl = document.getElementById('post-content');
+      
+      const tocSidebar = document.getElementById('toc-sidebar');
+      const tocList = document.getElementById('toc-list');
+      const tocTitleHeader = document.getElementById('toc-title-header');
+
+      // Fetch article ID from query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const postId = urlParams.get('id');
+
+      if (!postId) {
+        titleEl.textContent = 'Article Not Found';
+        contentEl.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Missing URL parameters. Please return to the <a href="blog.html">blog home</a> to choose an article.</p>';
+        return;
+      }
+
+      // Try fetching index.qmd or index.md
+      let rawMarkdown = '';
+      let fetchSuccess = false;
+      const fileExtensions = ['qmd', 'md'];
+
+      for (const ext of fileExtensions) {
+        try {
+          const response = await fetch(`posts/${postId}/index.${ext}`);
+          if (response.ok) {
+            rawMarkdown = await response.text();
+            fetchSuccess = true;
+            break;
+          }
+        } catch (e) {
+          console.error(`Failed to fetch index.${ext}`, e);
+        }
+      }
+
+      if (!fetchSuccess) {
+        titleEl.textContent = 'Failed to Load Article';
+        contentEl.innerHTML = '<p style="text-align:center; color:var(--text-muted);">Unable to load source markdown file. Please return to the <a href="blog.html">blog home</a> and try again.</p>';
+        return;
+      }
+
+      // Parse YAML header and Markdown body
+      const { metadata, body } = parseMarkdownFile(rawMarkdown);
+
+      // Set page document elements
+      document.title = `${metadata.title || 'Blog Post'} - Te Guo`;
+      titleEl.textContent = metadata.title || 'Untitled Post';
+      dateEl.textContent = formatDate(metadata.date);
+      authorEl.textContent = `By ${metadata.author || 'Te'}`;
+      
+      // Calculate reading time
+      readtimeEl.textContent = `${calculateReadingTime(body)} min read`;
+
+      // Render category tags
+      categoriesEl.innerHTML = '';
+      (metadata.categories || []).forEach(cat => {
+        const tag = document.createElement('span');
+        tag.className = 'blog-category-tag';
+        tag.textContent = cat;
+        categoriesEl.appendChild(tag);
+      });
+
+      // Display cover image
+      let coverPath = metadata.image;
+      if (coverPath) {
+        if (!coverPath.startsWith('http://') && !coverPath.startsWith('https://') && !coverPath.startsWith('/')) {
+          coverPath = `posts/${postId}/${coverPath}`;
+        }
+        coverImg.src = coverPath;
+        coverContainer.style.display = 'block';
+      }
+
+      // Render Markdown to HTML
+      marked.setOptions({
+        gfm: true,
+        breaks: true
+      });
+      
+      contentEl.innerHTML = marked.parse(body);
+
+      // Post-process: fix relative image sources
+      const imgs = contentEl.querySelectorAll('img');
+      imgs.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && !src.startsWith('http://') && !src.startsWith('https://') && !src.startsWith('/') && !src.startsWith('data:')) {
+          img.setAttribute('src', `posts/${postId}/${src}`);
+        }
+      });
+
+      // Post-process: fix relative link anchors
+      const links = contentEl.querySelectorAll('a');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http://') && !href.startsWith('https://') && !href.startsWith('/') && !href.startsWith('#')) {
+          link.setAttribute('href', `posts/${postId}/${href}`);
+        }
+      });
+
+      // Post-process: parse admonition blocks (callouts) into alert divs
+      const blockquotes = contentEl.querySelectorAll('blockquote');
+      blockquotes.forEach(bq => {
+        const firstP = bq.querySelector('p');
+        if (firstP) {
+          const textContent = firstP.textContent.trim();
+          if (textContent.startsWith('[!')) {
+            const match = textContent.match(/^\[!(NOTE|TIP|WARNING|CAUTION)\]/i);
+            if (match) {
+              const type = match[1].toLowerCase();
+              
+              // Strip the [!TYPE] marker
+              firstP.innerHTML = firstP.innerHTML.replace(/^\[!(NOTE|TIP|WARNING|CAUTION)\]\s*(?:<br>)?/i, '');
+              
+              let icon = '💡';
+              let title = 'NOTE';
+              if (type === 'tip') { icon = '🚀'; title = 'TIP'; }
+              else if (type === 'warning') { icon = '⚠️'; title = 'WARNING'; }
+              else if (type === 'caution') { icon = '🚨'; title = 'CAUTION'; }
+              
+              const alertDiv = document.createElement('div');
+              alertDiv.className = `alert-block alert-${type}`;
+              
+              alertDiv.innerHTML = `
+                <div class="alert-block-title">${icon} ${title}</div>
+                ${bq.innerHTML}
+              `;
+              bq.replaceWith(alertDiv);
+            }
+          }
+        }
+      });
+
+      // Generate Table of Contents (TOC)
+      const headers = contentEl.querySelectorAll('h2, h3');
+      if (headers.length > 0 && metadata.toc !== 'false') {
+        tocList.innerHTML = '';
+        tocTitleHeader.textContent = metadata['toc-title'] || 'Table of Contents';
+        
+        headers.forEach((header, index) => {
+          const headerId = `heading-${index}`;
+          header.id = headerId;
+          
+          const li = document.createElement('li');
+          li.className = header.tagName.toLowerCase() === 'h2' ? 'toc-item-h2' : 'toc-item-h3';
+          
+          const a = document.createElement('a');
+          a.href = `#${headerId}`;
+          a.textContent = header.textContent;
+          
+          li.appendChild(a);
+          tocList.appendChild(li);
+        });
+        
+        tocSidebar.style.display = 'block';
+      }
+
+      // Syntax highlight
+      Prism.highlightAll();
+    });
+  </script>
+</body>
+</html>
