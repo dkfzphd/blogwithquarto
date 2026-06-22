@@ -30,6 +30,20 @@
     "id": "ggplot2-books-recommendation"
   },
   {
+    "title": "Visualizing the Cellular Microenvironment: Multiplex Immunofluorescence in Cancer Research",
+    "author": "Te Guo",
+    "date": "2026-06-22",
+    "description": "How multiplex immunofluorescence (IF) combined with digital analysis tools helps us decode the spatial architecture of the liver cancer microenvironment.",
+    "categories": [
+      "Research",
+      "Biology",
+      "Imaging",
+      "Oncology"
+    ],
+    "image": "posts/visualizing-microenvironment/cover.png",
+    "id": "visualizing-microenvironment"
+  },
+  {
     "title": "Reflections on AI: Tools, Thought, and the Future of Creativity",
     "author": "Te Guo",
     "date": "2026-06-22",
