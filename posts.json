@@ -29,6 +29,20 @@
     "id": "how-i-use-ai"
   },
   {
+    "title": "Top Books to Master ggplot2 and Data Visualization in R",
+    "author": "Te Guo",
+    "date": "2026-06-22",
+    "description": "A curated list of the best books to take your R data visualization skills from beginner to publication-ready.",
+    "categories": [
+      "R",
+      "ggplot2",
+      "Data Visualization",
+      "Books"
+    ],
+    "image": "",
+    "id": "ggplot2-books-recommendation"
+  },
+  {
     "title": "Quantitative Strategies in Fund Investment: A Factor-Based Approach",
     "author": "Te Guo",
     "date": "2026-06-21",
