@@ -16,6 +16,45 @@
     "id": "how-i-use-ai"
   },
   {
+    "title": "Reflections on AI: Tools, Thought, and the Future of Creativity",
+    "author": "Te Guo",
+    "date": "2026-06-22",
+    "description": "How large language models are shifting the boundaries of technical problem solving and human cognitive leverage.",
+    "categories": [
+      "AI",
+      "Philosophy",
+      "Technology"
+    ],
+    "image": "",
+    "id": "thoughts-on-ai"
+  },
+  {
+    "title": "Quantitative Strategies in Fund Investment: A Factor-Based Approach",
+    "author": "Te Guo",
+    "date": "2026-06-21",
+    "description": "An analysis of quantitative factor selection, backtesting structures, and asset allocation strategies for modern retail investors.",
+    "categories": [
+      "Finance",
+      "Quantitative",
+      "Python"
+    ],
+    "image": "",
+    "id": "fund-investment-strategy"
+  },
+  {
+    "title": "Navigating AI Anxiety: Maintaining Focus in the Age of Automation",
+    "author": "Te Guo",
+    "date": "2026-06-20",
+    "description": "Addressing the psychological friction of rapid software automation and finding sustainable productivity anchors.",
+    "categories": [
+      "AI",
+      "Life",
+      "Psychology"
+    ],
+    "image": "",
+    "id": "ai-anxiety"
+  },
+  {
     "title": "I am back",
     "author": "Te",
     "date": "2026-02-08",
