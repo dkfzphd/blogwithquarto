@@ -1,0 +1,107 @@
+---
+title: "A Basic LaTeX Preamble "
+author: "Te"
+date: "2022-11-15"
+categories: [latex, report, Preamble]
+---
+
+![](https://cdn.pixabay.com/photo/2016/11/29/06/15/plans-1867745_960_720.jpg){fig-align="center" width="500"}
+
+```
+\documentclass[a4paper,11pt]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = false,
+    linkbordercolor = {white}}%remove the color
+\title{\textbf{Lab Report}} % ctrl+B
+\author{My name}
+\date{\textit{\today}} % ctrl+I
+\usepackage[margin=1in]{geometry}
+\usepackage{chemfig}
+\usepackage{ amssymb }
+
+    
+\begin{document}
+\maketitle
+
+\noindent
+\rule{\textwidth}{0.5pt}
+\begin{abstract}
+
+\noindent This is our second document. It contains a title and a 
+section with text.Following the latest data, around 3 million tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where $\frac{1}{3}$  of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London:\\
+
+\noindent\textbf{Keywords:}{First keyword  \and Second keyword \and Another keyword.}
+\end{abstract}
+\rule{\textwidth}{0.5pt}
+
+\tableofcontents
+
+
+\section{Math symbol}
+This is our second document.6 $\mu m$ 
+\chemfig{A-[:50]B-[:-25]C}
+Branched molecule \vspace{.5cm}
+
+\chemfig{H-C(-[2]H)(-[6]H)-C(=[1]O)-[7]H}
+\quad\chemfig{A-[:50]B-[:-25]C}\vspace{1cm}\\
+
+{ 
+    \setchemfig{atom sep=2em,bond style={line width=1pt,red,dash pattern=on 2pt off 2pt}}  
+    \chemname
+    {\chemfig{H-C(-[2]H)(-[6]H)-C(=[1]O)-[7]H}}    
+    {Ethanal}
+}\vspace{.5cm}
+
+
+$\underbrace{a\Rightarrow b}$
+\section{Statement of the Problem}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Hypothesis}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Materials}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Procedure}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Result}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Conclusion}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Comment}
+This is our second document. It contains a title and a 
+section with text.tourists visit London every year. The capital city of England and the United Kingdom attracts a lot of visitors, especially Americans. This is probably due to the position it holds in the world economy.
+Not by chance London has been defined by some of the most important sociologists of the XX century as a global city. That’s how people and cultures blend together continuously, creating a multicultural place, where 1/3 of the population is foreign-born. Being a language student, I was impressed when I discovered that over 200 different idioms are spoken in London.
+In my travel itineraries I usually try to focus on some unusual places to visit, because I find them more fascinating than visiting the typical monuments or museums, those which everybody already knows. Thus, here you are my top 5 sites in London
+
+\section{Reference}
+Zong, Y.,  Friedman, J. R. (2014). Liver development. Liver Disease in Children, 1-813.
+
+\end{document}
+```

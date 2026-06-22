@@ -1,0 +1,10 @@
+---
+title: "Image-Analysis-Resources"
+author: "Te"
+date: "2022-12-25"
+categories: [Image-Analysis,python, scikit-image]
+---
+
+Using ImageJ's graphical user interface to manually perform image analysis tasks can be time-consuming and prone to errors, as it requires repeating the same steps over and over again. This can make it difficult to reproduce the results of an analysis, as it is not always clear exactly how the analysis was performed. In contrast, **using Python** to automate image analysis tasks allows for the creation of custom pipelines that can be easily reproduced and modified as needed. This makes it easier to ensure the **reliability and reproducibility** of the results, which is important for scientific research. Additionally, using Python to automate image analysis tasks can be more efficient than performing the same tasks manually in ImageJ, as it allows for the creation of custom scripts that can be run on large datasets with minimal effort.
+
+[Bio-image Analysis Notebooks](https://haesleinhuepf.github.io/BioImageAnalysisNotebooks/intro.html)

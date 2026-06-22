@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Te Guo</title>
+  <meta name="description" content="Te Guo's academic blog, covering cancer biology, CRISPR gene editing, R statistics, data science, and AI tools for research.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        Te Guo <span></span>
+      </a>
+      
+      <button class="menu-toggle-btn" id="menu-toggle" aria-label="Toggle mobile menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="blog.html">Blog</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle dark/light mode">
+          <svg class="sun-icon" viewBox="0 0 24 24">
+            <path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37c-.39-.39-1.03-.39-1.41 0s-.39 1.03 0 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L18.36 5.64zm1.06-10.96c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.01c.39-.39.39-1.03 0-1.41s-1.03-.39-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24">
+            <path d="M12.3 22c5.07 0 9.18-4.1 9.18-9.18 0-2.62-1.11-4.99-2.9-6.66-.41-.38-1.05-.14-1.13.41a8.177 8.177 0 0 1-8.15 7.02c-3.79 0-7.07-2.6-8.03-6.22-.15-.56-.81-.74-1.2-.3A9.155 9.155 0 0 0 2 12.82c0 5.07 4.11 9.18 9.18 9.18h1.12z"/>
+          </svg>
+        </button>
+        
+        <a href="https://github.com/dkfzphd" target="_blank" class="github-link" aria-label="GitHub Profile">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container" style="padding-top: 7rem;">
+    
+    <div class="section-header">
+      <span class="section-tag">BLOG</span>
+      <h2 class="section-title">Academic & Tech Blog</h2>
+      <p class="section-desc">Documenting tutorials, insights, and research logs in molecular oncology, data programming, and research toolkits.</p>
+    </div>
+
+    <!-- Search Input -->
+    <div class="blog-search-bar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" class="blog-search-input" id="blog-search" placeholder="Search by title, categories, or keywords...">
+    </div>
+
+    <!-- Dynamic Category Filter Chips -->
+    <div class="projects-filter" id="blog-categories-filter">
+      <button class="filter-btn active" data-category="all">All</button>
+    </div>
+
+    <!-- Blog Card Grid -->
+    <div class="posts-grid" id="blog-posts-grid">
+      <div style="grid-column: 1/-1; text-align: center; color: var(--text-muted);">
+        Loading blog posts...
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div>
+        <p>&copy; 2026 Te Guo. All rights reserved.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.25rem; color: var(--text-muted);">Powered by Pure HTML, CSS & JavaScript</p>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/dkfzphd" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/teguo/" target="_blank">LinkedIn</a>
+        <a href="mailto:iscience@163.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const postsGrid = document.getElementById('blog-posts-grid');
+      const searchInput = document.getElementById('blog-search');
+      const categoriesFilter = document.getElementById('blog-categories-filter');
+      
+      if (!postsGrid || !searchInput || !categoriesFilter) return;
+
+      const posts = await fetchPosts();
+      if (!posts || posts.length === 0) {
+        postsGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:3rem 0;">No articles published yet.</div>';
+        return;
+      }
+
+      // Compile unique categories set
+      const categoriesSet = new Set();
+      posts.forEach(post => {
+        (post.categories || []).forEach(cat => {
+          if (cat) categoriesSet.add(cat);
+        });
+      });
+
+      // Insert category filter chips
+      categoriesSet.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.setAttribute('data-category', cat);
+        btn.textContent = cat;
+        categoriesFilter.appendChild(btn);
+      });
+
+      let activeCategory = 'all';
+      let searchQuery = '';
+
+      // Check URL query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCategory = urlParams.get('category');
+      if (urlCategory && (categoriesSet.has(urlCategory) || urlCategory.toLowerCase() === 'all')) {
+        activeCategory = urlCategory;
+        const filterButtons = categoriesFilter.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+          if (btn.getAttribute('data-category') === urlCategory) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+      }
+
+      // Core render function
+      function renderFilteredPosts() {
+        const filtered = posts.filter(post => {
+          const matchesCategory = activeCategory === 'all' || (post.categories || []).includes(activeCategory);
+          const normalizedQuery = searchQuery.toLowerCase().trim();
+          const matchesSearch = !normalizedQuery || 
+            post.title.toLowerCase().includes(normalizedQuery) ||
+            (post.description || '').toLowerCase().includes(normalizedQuery) ||
+            (post.categories || []).some(cat => cat.toLowerCase().includes(normalizedQuery));
+
+          return matchesCategory && matchesSearch;
+        });
+
+        postsGrid.innerHTML = '';
+        if (filtered.length === 0) {
+          postsGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:var(--text-muted); padding:3rem 0;">No articles match your search parameters.</div>';
+          return;
+        }
+
+        filtered.forEach(post => {
+          const card = document.createElement('article');
+          card.className = 'card blog-card';
+
+          const categoriesHtml = (post.categories || [])
+            .map(cat => `<span class="blog-category-tag" style="cursor:pointer;" onclick="selectCategoryDirectly('${cat}')">${cat}</span>`)
+            .join('');
+
+          const coverImg = post.image
+            ? `<div class="blog-card-image"><img src="${post.image}" alt="${post.title}" loading="lazy"></div>`
+            : `<div class="blog-card-image" style="background: var(--gradient-accent); opacity: 0.85;"></div>`;
+
+          const displayDate = formatDate(post.date);
+          const desc = post.description || 'Click to read the full post and explore details.';
+
+          card.innerHTML = `
+            ${coverImg}
+            <div class="blog-card-content">
+              <div class="blog-card-categories">${categoriesHtml}</div>
+              <div class="blog-card-meta">
+                <span>${displayDate}</span>
+                <span>•</span>
+                <span>By ${post.author || 'Te'}</span>
+              </div>
+              <h3 class="blog-card-title">
+                <a href="post.html?id=${post.id}">${post.title}</a>
+              </h3>
+              <p class="blog-card-desc">${desc}</p>
+              <a href="post.html?id=${post.id}" class="blog-card-readmore">
+                Read Article &rarr;
+              </a>
+            </div>
+          `;
+          postsGrid.appendChild(card);
+        });
+      }
+
+      // External helper: click post category tag directly to trigger chip toggle
+      window.selectCategoryDirectly = (cat) => {
+        activeCategory = cat;
+        const filterButtons = categoriesFilter.querySelectorAll('.filter-btn');
+        filterButtons.forEach(btn => {
+          if (btn.getAttribute('data-category') === cat) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('category', cat);
+        window.history.pushState({}, '', newUrl);
+
+        renderFilteredPosts();
+        window.scrollTo({ top: categoriesFilter.offsetTop - 100, behavior: 'smooth' });
+      };
+
+      // Filter button click event
+      categoriesFilter.addEventListener('click', (e) => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+
+        categoriesFilter.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        activeCategory = btn.getAttribute('data-category');
+        
+        const newUrl = new URL(window.location);
+        if (activeCategory === 'all') {
+          newUrl.searchParams.delete('category');
+        } else {
+          newUrl.searchParams.set('category', activeCategory);
+        }
+        window.history.pushState({}, '', newUrl);
+
+        renderFilteredPosts();
+      });
+
+      // Realtime text search inputs debounce
+      let searchTimeout;
+      searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+          searchQuery = e.target.value;
+          renderFilteredPosts();
+        }, 150);
+      });
+
+      renderFilteredPosts();
+    });
+  </script>
+</body>
+</html>
